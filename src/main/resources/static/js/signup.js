@@ -9,27 +9,29 @@ let password = "";
 let userName = "";
 let userEmail = "";
 let gender = "";
-let age = 0;
 let birthday = "";
 
-// document.querySelector("#userId2").addEventListener("change", (e) => {
-//   console.log(e.target.value);
-//   // 확인해보면 엄청 길게 나오는데 여기서 value 값이 필요(입력한 값 나와있음)
-//   //  → e.target.value 사용
-//   userId = e.target.value;
-// });
+// input 내용 담기
+document.querySelector(".nickname").addEventListener("change", (e) => {
+  console.log(e.target.value);
+  userId = e.target.value;
+});
 
-document.querySelector("#userId").addEventListener("change", (e) => {
+document.querySelector(".password").addEventListener("change", (e) => {
   console.log(e.target.value);
   password = e.target.value;
 });
 
-document.querySelector("#password").addEventListener("change", (e) => {
+document.querySelector(".birth").addEventListener("change", (e) => {
   console.log(e.target.value);
-  password = e.target.value;
+  birthday = e.target.value;
+});
+document.querySelector(".email").addEventListener("change", (e) => {
+  console.log(e.target.value);
+  userEmail = e.target.value;
 });
 
-document.querySelector("#userName").addEventListener("change", (e) => {
+document.querySelector(".name").addEventListener("change", (e) => {
   console.log(e.target.value);
   userName = e.target.value;
 });
@@ -51,46 +53,107 @@ document.querySelector("#female").addEventListener("click", (e) => {
   gender = e.target.value;
 });
 
-document.querySelector("#userEmail").addEventListener("change", (e) => {
-  console.log(e.target.value);
-  userEmail = e.target.value;
-});
-document.querySelector("#age").addEventListener("change", (e) => {
-  console.log(e.target.value);
-  age = e.target.value;
-});
-document.querySelector("#birthday").addEventListener("change", (e) => {
-  console.log(e.target.value);
-  birthday = e.target.value;
+//중복체크
+
+// id 중복체크
+
+document.querySelector(".nick_check").addEventListener("click", () => {
+  axios
+    .get(urlShow)
+    .then((response) => {
+      console.log("데이터: ", response.data);
+      for (i = 0; i < response.data.length; i++) {
+        if (response.data[i].userId == userId) {
+          alert(`중복된 ID입니다!
+        다른 ID를 입력해주세요!!!`);
+          break;
+        } else if (document.querySelector(".nickname").value == "") {
+          alert("ID를 입력해주세요!!!");
+          break;
+        } else if (
+          i == response.data.length - 1 &&
+          response.data[i].userId != userId
+        ) {
+          if (
+            !confirm(`사용 가능한 ID입니다
+          해당 ID를 사용하시겠습니까?`)
+          ) {
+            document.querySelector(".nickname").value = "";
+          }
+          break;
+        }
+      }
+    })
+    .catch((error) => {
+      console.log("오류 발생: ", error);
+    });
 });
 
-const upUserId = document.querySelector("#userId2");
-const upUserPW = document.querySelector("#password2");
-const upUserName = document.querySelector("#userName");
-const upUserEM = document.querySelector("#userEmail");
+// email 중복체크
+
+document.querySelector(".email_check").addEventListener("click", () => {
+  axios
+    .get(urlShow)
+    .then((response) => {
+      console.log("데이터: ", response.data);
+      for (i = 0; i < response.data.length; i++) {
+        console.log(response.data[0].email);
+        if (response.data[i].email == userEmail) {
+          alert(`이미 등록된 email이 존재합니다!
+        다른 email을 입력해주세요!!!`);
+          break;
+        } else if (document.querySelector(".email").value == "") {
+          alert("email을 입력해주세요!!!");
+          break;
+        } else if (
+          i == response.data.length - 1 &&
+          response.data[i].userEmail != userEmail
+        ) {
+          if (
+            !confirm(`사용 가능한 email입니다
+          해당 email을 사용하시겠습니까?`)
+          ) {
+            document.querySelector(".email").value = "";
+          }
+          break;
+        }
+      }
+    })
+    .catch((error) => {
+      console.log("오류 발생: ", error);
+    });
+});
+
+// 회원가입 등록
 
 document.querySelector(".register").addEventListener("click", () => {
   const data = {
     userId: userId,
     password: password,
-    userName: userName,
-    userEmail: userEmail,
-    gender: gender,
-    age: age,
     birthday,
+    userEmail: userEmail,
+    userName: userName,
+    gender: gender,
   };
+
+  const pasChk = document.querySelector(".passwordcheck");
+
+  if (pasChk != password) {
+    pasChk.style.border = `4px solid red`;
+    alert(`비밀번호가 일치하지 않습니다`);
+  }
+
   axios
     .post(urlsignUp, data, { withCredentials: true }) // url 옆에 전송할 객체 넣음
     .then((response) => {
       console.log("데이터 :", response);
       if (response.status == 201) {
         alert("회원가입 완료");
-        document.querySelector("#userId2").value = "";
-        document.querySelector("#password2").value = "";
-        document.querySelector("#userName").value = "";
-        document.querySelector("#userEmail").value = "";
-        document.querySelector(".signUp-box").classList.add("hidden");
-        document.querySelector(".login-box").classList.remove("hidden");
+        document.querySelector(".nickname").value = "";
+        document.querySelector(".birth").value = "";
+        document.querySelector(".password").value = "";
+        document.querySelector(".name").value = "";
+        document.querySelector(".email").value = "";
       }
     })
     .catch((error) => {

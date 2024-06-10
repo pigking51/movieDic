@@ -33,7 +33,7 @@ public class UserController {
         this.authenticationManager = authenticationManager;
         this.httpServletRequest = httpServletRequest;
     }
-    @PostMapping("show")
+    @GetMapping("show")
     public ResponseEntity<List<User>> getAllUsers(){
         return new ResponseEntity<>(userService.getAllUsers(),
                 HttpStatus.OK);
