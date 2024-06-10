@@ -1,4 +1,4 @@
 package dw.movieDic.Controller;
 
-public class LectureController {
+public class VideoController {
 }

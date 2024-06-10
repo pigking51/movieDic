@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/user", method= RequestMethod.GET)
+@RequestMapping("/user")
 public class UserController {
     private UserService userService;
     private UserDetailService userDetailService;
@@ -33,14 +33,14 @@ public class UserController {
         this.authenticationManager = authenticationManager;
         this.httpServletRequest = httpServletRequest;
     }
-    @GetMapping("show")
+    @PostMapping("show")
     public ResponseEntity<List<User>> getAllUsers(){
-        return new ResponseEntity<>(userService.GetAllUsers(),
+        return new ResponseEntity<>(userService.getAllUsers(),
                 HttpStatus.OK);
     }
 
     @PostMapping("signup")
-    public ResponseEntity<String> signUp(@RequestBody UserDto userDto){
+    public ResponseEntity<String> signup(@RequestBody UserDto userDto){
         return new ResponseEntity<>(userService.saveUser(userDto),
                 HttpStatus.CREATED);
     }
@@ -53,27 +53,22 @@ public class UserController {
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
         // 세션 생성
-        HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession(true); // true: 세션이 없으면 새로 생성
         // 세션에 인증 객체 저장
         session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                 SecurityContextHolder.getContext());
 
         return ResponseEntity.ok("Success");
     }
+
     @PostMapping("/logout")
-    private String logout(HttpServletRequest request,
-                          HttpServletResponse response){
-        // response는 status 200을 보내주는 주체를 의미
-        // request는 클라이언트에서 요청한 내용 원본이 들어있음
+    public String logout(HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession(false);
-        // 없으면 null값 요청하는 것
         if(session != null){
             session.invalidate();
         }
-        return "You have been logged out!";
-        
+        return "You have been logged out!!";
     }
-
     @GetMapping("current")
     public SessionDto getCurrentUser(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

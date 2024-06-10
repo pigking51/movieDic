@@ -1,13 +1,14 @@
 package dw.movieDic.Model;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,7 +18,6 @@ import org.springframework.data.annotation.Id;
 @Table(name = "authority")
 public class Authority {
     @Id
-    @Column(name = "authority_name", length = 50)
+    @Column(name = "authority_name", nullable = false, unique = true, length = 50)
     private String authorityName;
 }
-

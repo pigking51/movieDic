@@ -10,12 +10,12 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "purchase")
-public class Purchase {
+@Table(name = "review")
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "purchase_id")
-    private long purchaseId;
+    @Column(name = "review_id")
+    private long reviewId;
 
     @ManyToOne
     @JoinColumn(name = "lecture_id", nullable = false)
@@ -25,6 +25,12 @@ public class Purchase {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "purchase_time", nullable = false)
-    private LocalDateTime purchaseTime;
+    @Column(name = "rating", nullable = false)
+    private int rating;
+
+    @Column(name = "review_text", nullable = false, length = 65535)
+    private String reviewText;
+
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
 }
