@@ -38,6 +38,8 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/user/signup"),
                                 new AntPathRequestMatcher("/user/show"),
                                 new AntPathRequestMatcher("/signup"),
+                                new AntPathRequestMatcher("/index"),
+
 //                                // ↑ WAS까지 가서 통과해야되는 것들
                                 new AntPathRequestMatcher("/login"),
                                 new AntPathRequestMatcher("/css/**"),

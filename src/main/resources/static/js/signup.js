@@ -11,6 +11,8 @@ let userEmail = "";
 let gender = "";
 let birthday = "";
 
+let passChk = "";
+
 // input 내용 담기
 document.querySelector(".nickname").addEventListener("change", (e) => {
   console.log(e.target.value);
@@ -51,6 +53,11 @@ document.querySelector("#female").addEventListener("click", (e) => {
   }
   console.log(e.target.value);
   gender = e.target.value;
+});
+
+document.querySelector(".passwordcheck").addEventListener("change", (e) => {
+  console.log(e.target.value);
+  passChk = e.target.value;
 });
 
 //중복체크
@@ -123,6 +130,11 @@ document.querySelector(".email_check").addEventListener("click", () => {
       console.log("오류 발생: ", error);
     });
 });
+// 뒤로가기
+document.querySelector(".backBtn").addEventListener("click", () => {
+  alert("뒤로이동!");
+  window.history.go(-1);
+});
 
 // 회원가입 등록
 
@@ -135,12 +147,28 @@ document.querySelector(".register").addEventListener("click", () => {
     userName: userName,
     gender: gender,
   };
+  // 비밀번호 일치 확인
 
-  const pasChk = document.querySelector(".passwordcheck");
-
-  if (pasChk != password) {
-    pasChk.style.border = `4px solid red`;
+  if (passChk != password) {
+    document.querySelector(".passwordcheck").style.border = `4px solid red`;
     alert(`비밀번호가 일치하지 않습니다`);
+    return false;
+  }
+  if (document.querySelector(".nickname").value == "") {
+    alert("ID를 입력하지 않았습니다!");
+    return false;
+  } else if (document.querySelector(".birth").value == "") {
+    alert("생일을 입력하지 않았습니다!");
+    return false;
+  } else if (document.querySelector(".password").value == "") {
+    alert("비밀번호를 입력하지 않았습니다!");
+    return false;
+  } else if (document.querySelector(".name").value == "") {
+    alert("이름을 입력하지 않았습니다!");
+    return false;
+  } else if (document.querySelector(".email").value == "") {
+    alert(" email을 입력하지 않았습니다!");
+    return false;
   }
 
   axios
@@ -152,6 +180,7 @@ document.querySelector(".register").addEventListener("click", () => {
         document.querySelector(".nickname").value = "";
         document.querySelector(".birth").value = "";
         document.querySelector(".password").value = "";
+        document.querySelector(".passwordcheck").value = "";
         document.querySelector(".name").value = "";
         document.querySelector(".email").value = "";
       }
