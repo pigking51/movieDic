@@ -16,4 +16,7 @@ public class SurveyDto {
     private String surveyQuestion;
     private int answer;
     private User userId;
+
 }
+
+

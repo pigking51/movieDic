@@ -24,7 +24,7 @@ public class SurveyService {
 //            return "이미 설문조사를 마치셨습니다!!";
 //        }
         if(surveyOptional.isPresent()){
-            return "이미 설문조사를 마치셨습니다!!";
+            return "이미 설문조사에 응답하셨습니다!!";
         }
         Survey survey = new Survey(surveyDto.getSurveyId(),
                 surveyDto.getSurveyQuestion(),
