@@ -1,4 +1,4 @@
-package dw.movieDic.Controller;
+package dw.movieDic.Model;
 
 
 
