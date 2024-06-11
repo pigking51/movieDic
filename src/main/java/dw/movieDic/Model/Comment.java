@@ -1,5 +1,6 @@
 package dw.movieDic.Model;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,28 +8,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name="lecture_review")
-public class LectureReview {
+@Table(name = "comment")
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="review_id")
-    private long id;
+    @Column(name = "comment_id")
+    private Long commentId;
     @ManyToOne
-    @JoinColumn(name="lecture")
-    private Lectures lectures;
+    @JoinColumn(name = "post_id", nullable = false)
+    private Post post;
     @ManyToOne
-    @JoinColumn(name="user")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
-    @Column(name= "point", nullable = false)
-    private int point;
-    @Column(name= "review_text", length=65535)
-    private String reviewText;
+    @Column(name = "comment_content", nullable = false, length = 1000)
+    private String commentContent;
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
+    @OneToMany(mappedBy = "comment")
+    private Set<Like> likes;
 }

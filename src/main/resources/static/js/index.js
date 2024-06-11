@@ -2,6 +2,10 @@ const url = "http://localhost:8080/products";
 
 // axios.get(url).then(할일).then(할일).then(할일).catch(에러처리);
 
+document.querySelector(".login").addEventListener("click", () => {
+  window.location.href = "login.html";
+});
+
 axios
   .get(url)
   .then((response) => {

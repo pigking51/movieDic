@@ -1,6 +1,6 @@
 package dw.movieDic.Dto;
 
-import dw.movieDic.Model.Gender;
+import dw.movieDic.Model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +18,9 @@ public class UserDto {
     private String password;
     private String userName;
     private String userEmail;
-    private Gender gender;
-    private int age;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private User.GenderEnum gender;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
+
 
 }

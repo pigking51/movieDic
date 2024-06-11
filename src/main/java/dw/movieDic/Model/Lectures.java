@@ -11,24 +11,29 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="lectures")
+@Table(name = "lectures")
 public class Lectures {
     @Id
-    @Column(name="lecture_id", nullable = false, length=20)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "lecture_id")
     private Long lectureId;
-    @Column(name="lecture_title", nullable = false, length=100)
+
+    @Column(name = "lecture_title", nullable = false, length = 200)
     private String lectureTitle;
-    @Column(name="image")
+
+    @Column(name = "major", nullable = false, length = 100)
+    private String major;
+
+    @Column(name = "price", nullable = false)
+    private double price;
+
+    @Column(name = "image", nullable = false, length = 65535)
     private String image;
-    @Column(name="price", length=11)
-    private int Price;
-    @Column(name="lecture_explanation")
-    private String lectureExplanation;
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User userId;
 
+    @Column(name = "description_text", length = 65535)
+    private String text;
 
-
+    @Column(name = "lecture_url", nullable = false, length = 65535)
+    private String lectureUrl;
 
 }

@@ -1,7 +1,7 @@
 package dw.movieDic.Config;
 
 import dw.movieDic.Exception.MyAccessDeniedHandler;
-import dw.movieDic.Exception.MyAuthenicationEntryPoint;
+import dw.movieDic.Exception.MyAuthenticationEntryPoint;
 import dw.movieDic.Service.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -9,11 +9,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -21,7 +19,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
 public class SecurityConfig {
     @Autowired
     private UserDetailService userDetailService;
@@ -34,12 +31,17 @@ public class SecurityConfig {
 //                                new AntPathRequestMatcher("/"),
 //                                new AntPathRequestMatcher("/**"),
                                 new AntPathRequestMatcher("/products/**"),
+                                new AntPathRequestMatcher("/movieDic/**"),
+                                new AntPathRequestMatcher("/movieDic/signup"),
+                                new AntPathRequestMatcher("/movieDic/user/show"),
                                 new AntPathRequestMatcher("/user/login"),
                                 new AntPathRequestMatcher("/user/signup"),
+                                new AntPathRequestMatcher("/user/show"),
+                                new AntPathRequestMatcher("/signup"),
+                                new AntPathRequestMatcher("/index"),
+
+//                                // ↑ WAS까지 가서 통과해야되는 것들
                                 new AntPathRequestMatcher("/login"),
-                                new AntPathRequestMatcher("/show"),
-                                // ↑ WAS까지 가서 통과해야되는 것들
-                                new AntPathRequestMatcher("/moviedic/**"),
                                 new AntPathRequestMatcher("/css/**"),
                                 new AntPathRequestMatcher("/js/**")
                                 // ↑ TOMCAT까지 가서 통과해야되는 것들
@@ -50,7 +52,7 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling(exception -> exception
-                        .authenticationEntryPoint(new MyAuthenicationEntryPoint())
+                        .authenticationEntryPoint(new MyAuthenticationEntryPoint())
                         .accessDeniedHandler(new MyAccessDeniedHandler()))
                 .build();
     }
@@ -67,5 +69,4 @@ public class SecurityConfig {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }

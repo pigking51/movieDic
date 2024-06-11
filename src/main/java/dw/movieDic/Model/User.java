@@ -1,13 +1,7 @@
 package dw.movieDic.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,35 +14,45 @@ import java.util.Collections;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User implements UserDetails {
     @Id
-    @Column(name="user_id", nullable = false, length=50)
+    @Column(name = "user_id", length = 50)
     private String userId;
-    @Column(name="user_name", nullable = false, length=50)
-    private String userName;
-    @Column(name="user_email", length=100)
-    private String userEmail;
-    @Column(name="password", nullable = false, length=255)
+
+    @Column(name = "password", nullable = false, length = 255)
     private String password;
-    @Column(name="authority", nullable = false, length=100)
-    private Authority authority;
-    @Column(name="gender", nullable = false, length=50)
-    private Gender genderType;
-    @Column(name="age", nullable = false)
-    private int age;
-    @Column(name="birthday", nullable = false)
+
+    @Column(name = "birthday", nullable = false)
     private LocalDate birthday;
-    @Column(name="date_joined")
+
+    @Column(name = "user_email", nullable = false, unique = true, length = 100)
+    private String email;
+
+    @Column(name="date_joined", nullable = false, updatable = false)
     private LocalDateTime dateJoined;
+
+    @Column(name = "user_name", nullable = false, length = 50)
+    private String userName;
+
+    @ManyToOne
+    @JoinColumn(name = "authority", nullable = false)
+    private Authority authority;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender", nullable = false)
+    private GenderEnum gender;
+
+    public enum GenderEnum {
+        MALE,
+        FEMALE;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(
-                new SimpleGrantedAuthority(authority.getAuthorityName())
-        );
+                new SimpleGrantedAuthority(authority.getAuthorityName()));
     }
 
     @Override
@@ -80,5 +84,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 }
+

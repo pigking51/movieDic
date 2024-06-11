@@ -17,30 +17,31 @@ public class PurchaseController {
     PurchaseService purchaseService;
 
     @PostMapping("/products/purchase")
-    public Purchase savePurchase(@RequestBody Purchase purchase) {
+    public Purchase savePurchase(@RequestBody Purchase purchase){
         return purchaseService.savePurchase(purchase);
     }
-    @PostMapping("/products/purchaseList")
-    @PreAuthorize("hasAnyRole('ADMIN')")
-    public List<Purchase> savePurchase(@RequestBody List<Purchase> purchaseList) {
+
+    @PostMapping("/products/purchaselist")
+    public List<Purchase> savePurchaseList(@RequestBody List<Purchase> purchaseList){
         return purchaseService.savePurchaseList(purchaseList);
     }
 
     @GetMapping("/products/purchase")
-    public List<Purchase> getAllPurchases() {
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    public List<Purchase> getAllPurchases(){
         return purchaseService.getAllPurchases();
     }
 
     @GetMapping("/products/purchase/id/{userId}")
-    public List<Purchase> getPurchaseListByUser(@PathVariable String userId) {
-        return purchaseService.getPurchaseListByUser(userId);
-    }
-
-    @GetMapping("/products/purchase/name/{userName}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<List<Purchase>> getPurchaseListByUserName(
-            @PathVariable String userName) {
-        return new ResponseEntity<>(purchaseService.getPurchaseListByUserName(userName),
-                HttpStatus.OK);
+            @PathVariable String userName){
+    return new ResponseEntity<>(purchaseService.getPurchaseListByUser(userName),
+            HttpStatus.OK);
     }
 
+    @GetMapping("/Products/purchase/current")
+    public List<Purchase> getPurchaseListByCurrentUser(){
+        return purchaseService.getPurchaseListByCurrentUser();
+    }
 }

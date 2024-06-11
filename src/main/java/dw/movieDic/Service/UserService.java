@@ -22,7 +22,8 @@ public class UserService {
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
-    public List<User> GetAllUsers(){return userRepository.findAll();}
+
+    public List<User> getAllUsers(){return userRepository.findAll();}
 
     public String saveUser(UserDto userDto){
         Optional<User> userOptional = userRepository.findByUserId(userDto.getUserId());
@@ -32,16 +33,14 @@ public class UserService {
         Authority authority = new Authority();
         authority.setAuthorityName("ROLE_USER");
         User user = new User(userDto.getUserId(),
-                userDto.getUserName(),
-                userDto.getUserEmail(),
                 bCryptPasswordEncoder.encode(userDto.getPassword()),
-                authority,
-                userDto.getGender(),
-                userDto.getAge(),
                 userDto.getBirthday(),
-                LocalDateTime.now());
-        // 위에꺼 설정할때 table과의 순서 맞는지 확인!!
-        // → 안하면 lombok에서 인식할때 오류생김
+                userDto.getUserEmail(),
+                LocalDateTime.now(),
+                userDto.getUserName(),
+                authority,
+                userDto.getGender());
         return userRepository.save(user).getUserId();
+
     }
 }
