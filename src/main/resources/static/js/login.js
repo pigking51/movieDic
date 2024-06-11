@@ -40,6 +40,7 @@ document.querySelector(".loginBtn").addEventListener("click", () => {
     })
     .catch((error) => {
       console.log("에러발생 : ", error);
+      alert("ID 혹은 비밀번호가 잘못되었습니다!");
     });
 });
 

@@ -34,11 +34,14 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/movieDic/**"),
                                 new AntPathRequestMatcher("/movieDic/signup"),
                                 new AntPathRequestMatcher("/movieDic/user/show"),
+                                new AntPathRequestMatcher("/csat/survey"),
                                 new AntPathRequestMatcher("/user/login"),
                                 new AntPathRequestMatcher("/user/signup"),
                                 new AntPathRequestMatcher("/user/show"),
+                                new AntPathRequestMatcher("/survey"),
                                 new AntPathRequestMatcher("/signup"),
                                 new AntPathRequestMatcher("/index"),
+                                new AntPathRequestMatcher("/reviews"),
 
 //                                // ↑ WAS까지 가서 통과해야되는 것들
                                 new AntPathRequestMatcher("/login"),
