@@ -37,6 +37,9 @@ document.querySelector(".loginBtn").addEventListener("click", () => {
     .then((response) => {
       console.log("데이터 :", response);
       sessionCurrent();
+      alert(`${userId}님 환영합니다!`);
+      document.querySelector("#userId").value = "";
+      document.querySelector("#password").value = "";
     })
     .catch((error) => {
       console.log("에러발생 : ", error);

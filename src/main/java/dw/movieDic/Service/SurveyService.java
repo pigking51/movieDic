@@ -16,7 +16,7 @@ import java.util.List;
 @Transactional
 public class SurveyService {
     @Autowired
-   private SurveyRepository surveyRepository;
+   SurveyRepository surveyRepository;
 
     public Survey saveSurvey(Survey survey) {
         return surveyRepository.save(survey);

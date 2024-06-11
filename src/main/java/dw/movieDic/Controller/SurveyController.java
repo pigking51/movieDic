@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/csat")
 public class SurveyController {
     @Autowired
-    private SurveyService surveyService;
+    SurveyService surveyService;
 
     @PostMapping("/survey")
     public ResponseEntity<Survey> saveSurvey(@RequestBody Survey survey){

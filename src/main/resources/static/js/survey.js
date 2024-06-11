@@ -1,5 +1,5 @@
-const url = "localhost:8080/csat/survey";
-const urlShow = "localhost:8080/user/show";
+const url = "http://localhost:8080/csat/survey";
+const urlShow = "http://localhost:8080/user/show";
 
 let answer1 = 0;
 let answer2 = "";
@@ -92,9 +92,17 @@ document.querySelector("#p_verybad").addEventListener("click", (e) => {
 
 // 현재 유저Id 가져오기
 let nowUserId = "";
+let userId = "";
 
 document.querySelector(".surveyBtn").addEventListener("click", () => {
   // 현재 로그인 정보확인
+  // axios.get("urlShow").then((response) => {
+  //   console.log("데이터: ", response.data);
+  //   for (i = 0; i < response.data.length; i++) {
+  //     if (response.data[i].userId == userId) {
+  //     }
+  //   }
+  // });
 
   axios
     .get("http://localhost:8080/user/current", { withCredentials: true })
@@ -111,18 +119,20 @@ document.querySelector(".surveyBtn").addEventListener("click", () => {
           answer3: answer3,
           answer4: answer4,
           answer5: answer5,
-          userId: nowUserId,
+          userid: nowUserId,
         };
-
         console.log(data);
         axios
-          .post("localhost:8080/csat/survey", data, { withCredentials: true })
+          .post("http://localhost:8080/csat/survey", data, {
+            withCredentials: true,
+          })
           .then((response) => {
             console.log("데이터: ", response.data);
             alert("설문에 응해주셔서 감사합니다!!");
           })
           .catch((error) => {
             console.log("에러발생 : ", error);
+            alert("post쪽 에러!!");
           });
       }
     })
