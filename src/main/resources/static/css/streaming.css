@@ -224,3 +224,78 @@ html,body{
     color: #fff;
     text-align: center;
 }
+
+#pop_up{
+    position: absolute;
+    width: 720px;
+    height: 720px;
+    top: 35%;
+    left: 35%;
+    z-index: 2;
+    background-color: #fff;
+    border-radius: 8px;
+    display: none;
+    box-shadow: 3px 2px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+#pop_up.active{
+    display: flex;
+}
+
+.aside{
+    width: 340px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.aside h1{
+    width: auto;
+    height: auto;
+}
+
+.aside h2{
+    width: auto;
+    height: auto;
+    margin-top: 10px;
+}
+
+.aside ol{
+    margin-top: 30px;
+    height: auto;
+    width: 340px;
+}
+
+.aside ol>li{
+    list-style: none;
+    width: 340px;
+    padding: 0 10px;
+    height: auto;
+    line-height: 40px;
+    font-size: 14px;
+}
+
+.image-btn button{
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    float: right;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+}
+
+.image-btn button:hover{
+    opacity: 0.6;
+}
+
+.image-btn img{
+    float: right;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: 200px;
+}
