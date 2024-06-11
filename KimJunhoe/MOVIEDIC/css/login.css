@@ -1,0 +1,281 @@
+@font-face {
+  font-family: "GyeonggiTitleM";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+html,body {
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 헤더css시작 */
+
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  border-bottom: 1px solid #00d1fe;
+  justify-content: space-around;
+}
+
+.logo {
+  width: 200px;
+  height: 100px;
+}
+
+.logo img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+}
+
+.menu > ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  width: 700px;
+}
+
+.menu > ul > li {
+  line-height: 100px;
+}
+
+.menu > ul > li > a:hover {
+  color: #00d1fe;
+}
+
+.menu > ul > li > a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  color: #333;
+}
+
+.top-Icon {
+  width: 200px;
+  height: 100px;
+  display: flex;
+}
+
+.top-Icon ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-Icon li {
+  list-style: none;
+  width: 60px;
+  height: 60px;
+}
+
+.top-Icon img {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+
+/* 헤더 css끝 */
+
+/* .loginBtn:hover,
+.logoutBtn:hover,
+.signupBtn:hover {
+  background-color: whitesmoke;
+  color: #00d1fe;
+} */
+
+.login {
+  height: 900px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#userId{
+  height: 100px;
+  border: 4px solid #00d1fe;
+  border-radius: 8px;
+  font-size: 30px;
+  padding-left: 20px;
+}
+
+#userId::placeholder{
+  position: absolute;
+  left: 20px;
+  top: 30px;
+  font-size: 30px;
+  line-height: 100px;
+}
+
+#password{
+  height: 100px;
+  border: 4px solid #00d1fe;
+  border-radius: 8px;
+  padding-left: 20px;
+  font-size: 30px;
+  margin-top: 30px;
+}
+
+#password::placeholder{
+  position: absolute;
+  left: 20px;
+  top: 30px;
+  font-size: 30px;
+  line-height: 100px;
+}
+
+.login-box {
+  width: 560px;
+  height: 560px;
+  align-items: center;
+  gap: 10px;
+  padding: 30px;
+  background-color: white;
+  font-size: 1.3rem;
+  border-radius: 15px;
+  justify-items: center;
+}
+
+.login-box>h1{
+  height: 100px;
+  line-height: 100px;
+}
+
+.loginBtn {
+  width: calc(50% - 20px);
+  height: 100px;
+  background-color: #00deff;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 30px;
+  border: none;
+  margin-right: 10px;
+}
+
+/* .loginBtn:hover {
+  border: 4px solid #00deff;
+  background-color: whitesmoke;
+  color: #00deff;
+} */
+
+.btnwrap{
+  width: 588px;
+  height: 100px;
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.signup {
+  width: 100%;
+  height: 40px;
+  background-color: #00deff;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.signup:hover {
+  background-color: lightblue;
+  color: dodgerblue;
+}
+
+.signup-box {
+  width: 100%;
+  height: 40px;
+  background-color: #00deff;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.signupBtn {
+  width: calc(50% - 20px);
+  height: 100px;
+  background-color: white;
+  color: #00deff;
+  border-style: solid;
+  border-width: 3px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 30px;
+  border: 4px solid #00d1fe;
+  margin-left: 10px;
+}
+
+
+/* 푸터 css시작 */
+
+footer {
+  width: 100%;
+  background-color: #666;
+  height: 300px;
+  margin: 0;
+  padding: 0;
+}
+
+.information {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+.information h4 {
+  color: #fff;
+  font-size: 25px;
+  padding: 20px;
+  width: 400px;
+  height: 25px;
+}
+
+.information span {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  color: #fff;
+  width: 400px;
+  height: 200px;
+}
+
+/* 푸터 css 끝 */

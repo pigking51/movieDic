@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>surveypage</title>
+    <link rel="stylesheet" href="../css/survey.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="../javascript/mainpage.js"></script>
+  </head>
+  <body>
+    <!-- 헤더html시작 -->
+    <header>
+      <div class="logo">
+        <a href="mainpage.html">
+          <img src="../images/logo/logo.png" alt="상단로고" />
+        </a>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="team.html">팀소개</a></li>
+          <li><a href="#">강의</a></li>
+          <li><a href="#">게시판</a></li>
+          <li><a href="#">이벤트</a></li>
+          <li><a href="#">QnA</a></li>
+        </ul>
+      </nav>
+      <div class="top-Icon">
+        <ul>
+          <li>
+            <a href="#"
+              ><img src="../images/icon/shopping_bag.png" alt="장바구니"
+            /></a>
+          </li>
+          <li>
+            <a href="#"
+              ><img src="../images/icon/person.png" alt="마이페이지"
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <!-- 헤더 html 끝 -->
+
+    <!-- 강의 만족도 시작 -->
+    <div class="title">
+      <h1>강의 만족도 조사</h1>
+      <br>
+      <h4>설문조사에 솔직한 답변 바랍니다 ^^</h4>
+      <h4>더 나은 서비스로 보답하겠습니다</h4>
+    </div>
+    <br />
+    <div class="survey">
+      <div class="survey-box">
+        1. 귀하의 나이는?
+        <br><br>
+        <div class="age">
+          <div class="summers">
+            <input type="radio" name="age" value="10" id="10" />
+            <label for="10">10대</label>
+          </div>
+          <div class="summers">
+            <input type="radio" name="age" value="20" id="20" />
+            <label for="20">20대</label>
+          </div>
+          <div class="summers">
+            <input type="radio" name="age" value="30" id="30" />
+            <label for="30">30대</label>
+          </div>
+          <div class="summers">
+            <input type="radio" name="age" value="40" id="40" />
+            <label for="40">40대</label>
+          </div>
+          <div class="summers">
+            <input type="radio" name="age" value="50" id="50" />
+            <label for="50">50대 이상</label>
+          </div>
+        </div>
+          <br />
+          2. 귀하의 성별은?
+          <br><br>
+          <div class="gender">
+            <div class="human">
+              <input type="radio" name="gender" value="MALE" id="male" />
+              <label for="male">남성</label>
+            </div>
+            <div class="human">
+              <input type="radio" name="gender" value="FEMALE" id="female" />
+              <label for="female">여성</label>
+            </div>
+            <div class="human">
+              <input type="radio" name="gender" value="NOTHING" id="nothing" />
+              <label for="nothing">무응답</label>
+            </div>
+          </div>
+          <br />
+          3. 본 강의에 대해 어느 정도 만족하십니까?
+          <br><br>
+          <div class="lacture">
+            <div class="class">
+              <input type="radio" name="lacture" value="VERYGOOD" id="verygood" />
+              <label for="verygood">매우 만족</label>
+            </div>
+            <div class="class">
+              <input type="radio" name="lacture" value="GOOD" id="good" />
+              <label for="good">만족</label>
+            </div>
+            <div class="class">
+              <input type="radio" name="lacture" value="NORMAL" id="normal" />
+              <label for="normal">보통</label>
+            </div>
+            <div class="class">
+              <input type="radio" name="lacture" value="BAD" id="bad" />
+              <label for="bad">불만</label>
+            </div>
+            <div class="class">
+              <input type="radio" name="lacture" value="VERYBAD" id="verybad" />
+              <label for="verybad">매우 불만</label>
+            </div>
+          </div>
+          <br />
+          4. 강의에 대한 금액은 적당하다 생각하십니까?
+          <br><br>
+          <div class="price">
+            <div class="amount">
+              <input type="radio" name="price" value="VERYGOOD" id="verygood" />
+              <label for="verygood">매우 만족</label>
+            </div>
+            <div class="amount">
+              <input type="radio" name="price" value="GOOD" id="good" />
+              <label for="good">만족</label>
+            </div>
+            <div class="amount">
+              <input type="radio" name="price" value="NORMAL" id="normal" />
+              <label for="normal">보통</label>
+            </div>
+            <div class="amount">
+              <input type="radio" name="price" value="BAD" id="bad" />
+              <label for="bad">불만</label>
+            </div>
+            <div class="amount">
+              <input type="radio" name="price" value="VERYBAD" id="verybad" />
+              <label for="verybad">매우 불만</label>
+            </div>
+          </div>
+            <br />
+          5. 게시판 운영에 대해 어느 정도 만족하십니까?
+          <br><br>
+          <div class="operate">
+            <div class="post">
+              <input type="radio" name="operate" value="VERYGOOD" id="verygood" />
+              <label for="verygood">매우 만족</label>
+            </div>
+            <div class="post">
+              <input type="radio" name="operate" value="GOOD" id="good" />
+              <label for="good">만족</label>
+            </div>
+            <div class="post">
+              <input type="radio" name="operate" value="NORMAL" id="normal" />
+              <label for="normal">보통</label>
+            </div>
+            <div class="post">
+              <input type="radio" name="operate" value="BAD" id="bad" />
+              <label for="bad">불만</label>
+            </div>
+            <div class="post">
+              <input type="radio" name="operate" value="VERYBAD" id="verybad" />
+              <label for="verybad">매우 불만</label>
+            </div>
+          </div>
+            <br />
+        </div>
+      </div>
+    </div>
+    <button class="surveyBtn">제출</button>
+
+    <!-- 푸터 html 시작 -->
+    <footer>
+      <div class="information">
+        <h4>MOVIE DIC</h4>
+        <span>
+          대표:최건<br /><br />
+          사무실: 대전광역시 중구 중앙로 121번길 20 방산빌딩 5층 502호 맨 뒷자리
+        </span>
+      </div>
+    </footer>
+    <!-- 푸터 html 끝 -->
+  </body>
+</html>
