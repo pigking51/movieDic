@@ -147,6 +147,31 @@ header {
   margin-bottom: 20px;
 }
 
+.summers {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.human {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.class {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.amount {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.post {
+  display: flex;
+  margin-bottom: 20px;
+}
+
 /* 푸터 css시작 */
 
 footer {
