@@ -137,7 +137,7 @@ function sessionCurrent() {
       if (response.status == 200) {
         console.log("세션 유지");
         // 로그인 성공 시 아래 주소로 이동(메인화면 완성되면 바꿀 것!)
-        window.location.href = "index.html";
+        // window.location.href = "index.html";
 
         // 로그인 했을때 login-box와 전환되면서 나오는 박스
         // 해당기능도 0610기준 필요없어서 주석처리함

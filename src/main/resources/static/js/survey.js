@@ -1,184 +1,132 @@
 const url = "localhost:8080/csat/survey";
+const urlShow = "localhost:8080/user/show";
 
-let firstData = [];
-let surveyQuestion = "";
-let answer1 = "";
+let answer1 = 0;
 let answer2 = "";
 let answer3 = "";
 let answer4 = "";
 let answer5 = "";
-let userId = "";
 
 // 1번 항목 radio 태그선택
 document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer1 != "") {
-    answer1 = "";
-  }
   answer1 = e.target.value;
+  console.log(answer1);
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer1 != "") {
-    answer1 = "";
-  }
+document.querySelector("#s_20").addEventListener("click", (e) => {
   answer1 = e.target.value;
+  console.log(answer1);
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer1 != "") {
-    answer1 = "";
-  }
+document.querySelector("#s_30").addEventListener("click", (e) => {
   answer1 = e.target.value;
+  console.log(answer1);
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer1 != "") {
-    answer1 = "";
-  }
+document.querySelector("#s_40").addEventListener("click", (e) => {
   answer1 = e.target.value;
+  console.log(answer1);
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer1 != "") {
-    answer1 = "";
-  }
+document.querySelector("#s_50").addEventListener("click", (e) => {
   answer1 = e.target.value;
 });
 
 // 2번 항목 radio 태그선택
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer2 != "") {
-    answer2 = "";
-  }
+document.querySelector("#male").addEventListener("click", (e) => {
   answer2 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer2 != "") {
-    answer2 = "";
-  }
+document.querySelector("#female").addEventListener("click", (e) => {
   answer2 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer2 != "") {
-    answer2 = "";
-  }
+document.querySelector("#nothing").addEventListener("click", (e) => {
   answer2 = e.target.value;
 });
 
 // 3번 항목 radio 태그선택
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer3 != "") {
-    answer3 = "";
-  }
+document.querySelector("#c_verygood").addEventListener("click", (e) => {
   answer3 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer3 != "") {
-    answer3 = "";
-  }
+document.querySelector("#c_good").addEventListener("click", (e) => {
   answer3 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer3 != "") {
-    answer3 = "";
-  }
+document.querySelector("#c_normal").addEventListener("click", (e) => {
   answer3 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer3 != "") {
-    answer3 = "";
-  }
+document.querySelector("#c_bad").addEventListener("click", (e) => {
   answer3 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer3 != "") {
-    answer3 = "";
-  }
+document.querySelector("#c_verybad").addEventListener("click", (e) => {
   answer3 = e.target.value;
 });
 
 // 4번 항목 radio 태그선택
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer4 != "") {
-    answer4 = "";
-  }
+document.querySelector("#a_verygood").addEventListener("click", (e) => {
   answer4 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer4 != "") {
-    answer4 = "";
-  }
+document.querySelector("#a_good").addEventListener("click", (e) => {
   answer4 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer4 != "") {
-    answer4 = "";
-  }
+document.querySelector("#a_normal").addEventListener("click", (e) => {
   answer4 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer4 != "") {
-    answer4 = "";
-  }
+document.querySelector("#a_bad").addEventListener("click", (e) => {
   answer4 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer4 != "") {
-    answer4 = "";
-  }
+document.querySelector("#a_verybad").addEventListener("click", (e) => {
   answer4 = e.target.value;
 });
 
 // 5번 항목 radio 태그선택
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer5 != "") {
-    answer5 = "";
-  }
+document.querySelector("#p_verygood").addEventListener("click", (e) => {
   answer5 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer5 != "") {
-    answer5 = "";
-  }
+document.querySelector("#p_good").addEventListener("click", (e) => {
   answer5 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer5 != "") {
-    answer5 = "";
-  }
+document.querySelector("#p_normal").addEventListener("click", (e) => {
   answer5 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer5 != "") {
-    answer5 = "";
-  }
+document.querySelector("#p_bad").addEventListener("click", (e) => {
   answer5 = e.target.value;
 });
-document.querySelector("#s_10").addEventListener("click", (e) => {
-  if (answer5 != "") {
-    answer5 = "";
-  }
+document.querySelector("#p_verybad").addEventListener("click", (e) => {
   answer5 = e.target.value;
 });
 
-// 현재 로그인 정보확인(여기서 user정보 가져와서 userId에 담기)
-function sessionCurrent() {
+// 현재 유저Id 가져오기
+let nowUserId = "";
+
+document.querySelector(".surveyBtn").addEventListener("click", () => {
+  // 현재 로그인 정보확인
+
   axios
     .get("http://localhost:8080/user/current", { withCredentials: true })
     .then((response) => {
       console.log("데이터: ", response);
       if (response.status == 200) {
         console.log("세션 유지");
-        // 로그인 성공 시 아래 주소로 이동(메인화면 완성되면 바꿀 것!)
-        window.location.href = "index.html";
+        nowUserId = response.data.userId;
+        console.log(nowUserId);
 
-        // 로그인 했을때 login-box와 전환되면서 나오는 박스
-        // 해당기능도 0610기준 필요없어서 주석처리함
-        // if (response.status == 200) {
-        //   document.querySelector(".login-box").classList.add("hidden");
-        //   document.querySelector(".user-box").classList.remove("hidden");
-        //   document.querySelector(".user-box p").textContent =
-        //     response.data.userId + "님 환영합니다.";
-        // }
+        const data = {
+          answer1: answer1,
+          answer2: answer2,
+          answer3: answer3,
+          answer4: answer4,
+          answer5: answer5,
+          userId: nowUserId,
+        };
+
+        console.log(data);
+        axios
+          .post("localhost:8080/csat/survey", data, { withCredentials: true })
+          .then((response) => {
+            console.log("데이터: ", response.data);
+            alert("설문에 응해주셔서 감사합니다!!");
+          })
+          .catch((error) => {
+            console.log("에러발생 : ", error);
+          });
       }
     })
     .catch((error) => {
       console.log("에러 발생: ", error);
     });
-}
+});

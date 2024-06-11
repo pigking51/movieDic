@@ -33,6 +33,7 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/products/**"),
                                 new AntPathRequestMatcher("/movieDic/**"),
                                 new AntPathRequestMatcher("/movieDic/signup"),
+                                new AntPathRequestMatcher("/movieDic/survey"),
                                 new AntPathRequestMatcher("/movieDic/user/show"),
                                 new AntPathRequestMatcher("/csat/survey"),
                                 new AntPathRequestMatcher("/user/login"),

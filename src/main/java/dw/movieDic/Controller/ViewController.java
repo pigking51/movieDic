@@ -21,6 +21,10 @@ public class ViewController {
     public String signup(){
         return "signup";
     }
+    @GetMapping("/movieDic/survey.html")
+    public String survey(){
+        return "survey";
+    }
     @GetMapping("/movieDic/singleProduct.html")
     public String singleProduct(){
         return "singleProduct";

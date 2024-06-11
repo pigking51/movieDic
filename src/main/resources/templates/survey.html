@@ -16,6 +16,9 @@
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
       crossorigin="anonymous"
     ></script>
+    <script src="
+    https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js
+    "></script>
     <script defer src="../js/mainpage.js"></script>
   </head>
   <body>
@@ -55,7 +58,7 @@
     <!-- 강의 만족도 시작 -->
     <div class="title">
       <h1>강의 만족도 조사</h1>
-      <br>
+      <br />
       <h4>설문조사에 솔직한 답변 바랍니다 ^^</h4>
       <h4>더 나은 서비스로 보답하겠습니다</h4>
     </div>
@@ -63,123 +66,132 @@
     <div class="survey">
       <div class="survey-box">
         1. 귀하의 나이는?
-        <br><br>
+        <br /><br />
         <div class="age">
           <div class="summers">
             <input type="radio" name="age" value="10" id="s_10" />
-            <label for="10">10대</label>
+            <label for="s_10">10대</label>
           </div>
           <div class="summers">
             <input type="radio" name="age" value="20" id="s_20" />
-            <label for="20">20대</label>
+            <label for="s_20">20대</label>
           </div>
           <div class="summers">
             <input type="radio" name="age" value="30" id="s_30" />
-            <label for="30">30대</label>
+            <label for="s_30">30대</label>
           </div>
           <div class="summers">
             <input type="radio" name="age" value="40" id="s_40" />
-            <label for="40">40대</label>
+            <label for="s_40">40대</label>
           </div>
           <div class="summers">
             <input type="radio" name="age" value="50" id="s_50" />
-            <label for="50">50대 이상</label>
+            <label for="s_50">50대 이상</label>
           </div>
         </div>
-          <br />
-          2. 귀하의 성별은?
-          <br><br>
-          <div class="gender">
-            <div class="human">
-              <input type="radio" name="gender" value="MALE" id="male" />
-              <label for="male">남성</label>
-            </div>
-            <div class="human">
-              <input type="radio" name="gender" value="FEMALE" id="female" />
-              <label for="female">여성</label>
-            </div>
-            <div class="human">
-              <input type="radio" name="gender" value="NOTHING" id="nothing" />
-              <label for="nothing">무응답</label>
-            </div>
+        <br />
+        2. 귀하의 성별은?
+        <br /><br />
+        <div class="gender">
+          <div class="human">
+            <input type="radio" name="gender" value="MALE" id="male" />
+            <label for="male">남성</label>
           </div>
-          <br />
-          3. 본 강의에 대해 어느 정도 만족하십니까?
-          <br><br>
-          <div class="lacture">
-            <div class="class">
-              <input type="radio" name="lacture" value="VERYGOOD" id="c_verygood" />
-              <label for="verygood">매우 만족</label>
-            </div>
-            <div class="class">
-              <input type="radio" name="lacture" value="GOOD" id="c_good" />
-              <label for="good">만족</label>
-            </div>
-            <div class="class">
-              <input type="radio" name="lacture" value="NORMAL" id="c_normal" />
-              <label for="normal">보통</label>
-            </div>
-            <div class="class">
-              <input type="radio" name="lacture" value="BAD" id="c_bad" />
-              <label for="bad">불만</label>
-            </div>
-            <div class="class">
-              <input type="radio" name="lacture" value="VERYBAD" id="c_verybad" />
-              <label for="verybad">매우 불만</label>
-            </div>
+          <div class="human">
+            <input type="radio" name="gender" value="FEMALE" id="female" />
+            <label for="female">여성</label>
           </div>
-          <br />
-          4. 강의에 대한 금액은 적당하다 생각하십니까?
-          <br><br>
-          <div class="price">
-            <div class="amount">
-              <input type="radio" name="price" value="VERYGOOD" id="a_verygood" />
-              <label for="verygood">매우 만족</label>
-            </div>
-            <div class="amount">
-              <input type="radio" name="price" value="GOOD" id="a_good" />
-              <label for="good">만족</label>
-            </div>
-            <div class="amount">
-              <input type="radio" name="price" value="NORMAL" id="a_normal" />
-              <label for="normal">보통</label>
-            </div>
-            <div class="amount">
-              <input type="radio" name="price" value="BAD" id="a_bad" />
-              <label for="bad">불만</label>
-            </div>
-            <div class="amount">
-              <input type="radio" name="price" value="VERYBAD" id="a_verybad" />
-              <label for="verybad">매우 불만</label>
-            </div>
+          <div class="human">
+            <input type="radio" name="gender" value="NOTHING" id="nothing" />
+            <label for="nothing">무응답</label>
           </div>
-            <br />
-          5. 게시판 운영에 대해 어느 정도 만족하십니까?
-          <br><br>
-          <div class="operate">
-            <div class="post">
-              <input type="radio" name="operate" value="VERYGOOD" id="p_verygood" />
-              <label for="verygood">매우 만족</label>
-            </div>
-            <div class="post">
-              <input type="radio" name="operate" value="GOOD" id="p_good" />
-              <label for="good">만족</label>
-            </div>
-            <div class="post">
-              <input type="radio" name="operate" value="NORMAL" id="p_normal" />
-              <label for="normal">보통</label>
-            </div>
-            <div class="post">
-              <input type="radio" name="operate" value="BAD" id="p_bad" />
-              <label for="bad">불만</label>
-            </div>
-            <div class="post">
-              <input type="radio" name="operate" value="VERYBAD" id="p_verybad" />
-              <label for="verybad">매우 불만</label>
-            </div>
-          </div>
-            <br />
         </div>
+        <br />
+        3. 본 강의에 대해 어느 정도 만족하십니까?
+        <br /><br />
+        <div class="lacture">
+          <div class="class">
+            <input
+              type="radio"
+              name="lacture"
+              value="VERYGOOD"
+              id="c_verygood"
+            />
+            <label for="c_verygood">매우 만족</label>
+          </div>
+          <div class="class">
+            <input type="radio" name="lacture" value="GOOD" id="c_good" />
+            <label for="c_good">만족</label>
+          </div>
+          <div class="class">
+            <input type="radio" name="lacture" value="NORMAL" id="c_normal" />
+            <label for="c_normal">보통</label>
+          </div>
+          <div class="class">
+            <input type="radio" name="lacture" value="BAD" id="c_bad" />
+            <label for="c_bad">불만</label>
+          </div>
+          <div class="class">
+            <input type="radio" name="lacture" value="VERYBAD" id="c_verybad" />
+            <label for="c_verybad">매우 불만</label>
+          </div>
+        </div>
+        <br />
+        4. 강의에 대한 금액은 적당하다 생각하십니까?
+        <br /><br />
+        <div class="price">
+          <div class="amount">
+            <input type="radio" name="price" value="VERYGOOD" id="a_verygood" />
+            <label for="a_verygood">매우 만족</label>
+          </div>
+          <div class="amount">
+            <input type="radio" name="price" value="GOOD" id="a_good" />
+            <label for="a_good">만족</label>
+          </div>
+          <div class="amount">
+            <input type="radio" name="price" value="NORMAL" id="a_normal" />
+            <label for="a_normal">보통</label>
+          </div>
+          <div class="amount">
+            <input type="radio" name="price" value="BAD" id="a_bad" />
+            <label for="a_bad">불만</label>
+          </div>
+          <div class="amount">
+            <input type="radio" name="price" value="VERYBAD" id="a_verybad" />
+            <label for="a_verybad">매우 불만</label>
+          </div>
+        </div>
+        <br />
+        5. 게시판 운영에 대해 어느 정도 만족하십니까?
+        <br /><br />
+        <div class="operate">
+          <div class="post">
+            <input
+              type="radio"
+              name="operate"
+              value="VERYGOOD"
+              id="p_verygood"
+            />
+            <label for="p_verygood">매우 만족</label>
+          </div>
+          <div class="post">
+            <input type="radio" name="operate" value="GOOD" id="p_good" />
+            <label for="p_good">만족</label>
+          </div>
+          <div class="post">
+            <input type="radio" name="operate" value="NORMAL" id="p_normal" />
+            <label for="p_normal">보통</label>
+          </div>
+          <div class="post">
+            <input type="radio" name="operate" value="BAD" id="p_bad" />
+            <label for="p_bad">불만</label>
+          </div>
+          <div class="post">
+            <input type="radio" name="operate" value="VERYBAD" id="p_verybad" />
+            <label for="p_verybad">매우 불만</label>
+          </div>
+        </div>
+        <br />
       </div>
     </div>
     <button class="surveyBtn">제출</button>
