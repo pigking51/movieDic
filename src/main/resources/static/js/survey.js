@@ -94,7 +94,50 @@ document.querySelector("#p_verybad").addEventListener("click", (e) => {
 let nowUserId = "";
 let userId = "";
 
+// 동작코드 시작
+
+// $(".surveyBtn").click(function () {
+// });
+
+let answerArr = [];
+let answerBlank = "";
+
+// 동작코드 끝
 document.querySelector(".surveyBtn").addEventListener("click", () => {
+  answerArr.push(answer1);
+  answerArr.push(answer2);
+  answerArr.push(answer3);
+  answerArr.push(answer4);
+  answerArr.push(answer5);
+
+  for (i = 0; i < answerArr.length; i++) {
+    if (answerArr[i] == "") {
+      answerBlank = answerBlank + `${1 + i}` + " ";
+    }
+  }
+  if (answerBlank != "") {
+    alert(`${answerBlank}번 항목이 선택되지 않았습니다
+          해당 항목을 선택해주세요!!`);
+    answerArr = [];
+    answerBlank = "";
+    return false;
+  }
+
+  if (
+    answer1 == "" &&
+    answer2 == "" &&
+    answer3 == "" &&
+    answer4 == "" &&
+    answer5 == ""
+  ) {
+    alert("내용을 전부 선택해주세요!!!");
+    return false;
+  }
+
+  $("#pop").addClass("active");
+  $(".closebtn").click(function () {
+    $("#pop").removeClass("active");
+  });
   axios
     .get("http://localhost:8080/user/current", { withCredentials: true })
     .then((response) => {
@@ -113,7 +156,7 @@ document.querySelector(".surveyBtn").addEventListener("click", () => {
           // user_id: nowUserId,
           userId: {
             userId: nowUserId,
-          }
+          },
           // ↑ 이걸로 입력해야 될거같은데 자꾸 오류나와서
           // 임시로 변경
         };
@@ -124,7 +167,7 @@ document.querySelector(".surveyBtn").addEventListener("click", () => {
           })
           .then((response) => {
             console.log("데이터: ", response.data);
-            alert("설문에 응해주셔서 감사합니다!!");
+            console.log("서버전송 성공!!!");
           })
           .catch((error) => {
             console.log("에러발생 : ", error);

@@ -131,7 +131,7 @@ header {
 } */
 
 .surveyBtn {
-  width: 300px;
+  width: 200px;
   height: 50px;
   background-color: #00deff;
   color: white;
@@ -170,6 +170,91 @@ header {
 .post {
   display: flex;
   margin-bottom: 20px;
+}
+
+#pop {
+  display: none;
+}
+
+.popwrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+#pop.active {
+  display: block;
+}
+
+.pop_up {
+  position: fixed;
+  background-color: #fff;
+  width: 720px;
+  height: 720px;
+  border-radius: 4px;
+  top: 15%;
+  left: 30%;
+  z-index: 1;
+  box-shadow: 3px 2px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.uptitle {
+  text-align: center;
+  color: #333;
+  font-family: "GmarketSansMedium";
+  font-size: 40px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 100px;
+  align-items: center;
+}
+
+.uptitle > h1 {
+  width: auto;
+  height: auto;
+}
+
+.uptitle > img {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 70px;
+  height: 70px;
+}
+
+.upbody {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  font-family: "GyeonggiTitleM";
+  color: #333;
+  text-align: center;
+}
+
+.closebtn {
+  margin-top: 20px;
+  margin-right: 20px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  float: right;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  position: absolute;
+  bottom: 100px;
+  right: 50px;
+}
+
+.closebtn:hover {
+  opacity: 0.6;
 }
 
 /* 푸터 css시작 */
