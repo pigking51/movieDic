@@ -25,9 +25,9 @@ const resultWrap = document.querySelector(".result_box");
 const resultBox = document.createElement("div");
 const pTag = document.createElement("p");
 // 2. 테이블에 검색결과 나타내는 부분
-const index = document.createElement("p");
-const postTitle = document.createElement("p");
-const createdAt = document.createElement("p");
+const index = document.createElement("td");
+const postTitle = document.createElement("td");
+const createdAt = document.createElement("td");
 
 const tr = document.createElement("tr");
 const td = document.createElement("td");
@@ -43,7 +43,15 @@ function searchByKeyword(posts) {
       postTitle.textContent = `post.postTitle`;
       createdAt.textContent = `post.createdAt`;
 
-      // 넣은 p태그를
+      // 넣은 p태그를 table에 넣기
+      td.appendChild(index);
+      td.appendChild(postTitle);
+      td.appendChild(createdAt);
+      tr.appendChild()
+
+      
+
+      
     });
   }
 }
