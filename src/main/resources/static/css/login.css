@@ -119,7 +119,7 @@ header {
 #userId{
   width: 566px;
   height: 50px;
-  border: 4px solid #00d1fe;
+  border: 2px solid #00d1fe;
   border-radius: 8px;
   font-size: 15px;
   padding:0 20px;
@@ -128,11 +128,16 @@ header {
   #password{
     width: 566px;
     height: 50px;
-    border: 4px solid #00d1fe;
+    border: 2px solid #00d1fe;
     border-radius: 8px;
     padding:0 20px;
     font-size: 15px;
     margin-top: 30px;
+    }
+
+    #password:focus{ 
+      background: url(../images/icon/visibility_lock.png) no-repeat;
+    background-position: 566px center;
     }
     
     
@@ -146,6 +151,11 @@ header {
       font-size: 1.3rem;
       border-radius: 15px;
       justify-items: center;
+      }
+
+      .empty{
+        height: 50px;
+        width: 610px;
       }
       
 
