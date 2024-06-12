@@ -37,6 +37,18 @@ public class ViewController {
     public String login(){
         return "login";
     }
+    @GetMapping("/movieDic/mainpage.html")
+    public String mainPage(){
+        return "mainPage";
+    }
+    @GetMapping("/movieDic/team.html")
+    public String team(){
+        return "team";
+    }
+    @GetMapping("/movieDic/lecture.html")
+    public String lecture(){
+        return "lecture";
+    }
     @GetMapping("/movieDic/cart.html")
     public String cart(){
         return "cart";

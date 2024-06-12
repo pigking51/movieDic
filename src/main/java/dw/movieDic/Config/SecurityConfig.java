@@ -53,7 +53,7 @@ public class SecurityConfig {
                                 // ↑ TOMCAT까지 가서 통과해야되는 것들
                         ).permitAll()
                         .anyRequest().authenticated())
-                .formLogin(form->form.loginPage("/login").defaultSuccessUrl("/articles"))
+                .formLogin(form->form.loginPage("/movieDic/login.html").defaultSuccessUrl("/articles"))
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .csrf(AbstractHttpConfigurer::disable)
