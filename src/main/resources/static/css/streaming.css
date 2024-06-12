@@ -226,12 +226,12 @@ html,body{
 }
 
 #pop_up{
-    position: absolute;
+    position: fixed;
     width: 720px;
     height: 720px;
-    top: 35%;
-    left: 35%;
-    z-index: 2;
+    top: 15%;
+    left: 30%;
+    z-index: 1;
     background-color: #fff;
     border-radius: 8px;
     display: none;

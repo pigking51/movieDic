@@ -172,11 +172,11 @@ header {
   margin-bottom: 20px;
 }
 
-#pop {
+#pop{
   display: none;
 }
 
-.popwrap {
+.popwrap{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -184,11 +184,11 @@ header {
   height: 100%;
 }
 
-#pop.active {
+#pop.active{
   display: block;
 }
 
-.pop_up {
+.pop_up{
   position: fixed;
   background-color: #fff;
   width: 720px;
@@ -200,7 +200,7 @@ header {
   box-shadow: 3px 2px 5px 1px rgba(0, 0, 0, 0.5);
 }
 
-.uptitle {
+.uptitle{
   text-align: center;
   color: #333;
   font-family: "GmarketSansMedium";
@@ -214,19 +214,19 @@ header {
   align-items: center;
 }
 
-.uptitle > h1 {
+.uptitle>h1{
   width: auto;
-  height: auto;
+  height: auto;  
 }
 
-.uptitle > img {
+.uptitle>img{
   margin-left: 20px;
   margin-bottom: 20px;
   width: 70px;
   height: 70px;
 }
 
-.upbody {
+.upbody{
   margin-left: 20px;
   margin-right: 20px;
   font-size: 25px;
@@ -236,24 +236,25 @@ header {
   text-align: center;
 }
 
-.closebtn {
+
+.closebtn{
   margin-top: 20px;
-  margin-right: 20px;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  float: right;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background-color: #333;
-  color: #fff;
-  position: absolute;
-  bottom: 100px;
-  right: 50px;
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    float: right;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    position: absolute;
+    bottom: 100px;
+    right: 50px;
 }
 
-.closebtn:hover {
+.closebtn:hover{
   opacity: 0.6;
 }
 
