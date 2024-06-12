@@ -162,7 +162,8 @@ header {
 .login-box>h1{
   height: 100px;
   line-height: 100px;
-  color: #2b2b2b;
+  color: #333;
+  font-family: "GyeonggiTitleM";
 }
 
 .loginBtn {
