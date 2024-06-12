@@ -50,6 +50,16 @@ document.querySelector(".loginBtn").addEventListener("click", () => {
 document.querySelector(".signupBtn").addEventListener("click", () => {
   window.location.href = `signup.html`;
 });
+
+// document.querySelector(".toggle").addEventListener("click", () => {
+//   document.querySelector(".show").classList.add("hide");
+//   const hide = document.querySelector(".hide");
+//   document.querySelector(".hide").style.backgroundColor = `green`;
+//   hide.type = `text`;
+// });
+
+// document.querySelector(".hide").add
+
 // 로그아웃 (0610기준 현재는 없는 것 같으니 추후 필요한 곳에 넣기)
 // document.querySelector(".logoutBtn").addEventListener("click", () => {
 //   if (confirm("로그아웃 하시겠습니까?")) {

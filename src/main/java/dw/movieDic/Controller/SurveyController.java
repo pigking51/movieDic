@@ -17,7 +17,7 @@ public class SurveyController {
     SurveyService surveyService;
 
     @PostMapping("/survey")
-    public ResponseEntity<Survey> saveSurvey(@RequestBody Survey survey){
+    public ResponseEntity<SurveyDto> saveSurvey(@RequestBody Survey survey){
         return new ResponseEntity<>(surveyService.saveSurvey(survey),
                 HttpStatus.OK);
     }

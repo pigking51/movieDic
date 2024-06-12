@@ -95,15 +95,6 @@ let nowUserId = "";
 let userId = "";
 
 document.querySelector(".surveyBtn").addEventListener("click", () => {
-  // 현재 로그인 정보확인
-  // axios.get("urlShow").then((response) => {
-  //   console.log("데이터: ", response.data);
-  //   for (i = 0; i < response.data.length; i++) {
-  //     if (response.data[i].userId == userId) {
-  //     }
-  //   }
-  // });
-
   axios
     .get("http://localhost:8080/user/current", { withCredentials: true })
     .then((response) => {
@@ -119,7 +110,12 @@ document.querySelector(".surveyBtn").addEventListener("click", () => {
           answer3: answer3,
           answer4: answer4,
           answer5: answer5,
-          userid: nowUserId,
+          // user_id: nowUserId,
+          userId: {
+            userId: nowUserId,
+          }
+          // ↑ 이걸로 입력해야 될거같은데 자꾸 오류나와서
+          // 임시로 변경
         };
         console.log(data);
         axios

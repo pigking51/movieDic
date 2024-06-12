@@ -18,8 +18,11 @@ public class SurveyService {
     @Autowired
    SurveyRepository surveyRepository;
 
-    public Survey saveSurvey(Survey survey) {
-        return surveyRepository.save(survey);
+    public SurveyDto saveSurvey(Survey survey) {
+        Survey survey1 = surveyRepository.save(survey);
+        SurveyDto surveyDto = new SurveyDto();
+
+        return surveyDto.toSurveyDtoFromSurvey(survey1);
     }
 
     public List<Survey> getSurveyAll(){

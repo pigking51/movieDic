@@ -22,6 +22,7 @@ public class SurveyDto {
 
     public SurveyDto toSurveyDtoFromSurvey(Survey survey){
         SurveyDto surveyDto = new SurveyDto();
+        surveyDto.setSurveyId(survey.getSurveyId());
         surveyDto.setAnswer1(survey.getAnswer1());
         surveyDto.setAnswer2(survey.getAnswer2());
         surveyDto.setAnswer3(survey.getAnswer3());
