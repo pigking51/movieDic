@@ -22,16 +22,45 @@ document.querySelector("#password").addEventListener("change", (e) => {
   password = e.target.value;
 });
 
+document.querySelector(".togBtn").addEventListener("click", () => {
+  if (document.querySelector("#password").type != `text`) {
+    document.querySelector("#password").type = `text`;
+  } else {
+    document.querySelector("#password").type = `password`;
+  }
+  document.querySelector(".togBtn").classList.toggle("revealBtn");
+  document.querySelector(".togBtn").classList.toggle("hideBtn");
+});
+
+// document.querySelector(".hideBtn").addEventListener("click", () => {
+//   document.querySelector("#password").type = `password`;
+//   document.querySelector(".togBtn").classList.toggle("hideBtn");
+//   document.querySelector(".togBtn").classList.toggle("revealBtn");
+// });
+
 document.querySelector(".loginBtn").addEventListener("click", () => {
   const data = {
     userId: userId,
     password: password,
   };
-  if (document.querySelector("#userId").value == "") {
+  if (
+    document.querySelector("#userId").value == "" &&
+    document.querySelector("#password").value == ""
+  ) {
+    alert("ID와 비밀번호 둘다 입력하지 않았습니다!!!");
+    document.querySelector("#userId").style.border = `4px solid red`;
+    document.querySelector("#password").style.border = `4px solid red`;
+    return false;
+  } else if (document.querySelector("#userId").value == "") {
     alert("ID를 입력하지 않았습니다!");
+    document.querySelector("#userId").style.border = `4px solid red`;
+    return false;
   } else if (document.querySelector("#password").value == "") {
     alert("비밀번호를 입력하지 않았습니다!");
+    document.querySelector("#password").style.border = `4px solid red`;
+    return false;
   }
+
   axios
     .post(urlLogin, data, { withCredentials: true }) // url 옆에 전송할 객체 넣음
     .then((response) => {
@@ -40,25 +69,14 @@ document.querySelector(".loginBtn").addEventListener("click", () => {
       alert(`${userId}님 환영합니다!`);
       document.querySelector("#userId").value = "";
       document.querySelector("#password").value = "";
+      document.querySelector("#userId").style.border = `2px solid #00d1fe;`;
+      document.querySelector("#password").style.border = `2px solid #00d1fe;`;
     })
     .catch((error) => {
       console.log("에러발생 : ", error);
       alert("ID 혹은 비밀번호가 잘못되었습니다!");
     });
 });
-
-document.querySelector(".signupBtn").addEventListener("click", () => {
-  window.location.href = `signup.html`;
-});
-
-// document.querySelector(".toggle").addEventListener("click", () => {
-//   document.querySelector(".show").classList.add("hide");
-//   const hide = document.querySelector(".hide");
-//   document.querySelector(".hide").style.backgroundColor = `green`;
-//   hide.type = `text`;
-// });
-
-// document.querySelector(".hide").add
 
 // 로그아웃 (0610기준 현재는 없는 것 같으니 추후 필요한 곳에 넣기)
 // document.querySelector(".logoutBtn").addEventListener("click", () => {

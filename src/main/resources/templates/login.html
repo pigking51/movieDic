@@ -16,7 +16,7 @@
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
       crossorigin="anonymous"
     ></script>
-    <script defer src="../javascript/mainpage.js"></script>
+    <script defer src="../js/mainpage.js"></script>
   </head>
   <body>
     <!-- 헤더html시작 -->
@@ -28,11 +28,11 @@
       </div>
       <nav class="menu">
         <ul>
-                <li><a href="team.html">팀소개</a></li>
-                <li><a href="lecture.html">강의</a></li>
-                <li><a href="board.html">게시판</a></li>
-                <li><a href="#">이벤트</a></li>
-                <li><a href="#">QnA</a></li>
+          <li><a href="team.html">팀소개</a></li>
+          <li><a href="lecture.html">강의</a></li>
+          <li><a href="board.html">게시판</a></li>
+          <li><a href="#">이벤트</a></li>
+          <li><a href="#">QnA</a></li>
         </ul>
       </nav>
       <div class="top-Icon">
@@ -56,12 +56,17 @@
     <div class="login">
       <div class="login-box">
         <h1>LOGIN</h1>
-        <input type="text" id="userId" placeholder="ID"/>
-        <input type="password" id="password" placeholder="비밀번호"/>
+        <input type="text" id="userId" placeholder="ID" />
+        <div class="password_wrap">
+          <input type="password" id="password" placeholder="비밀번호" />
+          <span class="togBtn revealBtn"></span>
+        </div>
         <div class="empty"></div>
         <div class="btnwrap">
           <button class="loginBtn">로그인</button>
-          <button onclick="location.href='signup.html'" class="signupBtn">회원가입</button>
+          <button onclick="location.href='signup.html'" class="signupBtn">
+            회원가입
+          </button>
         </div>
       </div>
     </div>
@@ -78,5 +83,6 @@
       </div>
     </footer>
     <!-- 푸터 html 끝 -->
+    <script src="../js/login.js"></script>
   </body>
 </html>
