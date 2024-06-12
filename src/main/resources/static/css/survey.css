@@ -19,6 +19,7 @@
   padding: 0;
   width: 100%;
   /* height: 100%; */
+  box-sizing: border-box;
 }
 
 html,
@@ -107,30 +108,138 @@ header {
 
 /* survey 시작 */
 .title {
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin: 50px 0;
   text-align: center;
 }
 
+.title>h1{
+  color: #333;
+  font-family: "GyeonggiTitleM";
+  font-size: 48px;
+}
+
+.title>h4{
+  color: #333;
+  font-family: "GmarketSansMedium";
+  font-size: 18px;
+}
+
+.survey{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
 .survey-box {
-  margin: auto;
-  width: 540px;
-  /* height: 800px; */
+  width: 1000px;
   align-items: center;
   gap: 10px;
   padding: 30px;
   border: solid #00d1fe;
-  /* font-size: 1.3rem; */
-  border-radius: 15px;
+  border-radius: 8px;
   justify-items: center;
 }
 
-/* .survey-box > h1 {
-  height: 100px;
-  line-height: 100px;
-} */
+.survey-box>span{
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: "GmarketSansMedium";
+  font-size: 24px;
+}
+
+.summers {
+  display: flex;
+  margin: 20px 0;
+}
+
+.summers>input{
+  width: auto;
+  margin-right: 20px;
+}
+
+.summers>label{
+  font-family: "GmarketSansMedium";
+  font-size: 20px;
+}
+
+.gender{
+  display: flex;
+  justify-content: left;
+}
+
+.human {
+  display: flex;
+  margin: 20px 20px 20px 0;
+  width: auto;
+}
+
+.human>input{
+  width: auto;
+  margin-right: 20px;
+}
+
+.human>label{
+  width: auto;
+  font-family: "GmarketSansMedium";
+  font-size: 20px;
+}
+
+.class {
+  display: flex;
+  margin: 20px 0;
+}
+
+.class>input{
+  width: auto;
+  margin-right: 20px;
+}
+
+.class>label{
+  font-family: "GmarketSansMedium";
+  font-size: 20px;
+}
+
+.amount {
+  display: flex;
+  margin: 20px 0;
+}
+
+.amount>input{
+  width: auto;
+  margin-right: 20px;
+}
+
+.amount>label{
+  font-family: "GmarketSansMedium";
+  font-size: 20px;
+}
+
+.post {
+  display: flex;
+  margin: 20px 0;
+}
+
+.post>input{
+  width: auto;
+  margin-right: 20px;
+}
+
+.post>label{
+  font-family: "GmarketSansMedium";
+  font-size: 20px;
+}
+
+.surveybtn-wrap{
+  width: 1000px;
+  padding-left: 30px;
+}
 
 .surveyBtn {
+  float: right;
   width: 200px;
   height: 50px;
   background-color: #00deff;
@@ -138,39 +247,19 @@ header {
   font-weight: 700;
   text-align: center;
   line-height: 35px;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 18px;
   border: none;
-  margin-left: 50%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
+  font-family: "GmarketSansMedium";
+  opacity: 0.8;
 }
 
-.summers {
-  display: flex;
-  margin-bottom: 20px;
-}
 
-.human {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.class {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.amount {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.post {
-  display: flex;
-  margin-bottom: 20px;
-}
+.surveyBtn:hover{
+  opacity: 1;
+} 
 
 #pop{
   display: none;
@@ -250,8 +339,8 @@ header {
     background-color: #333;
     color: #fff;
     position: absolute;
-    bottom: 100px;
-    right: 50px;
+    bottom: 50px;
+    right: 25px;
 }
 
 .closebtn:hover{
