@@ -33,6 +33,7 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/products/**"),
                                 new AntPathRequestMatcher("/movieDic/**"),
                                 new AntPathRequestMatcher("/movieDic/signup"),
+                                new AntPathRequestMatcher("/movieDic/survey"),
                                 new AntPathRequestMatcher("/movieDic/user/show"),
                                 new AntPathRequestMatcher("/csat/survey"),
                                 new AntPathRequestMatcher("/user/login"),
@@ -46,11 +47,13 @@ public class SecurityConfig {
 //                                // ↑ WAS까지 가서 통과해야되는 것들
                                 new AntPathRequestMatcher("/login"),
                                 new AntPathRequestMatcher("/css/**"),
-                                new AntPathRequestMatcher("/js/**")
+                                new AntPathRequestMatcher("/js/**"),
+                                new AntPathRequestMatcher("/images/**")
+
                                 // ↑ TOMCAT까지 가서 통과해야되는 것들
                         ).permitAll()
                         .anyRequest().authenticated())
-                .formLogin(form->form.loginPage("/login").defaultSuccessUrl("/articles"))
+                .formLogin(form->form.loginPage("/movieDic/login.html").defaultSuccessUrl("/articles"))
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .csrf(AbstractHttpConfigurer::disable)

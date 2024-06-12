@@ -22,21 +22,55 @@ document.querySelector("#password").addEventListener("change", (e) => {
   password = e.target.value;
 });
 
+document.querySelector(".togBtn").addEventListener("click", () => {
+  if (document.querySelector("#password").type != `text`) {
+    document.querySelector("#password").type = `text`;
+  } else {
+    document.querySelector("#password").type = `password`;
+  }
+  document.querySelector(".togBtn").classList.toggle("revealBtn");
+  document.querySelector(".togBtn").classList.toggle("hideBtn");
+});
+
+// document.querySelector(".hideBtn").addEventListener("click", () => {
+//   document.querySelector("#password").type = `password`;
+//   document.querySelector(".togBtn").classList.toggle("hideBtn");
+//   document.querySelector(".togBtn").classList.toggle("revealBtn");
+// });
+
 document.querySelector(".loginBtn").addEventListener("click", () => {
   const data = {
     userId: userId,
     password: password,
   };
-  if (document.querySelector("#userId").value == "") {
+  if (
+    document.querySelector("#userId").value == "" &&
+    document.querySelector("#password").value == ""
+  ) {
+    alert("ID와 비밀번호 둘다 입력하지 않았습니다!!!");
+    document.querySelector("#userId").style.border = `4px solid red`;
+    document.querySelector("#password").style.border = `4px solid red`;
+    return false;
+  } else if (document.querySelector("#userId").value == "") {
     alert("ID를 입력하지 않았습니다!");
+    document.querySelector("#userId").style.border = `4px solid red`;
+    return false;
   } else if (document.querySelector("#password").value == "") {
     alert("비밀번호를 입력하지 않았습니다!");
+    document.querySelector("#password").style.border = `4px solid red`;
+    return false;
   }
+
   axios
     .post(urlLogin, data, { withCredentials: true }) // url 옆에 전송할 객체 넣음
     .then((response) => {
       console.log("데이터 :", response);
       sessionCurrent();
+      alert(`${userId}님 환영합니다!`);
+      document.querySelector("#userId").value = "";
+      document.querySelector("#password").value = "";
+      document.querySelector("#userId").style.border = `2px solid #00d1fe;`;
+      document.querySelector("#password").style.border = `2px solid #00d1fe;`;
     })
     .catch((error) => {
       console.log("에러발생 : ", error);
@@ -44,9 +78,6 @@ document.querySelector(".loginBtn").addEventListener("click", () => {
     });
 });
 
-document.querySelector(".signupBtn").addEventListener("click", () => {
-  window.location.href = `signup.html`;
-});
 // 로그아웃 (0610기준 현재는 없는 것 같으니 추후 필요한 곳에 넣기)
 // document.querySelector(".logoutBtn").addEventListener("click", () => {
 //   if (confirm("로그아웃 하시겠습니까?")) {
@@ -137,7 +168,7 @@ function sessionCurrent() {
       if (response.status == 200) {
         console.log("세션 유지");
         // 로그인 성공 시 아래 주소로 이동(메인화면 완성되면 바꿀 것!)
-        window.location.href = "index.html";
+        // window.location.href = "index.html";
 
         // 로그인 했을때 login-box와 전환되면서 나오는 박스
         // 해당기능도 0610기준 필요없어서 주석처리함

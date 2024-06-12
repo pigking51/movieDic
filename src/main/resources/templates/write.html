@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mypage</title>
-    <link href="../css/myPage.css" rel="stylesheet" type="text/css">
+    <title>write</title>
+    <link href="../css/wirte.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
-    
-     <!-- 헤더html시작 -->
+    <!-- 헤더html시작 -->
 
-     <header>
+    <header>
         <div class="logo">
-            <a href="mainpage.html">
+            <a href="#">
                 <img src="../images/logo/logo.png" alt="상단로고">
             </a>
         </div>
@@ -37,31 +37,24 @@
     </header> 
 
     <!-- 헤더 html 끝 -->
-
-    <div class="found">
-        <div class="found-search">
-            <input type="text" id="found" placeholder="검색">
-            <button>검색</button>
-        </div>
-    </div>
-
-    <div class="user">
-        <div class="user-info">
-            <ul href="#">
-                <li><a href="#">최건</a></li>
-                <li><a href="#">내강의 보기</a></li>
-                <li><a href="#">회원정보 수정</a></li>
-                <li><a href="#">고객센터</a></li>
-            </ul>
-        </div>
-        <div class="user-data">
-
-        </div>
-    </div>
-
-      <!-- 푸터 html 시작 -->
     
-      <footer>
+    <div class="contents">
+        <div class="contents-wrap">
+            <input type="text" id="writetitle" placeholder="제목">
+        </div>
+        <div class="contents-wrap">
+            <textarea cols="32" rows="35" class="subject" placeholder="내용을 입력하세요"></textarea>
+        </div>
+
+        <div class="contents-wrap">
+            <button onclick="location.href = 'board.html'" class="cancle-btn">취소</button>
+            <button class="cancle-btn">완료</button>
+        </div>
+    </div>
+
+    <!-- 푸터 html 시작 -->
+    
+    <footer>
         <div class="information">
             <h4>MOVIE DIC</h4>
             <span>
@@ -72,6 +65,5 @@
     </footer> 
     
     <!-- 푸터 html 끝 -->
-
 </body>
 </html>

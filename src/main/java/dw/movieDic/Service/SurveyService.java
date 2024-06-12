@@ -8,29 +8,34 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Service
 @Transactional
 public class SurveyService {
     @Autowired
-   private SurveyRepository surveyRepository;
+   SurveyRepository surveyRepository;
 
-    public String saveSurvey(SurveyDto surveyDto) {
-        Optional<User> surveyOptional = surveyRepository.findByUserId(surveyDto.getUserId());
-//         surveyOptional
-//        if(surveyOptional.stream().map(a -> a.getUserId()) != null){
-//            return "이미 설문조사를 마치셨습니다!!";
-//        }
-        if(surveyOptional.isPresent()){
-            return "이미 설문조사를 마치셨습니다!!";
-        }
-        Survey survey = new Survey(surveyDto.getSurveyId(),
-                surveyDto.getSurveyQuestion(),
-                surveyDto.getAnswer(),
-                surveyDto.getUserId());
-        return surveyRepository.save(survey).getUserId().getUserId();
+    public SurveyDto saveSurvey(Survey survey) {
+        Survey survey1 = surveyRepository.save(survey);
+        SurveyDto surveyDto = new SurveyDto();
+
+        return surveyDto.toSurveyDtoFromSurvey(survey1);
     }
 
+    public List<Survey> getSurveyAll(){
+        return surveyRepository.findAll();
+    }
+
+    public List<SurveyDto> getSurveyAllByDto(){
+        List<Survey> surveyList = surveyRepository.findAll();
+        List<SurveyDto> surveyDtoList = new ArrayList<>();
+        for(Survey survey : surveyList){
+            SurveyDto surveyDto = new SurveyDto();
+            surveyDtoList.add(surveyDto.toSurveyDtoFromSurvey(survey));
+        }
+    return surveyDtoList;
+    }
     }

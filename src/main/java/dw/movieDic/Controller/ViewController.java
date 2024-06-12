@@ -21,6 +21,14 @@ public class ViewController {
     public String signup(){
         return "signup";
     }
+    @GetMapping("/movieDic/survey.html")
+    public String survey(){
+        return "survey";
+    }
+    @GetMapping("/movieDic/board.html")
+    public String board(){
+        return "board";
+    }
     @GetMapping("/movieDic/singleProduct.html")
     public String singleProduct(){
         return "singleProduct";
@@ -28,6 +36,18 @@ public class ViewController {
     @GetMapping("/movieDic/login.html")
     public String login(){
         return "login";
+    }
+    @GetMapping("/movieDic/mainpage.html")
+    public String mainPage(){
+        return "mainPage";
+    }
+    @GetMapping("/movieDic/team.html")
+    public String team(){
+        return "team";
+    }
+    @GetMapping("/movieDic/lecture.html")
+    public String lecture(){
+        return "lecture";
     }
     @GetMapping("/movieDic/cart.html")
     public String cart(){

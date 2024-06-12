@@ -1,0 +1,392 @@
+@font-face {
+  font-family: "GyeonggiTitleM";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* height: 100%; */
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+input{
+  cursor: pointer;
+}
+
+hr{
+  margin: 10px 0;
+  border: 0.5px dashed #00d1fe;
+}
+
+/* 헤더css시작 */
+
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  border-bottom: 1px solid #00d1fe;
+  justify-content: space-around;
+}
+
+.logo {
+  width: 200px;
+  height: 100px;
+}
+
+.logo img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+}
+
+.menu > ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  width: 700px;
+}
+
+.menu > ul > li {
+  line-height: 100px;
+}
+
+.menu > ul > li > a:hover {
+  color: #00d1fe;
+}
+
+.menu > ul > li > a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  color: #333;
+}
+
+.top-Icon {
+  width: 200px;
+  height: 100px;
+  display: flex;
+}
+
+.top-Icon ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-Icon li {
+  list-style: none;
+  width: 60px;
+  height: 60px;
+}
+
+.top-Icon img {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+
+/* 헤더 css끝 */
+
+/* survey 시작 */
+.title {
+  margin: 50px 0 15px 0;
+  text-align: center;
+}
+
+.title>h1{
+  color: #333;
+  font-family: "GyeonggiTitleM";
+  font-size: 48px;
+}
+
+.title>h4{
+  color: #333;
+  font-family: "GmarketSansMedium";
+  font-size: 18px;
+}
+
+.survey{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.survey-box {
+  width: 1000px;
+  align-items: center;
+  gap: 10px;
+  padding: 100px;
+  border: solid #00d1fe;
+  border-radius: 8px;
+  justify-items: center;
+}
+
+.survey-box>span{
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: "GmarketSansMedium";
+  font-size: 24px;
+}
+
+.summers {
+  display: flex;
+  margin: 20px 0;
+}
+
+.summers>input{
+  width: auto;
+  margin-right: 20px;
+}
+
+.summers>label{
+  font-family: "GmarketSansMedium";
+  font-size: 20px;
+}
+
+.gender{
+  display: flex;
+  justify-content: left;
+}
+
+.human {
+  display: flex;
+  margin: 20px 20px 20px 0;
+  width: auto;
+}
+
+.human>input{
+  width: auto;
+  margin-right: 20px;
+}
+
+.human>label{
+  width: auto;
+  font-family: "GmarketSansMedium";
+  font-size: 20px;
+}
+
+.class {
+  display: flex;
+  margin: 20px 0;
+}
+
+.class>input{
+  width: auto;
+  margin-right: 20px;
+}
+
+.class>label{
+  font-family: "GmarketSansMedium";
+  font-size: 20px;
+}
+
+.amount {
+  display: flex;
+  margin: 20px 0;
+}
+
+.amount>input{
+  width: auto;
+  margin-right: 20px;
+}
+
+.amount>label{
+  font-family: "GmarketSansMedium";
+  font-size: 20px;
+}
+
+.post {
+  display: flex;
+  margin: 20px 0;
+}
+
+.post>input{
+  width: auto;
+  margin-right: 20px;
+}
+
+.post>label{
+  font-family: "GmarketSansMedium";
+  font-size: 20px;
+}
+
+.surveybtn-wrap{
+  width: 1000px;
+  padding-left: 30px;
+}
+
+.surveyBtn {
+  float: right;
+  width: 200px;
+  height: 50px;
+  background-color: #00deff;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  border: none;
+  margin: 20px 0;
+  font-family: "GmarketSansMedium";
+  opacity: 0.8;
+}
+
+
+.surveyBtn:hover{
+  opacity: 1;
+} 
+
+#pop{
+  display: none;
+}
+
+.popwrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+#pop.active{
+  display: block;
+}
+
+.pop_up{
+  position: fixed;
+  background-color: #fff;
+  width: 720px;
+  height: 720px;
+  border-radius: 4px;
+  top: 15%;
+  left: 30%;
+  z-index: 1;
+  box-shadow: 3px 2px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.uptitle{
+  text-align: center;
+  color: #333;
+  font-family: "GmarketSansMedium";
+  font-size: 40px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 100px;
+  align-items: center;
+}
+
+.uptitle>h1{
+  width: auto;
+  height: auto;  
+}
+
+.uptitle>img{
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 70px;
+  height: 70px;
+}
+
+.upbody{
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  font-family: "GyeonggiTitleM";
+  color: #333;
+  text-align: center;
+}
+
+
+.closebtn{
+  margin-top: 20px;
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    float: right;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    position: absolute;
+    bottom: 50px;
+    right: 25px;
+}
+
+.closebtn:hover{
+  opacity: 0.6;
+}
+
+/* 푸터 css시작 */
+
+footer {
+  width: 100%;
+  background-color: #666;
+  height: 300px;
+  margin: 0;
+  padding: 0;
+}
+
+.information {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+.information h4 {
+  color: #fff;
+  font-size: 25px;
+  padding: 20px;
+  width: 400px;
+  height: 25px;
+}
+
+.information span {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  color: #fff;
+  width: 400px;
+  height: 200px;
+}
+
+/* 푸터 css 끝 */
