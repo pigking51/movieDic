@@ -29,6 +29,15 @@ body {
   padding: 0;
 }
 
+input{
+  cursor: pointer;
+}
+
+hr{
+  margin: 10px 0;
+  border: 0.5px dashed #00d1fe;
+}
+
 /* 헤더css시작 */
 
 header {
@@ -108,7 +117,7 @@ header {
 
 /* survey 시작 */
 .title {
-  margin: 50px 0;
+  margin: 50px 0 15px 0;
   text-align: center;
 }
 
@@ -135,7 +144,7 @@ header {
   width: 1000px;
   align-items: center;
   gap: 10px;
-  padding: 30px;
+  padding: 100px;
   border: solid #00d1fe;
   border-radius: 8px;
   justify-items: center;
