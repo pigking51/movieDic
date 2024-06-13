@@ -37,4 +37,9 @@ public class Post {
 
     @OneToMany(mappedBy = "post")
     private Set<Like> likes;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
 }
