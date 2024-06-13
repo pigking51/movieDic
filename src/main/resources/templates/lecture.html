@@ -19,6 +19,17 @@
     <script src="
     https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js
     "></script>
+    <script defer>
+ $('.imgslide a:gt(0)').hide();
+setInterval(function(){
+  $('.imgslide a:fisrt-child')
+  .fadeOut(1000)
+  .next('a')
+  .fadeIn(1000)
+  .end()
+  .appendTo('.imgslide')
+},2000);
+    </script>
   </head>
   <body>
     <!-- 헤더html시작 -->
@@ -56,12 +67,16 @@
 
     <!-- 헤더 html 끝 -->
 
-    <div class="image">
-      <span>Image</span>
-      <img
-        src="../images/임시 이미지 파일모음/휴가가는페페.jpg"
-        alt="임시이미지"
-      />
+    <div class="imageslide">
+      <a href="#">
+        <img src="../images/임시 이미지 파일모음/slideimage1.jpg" alt="슬라이드이미지1">
+      </a>
+      <a href="#">
+        <img src="../images/임시 이미지 파일모음/slideimage2.jpg" alt="슬라이드이미지2">
+      </a>
+      <a href="#">
+        <img src="../images/임시 이미지 파일모음/slideimage3.jpg" alt="슬라이드이미지3">
+      </a>
     </div>
 
     <div class="contents">
