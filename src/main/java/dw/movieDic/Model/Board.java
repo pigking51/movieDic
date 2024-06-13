@@ -25,4 +25,7 @@ public class Board {
 
     @OneToMany(mappedBy = "board")
     private Set<Post> posts;
+
+    @OneToMany(mappedBy = "board")
+    private Set<Comment> comments;
 }
