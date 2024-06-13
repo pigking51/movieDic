@@ -29,6 +29,12 @@ body {
   padding: 0;
 }
 
+hr{
+  height: auto;
+  border: 0.25px solid #fff;
+  margin: 10px 0;
+}
+
 /* 헤더css시작 */
 
 header {
@@ -71,6 +77,7 @@ header {
   color: #00d1fe;
 }
 
+
 .menu > ul > li > a {
   text-decoration: none;
   font-size: 18px;
@@ -106,26 +113,21 @@ header {
 
 /* 헤더 css끝 */
 
-.topbar {
+.search {
   background-color: #00d1fe;
-  height: 60px;
+  height: 50px;
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.search {
-  height: 30px;
+.search input{
   width: 500px;
-  margin: 0 auto;
-}
-
-.title {
-  height: 10%;
-  width: 150px;
-  margin-left: 10%;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  height: 30px;
+  border-radius: 4px;
+  border: none;
+  padding: 0px 20px;
 }
 
 .container {
@@ -134,39 +136,84 @@ header {
 }
 
 .test {
+  width: 100%;
   display: flex;
-  justify-content: space-around;
-  /* align-items: center; */
-  /* gap: auto; */
+  justify-content: center;
+}
+
+.cart>h1{
+  width: 600px;
+  height: auto;
+  margin: 20px 0;
+  color: #333;
+  font-family: "GyeonggiTitleM";
+  font-size: 35px;
+}
+
+.left-side{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-side{
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .pay {
-  width: 400px;
-  height: fit-content;
+  width: 380px;
+  height: 480px;
+  padding: 20px;
   color: #fff;
   background-color: #333;
-  padding: 5%;
   text-align: center;
   border-radius: 15px;
-  float: right;
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   flex-direction: column;
   position: relative;
 }
 
-.pay .payment {
+.pay>h2{
+  width: 100%;
+  height: auto;
+  font-family: "GmarketSansMedium";
+}
+
+.payment {
+  width: 100%;
+  height: auto;
   text-align: left;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin:25px 0;
+}
+
+.payment input{
+  width: auto;
+  height: auto;
+  margin:0 20px;
+  cursor: pointer;
+}
+
+.payment label{
+  font-size: 16px;
+  font-family: "GyeonggiTitleM";
 }
 
 .cart {
-  width: fit-content;
+  width: 100%;
+  flex-direction: column;
   align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .cart h2 {
@@ -176,11 +223,12 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* position: relative; */
+  font-family: "GyeonggiTitleM";
+  font-size: 30px;
 }
 
-.button {
-  width: 200px;
+.pay-button {
+  width: 380px;
   height: 50px;
   background-color: #2463eb;
   color: white;
@@ -189,49 +237,70 @@ header {
   line-height: 35px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 15px;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 20px 0;
+}
+
+.pay-button:hover{
+  opacity: 0.7;
 }
 
 .cartList {
-  background-color: #d9d9d9;
+  border: 1px solid #00d1fe;
+  background-color: #fff;
   border-radius: 15px;
-  height: 500px;
-  width: 500px;
-  text-align: center;
-  margin-bottom: 10%;
+  height: 600px;
+  width: 600px;
+  text-align: center;  
   display: flex;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
-  margin-right: 10%;
-  position: relative;
+  flex-direction: column;
+}
+
+.cartList>h2{
+  color: #00d1fe;
 }
 
 .price {
-  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  height: auto;
+  margin:auto 0px;
+  font-family: "GyeonggiTitleM";
+}
+
+.price>h3{
+  display: flex;
+  align-items: center;
+  width: auto;
+  font-family: "GyeonggiTitleM";
 }
 
 .lectureBtn {
-  width: calc(35% - 20px);
-  height: 35px;
+  width: 200px;
+  height: 50px;
   background-color: #00deff;
   color: white;
-  font-weight: 700;
+  font-weight: bold;
   text-align: center;
-  line-height: 35px;
-  border-radius: 8px;
+  line-height: 50px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 15px;
   border: none;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  position: absolute;
-  bottom: 0;
-  right: 40px;
-  /* right: 0; */
+  margin: 20px 0;
+  opacity: 0.8;
+}
+
+.lectureBtn:hover{
+  opacity: 1;
 }
 
 /* 푸터 css시작 */
