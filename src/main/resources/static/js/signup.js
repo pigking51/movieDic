@@ -142,7 +142,7 @@ document.querySelector(".register").addEventListener("click", () => {
   const data = {
     userId: userId,
     password: password,
-    birthda: birthday,
+    birthday: birthday,
     userEmail: userEmail,
     userName: userName,
     gender: gender,
