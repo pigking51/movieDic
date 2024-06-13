@@ -19,10 +19,10 @@
   padding: 0;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
 }
 
-html,
-body {
+html,body {
   min-width: 100%;
   margin: 0;
   padding: 0;
@@ -77,6 +77,7 @@ header {
   display: flex;
   justify-content: center;
   color: #333;
+  font-family: 'GyeonggiTitleM';
 }
 
 .top-Icon {
@@ -105,6 +106,8 @@ header {
 
 /* 헤더 css끝 */
 
+
+
 .login {
   height: 900px;
   width: 100%;
@@ -114,70 +117,51 @@ header {
   justify-content: center;
 }
 
-input:focus {
-  outline: none;
-}
 
-#userId {
+#userId{
   width: 566px;
   height: 50px;
   border: 2px solid #00d1fe;
   border-radius: 8px;
   font-size: 15px;
-  padding: 0 20px;
-}
+  padding:0 20px;
+  }
+ 
+  #password{
+    width: 566px;
+    height: 50px;
+    border: 2px solid #00d1fe;
+    border-radius: 8px;
+    padding:0 20px;
+    font-size: 15px;
+    margin-top: 30px;
+    }
 
-.password_wrap {
-  width: 566px;
-  height: 50px;
-  border: 2px solid #00d1fe;
-  border-radius: 8px;
-  padding: 0 16px 0 20px;
-  font-size: 15px;
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: 9fr 1fr;
-}
+    #password:focus{ 
+      background: url(../images/icon/visibility_lock.png) no-repeat;
+    background-position: calc(100% - 20px) center;
+    }
+    
+    
+    .login-box {
+      width: 560px;
+      height: 560px;
+      align-items: center;
+      gap: 10px;
+      padding: 30px;
+      background-color: white;
+      font-size: 1.3rem;
+      border-radius: 15px;
+      justify-items: center;
+      }
 
-#password {
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 8px;
-}
+      .empty{
+        height: 50px;
+        width: 610px;
+      }
+      
 
-.revealBtn {
-  width: 100%;
-  height: 100%;
-  background: url(../images/icon/visibility_lock.png) no-repeat;
-  background-position: center;
-}
-
-.hideBtn {
-  width: 100%;
-  height: 100%;
-  background: url(../images/icon/password_open.png) no-repeat;
-  background-position: center;
-}
-
-.login-box {
-  width: 560px;
-  height: 560px;
-  align-items: center;
-  gap: 10px;
-  padding: 30px;
-  background-color: white;
-  font-size: 1.3rem;
-  border-radius: 15px;
-  justify-items: center;
-}
-
-.empty {
-  height: 50px;
-  width: 610px;
-}
-
-.login-box > h1 {
+.login-box>h1{
   height: 100px;
   line-height: 100px;
   color: #333;
@@ -199,7 +183,8 @@ input:focus {
   margin-right: 10px;
 }
 
-.btnwrap {
+
+.btnwrap{
   width: 588px;
   height: 100px;
   display: flex;
@@ -249,9 +234,10 @@ input:focus {
   border-radius: 8px;
   cursor: pointer;
   font-size: 15px;
-  border: 4px solid #00d1fe;
+  border: 2px solid #00d1fe;
   margin-left: 10px;
 }
+
 
 /* 푸터 css시작 */
 
