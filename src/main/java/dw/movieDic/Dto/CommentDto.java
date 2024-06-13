@@ -19,6 +19,7 @@ public class CommentDto {
 
     public CommentDto toCommentDtoFromComment(Comment comment) {
         CommentDto commentDto = new CommentDto();
+        commentDto.setBoardId(getBoardId());
         commentDto.setPostId(getPostId());
         commentDto.setUserId(getUserId());
         commentDto.setCommentContent(getCommentContent());
