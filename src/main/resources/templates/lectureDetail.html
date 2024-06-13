@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>surveypage</title>
-    <link rel="stylesheet" href="../css/lactureDetail.css" type="text/css" />
+    <link rel="stylesheet" href="../css/lectureDetail.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,7 +16,10 @@
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
       crossorigin="anonymous"
     ></script>
-    <script defer src="../javascript/mainpage.js"></script>
+    <script defer src="../js/mainpage.js"></script>
+    <script src="
+    https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js
+    "></script>
   </head>
   <body>
     <!-- 헤더html시작 -->
@@ -29,7 +32,7 @@
       <nav class="menu">
         <ul>
           <li><a href="team.html">팀소개</a></li>
-          <li><a href="lacture.html">강의</a></li>
+          <li><a href="lecture.html">강의</a></li>
           <li><a href="postList.html">게시판</a></li>
           <li><a href="event.html">이벤트</a></li>
           <li><a href="qna.html">QnA</a></li>
@@ -53,7 +56,7 @@
     <!-- 헤더 html 끝 -->
 
     <!-- 강의 상세 시작 -->
-    <div class="mainLacture">
+    <!-- <div class="mainLacture">
       <div>
         <img
           src="/MOVIEDIC/images/임시 이미지 파일모음/lactureDetailMainImage.png"
@@ -96,8 +99,10 @@
           100만원 현질 함 ㅋㅋㅋ ㅅㄱㅇ ㅋㅋㅋ ㅎㅎ
         </h2>
       </div>
-    </div>
+    </div> -->
     <!-- 강의 상세 끝 -->
+    <!-- 테스트용 -->
+    <div class="contents"></div>
 
     <!-- 푸터 html 시작 -->
     <footer>
@@ -110,5 +115,6 @@
       </div>
     </footer>
     <!-- 푸터 html 끝 -->
+    <script src="../js/lectureDetail.js"></script>
   </body>
 </html>

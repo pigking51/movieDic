@@ -38,7 +38,7 @@ function displaylectures(datas) {
       lecture.appendChild(major);
       lecture.appendChild(price);
       lecture.addEventListener("click", () => {
-        window.location.href = "lectureDetails.html?id=" + data.id;
+        window.location.href = "lectureDetail.html?id=" + data.lectureId;
       });
       contents.appendChild(lecture);
     });

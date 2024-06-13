@@ -53,6 +53,10 @@ public class ViewController {
     public String lecture(){
         return "lecture";
     }
+    @GetMapping("/movieDic/lectureDetail.html")
+    public String lectureDetail(){
+        return "lectureDetail";
+    }
     @GetMapping("/movieDic/cart.html")
     public String cart(){
         return "cart";

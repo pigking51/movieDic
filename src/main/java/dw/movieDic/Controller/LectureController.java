@@ -8,14 +8,13 @@ import dw.movieDic.Service.LectureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://127.0.0.1:5500/")
 @RequestMapping("/lectures")
 public class LectureController {
     @Autowired
@@ -30,29 +29,18 @@ public class LectureController {
                 HttpStatus.OK);
     }
 
-    public Lectures getLectureById(long id) {
-        Optional<Lectures> lecturesOptional = lectureRepository.findById(id);
-        if(lecturesOptional.isPresent()) {
-            return lecturesOptional.get();
-        }else {
-            throw new ResourceNotFoundException("Lecture", "ID", id);
-        }
+    @GetMapping("/getalllectures/{id}")
+    public ResponseEntity<Lectures> getLectureById(@PathVariable long id) {
+        return new ResponseEntity<>(lectureService.getLectureById(id),
+                HttpStatus.OK);
     }
 
-//    public Lectures updateLectureById(long id, Lectures lectures) {
-//        Optional<Lectures> lecturesOptional = lectureRepository.findById(id);
-//        if(lecturesOptional.isPresent()) {
-//            Lectures temp = lecturesOptional.get();
-//            temp.s(game.getTitle());
-//            temp.setGenre(game.getGenre());
-//            temp.setPrice(game.getPrice());
-//            temp.setImage(game.getImage());
-//            temp.setText(game.getText());
-//            gameShopRepository.save(temp);
-//            return temp;
-//        }else {
-//            throw new ResourceNotFoundException("Game", "ID", id);
-//        }
-//    }
+    @PutMapping("/getalllectures/{id}")
+    public ResponseEntity<Lectures> updateLectureById(@PathVariable long id,
+                                               @RequestBody Lectures lectures) {
+        return new ResponseEntity<>(lectureService.updateLectureById(id, lectures),
+                HttpStatus.OK);
+    }
+
 
 }
