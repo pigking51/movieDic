@@ -65,4 +65,13 @@ public class ViewController {
     public String myPage(){
         return "myPage";
     }
+    @GetMapping("/movieDic/streaming.html")
+    public String streaming(){
+        return "streaming";
+    }
+
+    @GetMapping("/movieDic/event.html")
+    public String event(){
+        return "event";
+    }
 }
