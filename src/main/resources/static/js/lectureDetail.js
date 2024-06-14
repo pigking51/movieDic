@@ -30,7 +30,7 @@ function displaylectureDetails(data) {
   const lowBox = document.createElement("div");
   const left = document.createElement("div");
   const right = document.createElement("div");
-  const cartBtn = document.createElement("div");
+  const cartBtn = document.createElement("button");
 
   // 클래스 이름 생성
   lecture.classList.add("lecture");
@@ -66,7 +66,7 @@ function displaylectureDetails(data) {
     if (confirm("구매완료 장바구니로 가시겠습니까?")) {
       window.location.href = "http://localhost:8080/movieDic/cart.html";
     } else {
-      window.location.href = "http://localhost:8080/movieDic/lectures.html";
+      window.location.href = "http://localhost:8080/movieDic/lecture.html";
     }
   });
 }
