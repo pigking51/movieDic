@@ -21,15 +21,17 @@
     "></script>
     <script defer>
       const $jQ = jQuery.noConflict();
-      $jQ(".imageslide a:gt(0)").hide();
-      setInterval(function () {
-        $jQ(".imageslide a:first-child")
-          .fadeOut(1000)
-          .next("a")
-          .fadeIn(1000)
-          .end()
-          .appendTo(".imageslide");
-      }, 3000);
+      $jQ(document).ready(function () {
+        $jQ(".imageslide a:gt(0)").hide();
+        setInterval(function () {
+          $jQ(".imageslide a:first-child")
+            .fadeOut(1000)
+            .next("a")
+            .fadeIn(1000)
+            .end()
+            .appendTo(".imageslide");
+        }, 3000);
+      });
     </script>
   </head>
   <body>
