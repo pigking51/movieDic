@@ -143,27 +143,34 @@ header {
 
 .contents {
   width: 100%;
-  height: auto;
-  background-color: #002333;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
   padding: 20px;
+  justify-content: center;
 }
 
 .contents p {
-  margin: 0 0 5px 10px;
-  height: fit-content;
+  width: auto;
+  height: auto;
+  color: #00deff;
+  font-family: "GmarketSansMedium";
+  margin-bottom: 20px;
 }
+
 .lecture {
+  width: 1000px;
+  height: 500px;
   display: flex;
   justify-content: center;
   border-radius: 5px;
-  background-color: white;
+  background-color: #333;
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease;
-  padding-bottom: 20px;
+  padding: 30px;
+  align-items: center;
 }
+
 .lecture:hover {
   box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.4);
   transform: translate(0px, -5px);
@@ -172,13 +179,33 @@ header {
 }
 
 .low-box{
+  border-left: 2px dashed #00d1fe;
   display: flex;
   width: auto;
-  color: #00d1fe;
+  color: #fff;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 50px;
+}
+
+.low-box>div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.low-box>div:first-child{
+  align-items: start;
+  flex-direction: column;
 }
 
 .image {
-  width: 100%;
+  width: 600px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 50px;
 }
 
 .button {
@@ -203,19 +230,19 @@ header {
   margin-right: 10px;
 }
 
-.cartBtn {
-  width: calc(20% - 20px);
+.cart-btn{
+  width: 200px;
   height: 50px;
-  background-color: white;
-  color: #00deff;
+  background-color: #00deff;
+  color: #fff;
   font-weight: 700;
   text-align: center;
-  line-height: 35px;
+  line-height: 50px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 20px;
-  border: solid 3px;
-  margin-right: 20%;
+  font-size: 15px;
+  border: none;
+  font-family: "GyeonggiTitleM";  
 }
 
 .comment {
@@ -240,6 +267,7 @@ header {
   border-radius: 15px;
   margin: 0 auto;
 }
+
 
 /* 푸터 css시작 */
 
