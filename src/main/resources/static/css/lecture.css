@@ -128,11 +128,26 @@ header {
 /* 헤더 css끝 */
 
 .imageslide {
-  width: 100%;
+  width: 1920px;
   height: 500px;
-  margin: 50px 0;
+  margin-bottom: 50px;
   position: relative;
   overflow: hidden;
+}
+
+.imageslide span {
+  position: absolute;
+  width: 500px;
+  height: 50px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  z-index: 1;
+  margin-top: 225px;
+  margin-left: 710px;
+  font-family: "GmarketSansMedium";
 }
 
 .contents {

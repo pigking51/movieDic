@@ -28,7 +28,6 @@ public class Post {
     private User user;
     @Column(name = "post_title", nullable = false, length = 50)
     private String postTitle;
-
     @Column(name = "post_content", nullable = false, length = 5000)
     private String postContent;
 

@@ -20,15 +20,16 @@
     https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js
     "></script>
     <script defer>
- $('.imgslide a:gt(0)').hide();
-setInterval(function(){
-  $('.imgslide a:fisrt-child')
-  .fadeOut(1000)
-  .next('a')
-  .fadeIn(1000)
-  .end()
-  .appendTo('.imgslide')
-},2000);
+      const $jQ = jQuery.noConflict();
+      $jQ(".imageslide a:gt(0)").hide();
+      setInterval(function () {
+        $jQ(".imageslide a:first-child")
+          .fadeOut(1000)
+          .next("a")
+          .fadeIn(1000)
+          .end()
+          .appendTo(".imageslide");
+      }, 3000);
     </script>
   </head>
   <body>
@@ -69,13 +70,25 @@ setInterval(function(){
 
     <div class="imageslide">
       <a href="#">
-        <img src="../images/임시 이미지 파일모음/slideimage1.jpg" alt="슬라이드이미지1">
+        <span>무비딕과 함께하는 영화 강좌</span>
+        <img
+          src="../images/임시 이미지 파일모음/slideimage1.png"
+          alt="슬라이드이미지1"
+        />
       </a>
       <a href="#">
-        <img src="../images/임시 이미지 파일모음/slideimage2.jpg" alt="슬라이드이미지2">
+        <span>재미 있는 영화 정보를 함께 알아봐요</span>
+        <img
+          src="../images/임시 이미지 파일모음/slideimage2.png"
+          alt="슬라이드이미지2"
+        />
       </a>
       <a href="#">
-        <img src="../images/임시 이미지 파일모음/slideimage3.jpg" alt="슬라이드이미지3">
+        <span>당신이 알지 못했던 영화정보</span>
+        <img
+          src="../images/임시 이미지 파일모음/slideimage3.png"
+          alt="슬라이드이미지3"
+        />
       </a>
     </div>
 

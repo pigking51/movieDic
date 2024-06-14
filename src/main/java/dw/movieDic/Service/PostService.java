@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -47,5 +48,13 @@ public class PostService {
 
     public List<Post> getAllPosts(){
         return postRepository.findAll();
+    }
+    public List<Post> getAllPostsArrays(){
+        List<Post> postsArrayList = postRepository.findAll().stream().toList();
+
+        return postsArrayList;
+    }
+    public List<Object[]> getAllPostsParts(){
+                return postRepository.getPostInfo();
     }
 }
