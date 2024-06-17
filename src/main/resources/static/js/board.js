@@ -46,6 +46,12 @@ axios
       } else {
         tbody1.appendChild(tr);
       }
+      // 해당 게시물 클릭 시 상세로 넘어가는 코드
+
+      tr.addEventListener("click", () => {
+        alert(`해당 페이지로 이동`);
+        window.location.href = `postDetail.html?id=` + data[0];
+      });
     });
   })
   .catch((error) => {
@@ -128,6 +134,19 @@ document.querySelector(".search-btn").addEventListener("click", () => {
           } else {
             tbody1.appendChild(tr);
           }
+
+          // 해당 게시물 클릭 시 상세로 넘어가는 코드
+
+          tr.addEventListener("click", () => {
+            alert(`해당 페이지로 이동`);
+            window.location.href = `postDetail.html?id=` + data[0];
+          });
+          // const basic = document.querySelectorAll(".basic");
+          // basic.forEach((tr) => {
+          //   tr.addEventListener("click", () => {
+          //     window.location.href = "boardDetail.html?id=" + data[0];
+          //   });
+          // });
         });
       })
       .catch((error) => {
@@ -146,7 +165,6 @@ document.querySelector(".search-btn").addEventListener("click", () => {
   keywordPtag.textContent = `${keyword}에 대한 결과입니다.`;
   console.log(keywordPtag.textContent);
 
-  // ResultKeyword.style.border = `4px solid #00d1fe`;
   ResultKeyword.style.cssText = `border: 4px solid #00d1fe;
   display: flex; justify-content: center; align-items: center`;
   keywordPtag.style.cssText = `width: fit-content; padding-top: 0.5rem`;
@@ -232,6 +250,12 @@ function searchByKeyword(posts) {
     // }
   });
 }
+
+// 날짜순
+
+// 추천수
+
+// 댓글+제목
 
 // 번호추가되면 추후 활성화할 코드
 

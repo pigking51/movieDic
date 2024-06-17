@@ -33,6 +33,12 @@ public class PostController {
         return new ResponseEntity<>(postService.getAllPostsParts(),
                 HttpStatus.OK);
     }
+    @GetMapping("/getallpostsparts/{id}")
+    public ResponseEntity<Post> getPostById(@PathVariable long id){
+        return new ResponseEntity<>(postService.getPostById(id),
+                HttpStatus.OK);
+    }
+
 
 
     @PostMapping("/write")
