@@ -188,6 +188,20 @@ textarea:focus{
     opacity: 0.7;
 }
 
+.selBoard{
+    width: 150px;
+    height: 30px;
+    margin-right: 30px;
+    border: 1px solid #00D1FE;
+    color: #00D1FE;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.selBoard option{
+    height: 30px;
+}
+
 /* 푸터 css시작 */
 
 footer{
