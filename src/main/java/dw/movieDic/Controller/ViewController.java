@@ -50,7 +50,7 @@ public class ViewController {
         return "team";
     }
     @GetMapping("/movieDic/lecture.html")
-    public String lecture(){
+    public String                lecture(){
         return "lecture";
     }
     @GetMapping("/movieDic/lectureDetail.html")
