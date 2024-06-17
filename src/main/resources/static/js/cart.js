@@ -11,15 +11,18 @@ function sessionCurrent() {
         let cartItems = JSON.parse(localStorage.getItem(userId));
         if (cartItems) {
           displayCart(cartItems);
-          const data = cartItems.map((game) => {
+          const data = cartItems.map((lectures) => {
             // purchase객체를 만들어서 리턴
             return {
-              game: game,
-              user: { userId: userId, authority: { authorityName: authority } },
+              lectures: lectures,
+              user: {
+                userId: userId,
+                authority: { authorityName: authority },
+              },
             };
           });
           document
-            .querySelector(".purchaseBtn")
+            .querySelector(".pay-button")
             .addEventListener("click", () => {
               if (confirm("진짜 구매하시겠습니까?")) {
                 axios
@@ -35,24 +38,34 @@ function sessionCurrent() {
               }
             });
         }
+      } else {
+        alert("ㅇㅇㅇ");
       }
     })
     .catch((error) => {
       console.log("오류 발생: ", error);
-      alert("로그인해주세요!!");
+      alert("로그인해주세요.");
+      window.location.href = `login.html`;
     });
 }
 
-function displayCart(games) {
-  const tbody = document.querySelector(".cart-body");
+function displayCart(lectures) {
+  const list = document.querySelector(".cartList");
+  const noEmpty = document.querySelector(".noEmpty");
+  const cartBody = document.querySelector(".cart-body");
+  list.style.display = `none`;
+  noEmpty.style.display = `block`;
+
   let totalPrice = 0;
 
-  games.forEach((data, index) => {
+  lectures.forEach((lecture, index) => {
+    // 기존 cartList에 있는 것 삭제
+
     // 태그 요소 생성
     const tr = document.createElement("tr");
     const imgtd = document.createElement("td");
     const title = document.createElement("td");
-    const genre = document.createElement("td");
+    const major = document.createElement("td");
     const price = document.createElement("td");
     const img = document.createElement("img");
     const cancel = document.createElement("td");
@@ -64,21 +77,21 @@ function displayCart(games) {
     cBtn.classList.add("deleteBtn");
 
     // 태그 속성 추가
-    img.src = data.image;
-    title.textContent = data.title;
-    genre.textContent = data.genre;
-    price.textContent = data.price + "원";
+    img.src = lecture.image;
+    title.textContent = lecture.lectureTitle;
+    major.textContent = lecture.major;
+    price.textContent = lecture.price + "원";
 
     // appendChild 부모자식 위치 설정
     // → 이건 순서상 제일 아래에 작성할 것
     imgtd.appendChild(img);
     tr.appendChild(imgtd);
     tr.appendChild(title);
-    tr.appendChild(genre);
+    tr.appendChild(major);
     tr.appendChild(price);
     cancel.appendChild(cBtn);
     tr.appendChild(cancel);
-    tbody.appendChild(tr);
+    cartBody.appendChild(tr);
 
     cBtn.style.margin = `0 auto`;
     cBtn.textContent = `삭제`;
@@ -88,9 +101,9 @@ function displayCart(games) {
       console.log("삭제완료");
     });
 
-    totalPrice = totalPrice + data.price;
+    totalPrice = totalPrice + lecture.price;
   });
-
+  document.querySelector(".totalPrice").textContent = "";
   document.querySelector(".totalPrice").textContent =
     "총 " + totalPrice + "원 입니다.";
 

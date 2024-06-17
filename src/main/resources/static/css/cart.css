@@ -29,7 +29,7 @@ body {
   padding: 0;
 }
 
-hr{
+hr {
   height: auto;
   border: 0.25px solid #fff;
   margin: 10px 0;
@@ -77,7 +77,6 @@ header {
   color: #00d1fe;
 }
 
-
 .menu > ul > li > a {
   text-decoration: none;
   font-size: 18px;
@@ -85,7 +84,7 @@ header {
   display: flex;
   justify-content: center;
   color: #333;
-  font-family: 'GyeonggiTitleM';
+  font-family: "GyeonggiTitleM";
 }
 
 .top-Icon {
@@ -107,7 +106,7 @@ header {
   opacity: 0.7;
 }
 
-.top-Icon li:hover{
+.top-Icon li:hover {
   opacity: 1;
 }
 
@@ -128,7 +127,7 @@ header {
   justify-content: center;
 }
 
-.search input{
+.search input {
   width: 500px;
   height: 30px;
   border-radius: 4px;
@@ -147,7 +146,7 @@ header {
   justify-content: center;
 }
 
-.cart>h1{
+.cart > h1 {
   width: 600px;
   height: auto;
   margin: 20px 0;
@@ -156,7 +155,7 @@ header {
   font-size: 35px;
 }
 
-.left-side{
+.left-side {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -164,7 +163,7 @@ header {
   align-items: center;
 }
 
-.right-side{
+.right-side {
   display: flex;
   width: 50%;
   flex-direction: column;
@@ -186,7 +185,7 @@ header {
   position: relative;
 }
 
-.pay>h2{
+.pay > h2 {
   width: 100%;
   height: auto;
   font-family: "GmarketSansMedium";
@@ -199,17 +198,17 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin:25px 0;
+  margin: 25px 0;
 }
 
-.payment input{
+.payment input {
   width: auto;
   height: auto;
-  margin:0 20px;
+  margin: 0 20px;
   cursor: pointer;
 }
 
-.payment label{
+.payment label {
   font-size: 16px;
   font-family: "GyeonggiTitleM";
 }
@@ -251,7 +250,7 @@ header {
   margin: 20px 0;
 }
 
-.pay-button:hover{
+.pay-button:hover {
   opacity: 0.7;
 }
 
@@ -261,14 +260,14 @@ header {
   border-radius: 15px;
   height: 600px;
   width: 600px;
-  text-align: center;  
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.cartList>h2{
+.cartList > h2 {
   color: #00d1fe;
 }
 
@@ -278,11 +277,11 @@ header {
   align-items: center;
   font-size: 18px;
   height: auto;
-  margin:auto 0px;
+  margin: auto 0px;
   font-family: "GyeonggiTitleM";
 }
 
-.price>h3{
+.price > h3 {
   display: flex;
   align-items: center;
   width: auto;
@@ -305,8 +304,75 @@ header {
   opacity: 0.8;
 }
 
-.lectureBtn:hover{
+.lectureBtn:hover {
   opacity: 1;
+}
+/* js에 따른 css */
+
+.noEmpty {
+  display: none;
+  border: 1px solid #00d1fe;
+  background-color: #fff;
+  border-radius: 15px;
+  height: 600px;
+  width: 600px;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+.noEmpty table {
+  table-layout: fixed;
+  border-radius: 15px;
+}
+.noEmpty thead {
+  background-color: #2463eb;
+  color: white;
+  height: 40px;
+}
+.noEmpty tbody {
+  text-align: center;
+}
+.noEmpty tr {
+  height: fit-content;
+}
+.noEmpty td {
+  height: fit-content;
+}
+
+.tr:nth-child(even) {
+  background-color: #eaeaed;
+  /* 실제로 표 꾸밀때 이 색상 많이사용한다고 함 */
+}
+tbody .tr:nth-last-child() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.noEmpty img {
+  width: 100%;
+  height: 80px;
+}
+
+.deleteBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 50px;
+  background-color: #00deff;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  border: none;
+  margin-right: 10px;
+}
+.deleteBtn:hover {
+  background-color: lightblue;
+  color: dodgerblue;
 }
 
 /* 푸터 css시작 */

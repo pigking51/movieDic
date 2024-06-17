@@ -33,7 +33,7 @@ axios
       index.textContent = data[0];
       postTitle.textContent = data[1];
       userId.textContent = data[2];
-      createdAt.textContent = data[3];
+      createdAt.textContent = data[3].substring(0, 10);
 
       // 넣은 p태그를 table에 넣기
       tr.appendChild(index);
@@ -121,7 +121,7 @@ document.querySelector(".search-btn").addEventListener("click", () => {
           index.textContent = data[0];
           postTitle.textContent = data[1];
           userId.textContent = data[2];
-          createdAt.textContent = data[3];
+          createdAt.textContent = data[3].substring(0, 10);
 
           // 넣은 p태그를 table에 넣기
           tr.appendChild(index);
@@ -232,7 +232,7 @@ function searchByKeyword(posts) {
     index.textContent = result[0];
     postTitle.textContent = result[1];
     userId.textContent = result[2];
-    createdAt.textContent = result[3];
+    createdAt.textContent = result[3].substring(0, 10);
 
     // 넣은 p태그를 table에 넣기
     tr.appendChild(index);

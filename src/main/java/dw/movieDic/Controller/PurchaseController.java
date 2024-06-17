@@ -27,13 +27,13 @@ public class PurchaseController {
     }
 
     @GetMapping("/products/purchase")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN,USER')")
     public List<Purchase> getAllPurchases(){
         return purchaseService.getAllPurchases();
     }
 
     @GetMapping("/products/purchase/id/{userId}")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN,USER')")
     public ResponseEntity<List<Purchase>> getPurchaseListByUserName(
             @PathVariable String userName){
     return new ResponseEntity<>(purchaseService.getPurchaseListByUser(userName),

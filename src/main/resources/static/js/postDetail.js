@@ -11,7 +11,7 @@ axios
   .get(urlpart)
   .then((response) => {
     console.log("데이터: ", response.data);
-    displayBoardDetails(response.data);
+    displayBoardDetails(response.data[id - 1]);
   })
   .catch((error) => {
     console.log("오류 발생: ", error);
@@ -19,6 +19,8 @@ axios
 
 function displayBoardDetails(data) {
   const contents = document.querySelector(".contents");
+  const postTitle = document.querySelector(".postTitle");
+  const postContent = document.querySelector(".postContent");
 
   // 태그 요소 생성
   const bTitle = document.createElement("div");
@@ -30,24 +32,21 @@ function displayBoardDetails(data) {
   const uId = document.createElement("p");
 
   // 요소에 내용 삽입
-  data.forEach((e) => {
-    // 제목부분
-    pId.textContent = e[0];
-    pTitle.textContent = e[1];
-    uId.textContent = e[2];
-    pTime.textContent = e[3];
-    // 내용부분
-    pContent.textContent = e[4];
 
-    // div에 삽입
-    bTitle.appendChild(pId);
-    bTitle.appendChild(pTitle);
-    bTitle.appendChild(uId);
-    bTitle.appendChild(pTime);
+  // 제목부분
+  pId.textContent = data[0];
+  pTitle.textContent = data[1];
+  uId.textContent = data[2];
+  pTime.textContent = data[3].substring(0, 10);
+  // 내용부분
+  pContent.textContent = data[4];
 
-    bContent.appendChild(pContent);
+  // div에 삽입
+  postTitle.appendChild(pId);
+  postTitle.appendChild(pTitle);
+  postTitle.appendChild(uId);
+  postTitle.appendChild(pTime);
 
-    contents.appendChild(bTitle);
-    contents.appendChild(bContent);
-  });
+  // postTitle.appendChild(bTitle);
+  postContent.appendChild(pContent);
 }

@@ -16,7 +16,10 @@
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
       crossorigin="anonymous"
     ></script>
-    <script defer src="../javascript/mainpage.js"></script>
+    <script defer src="../js/mainpage.js"></script>
+    <script src="
+    https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js
+    "></script>
   </head>
   <body>
     <!-- 헤더html시작 -->
@@ -55,70 +58,71 @@
     <!-- cart 시작 -->
 
     <!-- 검색 시작 -->
-      <div class="search">
-        <input type="text" search="search" placeholder="검색" />
-      </div>
+    <div class="search">
+      <input type="text" search="search" placeholder="검색" />
+    </div>
     <!-- 검색 끝 -->
     <div class="test">
-      
-      <div class="left-side">    
-
+      <div class="left-side">
         <div class="cart">
-
           <h1>장바구니</h1>
 
           <div class="cartList">
+            <h2>이런, 장바구니가 비어있습니다 :(</h2>
 
-            <h2>
-              이런, 장바구니가 비어있습니다 :(
-            </h2>
-
-          <button class="lectureBtn">강의 보러 가기</button>
-
+            <button class="lectureBtn">강의 보러 가기</button>
           </div>
-
+          <div class="noEmpty">
+            <table class="cart-table">
+              <thead>
+                <tr>
+                  <th>강좌</th>
+                  <th>강의명</th>
+                  <th>전공</th>
+                  <th>가격</th>
+                  <th>취소</th>
+                </tr>
+              </thead>
+              <tbody class="cart-body"></tbody>
+            </table>
+          </div>
         </div>
-
       </div>
 
       <div class="right-side">
-
         <div class="pay">
           <h2>Payment Options</h2>
-      
+
           <div class="payment">
             <input type="radio" name="pay" value="card" id="card" />
             <label for="card">카드결제</label>
           </div>
-       
+
           <div class="payment">
             <input type="radio" name="pay" value="kakaopay" id="kakaopay" />
             <label for="kakaopay">카카오페이</label>
           </div>
-         
+
           <div class="payment">
             <input type="radio" name="pay" value="naverpay" id="naverpay" />
             <label for="naverpay">네이버페이</label>
           </div>
-    
+
           <div class="payment">
             <input type="radio" name="pay" value="account" id="account" />
             <label for="account">실시간 계좌이체</label>
           </div>
-      
-          <hr/>
-    
+
+          <hr />
+
           <div class="price">
             최종가격
-            <h3>0 원</h3>
+            <h3 class="totalPrice">0 원</h3>
           </div>
-
-          </div>
+        </div>
 
         <button class="pay-button">Pay now</button>
-
       </div>
-
     </div>
 
     <!-- cart 끝 -->
@@ -134,5 +138,6 @@
       </div>
     </footer>
     <!-- 푸터 html 끝 -->
+    <script src="../js/cart.js"></script>
   </body>
 </html>
