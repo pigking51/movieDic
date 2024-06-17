@@ -77,4 +77,8 @@ public class ViewController {
     public String event(){
         return "event";
     }
+    @GetMapping("/movieDic/dashboard.html")
+    public String dashboard(){
+        return "dashboard";
+    }
 }
