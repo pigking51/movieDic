@@ -29,6 +29,10 @@ public class ViewController {
     public String board(){
         return "board";
     }
+    @GetMapping("/movieDic/postDetail.html")
+    public String postDetail(){
+        return "postDetail";
+    }
     @GetMapping("/movieDic/write.html")
     public String write(){
         return "write";

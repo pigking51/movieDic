@@ -11,7 +11,7 @@ import java.util.Objects;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    @Query("SELECT p.postId, p.postTitle, p.user.userId, p.createdAt FROM Post p")
+    @Query("SELECT p.postId, p.postTitle, p.user.userId, p.createdAt, p.postContent FROM Post p")
     List<Object[]> getPostInfo();
 
 }
