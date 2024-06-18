@@ -21,7 +21,8 @@ public class PurchaseController {
         return purchaseService.savePurchase(purchase);
     }
 
-    @PostMapping("/products/purchaselist")
+    @PostMapping("/products/purchaseList")
+    @PreAuthorize("hasAnyRole('ADMIN,USER')")
     public List<Purchase> savePurchaseList(@RequestBody List<Purchase> purchaseList){
         return purchaseService.savePurchaseList(purchaseList);
     }
@@ -32,8 +33,8 @@ public class PurchaseController {
         return purchaseService.getAllPurchases();
     }
 
-    @GetMapping("/products/purchase/id/{userId}")
     @PreAuthorize("hasAnyRole('ADMIN,USER')")
+    @GetMapping("/products/purchase/id/{userId}")
     public ResponseEntity<List<Purchase>> getPurchaseListByUserName(
             @PathVariable String userName){
     return new ResponseEntity<>(purchaseService.getPurchaseListByUser(userName),
