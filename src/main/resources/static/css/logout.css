@@ -1,0 +1,9 @@
+.hidden {
+  display: none;
+}
+
+.logoutBtn {
+  width: 60px;
+  height: 50px;
+  font-weight: bold;
+}

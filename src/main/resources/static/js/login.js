@@ -1,7 +1,6 @@
 const urlLogin = "http://localhost:8080/user/login";
 const urlLogout = "http://localhost:8080/user/logout";
 const urlsignUp = "http://localhost:8080/user/signup";
-const url = "http://localhost:8080/products";
 const urlShow = "http://localhost:8080/user/show";
 
 let userId = "";
@@ -67,6 +66,11 @@ document.querySelector(".loginBtn").addEventListener("click", () => {
       console.log("데이터 :", response);
       sessionCurrent();
       alert(`${userId}님 환영합니다!`);
+      sessionStorage.setItem(
+        // 로그인에 성공할 시 sessionStorage에 loggedIn-User라는 key의 아래 정보를 담음(0618)
+        "loggedIn-User",
+        JSON.stringify({ userId, authority })
+      );
       document.querySelector("#userId").value = "";
       document.querySelector("#password").value = "";
       document.querySelector("#userId").style.border = `2px solid #00d1fe;`;
@@ -104,14 +108,6 @@ document.querySelector(".loginBtn").addEventListener("click", () => {
 // document.querySelector(".prevBtn").addEventListener("click", () => {
 //   document.querySelector(".signUp-box").classList.add("hidden");
 //   document.querySelector(".login-box").classList.remove("hidden");
-// });
-
-// 회원가입 코드(이미 있으므로 주석처리함)
-// document.querySelector("#userId2").addEventListener("change", (e) => {
-//   console.log(e.target.value);
-//   // 확인해보면 엄청 길게 나오는데 여기서 value 값이 필요(입력한 값 나와있음)
-//   //  → e.target.value 사용
-//   userId = e.target.value;
 // });
 
 // document.querySelector("#password2").addEventListener("change", (e) => {
@@ -166,22 +162,14 @@ function sessionCurrent() {
     .then((response) => {
       console.log("데이터: ", response);
       if (response.status == 200) {
-        console.log("세션 유지");
+        console.log("로그인 상태입니다."); // 로그인 확인 메시지 수정(0618)
         // 로그인 성공 시 아래 주소로 이동(메인화면 완성되면 바꿀 것!)
         // window.location.href = "index.html";
-
-        // 로그인 했을때 login-box와 전환되면서 나오는 박스
-        // 해당기능도 0610기준 필요없어서 주석처리함
-        // if (response.status == 200) {
-        //   document.querySelector(".login-box").classList.add("hidden");
-        //   document.querySelector(".user-box").classList.remove("hidden");
-        //   document.querySelector(".user-box p").textContent =
-        //     response.data.userId + "님 환영합니다.";
-        // }
       }
     })
     .catch((error) => {
-      console.log("에러 발생: ", error);
+      console.log("현재 로그인 상태가 아닙니다.: ", error); // 오류 메시지 수정(0618)
+      alert("로그인 해주세요.");
     });
 }
 
