@@ -25,7 +25,7 @@ function sessionCurrent() {
           document
             .querySelector(".pay-button")
             .addEventListener("click", () => {
-              if (confirm("진짜 구매하시겠습니까?")) {
+              if (confirm("구매하시겠습니까?")) {
                 axios
                   .post(url, data, { withCredentials: true })
                   .then((response) => {
@@ -122,7 +122,7 @@ function deleteIndex(Index) {
         let cartItems = JSON.parse(localStorage.getItem(userId));
         if (cartItems[Index]) {
           cartItems.splice(Index, 1);
-          alert("작동되나 확인!!!");
+          alert("삭제되었습니다.");
         }
         window.location.reload();
         localStorage.setItem(userId, JSON.stringify(cartItems));
