@@ -69,7 +69,7 @@ document.querySelector(".loginBtn").addEventListener("click", () => {
       sessionStorage.setItem(
         // 로그인에 성공할 시 sessionStorage에 loggedIn-User라는 key의 아래 정보를 담음(0618)
         "loggedIn-User",
-        JSON.stringify({ userId, authority })
+        JSON.stringify({ userId })
       );
       document.querySelector("#userId").value = "";
       document.querySelector("#password").value = "";
