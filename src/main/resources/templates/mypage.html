@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,10 +12,10 @@
       rel="stylesheet"
     />
     <script
-      src="https://code.jquery.com/jquery-3.7.1.js"
-      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-      crossorigin="anonymous"
-    ></script>
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"
+  ></script>
     <script defer src="../js/mypage.js"></script>
   </head>
   <body>
@@ -24,7 +24,7 @@
     <header>
       <div class="logo">
         <a href="mainpage.html">
-          <img src="../static/images/logo/logo.png" alt="상단로고" />
+          <img src="../images/logo/logo.png" alt="상단로고" />
         </a>
       </div>
       <nav class="menu">
@@ -32,7 +32,7 @@
           <li><a href="team.html">팀소개</a></li>
           <li><a href="lecture.html">강의</a></li>
           <li><a href="board.html">게시판</a></li>
-          <li><a href="">이벤트</a></li>
+          <li><a href="#">이벤트</a></li>
           <li><a href="#">QnA</a></li>
         </ul>
       </nav>
@@ -66,11 +66,12 @@
         <ul href="#">
           <li><a href="#">최건</a></li>
           <li class="myclass"><a href="#">내 강의 보기</a></li>
-          <li class="userEdit"><a href="#">회원정보 수정</a></li>
+          <li class="userEdit"><a href="#">회원정보 수정</a></li>  
         </ul>
       </div>
 
       <div class="user-data">
+
         <div class="mylecture">
           <h2>내 강의 보기</h2>
           <div class="lectureWrap">
@@ -82,9 +83,37 @@
               우리가 여름을 기다리는 이유 호소다 마모루
             </div>
           </div>
+          <h2>☆ MOVIE DIC이 추천하는 BEST 강좌 ☆</h2>
+
+          <div class="best-lecture">
+            <ul class="best-lecture-list">
+              <li>
+                <a href="#">
+                  <span>Best1</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span>Best2</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span>Best3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span>Best4</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
         </div>
 
         <div class="user-modify">
+
           <h2>회원정보 수정</h2>
 
           <div class="write">
@@ -116,12 +145,16 @@
             </div>
 
             <div class="btnwrap">
-              <button class="backBtn boxBtn">취소</button>
-              <button class="boxBtn register">수정하기</button>
+                <button class="backBtn boxBtn">취소</button>
+                <button class="boxBtn register">수정하기</button>
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </div>
 
     <!-- 푸터 html 시작 -->
