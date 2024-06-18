@@ -1,5 +1,4 @@
 const urlLogin = "http://localhost:8080/user/login";
-const urlLogout = "http://localhost:8080/user/logout";
 const urlsignUp = "http://localhost:8080/user/signup";
 const urlShow = "http://localhost:8080/user/show";
 
@@ -66,11 +65,7 @@ document.querySelector(".loginBtn").addEventListener("click", () => {
       console.log("데이터 :", response);
       sessionCurrent();
       alert(`${userId}님 환영합니다!`);
-      sessionStorage.setItem(
-        // 로그인에 성공할 시 sessionStorage에 loggedIn-User라는 key의 아래 정보를 담음(0618)
-        "loggedIn-User",
-        JSON.stringify({ userId })
-      );
+      window.location.reload();
       document.querySelector("#userId").value = "";
       document.querySelector("#password").value = "";
       document.querySelector("#userId").style.border = `2px solid #00d1fe;`;
@@ -156,23 +151,6 @@ document.querySelector(".loginBtn").addEventListener("click", () => {
 //     });
 // });
 
-function sessionCurrent() {
-  axios
-    .get("http://localhost:8080/user/current", { withCredentials: true })
-    .then((response) => {
-      console.log("데이터: ", response);
-      if (response.status == 200) {
-        console.log("로그인 상태입니다."); // 로그인 확인 메시지 수정(0618)
-        // 로그인 성공 시 아래 주소로 이동(메인화면 완성되면 바꿀 것!)
-        // window.location.href = "index.html";
-      }
-    })
-    .catch((error) => {
-      console.log("현재 로그인 상태가 아닙니다.: ", error); // 오류 메시지 수정(0618)
-      alert("로그인 해주세요.");
-    });
-}
-
 // 유저 총 인원 확인할때 사용할 것!!!
 
 // axios
@@ -196,4 +174,3 @@ function sessionCurrent() {
 // }
 
 // js 파일이 로드될 때 호출됨
-sessionCurrent();
