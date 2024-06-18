@@ -1,4 +1,4 @@
-const url = "http://localhost:8080/api/products/purchaseList";
+const urlList = "http://localhost:8080/api/products/purchaseList";
 
 function sessionCurrent() {
   axios
@@ -12,14 +12,11 @@ function sessionCurrent() {
         console.log(cartItems);
         if (cartItems) {
           displayCart(cartItems);
-          const data = cartItems.map((lectures) => {
+          const data = cartItems.map((lecture) => {
             // purchase객체를 만들어서 리턴
             return {
-              lectures: lectures,
-              user: {
-                userId: userId,
-                authority: { authorityName: authority },
-              },
+              lecture: lecture,
+              user: { userId: userId, authority: { authorityName: authority } },
             };
           });
           document
@@ -27,11 +24,12 @@ function sessionCurrent() {
             .addEventListener("click", () => {
               if (confirm("구매하시겠습니까?")) {
                 axios
-                  .post(url, data, { withCredentials: true })
+                  .post(urlList, data, { withCredentials: true })
                   .then((response) => {
                     console.log("데이터: ", response.data);
                     localStorage.removeItem(userId);
-                    window.location.reload();
+                    // window.location.reload();
+                    window.location.href = `mainpage.html`;
                   })
                   .catch((error) => {
                     console.log("오류 발생: ", error);
