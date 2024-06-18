@@ -278,8 +278,6 @@ header{
   }
 
   .best-lecture-list>li>a>span{
-    display: flex;
-    align-items: center;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.4);
     width: 100%;
@@ -287,8 +285,14 @@ header{
     color: #fff;
     font-family: 'GmarketSansMedium';
     font-size: 18px;
-    justify-content: center;
     bottom: 0;
+  }
+
+  .best-lecture-list>li>a>span>p{
+    width: 100%;
+    height: auto;
+    text-align: left;
+    padding-left: 20px;
   }
 
   .user-modify{
