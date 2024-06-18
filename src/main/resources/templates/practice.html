@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chart Test</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <!-- <style>
+      /* 스타일링된 canvas 스타일 */
+      .container {
+        width: 50vw;
+        height: 50vh;
+        margin: auto;
+      }
+    </style> -->
+  </head>
+  <body>
+    <h3>Bubble 차트</h3>
+    <!-- Bubble 차트를 렌더링할 canvas -->
+    <canvas class="container" id="bubbleChart"></canvas>
+
+    <h3>도넛 차트</h3>
+    <!-- Doughnut 차트를 렌더링할 canvas -->
+    <canvas class="container" id="doughnutChart"></canvas>
+
+    <h3>파이 차트</h3>
+    <!-- Pie 차트를 렌더링할 canvas -->
+    <canvas class="container" id="pieChart"></canvas>
+
+    <h3>라인 차트</h3>
+    <!-- Line 차트를 렌더링할 canvas -->
+    <canvas class="container" id="lineChart"></canvas>
+
+    <script>
+      const url = "http://localhost:8080/user/show";
+      // Bubble 차트 데이터
+      axios(url)
+        .get((Response) => {
+          console.log("데이터: ", Response);
+
+          const bubbleData = {
+            datasets: [
+              {
+                label: "First Dataset",
+                data: [
+                  { x: 50, y: 30, r: 15 },
+                  { x: 24, y: 26, r: 25 },
+                  { x: 40, y: 10, r: 10 },
+                ],
+                backgroundColor: "rgb(255, 99, 132)",
+              },
+            ],
+          };
+
+          // Doughnut 차트 데이터
+          const doughnutData = {
+            labels: ["Red", "Blue", "Yellow"],
+            datasets: [
+              {
+                label: "My First Dataset",
+                data: [300, 50, 100],
+                backgroundColor: [
+                  "rgb(255, 99, 132)",
+                  "rgb(54, 162, 235)",
+                  "rgb(255, 205, 86)",
+                ],
+                hoverOffset: 4,
+              },
+            ],
+          };
+
+          // Pie 차트 데이터
+          const pieData = {
+            labels: ["Red", "Blue", "Yellow"],
+            datasets: [
+              {
+                label: "My First Dataset",
+                data: [300, 50, 100],
+                backgroundColor: [
+                  "rgb(255, 99, 132)",
+                  "rgb(54, 162, 235)",
+                  "rgb(255, 205, 86)",
+                ],
+                hoverOffset: 4,
+              },
+            ],
+          };
+
+          // Line 차트 데이터
+          const lineData = {
+            labels: [
+              "January",
+              "February",
+              "March",
+              "April",
+              "May",
+              "June",
+              "July",
+            ],
+            datasets: [
+              {
+                label: "My First Dataset",
+                data: [65, 59, 80, 81, 56, 55, 40],
+                fill: false,
+                borderColor: "rgb(75, 192, 192)",
+                tension: 0.1,
+              },
+            ],
+          };
+
+          // Bubble 차트 생성
+          new Chart(document.getElementById("bubbleChart"), {
+            type: "bubble",
+            data: bubbleData,
+          });
+
+          // Doughnut 차트 생성
+          new Chart(document.getElementById("doughnutChart"), {
+            type: "doughnut",
+            data: doughnutData,
+          });
+
+          // Pie 차트 생성
+          new Chart(document.getElementById("pieChart"), {
+            type: "pie",
+            data: pieData,
+          });
+
+          // Line 차트 생성
+          new Chart(document.getElementById("lineChart"), {
+            type: "line",
+            data: lineData,
+          });
+        })
+        .catch((error) => {
+          console.log("오류발생: ", error);
+        });
+    </script>
+  </body>
+</html>

@@ -33,7 +33,7 @@ axios
       index.textContent = data[0];
       postTitle.textContent = data[1];
       userId.textContent = data[2];
-      createdAt.textContent = data[3];
+      createdAt.textContent = data[3].substring(0, 10);
 
       // 넣은 p태그를 table에 넣기
       tr.appendChild(index);
@@ -121,7 +121,7 @@ document.querySelector(".search-btn").addEventListener("click", () => {
           index.textContent = data[0];
           postTitle.textContent = data[1];
           userId.textContent = data[2];
-          createdAt.textContent = data[3];
+          createdAt.textContent = data[3].substring(0, 10);
 
           // 넣은 p태그를 table에 넣기
           tr.appendChild(index);
@@ -232,7 +232,7 @@ function searchByKeyword(posts) {
     index.textContent = result[0];
     postTitle.textContent = result[1];
     userId.textContent = result[2];
-    createdAt.textContent = result[3];
+    createdAt.textContent = result[3].substring(0, 10);
 
     // 넣은 p태그를 table에 넣기
     tr.appendChild(index);
@@ -240,6 +240,13 @@ function searchByKeyword(posts) {
     tr.appendChild(userId);
     tr.appendChild(createdAt);
     tbody1.appendChild(tr);
+
+    // 해당 게시물 클릭 시 상세로 넘어가는 코드
+
+    tr.addEventListener("click", () => {
+      alert(`해당 페이지로 이동`);
+      window.location.href = `postDetail.html?id=` + result[0];
+    });
 
     // 10개 넘어가면 다음페이지로 만드는 코드인데
     // 전체 post 수의 배열번호로 받아서 안나오는 경우도 있어 닫아둠
