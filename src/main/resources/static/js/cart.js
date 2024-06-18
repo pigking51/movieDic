@@ -9,6 +9,7 @@ function sessionCurrent() {
         const userId = response.data.userId;
         const authority = response.data.authority[0].authority;
         let cartItems = JSON.parse(localStorage.getItem(userId));
+        console.log(cartItems);
         if (cartItems) {
           displayCart(cartItems);
           const data = cartItems.map((lectures) => {
@@ -72,6 +73,7 @@ function displayCart(lectures) {
     const cBtn = document.createElement("div");
 
     // 클래스 이름 생성
+    tr.classList.add("cartTr");
     imgtd.classList.add("imgtd");
     img.classList.add("image");
     cBtn.classList.add("deleteBtn");
@@ -130,5 +132,41 @@ function deleteIndex(Index) {
       console.log("오류발생:", error);
     });
 }
+
+// 검색 시 해당 강의구매목록부분 강조하는 기능
+let searchCart = "";
+document.querySelector(".searchCart").addEventListener("change", (e) => {
+  searchCart = e.target.value;
+  console.log("searchCart");
+});
+document.querySelector(".searchBtn").addEventListener("click", () => {
+  axios
+    .get("http://localhost:8080/user/current", { withCredentials: true })
+    .then((response) => {
+      console.log("데이터: ", response.data.userId);
+      if (response.status == 200) {
+        const userId = response.data.userId;
+        let cartItems = JSON.parse(localStorage.getItem(userId));
+        const cartTr = document.querySelectorAll(".cartTr");
+        for (i = 0; i < cartTr.length; i++) {
+          if (cartTr[i].style.border != `none`) {
+            cartTr[i].style.border = `none`;
+          }
+        }
+        for (i = 0; i < cartItems.length; i++) {
+          if (
+            cartItems[i].lectureTitle.indexOf(searchCart) != -1 ||
+            cartItems[i].major.indexOf(searchCart) != -1 ||
+            cartItems[i].text.indexOf(searchCart) != -1
+          ) {
+            cartTr[i].style.border = `2px solid yellowGreen`;
+          }
+        }
+      }
+    })
+    .catch((error) => {
+      console.log("오류 발생: ", error);
+    });
+});
 // 페이지 로딩시에 즉시 세션여부 확인
 sessionCurrent();

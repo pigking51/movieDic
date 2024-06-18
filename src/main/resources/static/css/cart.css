@@ -126,15 +126,30 @@ header {
   align-items: center;
   justify-content: center;
 }
-
-.search input {
+.search-box {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
   width: 500px;
   height: 30px;
-  border-radius: 4px;
-  border: none;
-  padding: 0px 20px;
+  padding: 0;
+  background-color: #fff;
+  border-radius: 8px;
 }
 
+.search input {
+  width: 450px;
+  height: 30px;
+  border-radius: 8px 0 0 8px;
+  border: none;
+  padding: 0px 20px;
+  outline: none;
+}
+
+.searchBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px 0 0 8px;
+}
 .container {
   width: 70%;
   margin: 0 auto;
@@ -316,12 +331,12 @@ header {
   border-radius: 15px;
   height: 600px;
   width: 600px;
-  border-collapse: collapse;
   overflow: hidden;
 }
 .noEmpty table {
   table-layout: fixed;
   border-radius: 15px;
+  border-collapse: collapse;
 }
 .noEmpty thead {
   background-color: #2463eb;

@@ -241,6 +241,13 @@ function searchByKeyword(posts) {
     tr.appendChild(createdAt);
     tbody1.appendChild(tr);
 
+    // 해당 게시물 클릭 시 상세로 넘어가는 코드
+
+    tr.addEventListener("click", () => {
+      alert(`해당 페이지로 이동`);
+      window.location.href = `postDetail.html?id=` + result[0];
+    });
+
     // 10개 넘어가면 다음페이지로 만드는 코드인데
     // 전체 post 수의 배열번호로 받아서 안나오는 경우도 있어 닫아둠
     // if (result[0] > 10) {
