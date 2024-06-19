@@ -51,13 +51,20 @@ document.querySelector(".logoutBtn").addEventListener("click", () => {
 function goToMyPage() {
   const loggedInUser = sessionStorage.getItem("loggedIn-User");
   if (loggedInUser) {
-    document.querySelector("#myPage").addEventListener("click", (event) => {
-      event.preventDefault(); // 기본 링크 이동 방지
-      window.location.href = "myPage.html";
-    });
+    const myPageElement = document.querySelector("#myPage");
+    if (myPageElement) {  // 요소가 존재하는지 확인
+      myPageElement.addEventListener("click", (event) => {
+        event.preventDefault(); // 기본 링크 이동 방지
+        window.location.href = "myPage.html";
+      });
+    } else {
+      console.error('Element with ID "myPage" not found.');
+    }
   }
 }
 
-checkLoggedInUser();
-goToMyPage();
-sessionCurrent();
+document.addEventListener('DOMContentLoaded', () => {
+  checkLoggedInUser();
+  goToMyPage();
+  sessionCurrent();
+});
