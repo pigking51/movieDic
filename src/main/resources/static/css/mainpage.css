@@ -33,7 +33,7 @@ header{
     height: 100px;
     display: flex;
     border-bottom: 1px solid #00D1FE;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .logo{
@@ -49,6 +49,7 @@ header{
 }
 
 .menu{
+    width: auto;
     display: flex;
     justify-content: center;
 }
