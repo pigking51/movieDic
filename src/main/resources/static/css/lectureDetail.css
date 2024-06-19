@@ -155,8 +155,12 @@ header {
   width: auto;
   height: auto;
   color: #00deff;
-  font-family: "GmarketSansMedium";
   margin-bottom: 20px;
+}
+
+.contents p:first-child{
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .lecture {
@@ -235,11 +239,11 @@ header {
   width: 200px;
   height: 50px;
   background-color: #00deff;
-  color: #fff;
+  color: #333;
   font-weight: 700;
   text-align: center;
   line-height: 50px;
-  border-radius: 8px;
+  border-radius: 25px;
   cursor: pointer;
   font-size: 15px;
   border: none;

@@ -145,9 +145,8 @@ header {
   height: 100px;
   margin-top: 20px;
   line-height: 40px;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
-  font-family: "GmarketSansMedium";
 }
 
 .middle {
@@ -157,7 +156,7 @@ header {
 
 .middle span {
   font-size: 20px;
-  font-family: "GmarketSansMedium";
+  /* font-family: "GmarketSansMedium"; */
 }
 
 .bottom {
@@ -166,15 +165,16 @@ header {
 }
 
 .bottom > p {
-  font-size: 25px;
+  font-size: 20px;
   line-height: 30px;
   height: 30px;
-  font-family: "GmarketSansMedium";
+  /* font-family: "GmarketSansMedium"; */
 }
 
 .bottom > span {
+  font-size: 20px;
   line-height: 30px;
-  font-family: "GmarketSansMedium";
+  /* font-family: "GmarketSansMedium"; */
 }
 
 /* 푸터 css시작 */
