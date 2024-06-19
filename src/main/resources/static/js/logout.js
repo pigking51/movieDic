@@ -48,5 +48,16 @@ document.querySelector(".logoutBtn").addEventListener("click", () => {
     });
 });
 
+function goToMyPage() {
+  const loggedInUser = sessionStorage.getItem("loggedIn-User");
+  if (loggedInUser) {
+    document.querySelector("#myPage").addEventListener("click", (event) => {
+      event.preventDefault(); // 기본 링크 이동 방지
+      window.location.href = "myPage.html";
+    });
+  }
+}
+
 checkLoggedInUser();
+goToMyPage();
 sessionCurrent();

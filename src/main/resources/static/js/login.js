@@ -70,11 +70,22 @@ document.querySelector(".loginBtn").addEventListener("click", () => {
       document.querySelector("#password").value = "";
       document.querySelector("#userId").style.border = `2px solid #00d1fe;`;
       document.querySelector("#password").style.border = `2px solid #00d1fe;`;
+
+      window.location.href = "mainpage.html";
     })
     .catch((error) => {
       console.log("에러발생 : ", error);
       alert("ID 혹은 비밀번호가 잘못되었습니다!");
     });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loggedInUser = sessionStorage.getItem("loggedIn-User");
+  const currentPage = window.location.pathname.split("/").pop();
+  if (loggedInUser && currentPage === "login.html") {
+    alert("잘못된 접근입니다.");
+    window.location.href = "mainpage.html"; // 메인 페이지 주소로 변경
+  }
 });
 
 // 로그아웃 (0610기준 현재는 없는 것 같으니 추후 필요한 곳에 넣기)

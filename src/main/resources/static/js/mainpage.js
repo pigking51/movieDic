@@ -1,10 +1,10 @@
-$('.image a:gt(0)').hide();
+$(".image a:gt(0)").hide();
 
-setInterval(function(){
-    $('.image a:first-child')
+setInterval(function () {
+  $(".image a:first-child")
     .fadeOut(1000)
-    .next('a')
+    .next("a")
     .fadeIn(1000)
     .end()
-    .appendTo('.image')
-},3000);
+    .appendTo(".image");
+}, 3000);
