@@ -58,7 +58,7 @@ function goToMyPage() {
         window.location.href = "myPage.html";
       });
     } else {
-      console.error('Element with ID "myPage" not found.');
+      console.error('myPage 이름을 가진 id를 찾을 수 없습니다. html을 확인하세요.');
     }
   }
 }
