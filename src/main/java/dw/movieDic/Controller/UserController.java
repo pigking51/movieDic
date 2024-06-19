@@ -69,6 +69,14 @@ public class UserController {
         }
         return "You have been logged out!!";
     }
+
+    @PatchMapping("/modify/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable String id,
+            @RequestBody User user){
+        return new ResponseEntity<>(userService.updateUser(id, user),
+                HttpStatus.OK);
+    }
+
     @GetMapping("current")
     public SessionDto getCurrentUser(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -80,4 +88,6 @@ public class UserController {
         sessionDto.setAuthority(authentication.getAuthorities());
         return sessionDto;
     }
+
+
 }

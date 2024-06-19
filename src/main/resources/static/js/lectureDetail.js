@@ -63,11 +63,11 @@ function displaylectureDetails(data) {
 
   document.querySelector(".cart-btn").addEventListener("click", () => {
     setlecture(data);
-    // if (confirm("구매완료 장바구니로 가시겠습니까?")) {
-    //   window.location.href = "http://localhost:8080/movieDic/cart.html";
-    // } else {
-    //   window.location.href = "http://localhost:8080/movieDic/lecture.html";
-    // }
+    if (confirm("구매완료 장바구니로 가시겠습니까?")) {
+      window.location.href = "http://localhost:8080/movieDic/cart.html";
+    } else {
+      window.location.href = "http://localhost:8080/movieDic/lecture.html";
+    }
   });
 }
 

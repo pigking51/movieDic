@@ -2,6 +2,8 @@ package dw.movieDic.Model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +16,7 @@ import java.util.Collections;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @Entity
 @Table(name = "user")
 public class User implements UserDetails {
@@ -21,19 +24,19 @@ public class User implements UserDetails {
     @Column(name = "user_id", length = 50)
     private String userId;
 
-    @Column(name = "password", nullable = false, length = 255)
+    @Column(name = "password", length = 255)
     private String password;
 
     @Column(name = "birthday", nullable = false)
     private LocalDate birthday;
 
-    @Column(name = "user_email", nullable = false, unique = true, length = 100)
+    @Column(name = "user_email", unique = true, length = 100)
     private String email;
 
     @Column(name="date_joined", nullable = false, updatable = false)
     private LocalDateTime dateJoined;
 
-    @Column(name = "user_name", nullable = false, length = 50)
+    @Column(name = "user_name", length = 50)
     private String userName;
 
     @ManyToOne
@@ -41,7 +44,7 @@ public class User implements UserDetails {
     private Authority authority;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "gender", nullable = false)
+    @Column(name = "gender")
     private GenderEnum gender;
 
     public enum GenderEnum {

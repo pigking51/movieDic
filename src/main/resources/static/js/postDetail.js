@@ -1,7 +1,7 @@
 const url = "http://localhost:8080/post/getallposts";
 const urlpart = "http://localhost:8080/post/getallpostsparts";
 const urlcomment = "http://localhost:8080/comment/write";
-const urlCoAll = "http://localhost:8080/comment/show";
+const urlCoAll = "http://localhost:8080/user/show";
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");

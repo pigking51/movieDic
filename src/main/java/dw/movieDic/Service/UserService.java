@@ -1,6 +1,7 @@
 package dw.movieDic.Service;
 
 import dw.movieDic.Dto.UserDto;
+import dw.movieDic.Exception.ResourceNotFoundException;
 import dw.movieDic.Model.Authority;
 import dw.movieDic.Model.User;
 import dw.movieDic.Repository.UserRepository;
@@ -41,6 +42,24 @@ public class UserService {
                 authority,
                 userDto.getGender());
         return userRepository.save(user).getUserId();
+
+    }
+
+    public User updateUser(String id, User user){
+        Optional<User> userOptional = userRepository.findByUserId(id);
+        if(userOptional.isPresent()){
+
+            User temp = userOptional.get();
+//            temp.setUserId(user.getUserId());
+//            userId는 @ID로 설정했기때문에 이 방식으로 갱신 불가능함!!!
+            temp.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            temp.setEmail(user.getEmail());
+            temp.setUserName(user.getUsername());
+            userRepository.save(temp);
+            return temp;
+        }else{
+            throw new ResourceNotFoundException("User", "ID", id);
+        }
 
     }
 }
