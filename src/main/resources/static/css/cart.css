@@ -42,7 +42,7 @@ header {
   height: 100px;
   display: flex;
   border-bottom: 1px solid #00d1fe;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .logo {
@@ -60,6 +60,7 @@ header {
 .menu {
   display: flex;
   justify-content: center;
+  width: auto;
 }
 
 .menu > ul {
@@ -345,12 +346,12 @@ header {
   font-size: 20px;
 }
 
-.noEmpty>thead>tr{
+.noEmpty > thead > tr {
   position: fixed;
   z-index: 2;
 }
 
-.noEmpty th{
+.noEmpty th {
   height: 30px;
   line-height: 30px;
 }
@@ -367,19 +368,19 @@ header {
   font-size: 15px;
 }
 
-.noEmpty::-webkit-scrollbar{
+.noEmpty::-webkit-scrollbar {
   width: 20px;
 }
 
-.noEmpty::-webkit-scrollbar-thumb{
-    background-color:rgba(0, 209, 254 , 1);
-    background-clip: padding-box;
-    border: 2px solid transparent;
-    border-radius: 20px;
+.noEmpty::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 209, 254, 1);
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 20px;
 }
 
 .noEmpty::-webkit-scrollbar-track {
-  background-color: rgba(0, 209, 254,0.7);
+  background-color: rgba(0, 209, 254, 0.7);
   box-shadow: inset 0px 0px 5px white;
 }
 

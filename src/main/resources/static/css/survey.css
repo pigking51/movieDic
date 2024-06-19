@@ -29,11 +29,11 @@ body {
   padding: 0;
 }
 
-input{
+input {
   cursor: pointer;
 }
 
-hr{
+hr {
   margin: 10px 0;
   border: 0.5px dashed #00d1fe;
 }
@@ -45,7 +45,7 @@ header {
   height: 100px;
   display: flex;
   border-bottom: 1px solid #00d1fe;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .logo {
@@ -63,6 +63,7 @@ header {
 .menu {
   display: flex;
   justify-content: center;
+  width: auto;
 }
 
 .menu > ul {
@@ -87,7 +88,7 @@ header {
   display: flex;
   justify-content: center;
   color: #333;
-  font-family: 'GyeonggiTitleM';
+  font-family: "GyeonggiTitleM";
 }
 
 .top-Icon {
@@ -109,7 +110,7 @@ header {
   opacity: 0.7;
 }
 
-.top-Icon li:hover{
+.top-Icon li:hover {
   opacity: 1;
 }
 
@@ -127,19 +128,19 @@ header {
   text-align: center;
 }
 
-.title>h1{
+.title > h1 {
   color: #333;
   font-family: "GyeonggiTitleM";
   font-size: 48px;
 }
 
-.title>h4{
+.title > h4 {
   color: #333;
   font-family: "GmarketSansMedium";
   font-size: 18px;
 }
 
-.survey{
+.survey {
   display: flex;
   width: 100%;
   align-items: center;
@@ -156,7 +157,7 @@ header {
   justify-items: center;
 }
 
-.survey-box>span{
+.survey-box > span {
   width: 100%;
   height: 50px;
   line-height: 50px;
@@ -171,17 +172,17 @@ header {
   margin: 20px 0;
 }
 
-.summers>input{
+.summers > input {
   width: auto;
   margin-right: 20px;
 }
 
-.summers>label{
+.summers > label {
   font-family: "GmarketSansMedium";
   font-size: 20px;
 }
 
-.gender{
+.gender {
   display: flex;
   justify-content: left;
 }
@@ -192,12 +193,12 @@ header {
   width: auto;
 }
 
-.human>input{
+.human > input {
   width: auto;
   margin-right: 20px;
 }
 
-.human>label{
+.human > label {
   width: auto;
   font-family: "GmarketSansMedium";
   font-size: 20px;
@@ -208,12 +209,12 @@ header {
   margin: 20px 0;
 }
 
-.class>input{
+.class > input {
   width: auto;
   margin-right: 20px;
 }
 
-.class>label{
+.class > label {
   font-family: "GmarketSansMedium";
   font-size: 20px;
 }
@@ -223,12 +224,12 @@ header {
   margin: 20px 0;
 }
 
-.amount>input{
+.amount > input {
   width: auto;
   margin-right: 20px;
 }
 
-.amount>label{
+.amount > label {
   font-family: "GmarketSansMedium";
   font-size: 20px;
 }
@@ -238,17 +239,17 @@ header {
   margin: 20px 0;
 }
 
-.post>input{
+.post > input {
   width: auto;
   margin-right: 20px;
 }
 
-.post>label{
+.post > label {
   font-family: "GmarketSansMedium";
   font-size: 20px;
 }
 
-.surveybtn-wrap{
+.surveybtn-wrap {
   width: 1000px;
   padding-left: 30px;
 }
@@ -271,16 +272,15 @@ header {
   opacity: 0.8;
 }
 
-
-.surveyBtn:hover{
+.surveyBtn:hover {
   opacity: 1;
-} 
+}
 
-#pop{
+#pop {
   display: none;
 }
 
-.popwrap{
+.popwrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -288,11 +288,11 @@ header {
   height: 100%;
 }
 
-#pop.active{
+#pop.active {
   display: block;
 }
 
-.pop_up{
+.pop_up {
   position: fixed;
   background-color: #fff;
   width: 720px;
@@ -304,7 +304,7 @@ header {
   box-shadow: 3px 2px 5px 1px rgba(0, 0, 0, 0.5);
 }
 
-.uptitle{
+.uptitle {
   text-align: center;
   color: #333;
   font-family: "GmarketSansMedium";
@@ -318,19 +318,19 @@ header {
   align-items: center;
 }
 
-.uptitle>h1{
+.uptitle > h1 {
   width: auto;
-  height: auto;  
+  height: auto;
 }
 
-.uptitle>img{
+.uptitle > img {
   margin-left: 20px;
   margin-bottom: 20px;
   width: 70px;
   height: 70px;
 }
 
-.upbody{
+.upbody {
   margin-left: 20px;
   margin-right: 20px;
   font-size: 25px;
@@ -340,25 +340,24 @@ header {
   text-align: center;
 }
 
-
-.closebtn{
+.closebtn {
   margin-top: 20px;
-    margin-right: 20px;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    float: right;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    background-color: #333;
-    color: #fff;
-    position: absolute;
-    bottom: 50px;
-    right: 25px;
+  margin-right: 20px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  float: right;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  position: absolute;
+  bottom: 50px;
+  right: 25px;
 }
 
-.closebtn:hover{
+.closebtn:hover {
   opacity: 0.6;
 }
 

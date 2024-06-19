@@ -36,7 +36,7 @@ header {
   height: 100px;
   display: flex;
   border-bottom: 1px solid #00d1fe;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .logo {
@@ -54,6 +54,7 @@ header {
 .menu {
   display: flex;
   justify-content: center;
+  width: auto;
 }
 
 .menu > ul {
