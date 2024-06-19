@@ -68,10 +68,19 @@ let likeCount = 0;
 document.querySelector(".like").addEventListener("click", () => {
   likeCount++;
   document.querySelector(".count").textContent = likeCount;
-});
-document.querySelector(".unlike").addEventListener("click", () => {
-  likeCount--;
-  document.querySelector(".count").textContent = likeCount;
+
+  // rgb로 출력되는 랜덤 색상값
+  const r = Math.floor(Math.random() * 256) - 1;
+  const g = Math.floor(Math.random() * 256) - 1;
+  const b = Math.floor(Math.random() * 256) - 1;
+
+  // 16진수로 출력되는 랜덤 색상값
+  function getRandomColor() {
+    return "#" + Math.floor(Math.random() * 16777215).toString(16);
+  }
+  document.querySelector(
+    ".like"
+  ).firstElementChild.style.filter = `drop-shadow(0 0 0 ${getRandomColor()})`;
 });
 
 // 설정된 like 개념 잘 모르겠음

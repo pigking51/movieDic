@@ -191,13 +191,6 @@ header {
   align-items: center;
 }
 
-.unlike img {
-  width: 60px;
-  height: 40px;
-  transform: rotateX(180deg);
-  margin-top: 8px;
-}
-
 .postContent {
   width: 100%;
   height: 60%;
@@ -241,6 +234,7 @@ header {
   width: 80%;
   height: 100px;
   resize: none;
+  overflow-y: auto;
 }
 
 .upload-btn {

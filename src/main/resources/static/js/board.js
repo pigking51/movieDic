@@ -61,39 +61,40 @@ axios
 // 검색 값 넣기
 let keyword = "";
 
+// ~에 대한 결과 창 생성
+const ResultKeyword = document.querySelector(".showResultKeyword");
+const keywordPtag = document.createElement("p");
+const result = document.querySelectorAll(".result");
+
 document.querySelector(".keyword").addEventListener("change", (e) => {
   keyword = e.target.value;
   console.log(keyword);
 });
 
-// ~에 대한 결과 창 생성
-const ResultKeyword = document.querySelector(".showResultKeyword");
-const keywordPtag = document.createElement("p");
-const basic = document.querySelectorAll(".basic");
-const result = document.querySelectorAll(".result");
 // result.style.cssText = `border-top:1px solid #00d1fe;`;
 
 document.querySelector(".search-btn").addEventListener("click", () => {
   // 이전내용 있을시 삭제
   keywordPtag.textContent = ``;
 
-  if (keyword == "") {
+  if (document.getElementsByClassName("result") && keyword == "") {
     keywordPtag.textContent = `검색결과가 없습니다.`;
     ResultKeyword.style.cssText = `border: 4px solid #00d1fe;
     display: flex; justify-content: center; align-items: center`;
     keywordPtag.style.cssText = `width: fit-content; padding-top: 0.5rem`;
     ResultKeyword.appendChild(keywordPtag);
 
-    // 기본 테이블 삭제
-
-    if (document.getElementsByClassName("basic")) {
-      basic.forEach((e) => {
+    // 이전내용 있을시 삭제
+    const trResult = document.querySelectorAll(".result");
+    if (document.getElementsByClassName("result")) {
+      trResult.forEach((e) => {
         e.remove();
-        console.log("삭제완료");
       });
     }
-    if (document.getElementsByClassName("result")) {
-      result.forEach((e) => {
+
+    const basic = document.querySelectorAll(".basic");
+    if (document.getElementsByClassName("basic")) {
+      basic.forEach((e) => {
         e.remove();
         console.log("삭제완료");
       });
@@ -141,22 +142,73 @@ document.querySelector(".search-btn").addEventListener("click", () => {
             alert(`해당 페이지로 이동`);
             window.location.href = `postDetail.html?id=` + data[0];
           });
-          // const basic = document.querySelectorAll(".basic");
-          // basic.forEach((tr) => {
-          //   tr.addEventListener("click", () => {
-          //     window.location.href = "boardDetail.html?id=" + data[0];
-          //   });
-          // });
         });
       })
       .catch((error) => {
         console.log("오류 발생: ", error);
       });
+    return false;
+  } else if (keyword == "") {
+    keywordPtag.textContent = `검색결과가 없습니다.`;
+    ResultKeyword.style.cssText = `border: 4px solid #00d1fe;
+    display: flex; justify-content: center; align-items: center`;
+    keywordPtag.style.cssText = `width: fit-content; padding-top: 0.5rem`;
+    ResultKeyword.appendChild(keywordPtag);
+
+    //기존 테이블 삭제
 
     return false;
   }
 
-  // 이전내용 있을시 삭제
+  // post전체 호출해서 table에 보여주기
+  axios
+    .get(urlpart)
+    .then((response) => {
+      console.log("데이터: ", response.data);
+      response.data.forEach((data) => {
+        // 2. 테이블에 검색결과 나타내는 부분
+        const index = document.createElement("td");
+        const postTitle = document.createElement("td");
+        const userId = document.createElement("td");
+        const createdAt = document.createElement("td");
+
+        const tr = document.createElement("tr");
+        // const td = document.createElement("td");
+        // const tbody = document.querySelector("tbody");
+
+        tr.classList.add("basic");
+        // 가져온 post내용 p태그에 넣기
+        // 해당되는 각 post를 꺼내기
+        index.textContent = data[0];
+        postTitle.textContent = data[1];
+        userId.textContent = data[2];
+        createdAt.textContent = data[3].substring(0, 10);
+
+        // 넣은 p태그를 table에 넣기
+        tr.appendChild(index);
+        tr.appendChild(postTitle);
+        tr.appendChild(userId);
+        tr.appendChild(createdAt);
+
+        if (data[0] > 10) {
+          tbody2.appendChild(tr);
+        } else {
+          tbody1.appendChild(tr);
+        }
+
+        // 해당 게시물 클릭 시 상세로 넘어가는 코드
+
+        tr.addEventListener("click", () => {
+          alert(`해당 페이지로 이동`);
+          window.location.href = `postDetail.html?id=` + data[0];
+        });
+      });
+    })
+    .catch((error) => {
+      console.log("오류 발생: ", error);
+    });
+
+  //검색결과 이전내용 있을시 삭제
   keywordPtag.textContent = ``;
 
   // ~에 대한 결과 창 class 추가
@@ -176,6 +228,14 @@ document.querySelector(".search-btn").addEventListener("click", () => {
   if (document.getElementsByClassName("result")) {
     trResult.forEach((e) => {
       e.remove();
+    });
+  }
+
+  const basic = document.querySelectorAll(".basic");
+  if (document.getElementsByClassName("basic")) {
+    basic.forEach((e) => {
+      e.remove();
+      console.log("삭제완료");
     });
   }
 
@@ -211,9 +271,6 @@ function searchByKeyword(posts) {
       results.push(post);
     }
     console.log(results);
-    if (keyword == "") {
-      alert("");
-    }
   });
   results.forEach((result) => {
     // 2. 테이블에 검색결과 나타내는 부분
