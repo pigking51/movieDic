@@ -1,240 +1,241 @@
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'GyeonggiTitleM';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "GyeonggiTitleM";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-html,body{
-    min-width: 100%;
-    margin: 0;
-    padding: 0;
+html,
+body {
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /* 헤더css시작 */
 
-header{
-    width: 100%;    
-    height: 100px;
-    display: flex;
-    border-bottom: 1px solid #00D1FE;
-    justify-content: space-around;
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  border-bottom: 1px solid #00d1fe;
+  justify-content: space-around;
 }
 
-.logo{
-    width: 200px;
-    height: 100px;
+.logo {
+  width: 200px;
+  height: 100px;
 }
 
-.logo img{
-    width: 80px;
-    height: 80px;
-    margin-top: 10px;
-    margin-left: 10px;
+.logo img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
-.menu{
-    display: flex;
-    justify-content: center;
+.menu {
+  display: flex;
+  justify-content: center;
 }
 
-
-.menu>ul{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    width: 700px;
+.menu > ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  width: 700px;
 }
 
-.menu>ul>li{
-    line-height: 100px;
+.menu > ul > li {
+  line-height: 100px;
 }
 
-.menu>ul>li>a:hover{
-    color: #00D1FE;
+.menu > ul > li > a:hover {
+  color: #00d1fe;
 }
 
-.menu>ul>li>a{
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    color: #333;
-    font-family: 'GyeonggiTitleM';
+.menu > ul > li > a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  color: #333;
+  font-family: "GyeonggiTitleM";
 }
 
-.top-Icon{
-    width: 200px;
-    height: 100px;
-    display: flex;
+.top-Icon {
+  width: 200px;
+  height: 100px;
+  display: flex;
 }
 
-.top-Icon ul{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.top-Icon ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.top-Icon li{
-    list-style: none;
-    width: 60px;
-    height: 60px;
-    opacity: 0.7;
+.top-Icon li {
+  list-style: none;
+  width: 60px;
+  height: 60px;
+  opacity: 0.7;
 }
 
-.top-Icon li:hover{
-    opacity: 1;
+.top-Icon li:hover {
+  opacity: 1;
 }
 
-.top-Icon img{
-    width: 40px;
-    height: 40px;
-    margin: 10px;
+.top-Icon img {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
 }
 
 /* 헤더 css끝 */
 
-input:focus{
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    outline: none;
+input:focus {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  outline: none;
 }
 
-textarea:focus{
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    outline: none;
+textarea:focus {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  outline: none;
 }
 
-.contents{
-    width: 100%;
-    height: auto;
-    margin-bottom: 30px;
+.contents {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
 }
 
-#writetitle{
-    transition: 0.3s;
-    width: 600px;
-    height: 50px;
-    border-radius: 4px;
-    border: 2px solid #00D1FE;
-    font-size: 15px;
-    padding:0 20px;
-    display: block;
+#writetitle {
+  transition: 0.3s;
+  width: 600px;
+  height: 50px;
+  border-radius: 4px;
+  border: 2px solid #00d1fe;
+  font-size: 15px;
+  padding: 0 20px;
+  display: block;
 }
 
-#writetitle::placeholder{
-    font-weight: bold;
-    font-family: 'GmarketSansMedium';
-    color: #00D1FE;
+#writetitle::placeholder {
+  font-weight: bold;
+  font-family: "GmarketSansMedium";
+  color: #00d1fe;
 }
 
-.subject{
-    transition: 0.3s;
-    width: 600px;
-    height: 400px;
-    font-size: 16px;
-    padding: 20px;
-    border-radius: 4px;
-    border: 2px solid #00D1FE;
+.subject {
+  transition: 0.3s;
+  width: 600px;
+  height: 400px;
+  font-size: 16px;
+  padding: 20px;
+  border-radius: 4px;
+  border: 2px solid #00d1fe;
 }
 
-.subject::placeholder{
-    font-weight: bold;
-    font-family: 'GmarketSansMedium';
-    color: #00D1FE;
+.subject::placeholder {
+  font-weight: bold;
+  font-family: "GmarketSansMedium";
+  color: #00d1fe;
 }
 
-.contents-wrap{
-    width: 100%;
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
+.contents-wrap {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
 }
 
-.contents:last-child{
-    justify-content: space-around;
+.contents:last-child {
+  justify-content: space-around;
 }
 
-.contents-wrap button{
-    width: 200px;
-    height: 50px;
-    background-color: #00D1FE;
-    border: none;
-    border-radius: 4px;
-    margin-right: 10px; 
-    font-weight: bold;
-    font-size: 16px;
-    color: #fff;
-    font-family: 'GmarketSansMedium';
-    cursor: pointer;
+.contents-wrap button {
+  width: 200px;
+  height: 50px;
+  background-color: #00d1fe;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+  font-family: "GmarketSansMedium";
+  cursor: pointer;
 }
 
-.contents-wrap button:hover{
-    opacity: 0.7;
+.contents-wrap button:hover {
+  opacity: 0.7;
 }
 
-.selBoard{
-    width: 200px;
-    height: 30px;
-    margin-right: 30px;
-    border: 1px solid #00D1FE;
-    color: #00D1FE;
-    margin-top: 10px;
-    border-radius: 4px;
+.selBoard {
+  width: 200px;
+  height: 30px;
+  margin-right: 30px;
+  border: 1px solid #00d1fe;
+  color: #00d1fe;
+  margin-top: 10px;
+  border-radius: 4px;
 }
 
-select option[name=""][disabled]{
-    display: none;
+select option[name=""][disabled] {
+  display: none;
 }
-
 
 /* 푸터 css시작 */
 
-footer{
-    width: 100%;
-    background-color: #666;
-    height: 300px;
-    margin: 0;
-    padding: 0;
+footer {
+  width: 100%;
+  background-color: #666;
+  height: 300px;
+  margin: 0;
+  padding: 0;
 }
 
-.information{
-    width: 100%;
-    height: 300px;
-    position: relative;
+.information {
+  width: 100%;
+  height: 300px;
+  position: relative;
 }
 
-.information h4{
-    color: #fff;
-    font-size: 25px;
-    padding: 20px;
-    width: 400px;
-    height: 25px;
+.information h4 {
+  color: #fff;
+  font-size: 25px;
+  padding: 20px;
+  width: 400px;
+  height: 25px;
 }
 
-.information span{
-    position: absolute;
-    top: 60px;
-    left: 20px;
-    color: #fff;
-    width: 400px;
-    height: 200px;
-    width: 400px;
+.information span {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  color: #fff;
+  width: 400px;
+  height: 200px;
+  width: 400px;
 }
 
 /* 푸터 css 끝 */
