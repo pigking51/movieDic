@@ -26,7 +26,9 @@ function sessionCurrent() {
 function checkLoggedInUser() {
   const loggedInUser = sessionStorage.getItem("loggedIn-User");
   if (loggedInUser) {
-    document.querySelector(".logoutBtn").classList.remove("hidden");
+    document.querySelector(".logoutBtn").classList.remove("hidden_logout");
+  } else {
+    document.querySelector(".logoutBtn").classList.add("hidden_logout");
   }
 }
 
@@ -36,7 +38,7 @@ document.querySelector(".logoutBtn").addEventListener("click", () => {
     .then((response) => {
       console.log("로그아웃: ", response);
       sessionStorage.removeItem("loggedIn-User");
-      document.querySelector(".logoutBtn").classList.add("hidden");
+      document.querySelector(".logoutBtn").classList.add("hidden_logout");
       window.location.reload();
     })
     .catch((error) => {
