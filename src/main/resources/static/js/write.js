@@ -65,6 +65,8 @@ document.querySelector(".submit-Btn").addEventListener("click", () => {
             .then((response) => {
               console.log("데이터: ", response.data);
               console.log("전송성공");
+
+              window.location.href = "board.html";
             })
             .catch((error) => {
               console.log("오류 발생: ", error);
@@ -76,6 +78,6 @@ document.querySelector(".submit-Btn").addEventListener("click", () => {
     })
     .catch((error) => {
       console.log("오류 발생: ", error);
-      alert("내부에서 문제!");
+      alert("로그인이 필요한 서비스입니다.");
     });
 });
