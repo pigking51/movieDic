@@ -179,19 +179,21 @@ header {
 .left-side {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: auto;
   justify-content: center;
-  align-items: right;
-  margin-right: 20px;
+  align-items: center;
+  margin-right: 50px;
 }
 
 .right-side {
   display: flex;
+  width: auto;
   flex-direction: column;
-  width: 50%;
   justify-content: center;
-  align-items: left;
-  margin-left: 20px;
+  align-items: center;
+  margin: auto 0;
+  height: 953px;
+  padding-top: 40px;
 }
 
 .pay {
@@ -239,9 +241,9 @@ header {
 .cart {
   width: 100%;
   flex-direction: column;
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
 }
 
 .cart h2 {
@@ -281,14 +283,13 @@ header {
   border: 3px solid #00d1fe;
   background-color: #fff;
   border-radius: 15px;
-  height: 550px;
+  height: 600px;
   width: 600px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 95px;
 }
 
 .cartList > h2 {
@@ -302,14 +303,14 @@ header {
   font-size: 18px;
   height: auto;
   margin: auto 0px;
-  /* font-family: "GyeonggiTitleM"; */
+  font-family: "GyeonggiTitleM";
 }
 
 .price > h3 {
   display: flex;
   align-items: center;
   width: auto;
-  /* font-family: "GyeonggiTitleM"; */
+  font-family: "GyeonggiTitleM";
 }
 
 .lectureBtn {
@@ -320,9 +321,9 @@ header {
   font-weight: bold;
   text-align: center;
   line-height: 50px;
-  border-radius: 30px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 15px;
   border: none;
   margin: 20px 0;
   opacity: 0.8;
@@ -330,53 +331,6 @@ header {
 
 .lectureBtn:hover {
   opacity: 1;
-}
-/* js에 따른 css */
-
-.noEmpty {
-  display: none;
-  border: 3px solid #00d1fe;
-  border-radius: 15px;
-  background-color: #fff;
-  height: 550px;
-  width: 600px;
-  overflow: scroll;
-  overflow-x: hidden;
-  margin-bottom: 95px;
-  padding-bottom: 10px;
-}
-.noEmpty table {
-  table-layout: fixed;
-  border-collapse: collapse;
-}
-.noEmpty thead {
-  background-color: #00d1fe;
-  color: white;
-  height: 30px;
-  /* font-family: "GyeonggiTitleM"; */
-  font-size: 20px;
-}
-
-.noEmpty > thead > tr {
-  position: fixed;
-  z-index: 2;
-}
-
-.noEmpty th {
-  height: 50px;
-  line-height: 30px;
-}
-
-.noEmpty tbody {
-  text-align: center;
-}
-.noEmpty tr {
-  height: fit-content;
-}
-.noEmpty td {
-  height: fit-content;
-  /* font-family: "GmarketSansMedium"; */
-  font-size: 18px;
 }
 
 .noEmpty::-webkit-scrollbar {
@@ -394,6 +348,45 @@ header {
   background-color: rgba(0, 209, 254, 0.7);
   box-shadow: inset 0px 0px 5px white;
 }
+/* js에 따른 css */
+
+.noEmpty {
+  display: none;
+  border: 1px solid #00d1fe;
+  background-color: #fff;
+  border-radius: 15px;
+  height: 600px;
+  width: 600px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.noEmpty table {
+  table-layout: fixed;
+  border-radius: 15px;
+  border-collapse: collapse;
+}
+.noEmpty thead {
+  background-color: #00d1fe;
+  color: white;
+  height: 30px;
+  font-family: "GyeonggiTitleM";
+  font-size: 20px;
+}
+
+.noEmpty th {
+  height: 30px;
+  line-height: 30px;
+}
+
+.noEmpty tbody {
+  text-align: center;
+}
+.noEmpty tr {
+  height: fit-content;
+}
+.noEmpty td {
+  height: fit-content;
+}
 
 .tr:nth-child(even) {
   background-color: #eaeaed;
@@ -408,7 +401,6 @@ tbody .tr:nth-last-child() {
 .noEmpty img {
   width: 100%;
   height: 80px;
-  padding: 0 20px;
 }
 
 .deleteBtn {
@@ -422,7 +414,7 @@ tbody .tr:nth-last-child() {
   font-weight: 700;
   text-align: center;
   line-height: 35px;
-  border-radius: 30px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 15px;
   border: none;
