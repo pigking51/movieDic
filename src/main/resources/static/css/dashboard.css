@@ -1,329 +1,344 @@
 @font-face {
-    font-family: 'GyeonggiTitleM';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "GyeonggiTitleM";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-input{
-    transition: 0.3s;
-    color: #666;
-    font-family: 'GmarketSansMedium', 'GyeonggiTitleM';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+input {
+  transition: 0.3s;
+  color: #666;
+  font-family: "GmarketSansMedium", "GyeonggiTitleM";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
 }
 
-label{
-    font-family: 'GmarketSansMedium', 'GyeonggiTitleM';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+label {
+  font-family: "GmarketSansMedium", "GyeonggiTitleM";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
 }
 
-input:focus{
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    outline: none;
+input:focus {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  outline: none;
 }
 
-
-*{
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-html,body{
-    min-width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+html,
+body {
+  min-width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /* 헤더css시작 */
 
-header{
-    width: 100%;    
-    height: 100px;
-    display: flex;
-    border-bottom: 1px solid #fff;
-    justify-content: space-around;
-    background-color: #333;
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  background-color: #333;
+  justify-content: center;
 }
 
-.logo{
-    width: 200px;
-    height: 100px;
+.logo {
+  width: 200px;
+  height: 100px;
 }
 
-.logo img{
-    width: 80px;
-    height: 80px;
-    margin-top: 10px;
-    margin-left: 10px;
+.logo img {
+  width: 60px;
+  height: 60px;
+  margin-top: 20px;
+  margin-left: 20px;
+  opacity: 0.8;
 }
 
-.menu{
-    display: flex;
-    justify-content: center;
+.logo img:hover {
+  opacity: 1;
 }
 
-
-.menu>ul{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    width: 700px;
+.menu {
+  width: auto;
+  display: flex;
+  justify-content: center;
 }
 
-.menu>ul>li{
-    line-height: 100px;
+.menu > ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  width: 700px;
 }
 
-.menu>ul>li>a:hover{
-    color: #00d1fe;
+.menu > ul > li {
+  line-height: 100px;
 }
 
-.menu>ul>li>a{
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    color: #fff;
-    font-family: 'GyeonggiTitleM';
+.menu > ul > li > a:hover {
+  color: #fff;
 }
 
-.top-Icon{
-    width: 200px;
-    height: 100px;
-    display: flex;
+.menu > ul > li > a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  color: #00d1fe;
+  font-family: "GyeonggiTitleM";
 }
 
-.top-Icon ul{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.top-Icon {
+  width: 200px;
+  height: 100px;
+  display: flex;
 }
 
-.top-Icon li{
-    list-style: none;
-    width: 60px;
-    height: 60px;
+.top-Icon ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.top-Icon img{
-    width: 40px;
-    height: 40px;
-    margin: 10px;
+.top-Icon li {
+  list-style: none;
+  width: 60px;
+  height: 60px;
+  opacity: 0.7;
+}
+
+.top-Icon li:hover {
+  opacity: 1;
+}
+
+.top-Icon img {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
 }
 
 /* 헤더 css끝 */
 
-.dbwrap{
-    width: 100%;
-    height: 100%;
-    background-color: #333;
-    display: flex;
+.dbwrap {
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  display: flex;
 }
 
-.leftside{
-    width: 25%;
-    border: 1px solid #fff;
-    border-top: none;
-    display: flex;
-    flex-direction: column;
+.leftside {
+  width: 25%;
+  border-right: 3px solid #fff;
+  border-top: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.today{
-    width: 100%;
-    text-align: center;
-    margin-top: 50px;
-    color: #fff;
-    height: auto;
-    font-family: 'GyeonggiTitleM';
+.today {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  color: #fff;
+  height: auto;
+  font-family: "GyeonggiTitleM";
+  font-size: 24px;
 }
 
-.clock{
-    margin-top: 30px;
-    color: #fff;
-    width: 100%;
-    text-align: center;
-    font-size: 60px;
-    height: auto;
-    font-family: 'GyeonggiTitleM';
+.clock {
+  margin-top: 20px;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  font-size: 60px;
+  height: auto;
+  font-family: "GyeonggiTitleM";
 }
 
-.left-sideImg{
-    width: 100%;
-    height: auto;
+.left-sideImg {
+  width: 300px;
+  height: auto;
+  margin: 50px;
+  display: flex;
+  align-items: center;
 }
 
-.rightside{
-    width: 75%;
-    height: 100%;
-    border-bottom: 1px solid #fff;
+.rightside {
+  width: 75%;
+  height: 100%;
+  /* border-bottom: 1px solid #fff; */
 }
 
-.updb-title{
-    width: 100%;
-    height: 10%;
-    float: left;
-    padding: 0 30px;
+.updb-title {
+  width: 100%;
+  height: 10%;
+  float: left;
+  padding: 0 30px;
 }
 
-.updb-title p{
-    display: flex;
-    align-items: center;
-    font-size: 30px;
-    font-family: 'GyeonggiTitleM';
-    color: #fff;
-    border-bottom: 1px solid #fff;
+.updb-title p {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-family: "GyeonggiTitleM";
+  color: #fff;
+  /* border-bottom: 1px solid #fff; */
 }
 
-.up-graph{
-    display: flex;
-    float: left;
-    width: 100%;
-    height: 35%;
-    padding: 20px;
+.up-graph {
+  display: flex;
+  float: left;
+  width: 100%;
+  height: 35%;
+  padding: 20px;
 }
 
-
-.gender-graph{
-    width: 35%;
-    height: 100%;
-    margin-right: 20px;
-    border: 1px dashed #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
+.gender-graph {
+  width: 35%;
+  height: 100%;
+  margin-right: 20px;
+  border: 1px dashed #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
 }
 
-
-.age-graph{
-    width: 35%;
-    border:1px dashed #fff;
-    height: 100%;
-    margin-right: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
+.age-graph {
+  width: 35%;
+  border: 1px dashed #fff;
+  height: 100%;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
 }
 
-.admin-info{
-    width: 30%;
-    height: 100%;
-    border:1px dashed #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+.admin-info {
+  width: 30%;
+  height: 100%;
+  border: 1px dashed #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.admin-info>p{
-    width: auto;
-    height: auto;
-    color: #fff;
-    margin-left: 20px;
-    font-size: 25px;
-    font-family: 'GyeonggiTitleM';
+.admin-info > p {
+  width: auto;
+  height: auto;
+  color: #fff;
+  margin-left: 20px;
+  font-size: 30px;
+  font-family: "GyeonggiTitleM";
 }
 
-.down-graph{
-    display: flex;
-    float: left;
-    height: 55%;
-    float: left;
+.down-graph {
+  display: flex;
+  float: left;
+  height: 55%;
+  float: left;
 }
 
-.downdb-title{
-    float: left;
-    width: 100%;
-    height: 15%;
-    padding: 0 30px;
-    font-family: 'GyeonggiTitleM';
-    color: #fff;
+.downdb-title {
+  float: left;
+  width: 100%;
+  height: 15%;
+  padding: 0 30px;
+  font-family: "GyeonggiTitleM";
+  color: #fff;
 }
 
-.downdb-title>p{
-    width: 100%;
-    display: flex;
-    font-size: 20px;
-    align-items: center;
-    border-bottom: 1px solid #fff;
+.downdb-title > p {
+  width: 100%;
+  display: flex;
+  font-size: 30px;
+  align-items: center;
+  /* border-bottom: 1px solid #fff; */
 }
 
-.line-graph{
-    width: calc(100% - 40px);
-    height: calc(85% - 40px);
-    border:1px dashed #fff;
-    float: left;
-    margin: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
+.line-graph {
+  width: calc(100% - 40px);
+  height: calc(85% - 40px);
+  border: 1px dashed #fff;
+  float: left;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
 }
 
-.myBarChart-y{
-    width: calc(100% - 40px);
-    height: calc(85% - 40px);
-    border:1px dashed #fff;
-    float: left;
-    margin: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
+.myBarChart-y {
+  width: calc(100% - 40px);
+  height: calc(85% - 40px);
+  border: 1px dashed #fff;
+  float: left;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
 }
 
-.left-down-graph{
-    width: 50%;
+.left-down-graph {
+  width: 50%;
 }
 
-.right-down-graph{
-    width: 50%;
+.right-down-graph {
+  width: 50%;
 }
 
 /* 푸터 css시작 */
 
-footer{
-    width: 100%;
-    background-color: #666;
-    height: 300px;
-    margin: 0;
-    padding: 0;
+footer {
+  width: 100%;
+  background-color: #333;
+  height: 100px;
+  line-height: 100px;
+  margin: 0 auto;
+  padding: 0;
 }
 
-.information{
-    width: 100%;
-    height: 300px;
-    position: relative;
+.information {
+  width: 100%;
+  height: 100px;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.information h4{
-    color: #fff;
-    font-size: 25px;
-    padding: 20px;
-    width: 400px;
-    height: 25px;
+.information h4 {
+  color: #fff;
+  font-size: 25px;
+  width: auto;
+  height: 100px;
+  line-height: 100px;
 }
 
-.information span{
-    position: absolute;
-    top: 60px;
-    left: 20px;
-    color: #fff;
-    width: 400px;
-    height: 200px;
-    width: 400px;
+.information span {
+  color: #fff;
+  height: 100px;
+  width: auto;
 }
 
 /* 푸터 css 끝 */
