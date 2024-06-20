@@ -206,7 +206,7 @@ input:focus {
   font-weight: 700;
   text-align: center;
   line-height: 35px;
-  border-radius: 8px;
+  border-radius: 30px;
   cursor: pointer;
   font-size: 15px;
   border: none;
@@ -260,7 +260,7 @@ input:focus {
   font-weight: 700;
   text-align: center;
   line-height: 35px;
-  border-radius: 8px;
+  border-radius: 30px;
   cursor: pointer;
   font-size: 15px;
   border: 2px solid #00d1fe;

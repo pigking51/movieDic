@@ -154,7 +154,7 @@ header {
 .searchBtn {
   width: 30px;
   height: 30px;
-  border-radius: 8px 0 0 8px;
+  border-radius: 30px;
 }
 .container {
   width: 70%;
@@ -181,15 +181,17 @@ header {
   flex-direction: column;
   width: 50%;
   justify-content: center;
-  align-items: center;
+  align-items: right;
+  margin-right: 20px;
 }
 
 .right-side {
   display: flex;
-  width: 50%;
   flex-direction: column;
+  width: 50%;
   justify-content: center;
-  align-items: center;
+  align-items: left;
+  margin-left: 20px;
 }
 
 .pay {
@@ -237,9 +239,9 @@ header {
 .cart {
   width: 100%;
   flex-direction: column;
-  align-items: center;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 }
 
 .cart h2 {
@@ -276,16 +278,17 @@ header {
 }
 
 .cartList {
-  border: 2px solid #00d1fe;
+  border: 3px solid #00d1fe;
   background-color: #fff;
   border-radius: 15px;
-  height: 600px;
+  height: 550px;
   width: 600px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 95px;
 }
 
 .cartList > h2 {
@@ -299,14 +302,14 @@ header {
   font-size: 18px;
   height: auto;
   margin: auto 0px;
-  font-family: "GyeonggiTitleM";
+  /* font-family: "GyeonggiTitleM"; */
 }
 
 .price > h3 {
   display: flex;
   align-items: center;
   width: auto;
-  font-family: "GyeonggiTitleM";
+  /* font-family: "GyeonggiTitleM"; */
 }
 
 .lectureBtn {
@@ -317,9 +320,9 @@ header {
   font-weight: bold;
   text-align: center;
   line-height: 50px;
-  border-radius: 4px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 18px;
   border: none;
   margin: 20px 0;
   opacity: 0.8;
@@ -332,12 +335,15 @@ header {
 
 .noEmpty {
   display: none;
-  border: 1px solid #00d1fe;
+  border: 3px solid #00d1fe;
+  border-radius: 15px;
   background-color: #fff;
-  height: 600px;
+  height: 550px;
   width: 600px;
   overflow: scroll;
   overflow-x: hidden;
+  margin-bottom: 95px;
+  padding-bottom: 10px;
 }
 .noEmpty table {
   table-layout: fixed;
@@ -347,7 +353,7 @@ header {
   background-color: #00d1fe;
   color: white;
   height: 30px;
-  font-family: "GyeonggiTitleM";
+  /* font-family: "GyeonggiTitleM"; */
   font-size: 20px;
 }
 
@@ -357,7 +363,7 @@ header {
 }
 
 .noEmpty th {
-  height: 30px;
+  height: 50px;
   line-height: 30px;
 }
 
@@ -369,8 +375,8 @@ header {
 }
 .noEmpty td {
   height: fit-content;
-  font-family: "GmarketSansMedium";
-  font-size: 15px;
+  /* font-family: "GmarketSansMedium"; */
+  font-size: 18px;
 }
 
 .noEmpty::-webkit-scrollbar {
@@ -416,7 +422,7 @@ tbody .tr:nth-last-child() {
   font-weight: 700;
   text-align: center;
   line-height: 35px;
-  border-radius: 8px;
+  border-radius: 30px;
   cursor: pointer;
   font-size: 15px;
   border: none;

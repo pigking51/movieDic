@@ -57,6 +57,7 @@ header {
   display: flex;
   background-color: #333;
   justify-content: center;
+  border-bottom: 3px solid #fff;
 }
 
 .logo {
@@ -147,7 +148,7 @@ header {
 
 .leftside {
   width: 25%;
-  border-right: 3px solid #fff;
+  /* border-right: 3px solid #fff; */
   border-top: none;
   display: flex;
   align-items: center;
@@ -216,31 +217,36 @@ header {
   width: 35%;
   height: 100%;
   margin-right: 20px;
-  border: 1px dashed #fff;
+  border: 3px dashed #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 30px;
+  border-radius: 20px;
 }
 
 .age-graph {
   width: 35%;
-  border: 1px dashed #fff;
   height: 100%;
   margin-right: 20px;
+  border: 3px dashed #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 30px;
+  border-radius: 20px;
 }
 
 .admin-info {
-  width: 30%;
+  width: 35%;
   height: 100%;
-  border: 1px dashed #fff;
+  margin-right: 20px;
+  border: 3px dashed #fff;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  border-radius: 20px;
 }
 
 .admin-info > p {
@@ -249,7 +255,7 @@ header {
   color: #fff;
   margin-left: 20px;
   font-size: 30px;
-  font-family: "GyeonggiTitleM";
+  /* font-family: "GyeonggiTitleM"; */
 }
 
 .down-graph {
@@ -279,25 +285,27 @@ header {
 .line-graph {
   width: calc(100% - 40px);
   height: calc(85% - 40px);
-  border: 1px dashed #fff;
+  border: 3px dashed #fff;
   float: left;
   margin: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 30px;
+  border-radius: 20px;
 }
 
 .myBarChart-y {
   width: calc(100% - 40px);
   height: calc(85% - 40px);
-  border: 1px dashed #fff;
+  border: 3px dashed #fff;
   float: left;
   margin: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 30px;
+  border-radius: 20px;
 }
 
 .left-down-graph {
@@ -315,8 +323,10 @@ footer {
   background-color: #333;
   height: 100px;
   line-height: 100px;
+  /* margin-top: 30px; */
   margin: 0 auto;
   padding: 0;
+  border-top: 3px solid #fff;
 }
 
 .information {
