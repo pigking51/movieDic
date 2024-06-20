@@ -1,8 +1,6 @@
-@ -1,254 +1,151 @@
 const url = "http://localhost:8080/user/show";
 
 const clock = document.querySelector(".clock");
-const clock = document.querySelector(".clock"); 
 const today = document.querySelector(".today");
 
 // 변수 선언(통계용)
@@ -33,15 +31,18 @@ axios
   .get("http://localhost:8080/user/current")
   .then((response) => {
     console.log("데이터: ", response.data);
+    // 해당 부분 바깥에서 적용해서 아예 사이트 접근을 못하게 하기
     adminD.push(response.data.authority[0]);
     adminD.push(response.data.userId);
+
+    //
     if (adminD[0].authority != "ROLE_ADMIN") {
       alert("관리자 전용 페이지입니다!!!");
       window.history.go(-1);
     }
 
     axios
-      .get(url)
+      .get("http://localhost:8080/user/show")
       .then((response) => {
         console.log("데이터: ", response.data);
 
@@ -98,11 +99,6 @@ axios
             jun = jun + 1;
           }
         }
-function getClock() {
-    const date = new Date();
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    const seconds = String(date.getSeconds()).padStart(2, "0");
 
         // 차트 부분
 
@@ -224,7 +220,6 @@ function timeDiff(date) {
   date = Math.floor(new Date(date).getTime() / 1000);
   let nowDate = Math.floor(Date.now() / 1000);
   return Math.floor((nowDate - date) / (60 * 60 * 24 * 60 * 6));
-    clock.innerText = `${hours}:${minutes}:${seconds} `;
 }
 
 function getClock() {
@@ -235,9 +230,6 @@ function getClock() {
 
   clock.innerText = `${hours}:${minutes}:${seconds} `;
 }
-getClock(); 
-setInterval(getClock, 1000); 
-
 getClock();
 setInterval(getClock, 1000);
 
@@ -260,135 +252,132 @@ function getToday() {
   const day = days[days_num];
 
   today.innerText = `${year}년 ${month}월 ${date}일 ${day}`;
-
-    const todaydate = new Date();
-    const days = ['일요일', '월요일', '화요일', '수요일', '목요일', '긑요일', '토요일'];
-    const days_num = todaydate.getDay();
-
-    const year = todaydate.getFullYear();
-    const month = todaydate.getMonth() + 1;
-    const date = todaydate.getDate();
-    const day = days[days_num];
-
-
-    today.innerText = `${year}년 ${month}월 ${date}일 ${day}`;
-
 }
+
 getToday();
 
-const doughnutChartCtx = document.querySelector(`#doughnutChart`).getContext(`2d`);
-const doughnutChart = new Chart(doughnutChartCtx, {
-    type: 'doughnut',
-    data: {
-        labels: ['Male', 'Female'],
-        datasets: [{
-            data: [60, 40],
-            backgroundColor: [
-                'rgba(0, 209, 254 , 1)',
-                'rgba(247, 186, 197, 1)'
-            ],
-            borderColor: [
-                'rgba(0 , 209 , 254, 1)',
-                'rgba(247, 186, 197, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        cutout: '50%'
-    }
-});
+// 강의 구매순위
+const lectureUrl = "http://localhost:8080/lectures/getalllectures";
+const purchaseUrlAll = "http://localhost:8080/api/products/purchase";
+axios
+  .get(lectureUrl)
+  .then((response) => {
+    console.log("데이터: ", response.data);
+    const lectureIndex = response.data;
 
-const ctx = document.querySelector(`#myBarChart`).getContext(`2d`);
-const myBarChart = new Chart(ctx, {
-    type: `bar`,
-    data: {
-        labels:[`10대`,`20대`,`30대`,`40대`,`50대이상`],
-        datasets: [{
-            label: `Ages`,
-            data: [12,19,3,5,2,3],
-            backgroundColor: [
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`
-            ],
-            borderColor:[
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`
-            ],
-            borderWidth : 1
-        }]
-    },
-    options: {
-        scales:{
-            y:{
-                beginAtzero:true
-            }
+    axios
+      .get(purchaseUrlAll)
+      .then((response) => {
+        console.log("데이터: ", response.data);
+        const AllLectures = response.data;
+        // 구매한 강의 집계
+        let lecture1 = { lectureNo: 1, count: 0 };
+        let lecture2 = { lectureNo: 2, count: 0 };
+        let lecture3 = { lectureNo: 3, count: 0 };
+        let lecture4 = { lectureNo: 4, count: 0 };
+        let lecture5 = { lectureNo: 5, count: 0 };
+        let lecture6 = { lectureNo: 6, count: 0 };
+        let lecture7 = { lectureNo: 7, count: 0 };
+        let lecture8 = { lectureNo: 8, count: 0 };
+        let lecture9 = { lectureNo: 9, count: 0 };
+        let lectureArr = [];
+
+        AllLectures.forEach((lectures) => {
+          if (lectures.lecture.lectureId == 1) {
+            lecture1.count++;
+          } else if (lectures.lecture.lectureId == 2) {
+            lecture2.count++;
+          } else if (lectures.lecture.lectureId == 3) {
+            lecture3.count++;
+          } else if (lectures.lecture.lectureId == 4) {
+            lecture4.count++;
+          } else if (lectures.lecture.lectureId == 5) {
+            lecture5.count++;
+          } else if (lectures.lecture.lectureId == 6) {
+            lecture6.count++;
+          } else if (lectures.lecture.lectureId == 7) {
+            lecture7.count++;
+          } else if (lectures.lecture.lectureId == 8) {
+            lecture8.count++;
+          } else if (lectures.lecture.lectureId == 9) {
+            lecture9.count++;
+          }
+        });
+
+        for (i = 1; i <= lectureIndex.length; i++) {
+          lectureArr.push(eval(`lecture${i}`));
         }
-    }
-});
+        lectureArr.sort(function (a, b) {
+          return b.count - a.count;
+        });
 
-const lineExample = document.querySelector(`#lineExample`).getContext(`2d`);
-const lineExampleChart = new Chart(lineExample, {
-    type: `line`,
-    data : {
-        labels : [`1월`,`2월`,`3월`,`4월`,`5월`,`6월`],
-        datasets: [{
-            label : `Month of User Sign Up`,
-            data : [65,59,80,81,56,55,40],
-            borderColor: `rgb(0, 209, 254)`,
-            borderWidth: 1,
-            fill:false
-        }]
-    },
-    options: {
-        scales: {
-            x: {
-                beginAtzero:true
+        const lecTop5 = lectureArr.slice(0, 5);
+        const lecTop5Name = [];
+        lecTop5.forEach((Top, index) => {
+          lectureIndex.forEach((lec, index) => {
+            if (Top.lectureNo == lec.lectureId) {
+              lecTop5Name.push(lec.lectureTitle);
+            }
+          });
+        });
+        console.log(lecTop5);
+        console.log(lecTop5Name);
+
+        const ctx2 = document.querySelector(`#myBarChart2`).getContext(`2d`);
+        const myBarChart2 = new Chart(ctx2, {
+          type: `bar`,
+          data: {
+            labels: [
+              lecTop5Name[0],
+              lecTop5Name[1],
+              lecTop5Name[2],
+              lecTop5Name[3],
+              lecTop5Name[4],
+            ],
+            datasets: [
+              {
+                label: `Recently registered`,
+                data: [
+                  lecTop5[0].count,
+                  lecTop5[1].count,
+                  lecTop5[2].count,
+                  lecTop5[3].count,
+                  lecTop5[4].count,
+                  2,
+                ],
+                backgroundColor: [
+                  `rgb(0, 209, 254)`,
+                  `rgb(0, 209, 254)`,
+                  `rgb(0, 209, 254)`,
+                  `rgb(0, 209, 254)`,
+                  `rgb(0, 209, 254)`,
+                ],
+                borderColor: [
+                  `rgb(0, 209, 254)`,
+                  `rgb(0, 209, 254)`,
+                  `rgb(0, 209, 254)`,
+                  `rgb(0, 209, 254)`,
+                  `rgb(0, 209, 254)`,
+                ],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            indexAxis: "y",
+            scales: {
+              y: {
+                beginAtzero: true,
+              },
             },
-            y: {
-                beginAtzero:true
-            }
-        }
-    }
-});
-
-const ctx2 = document.querySelector(`#myBarChart2`).getContext(`2d`);
-const myBarChart2 = new Chart(ctx2, {
-    type: `bar`,
-    data: {
-        labels:[`1st`,`2nd`,`3tr`,`4th`,`5th`],
-        datasets: [{
-            label: `Recently registered`,
-            data: [19,12,9,7,3,2],
-            backgroundColor: [
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`
-            ],
-            borderColor:[
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`,
-                `rgb(0, 209, 254)`
-            ],
-            borderWidth : 1
-        }]
-    },
-    options: {
-        indexAxis : 'y',
-        scales:{
-            y:{
-                beginAtzero:true
-            }
-        }
-    }
-});
+          },
+        });
+      })
+      .catch((error) => {
+        console.log("오류 발생: ", error);
+        console.log("추천강좌 출력오류");
+      });
+  })
+  .catch((error) => {
+    console.log("오류 발생:", error);
+  });

@@ -242,9 +242,9 @@ header {
   height: 100%;
   margin-right: 20px;
   border: 3px dashed #fff;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   padding: 30px;
   border-radius: 20px;
 }
@@ -254,8 +254,9 @@ header {
   height: auto;
   color: #fff;
   margin-left: 20px;
-  font-size: 30px;
-  /* font-family: "GyeonggiTitleM"; */
+  font-size: 26px;
+  font-family: "GyeonggiTitleM";
+  line-height: 1.8;
 }
 
 .down-graph {

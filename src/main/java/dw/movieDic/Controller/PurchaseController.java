@@ -41,7 +41,7 @@ public class PurchaseController {
             HttpStatus.OK);
     }
 
-    @GetMapping("/Products/purchase/current")
+    @GetMapping("/products/purchase/current")
     public List<Purchase> getPurchaseListByCurrentUser(){
         return purchaseService.getPurchaseListByCurrentUser();
     }
