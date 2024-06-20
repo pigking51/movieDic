@@ -41,6 +41,8 @@ document.querySelector(".logoutBtn").addEventListener("click", () => {
       document.querySelector(".logoutBtn").classList.add("hidden_logout");
       window.location.reload();
       alert("로그아웃되셨습니다.");
+
+      window.location.href = "mainpage.html";
     })
     .catch((error) => {
       console.log("로그아웃 실패: ", error);
@@ -52,18 +54,21 @@ function goToMyPage() {
   const loggedInUser = sessionStorage.getItem("loggedIn-User");
   if (loggedInUser) {
     const myPageElement = document.querySelector("#myPage");
-    if (myPageElement) {  // 요소가 존재하는지 확인
+    if (myPageElement) {
+      // 요소가 존재하는지 확인
       myPageElement.addEventListener("click", (event) => {
         event.preventDefault(); // 기본 링크 이동 방지
         window.location.href = "myPage.html";
       });
     } else {
-      console.error('myPage 이름을 가진 id를 찾을 수 없습니다. html을 확인하세요.');
+      console.error(
+        "myPage 이름을 가진 id를 찾을 수 없습니다. html을 확인하세요."
+      );
     }
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   checkLoggedInUser();
   goToMyPage();
   sessionCurrent();
