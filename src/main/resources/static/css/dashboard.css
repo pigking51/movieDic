@@ -237,6 +237,7 @@ header{
 }
 
 .down-graph{
+    display: flex;
     float: left;
     height: 55%;
     float: left;
@@ -269,6 +270,26 @@ header{
     justify-content: center;
     align-items: center;
     padding: 30px;
+}
+
+.myBarChart-y{
+    width: calc(100% - 40px);
+    height: calc(85% - 40px);
+    border:1px dashed #fff;
+    float: left;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.left-down-graph{
+    width: 50%;
+}
+
+.right-down-graph{
+    width: 50%;
 }
 
 /* 푸터 css시작 */
