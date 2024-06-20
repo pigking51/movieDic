@@ -31,12 +31,16 @@ function displaylectureDetails(data) {
   const left = document.createElement("div");
   const right = document.createElement("div");
   const cartBtn = document.createElement("button");
+  const lectureBtn = document.createElement("button");
+  const comment = document.createElement("div");
 
   // 클래스 이름 생성
   lecture.classList.add("lecture");
   img.classList.add("image");
   lowBox.classList.add("low-box");
   cartBtn.classList.add("cart-btn");
+  lectureBtn.classList.add("lecture-btn");
+  comment.classList.add("comment");
 
   // 태그 속성 추가
   img.src = data.image;
@@ -48,9 +52,11 @@ function displaylectureDetails(data) {
   lecture.style.setProperty("transform", "initial", "important");
   lecture.style.setProperty("cursor", "initial", "important");
   cartBtn.textContent = "장바구니담기";
+  lectureBtn.textContent = "강의 들으러 가기";
 
   // appendChild 자식위치 설정
   right.appendChild(cartBtn);
+  right.appendChild(lectureBtn);
   left.appendChild(title);
   left.appendChild(major);
   left.appendChild(price);
@@ -60,6 +66,7 @@ function displaylectureDetails(data) {
   lecture.appendChild(img);
   lecture.appendChild(lowBox);
   contents.appendChild(lecture);
+  contents.appendChild(comment);
 
   document.querySelector(".cart-btn").addEventListener("click", () => {
     setlecture(data);
