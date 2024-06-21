@@ -381,3 +381,5 @@ axios
   .catch((error) => {
     console.log("오류 발생:", error);
   });
+
+// 결과 그래프 출력용

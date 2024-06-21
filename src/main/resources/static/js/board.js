@@ -118,7 +118,7 @@ document.querySelector(".search-btn").addEventListener("click", () => {
           tr.classList.add("basic");
           // 가져온 post내용 p태그에 넣기
           // 해당되는 각 post를 꺼내기
-          indexNum.textContent = index;
+          indexNum.textContent = index + 1;
           postTitle.textContent = data[1];
           userId.textContent = data[2];
           createdAt.textContent = data[3].substring(0, 10);
@@ -129,7 +129,7 @@ document.querySelector(".search-btn").addEventListener("click", () => {
           tr.appendChild(userId);
           tr.appendChild(createdAt);
 
-          if (index > 10) {
+          if (index > 9) {
             tbody2.appendChild(tr);
           } else {
             tbody1.appendChild(tr);

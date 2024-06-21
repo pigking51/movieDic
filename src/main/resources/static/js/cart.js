@@ -10,7 +10,7 @@ function sessionCurrent() {
         const authority = response.data.authority[0].authority;
         let cartItems = JSON.parse(localStorage.getItem(userId));
         console.log(cartItems);
-        if (cartItems) {
+        if (!isEmptyArr(cartItems)) {
           displayCart(cartItems);
           const data = cartItems.map((lecture) => {
             // purchase객체를 만들어서 리턴
@@ -46,6 +46,14 @@ function sessionCurrent() {
       alert("로그인해주세요.");
       window.location.href = `login.html`;
     });
+}
+
+function isEmptyArr(arr) {
+  if (Array.isArray(arr) && arr.length === 0) {
+    return true;
+  }
+
+  return false;
 }
 
 function displayCart(lectures) {
@@ -123,7 +131,11 @@ function deleteIndex(Index) {
           alert("삭제되었습니다.");
         }
         window.location.reload();
+
         localStorage.setItem(userId, JSON.stringify(cartItems));
+        if (Index == 0) {
+          list.style.display = `block`;
+        }
       }
     })
     .catch((error) => {

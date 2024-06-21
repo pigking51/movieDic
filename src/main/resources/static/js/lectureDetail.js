@@ -5,6 +5,43 @@ const id = urlParams.get("id");
 console.log("Lecture ID: ", id);
 
 const urls = "http://localhost:8080/lectures/getalllectures/" + id;
+const purchaseUrl = "http://localhost:8080/api/products/purchase/current";
+let isUser = "";
+
+function userOrNot() {
+  axios
+    .get("http://localhost:8080/user/current", { widthCredentials: true })
+    .then((response) => {
+      console.log("데이터: ", response.data);
+      isUser = response.data.userId;
+    })
+    .catch((error) => {
+      console.log("오류 발생: ", error);
+      console.log("유저아님");
+    });
+}
+
+axios
+  .get(purchaseUrl)
+  .then((response) => {
+    console.log(response.data);
+    response.data.forEach((edata) => {
+      if (edata.lecture.lectureId == id) {
+        document.querySelector(".cart-btn").classList.add("hidden");
+        document.querySelector(".hidden").style.display = `none`;
+        if (document.querySelector(".lecture-btn").style.display == `none`) {
+          document.querySelector(".lecture-btn").style.display = `block`;
+        }
+      } else {
+        document.querySelector(".lecture-btn").classList.add("hidden");
+        document.querySelector(".hidden").style.display = `none`;
+      }
+    });
+  })
+  .catch((error) => {
+    console.log("오류 발생: ", error);
+    console.log("구매내역 확인불가");
+  });
 
 axios
   .get(urls)
@@ -68,6 +105,12 @@ function displaylectureDetails(data) {
   contents.appendChild(lecture);
   contents.appendChild(comment);
 
+  userOrNot();
+  if (isUser == "") {
+    document.querySelector(".lecture-btn").classList.add("hidden");
+    document.querySelector(".hidden").style.display = `none`;
+  }
+
   document.querySelector(".cart-btn").addEventListener("click", () => {
     setlecture(data);
     if (confirm("구매완료 장바구니로 가시겠습니까?")) {
@@ -75,6 +118,10 @@ function displaylectureDetails(data) {
     } else {
       window.location.href = "http://localhost:8080/movieDic/lecture.html";
     }
+  });
+
+  document.querySelector(".lecture-btn").addEventListener("click", () => {
+    window.location.href = `streaming.html?user=${isUser}&id=${id}`;
   });
 }
 
