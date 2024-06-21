@@ -64,6 +64,15 @@ public class UserService {
 
     }
 
+    public List<User> saveUserList(List<User> userList) {
+        List<User> savedUserList = userList.stream()
+                .map((user) -> {
+                    return userRepository.save(user);
+                })
+                .collect(Collectors.toList());
+        return savedUserList;
+    }
+
 //    public Object[] getUserCurrentRealName(){
 //        return userRepository.findAll().stream().map((user) -> user.getUsername()).collect(Collectors.toList()).toArray();
 ////        if(userOptional.isEmpty()){

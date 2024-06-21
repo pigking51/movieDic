@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -87,6 +88,12 @@ public class UserController {
         sessionDto.setUserId(authentication.getName());
         sessionDto.setAuthority(authentication.getAuthorities());
         return sessionDto;
+    }
+
+    @PostMapping("userList")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_TEACHER')")
+    public  List<User> saveUserList(@RequestBody List<User> userList) {
+        return userService.saveUserList(userList);
     }
 
 //    @GetMapping("/currentname")
