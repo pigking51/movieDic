@@ -6,7 +6,7 @@ const urlShow = "http://localhost:8080/user/show";
 
 let userId = "";
 let password = "";
-let userName = "";
+let realName = "";
 let userEmail = "";
 let gender = "";
 let birthday = "";
@@ -35,7 +35,7 @@ document.querySelector(".email").addEventListener("change", (e) => {
 
 document.querySelector(".name").addEventListener("change", (e) => {
   console.log(e.target.value);
-  userName = e.target.value;
+  realName = e.target.value;
 });
 
 document.querySelector("#male").addEventListener("click", (e) => {
@@ -144,7 +144,7 @@ document.querySelector(".register").addEventListener("click", () => {
     password: password,
     birthday: birthday,
     userEmail: userEmail,
-    userName: userName,
+    realName: realName,
     gender: gender,
   };
   // 비밀번호 일치 확인

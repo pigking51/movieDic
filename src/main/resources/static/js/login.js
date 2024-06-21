@@ -37,45 +37,63 @@ document.querySelector(".togBtn").addEventListener("click", () => {
 // });
 
 document.querySelector(".loginBtn").addEventListener("click", () => {
-  const data = {
-    userId: userId,
-    password: password,
-  };
-  if (
-    document.querySelector("#userId").value == "" &&
-    document.querySelector("#password").value == ""
-  ) {
-    alert("ID와 비밀번호 둘다 입력하지 않았습니다!!!");
-    document.querySelector("#userId").style.border = `4px solid red`;
-    document.querySelector("#password").style.border = `4px solid red`;
-    return false;
-  } else if (document.querySelector("#userId").value == "") {
-    alert("ID를 입력하지 않았습니다!");
-    document.querySelector("#userId").style.border = `4px solid red`;
-    return false;
-  } else if (document.querySelector("#password").value == "") {
-    alert("비밀번호를 입력하지 않았습니다!");
-    document.querySelector("#password").style.border = `4px solid red`;
-    return false;
-  }
-
   axios
-    .post(urlLogin, data, { withCredentials: true }) // url 옆에 전송할 객체 넣음
+    .get(urlShow)
     .then((response) => {
-      console.log("데이터 :", response);
-      sessionCurrent();
-      alert(`${userId}님 환영합니다!`);
-      window.location.reload();
-      document.querySelector("#userId").value = "";
-      document.querySelector("#password").value = "";
-      document.querySelector("#userId").style.border = `2px solid #00d1fe;`;
-      document.querySelector("#password").style.border = `2px solid #00d1fe;`;
+      console.log("데이터: ", response.data);
+      const allUserName = [];
+      response.data.forEach((member) => {
+        if (member.userId == userId) {
+          allUserName.push(member.realName);
+        }
+      });
 
-      window.location.href = "mainpage.html";
+      const data = {
+        userId: userId,
+        password: password,
+      };
+      if (
+        document.querySelector("#userId").value == "" &&
+        document.querySelector("#password").value == ""
+      ) {
+        alert("ID와 비밀번호 둘다 입력하지 않았습니다!!!");
+        document.querySelector("#userId").style.border = `4px solid red`;
+        document.querySelector("#password").style.border = `4px solid red`;
+        return false;
+      } else if (document.querySelector("#userId").value == "") {
+        alert("ID를 입력하지 않았습니다!");
+        document.querySelector("#userId").style.border = `4px solid red`;
+        return false;
+      } else if (document.querySelector("#password").value == "") {
+        alert("비밀번호를 입력하지 않았습니다!");
+        document.querySelector("#password").style.border = `4px solid red`;
+        return false;
+      }
+
+      axios
+        .post(urlLogin, data, { withCredentials: true }) // url 옆에 전송할 객체 넣음
+        .then((response) => {
+          console.log("데이터 :", response);
+          sessionCurrent();
+          alert(`${allUserName}님 환영합니다!`);
+          window.location.reload();
+          document.querySelector("#userId").value = "";
+          document.querySelector("#password").value = "";
+          document.querySelector("#userId").style.border = `2px solid #00d1fe;`;
+          document.querySelector(
+            "#password"
+          ).style.border = `2px solid #00d1fe;`;
+
+          window.location.href = "mainpage.html";
+        })
+        .catch((error) => {
+          console.log("에러발생 : ", error);
+          alert("ID 혹은 비밀번호가 잘못되었습니다!");
+        });
     })
     .catch((error) => {
-      console.log("에러발생 : ", error);
-      alert("ID 혹은 비밀번호가 잘못되었습니다!");
+      console.log("오류 발생: ", error);
+      console.log("회원이름 출력 오류 ");
     });
 });
 

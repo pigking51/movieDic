@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class UserDto {
     private String userId;
     private String password;
-    private String userName;
+    private String realName;
     private String userEmail;
     private User.GenderEnum gender;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

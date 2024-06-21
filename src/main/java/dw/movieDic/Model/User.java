@@ -37,7 +37,7 @@ public class User implements UserDetails {
     private LocalDateTime dateJoined;
 
     @Column(name = "user_name", length = 50)
-    private String userName;
+    private String realName;
 
     @ManyToOne
     @JoinColumn(name = "authority", nullable = false)

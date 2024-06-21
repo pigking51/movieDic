@@ -155,7 +155,7 @@ document.querySelector(".register").addEventListener("click", () => {
         // userId: nickname,
         password: password,
         email: email,
-        username: Rname,
+        realname: Rname,
         gender: gender,
       };
 
@@ -198,6 +198,30 @@ axios
   .then((response) => {
     console.log("데이터: ", response.data);
     const userData = response.data;
+
+    // 유저이름(~님 환영합니다 이런식으로 구현하기)
+    const RuserName =
+      document.querySelector(".user-info").firstElementChild.firstElementChild;
+
+    axios
+      .get(urlShow)
+      .then((response) => {
+        console.log("데이터: ", response.data);
+        const realName = response.data;
+        let showName = "";
+        // 기존 디폴트 값 삭제
+        RuserName.textContent = "";
+        realName.forEach((member) => {
+          if (member.userId == userData.userId) {
+            showName = member.realName;
+          }
+          RuserName.textContent = showName + `님 환영합니다`;
+        });
+      })
+      .catch((error) => {
+        console.log("오류 발생: ", error);
+      });
+
     axios
       .get(purchaseUrlAll)
       .then((response) => {

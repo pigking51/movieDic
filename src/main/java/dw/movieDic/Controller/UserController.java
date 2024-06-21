@@ -89,5 +89,11 @@ public class UserController {
         return sessionDto;
     }
 
+//    @GetMapping("/currentname")
+//    public ResponseEntity<Object[]> getUserPartsRealName(){
+//        return new ResponseEntity<>(userService.getUserCurrentRealName(),
+//                HttpStatus.OK);
+//    }
+
 
 }

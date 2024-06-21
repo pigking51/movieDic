@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -38,7 +39,7 @@ public class UserService {
                 userDto.getBirthday(),
                 userDto.getUserEmail(),
                 LocalDateTime.now(),
-                userDto.getUserName(),
+                userDto.getRealName(),
                 authority,
                 userDto.getGender());
         return userRepository.save(user).getUserId();
@@ -54,7 +55,7 @@ public class UserService {
 //            userId는 @ID로 설정했기때문에 이 방식으로 갱신 불가능함!!!
             temp.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             temp.setEmail(user.getEmail());
-            temp.setUserName(user.getUsername());
+            temp.setRealName(user.getUsername());
             userRepository.save(temp);
             return temp;
         }else{
@@ -62,4 +63,13 @@ public class UserService {
         }
 
     }
+
+//    public Object[] getUserCurrentRealName(){
+//        return userRepository.findAll().stream().map((user) -> user.getUsername()).collect(Collectors.toList()).toArray();
+////        if(userOptional.isEmpty()){
+////            return "there is no data";
+////        }
+////           return userOptional.get().getUsername();
+//    }
+
 }
