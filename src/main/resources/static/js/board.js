@@ -16,9 +16,9 @@ axios
   .get(urlpart)
   .then((response) => {
     console.log("데이터: ", response.data);
-    response.data.forEach((data) => {
+    response.data.forEach((data, index) => {
       // 2. 테이블에 검색결과 나타내는 부분
-      const index = document.createElement("td");
+      const indexNum = document.createElement("td");
       const postTitle = document.createElement("td");
       const userId = document.createElement("td");
       const createdAt = document.createElement("td");
@@ -30,18 +30,18 @@ axios
       tr.classList.add("basic");
       // 가져온 post내용 p태그에 넣기
       // 해당되는 각 post를 꺼내기
-      index.textContent = data[0];
+      indexNum.textContent = index + 1;
       postTitle.textContent = data[1];
       userId.textContent = data[2];
       createdAt.textContent = data[3].substring(0, 10);
 
       // 넣은 p태그를 table에 넣기
-      tr.appendChild(index);
+      tr.appendChild(indexNum);
       tr.appendChild(postTitle);
       tr.appendChild(userId);
       tr.appendChild(createdAt);
 
-      if (data[0] > 10) {
+      if (index > 9) {
         tbody2.appendChild(tr);
       } else {
         tbody1.appendChild(tr);
@@ -104,9 +104,9 @@ document.querySelector(".search-btn").addEventListener("click", () => {
       .get(urlpart)
       .then((response) => {
         console.log("데이터: ", response.data);
-        response.data.forEach((data) => {
+        response.data.forEach((data, index) => {
           // 2. 테이블에 검색결과 나타내는 부분
-          const index = document.createElement("td");
+          const indexNum = document.createElement("td");
           const postTitle = document.createElement("td");
           const userId = document.createElement("td");
           const createdAt = document.createElement("td");
@@ -118,18 +118,18 @@ document.querySelector(".search-btn").addEventListener("click", () => {
           tr.classList.add("basic");
           // 가져온 post내용 p태그에 넣기
           // 해당되는 각 post를 꺼내기
-          index.textContent = data[0];
+          indexNum.textContent = index;
           postTitle.textContent = data[1];
           userId.textContent = data[2];
           createdAt.textContent = data[3].substring(0, 10);
 
           // 넣은 p태그를 table에 넣기
-          tr.appendChild(index);
+          tr.appendChild(indexNum);
           tr.appendChild(postTitle);
           tr.appendChild(userId);
           tr.appendChild(createdAt);
 
-          if (data[0] > 10) {
+          if (index > 10) {
             tbody2.appendChild(tr);
           } else {
             tbody1.appendChild(tr);
@@ -139,7 +139,7 @@ document.querySelector(".search-btn").addEventListener("click", () => {
 
           tr.addEventListener("click", () => {
             alert(`해당 페이지로 이동`);
-            window.location.href = `postDetail.html?id=` + data[0];
+            window.location.href = `postDetail.html?id=` + index;
           });
         });
       })
@@ -164,9 +164,9 @@ document.querySelector(".search-btn").addEventListener("click", () => {
     .get(urlpart)
     .then((response) => {
       console.log("데이터: ", response.data);
-      response.data.forEach((data) => {
+      response.data.forEach((data, index) => {
         // 2. 테이블에 검색결과 나타내는 부분
-        const index = document.createElement("td");
+        const indexNum = document.createElement("td");
         const postTitle = document.createElement("td");
         const userId = document.createElement("td");
         const createdAt = document.createElement("td");
@@ -178,18 +178,18 @@ document.querySelector(".search-btn").addEventListener("click", () => {
         tr.classList.add("basic");
         // 가져온 post내용 p태그에 넣기
         // 해당되는 각 post를 꺼내기
-        index.textContent = data[0];
+        indexNum.textContent = index + 1;
         postTitle.textContent = data[1];
         userId.textContent = data[2];
         createdAt.textContent = data[3].substring(0, 10);
 
         // 넣은 p태그를 table에 넣기
-        tr.appendChild(index);
+        tr.appendChild(indexNum);
         tr.appendChild(postTitle);
         tr.appendChild(userId);
         tr.appendChild(createdAt);
 
-        if (data[0] > 10) {
+        if (index > 9) {
           tbody2.appendChild(tr);
         } else {
           tbody1.appendChild(tr);
@@ -199,7 +199,7 @@ document.querySelector(".search-btn").addEventListener("click", () => {
 
         tr.addEventListener("click", () => {
           alert(`해당 페이지로 이동`);
-          window.location.href = `postDetail.html?id=` + data[0];
+          window.location.href = `postDetail.html?id=` + index;
         });
       });
     })
@@ -271,9 +271,9 @@ function searchByKeyword(posts) {
     }
     console.log(results);
   });
-  results.forEach((result) => {
+  results.forEach((result, index) => {
     // 2. 테이블에 검색결과 나타내는 부분
-    const index = document.createElement("td");
+    const indexNum = document.createElement("td");
     const postTitle = document.createElement("td");
     const userId = document.createElement("td");
     const createdAt = document.createElement("td");
@@ -285,13 +285,13 @@ function searchByKeyword(posts) {
 
     // 가져온 post내용 p태그에 넣기
     // 해당되는 각 post를 꺼내기
-    index.textContent = result[0];
+    indexNum.textContent = index + 1;
     postTitle.textContent = result[1];
     userId.textContent = result[2];
     createdAt.textContent = result[3].substring(0, 10);
 
     // 넣은 p태그를 table에 넣기
-    tr.appendChild(index);
+    tr.appendChild(indexNum);
     tr.appendChild(postTitle);
     tr.appendChild(userId);
     tr.appendChild(createdAt);
@@ -301,7 +301,7 @@ function searchByKeyword(posts) {
 
     tr.addEventListener("click", () => {
       alert(`해당 페이지로 이동`);
-      window.location.href = `postDetail.html?id=` + result[0];
+      window.location.href = `postDetail.html?id=` + index;
     });
 
     // 10개 넘어가면 다음페이지로 만드는 코드인데

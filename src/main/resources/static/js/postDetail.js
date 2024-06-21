@@ -63,11 +63,16 @@ function displayBoardDetails(data) {
 
 // 좋아요 저장 및 표시
 
-let likeCount = 0;
+const add = (function () {
+  let likeCount = 0;
+  return function () {
+    likeCount += 1;
+    return likeCount;
+  };
+})();
 
 document.querySelector(".like").addEventListener("click", () => {
-  likeCount++;
-  document.querySelector(".count").textContent = likeCount;
+  document.querySelector(".count").textContent = add();
 
   // rgb로 출력되는 랜덤 색상값
   const r = Math.floor(Math.random() * 256) - 1;
@@ -86,7 +91,6 @@ document.querySelector(".like").addEventListener("click", () => {
 // 설정된 like 개념 잘 모르겠음
 
 // 댓글달기
-
 document.querySelector(".commentInput").addEventListener("change", (e) => {
   comment = e.target.value;
   console.log(comment);

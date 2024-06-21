@@ -65,7 +65,8 @@ document.querySelector(".submit-Btn").addEventListener("click", () => {
             .then((response) => {
               console.log("데이터: ", response.data);
               console.log("전송성공");
-
+              title = "";
+              contents = "";
               window.location.href = "board.html";
             })
             .catch((error) => {
