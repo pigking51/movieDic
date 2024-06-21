@@ -40,7 +40,6 @@ document.querySelector(".logoutBtn").addEventListener("click", () => {
       sessionStorage.removeItem("loggedIn-User");
       document.querySelector(".logoutBtn").classList.add("hidden_logout");
       window.location.reload();
-      alert("로그아웃되셨습니다.");
 
       window.location.href = "mainpage.html";
     })
