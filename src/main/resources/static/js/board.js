@@ -49,7 +49,6 @@ axios
       // 해당 게시물 클릭 시 상세로 넘어가는 코드
 
       tr.addEventListener("click", () => {
-        alert(`해당 페이지로 이동`);
         window.location.href = `postDetail.html?id=` + data[0];
       });
     });

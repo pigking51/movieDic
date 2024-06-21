@@ -258,8 +258,8 @@ header {
   padding: 10px;
 }
 .commentInput {
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
   border: none;
   resize: none;
   overflow-y: auto;

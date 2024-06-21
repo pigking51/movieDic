@@ -150,7 +150,7 @@ document.querySelector(".register").addEventListener("click", () => {
   // 비밀번호 일치 확인
 
   if (passChk != password) {
-    document.querySelector(".passwordcheck").style.border = `4px solid red`;
+    document.querySelector(".passwordcheck").style.border = `4px solid #f2bfde`;
     alert(`비밀번호가 일치하지 않습니다`);
     return false;
   }
