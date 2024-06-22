@@ -385,7 +385,7 @@ axios
 
 // 결과 그래프 출력용
 
-// 사용자 관리 출력, user전체 호출해서 table에 보여주기
+// 사용자 관리 출력, user전체 호출해서 table에 보여주기(0623)
 document.addEventListener('DOMContentLoaded', function() {
   fetch(urlPart)
       .then(response => response.json())
@@ -394,36 +394,36 @@ document.addEventListener('DOMContentLoaded', function() {
           data.forEach(user => {
               const row = document.createElement('tr');
 
-              const userIdCell = document.createElement('td');
-              userIdCell.textContent = user[0];
-              row.appendChild(userIdCell);
+              const userId = document.createElement('td');
+              userId.textContent = user[0];
+              row.appendChild(userId);
 
-              const birthdayCell = document.createElement('td');
-              birthdayCell.textContent = user[1];
-              row.appendChild(birthdayCell);
+              const birthday = document.createElement('td');
+              birthday.textContent = user[1];
+              row.appendChild(birthday);
 
-              const dateJoinedCell = document.createElement('td');
-              dateJoinedCell.textContent = user[2];
-              row.appendChild(dateJoinedCell);
+              const dateJoined = document.createElement('td');
+              dateJoined.textContent = user[2].substring(0, 19);
+              row.appendChild(dateJoined);
 
-              const emailCell = document.createElement('td');
-              emailCell.textContent = user[3];
-              row.appendChild(emailCell);
+              const email = document.createElement('td');
+              email.textContent = user[3];
+              row.appendChild(email);
 
-              const genderCell = document.createElement('td');
-              genderCell.textContent = user[4];
-              row.appendChild(genderCell);
+              const gender = document.createElement('td');
+              gender.textContent = user[4];
+              row.appendChild(gender);
 
-              const realNameCell = document.createElement('td');
-              realNameCell.textContent = user[5];
-              row.appendChild(realNameCell);
+              const realName = document.createElement('td');
+              realName.textContent = user[5];
+              row.appendChild(realName);
 
-              const authorityCell = document.createElement('td');
-              authorityCell.textContent = user[6];
-              row.appendChild(authorityCell);
+              const authority = document.createElement('td');
+              authority.textContent = user[6];
+              row.appendChild(authority);
 
               manageBody.appendChild(row);
           });
       })
-      .catch(error => console.error('Error fetching user data:', error));
+      .catch(error => console.error('사용자 관리 측 오류 발생:', error));
 });
