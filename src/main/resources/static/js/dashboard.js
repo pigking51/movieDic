@@ -1,4 +1,5 @@
 const url = "http://localhost:8080/user/show";
+const urlPart = "http://localhost:8080/user/getallusersparts";
 
 const clock = document.querySelector(".clock");
 const today = document.querySelector(".today");
@@ -383,3 +384,46 @@ axios
   });
 
 // 결과 그래프 출력용
+
+// 사용자 관리 출력, user전체 호출해서 table에 보여주기
+document.addEventListener('DOMContentLoaded', function() {
+  fetch(urlPart)
+      .then(response => response.json())
+      .then(data => {
+          const manageBody = document.querySelector('.manage-body');
+          data.forEach(user => {
+              const row = document.createElement('tr');
+
+              const userIdCell = document.createElement('td');
+              userIdCell.textContent = user[0];
+              row.appendChild(userIdCell);
+
+              const birthdayCell = document.createElement('td');
+              birthdayCell.textContent = user[1];
+              row.appendChild(birthdayCell);
+
+              const dateJoinedCell = document.createElement('td');
+              dateJoinedCell.textContent = user[2];
+              row.appendChild(dateJoinedCell);
+
+              const emailCell = document.createElement('td');
+              emailCell.textContent = user[3];
+              row.appendChild(emailCell);
+
+              const genderCell = document.createElement('td');
+              genderCell.textContent = user[4];
+              row.appendChild(genderCell);
+
+              const realNameCell = document.createElement('td');
+              realNameCell.textContent = user[5];
+              row.appendChild(realNameCell);
+
+              const authorityCell = document.createElement('td');
+              authorityCell.textContent = user[6];
+              row.appendChild(authorityCell);
+
+              manageBody.appendChild(row);
+          });
+      })
+      .catch(error => console.error('Error fetching user data:', error));
+});

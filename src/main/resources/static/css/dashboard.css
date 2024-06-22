@@ -369,6 +369,10 @@ header {
   line-height: 35px;
 }
 
+.manage-body > thead > tr {
+  overflow: auto;
+}
+
 /* 푸터 css시작 */
 
 footer {

@@ -90,12 +90,12 @@ public class UserController {
         return sessionDto;
     }
 
-    @PostMapping("userList")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_TEACHER')")
-    public  List<User> saveUserList(@RequestBody List<User> userList) {
-        return userService.saveUserList(userList);
+    // 대시보드 사용자 관리를 위한 유저 정보 불러오기
+    @GetMapping("getallusersparts")
+    public ResponseEntity<List<Object[]>> getAllUsersParts(){
+        return new ResponseEntity<>(userService.getAllUsersParts(),
+                HttpStatus.OK);
     }
-
 //    @GetMapping("/currentname")
 //    public ResponseEntity<Object[]> getUserPartsRealName(){
 //        return new ResponseEntity<>(userService.getUserCurrentRealName(),

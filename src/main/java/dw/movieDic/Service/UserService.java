@@ -64,13 +64,9 @@ public class UserService {
 
     }
 
-    public List<User> saveUserList(List<User> userList) {
-        List<User> savedUserList = userList.stream()
-                .map((user) -> {
-                    return userRepository.save(user);
-                })
-                .collect(Collectors.toList());
-        return savedUserList;
+    // 대시보드에 사용자 관리를 위한 유저 정보 불러오기 비즈니스 로직
+    public List<Object[]> getAllUsersParts(){
+        return userRepository.getUserInfo();
     }
 
 //    public Object[] getUserCurrentRealName(){
