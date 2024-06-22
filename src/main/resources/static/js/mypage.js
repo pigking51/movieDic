@@ -266,7 +266,13 @@ axios
                 const lectureBox = document.createElement("div");
                 lectureBox.textContent = lecture.lecture.lectureTitle;
                 lectureBox.classList.add("lecture-box");
+                document.querySelector(".lecture-box").style.cursor = `pointer`;
                 myLecture.appendChild(lectureBox);
+                document
+                  .querySelector(".lecture-box")
+                  .addEventListener("click", () => {
+                    window.location.href = `streaming.html?user=${userData.userId}&id=${lecture.lecture.lectureId}`;
+                  });
               });
             })
             .catch((error) => {
@@ -374,6 +380,11 @@ axios
               subText[index].appendChild(rankPtag);
               subText[index].appendChild(titlePtag);
               subText[index].appendChild(countPtag);
+
+              picture[index].addEventListener("click", () => {
+                window.location.href =
+                  `lectureDetail.html?id=` + lecIn.lectureId;
+              });
             }
           });
         });
