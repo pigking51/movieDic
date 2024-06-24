@@ -266,13 +266,13 @@ axios
                 const lectureBox = document.createElement("div");
                 lectureBox.textContent = lecture.lecture.lectureTitle;
                 lectureBox.classList.add("lecture-box");
-                document.querySelector(".lecture-box").style.cursor = `pointer`;
                 myLecture.appendChild(lectureBox);
-                document
-                  .querySelector(".lecture-box")
-                  .addEventListener("click", () => {
-                    window.location.href = `streaming.html?user=${userData.userId}&id=${lecture.lecture.lectureId}`;
-                  });
+
+                lectureBox.style.cssText = `cursor: pointer;`;
+
+                lectureBox.addEventListener("click", () => {
+                  window.location.href = `streaming.html?user=${userData.userId}&id=${lecture.lecture.lectureId}`;
+                });
               });
             })
             .catch((error) => {
