@@ -43,7 +43,7 @@ function sessionCurrent() {
     })
     .catch((error) => {
       console.log("오류 발생: ", error);
-      alert("로그인해주세요.");
+      alert("로그인해주세요(카트)");
       window.location.href = `login.html`;
     });
 }
