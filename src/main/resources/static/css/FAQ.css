@@ -123,6 +123,14 @@ header {
 
 /* 헤더 css끝 */
 
+.FAQ-title {
+  width: calc(100% - 400px);
+  margin: 50px auto;
+  font-family: "GmarketSansMedium";
+  text-align: center;
+  height: auto;
+}
+
 .FAQ {
   width: calc(100% - 400px);
   border-top: 3px solid #00d1fe;
