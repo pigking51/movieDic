@@ -4,11 +4,10 @@ const urlArr = "http://localhost:8080/post/getallpostsarrays";
 const urlpart = "http://localhost:8080/post/getallpostsparts";
 
 // 게시물 10개 넘었을때 다음페이지로 변경
-document.querySelector(".hidden").style.display = `none`;
 document.querySelector(".block").style.display = `table`;
 const table1 = document.querySelector(".table1");
 const table2 = document.querySelector(".table2");
-const allTbody = document.querySelectorAll("tbody");
+
 const tbody1 = document.querySelector(".body1");
 const tbody2 = document.querySelector(".body2");
 const numWarp = document.querySelector(".numberNation");
@@ -20,21 +19,7 @@ axios
   .get(urlpart)
   .then((response) => {
     console.log("데이터: ", response.data);
-    // for (i = 0; i < response.data.length; i++) {
-    //   // post 10개 이상 될 때마다 테이블 추가
-    //   for (j = 0; j < (response.data.length / 10).round; j++) {
-    //     if (i == 9 * (j + 2) - 1) {
-    //       const tbody = document.createElement("tbody");
-    //       tbody.classList.add("tbody3");
-    //       tbody.classList.add("hidden");
-    //       table1.appendChild(tbody);
-    //       count++;
-    //       const innerNum = document.createElement("span");
-    //       innerNum.textContent = count;
-    //       numWarp.appendChild(innerNum);
-    //     }
-    //   }
-    // }
+
     const tbody3 = document.getElementsByClassName("body3");
     response.data.forEach((data, index) => {
       // 2. 테이블에 검색결과 나타내는 부분
@@ -89,6 +74,7 @@ axios
         window.location.href = `postDetail.html?id=` + data[0];
       });
     });
+    // changeTable();
   })
   .catch((error) => {
     console.log("오류 발생: ", error);
@@ -374,8 +360,22 @@ function searchByKeyword(posts) {
 //   document.querySelector(".table2").classList.add("block");
 // });
 
-document.querySelectorAll(".b-active").forEach((active, index) => {
-  active.addEventListener("click", () => {
-    console.log(`번호확인 ${index + 1}`);
-  });
-});
+// 아래 번호 누르는거 구현 실패(시도중)
+// function changeTable() {
+//   const allTbody = document.querySelectorAll("tbody");
+//   const bActive = document.querySelectorAll(".b-active");
+//   console.log(bActive.length);
+//   bActive.forEach((active, index) => {
+//     active.addEventListener("click", () => {
+//       console.log(`번호확인 ${index + 1}`);
+//       allTbody.forEach((bodies) => {
+//         console.log(`매치되는 tbody확인 : ${bodies}`);
+//         if (bodies.classList.contains("hidden")) {
+//           bodies.classList.remove("hidden");
+//         } else if (!bodies.classList.contains("hidden")) {
+//           bodies.classList.add("hidden");
+//         }
+//       });
+//     });
+//   });
+// }
