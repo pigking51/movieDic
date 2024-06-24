@@ -136,6 +136,27 @@ header {
   height: 50px;
   outline: none;
 }
+.hidden {
+  display: none;
+}
+.block {
+  display: block;
+}
+
+.numberNation {
+  width: 80%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8% auto;
+}
+
+.numberNation span {
+  width: fit-content;
+  margin: 0 16px;
+  cursor: pointer;
+}
 
 /* table 칸 안맞아서 생성되는거 보고 적당히 변경해야될듯 */
 .table-bar {
