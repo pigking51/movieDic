@@ -40,6 +40,8 @@ axios
     if (adminD[0].authority != "ROLE_ADMIN") {
       alert("관리자 전용 페이지입니다!!!");
       window.history.go(-1);
+    } else {
+      document.body.classList.remove("hidden_dashboard");
     }
 
     axios
@@ -386,44 +388,44 @@ axios
 // 결과 그래프 출력용
 
 // 사용자 관리 출력, user전체 호출해서 table에 보여주기(0623)
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   fetch(urlPart)
-      .then(response => response.json())
-      .then(data => {
-          const manageBody = document.querySelector('.manage-body');
-          data.forEach(user => {
-              const row = document.createElement('tr');
+    .then((response) => response.json())
+    .then((data) => {
+      const manageBody = document.querySelector(".manage-body");
+      data.forEach((user) => {
+        const row = document.createElement("tr");
 
-              const userId = document.createElement('td');
-              userId.textContent = user[0];
-              row.appendChild(userId);
+        const userId = document.createElement("td");
+        userId.textContent = user[0];
+        row.appendChild(userId);
 
-              const birthday = document.createElement('td');
-              birthday.textContent = user[1];
-              row.appendChild(birthday);
+        const birthday = document.createElement("td");
+        birthday.textContent = user[1];
+        row.appendChild(birthday);
 
-              const dateJoined = document.createElement('td');
-              dateJoined.textContent = user[2].substring(0, 19);
-              row.appendChild(dateJoined);
+        const dateJoined = document.createElement("td");
+        dateJoined.textContent = user[2].substring(0, 19);
+        row.appendChild(dateJoined);
 
-              const email = document.createElement('td');
-              email.textContent = user[3];
-              row.appendChild(email);
+        const email = document.createElement("td");
+        email.textContent = user[3];
+        row.appendChild(email);
 
-              const gender = document.createElement('td');
-              gender.textContent = user[4];
-              row.appendChild(gender);
+        const gender = document.createElement("td");
+        gender.textContent = user[4];
+        row.appendChild(gender);
 
-              const realName = document.createElement('td');
-              realName.textContent = user[5];
-              row.appendChild(realName);
+        const realName = document.createElement("td");
+        realName.textContent = user[5];
+        row.appendChild(realName);
 
-              const authority = document.createElement('td');
-              authority.textContent = user[6];
-              row.appendChild(authority);
+        const authority = document.createElement("td");
+        authority.textContent = user[6];
+        row.appendChild(authority);
 
-              manageBody.appendChild(row);
-          });
-      })
-      .catch(error => console.error('사용자 관리 측 오류 발생:', error));
+        manageBody.appendChild(row);
+      });
+    })
+    .catch((error) => console.error("사용자 관리 측 오류 발생:", error));
 });
