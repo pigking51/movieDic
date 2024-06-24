@@ -275,7 +275,7 @@ header {
   margin: 0 10px;
 }
 
-.comment {
+/* .comment {
   width: 70%;
   height: 500px;
   border: 1px solid #00d1fe;
@@ -286,7 +286,7 @@ header {
 
 .comment h1 {
   height: 100px;
-}
+} */
 
 /*.commentBox {
   width: 660px;
@@ -296,6 +296,11 @@ header {
   border-radius: 15px;
   margin: 0 auto;
 }*/
+
+.detail {
+  width: fit-content;
+  height: fit-content;
+}
 
 /* 푸터 css시작 */
 

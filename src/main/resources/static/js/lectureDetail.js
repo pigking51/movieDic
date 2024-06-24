@@ -69,7 +69,7 @@ function displaylectureDetails(data) {
   const right = document.createElement("div");
   const cartBtn = document.createElement("button");
   const lectureBtn = document.createElement("button");
-  const comment = document.createElement("div");
+  // const comment = document.createElement("div");
 
   // 클래스 이름 생성
   lecture.classList.add("lecture");
@@ -77,7 +77,7 @@ function displaylectureDetails(data) {
   lowBox.classList.add("low-box");
   cartBtn.classList.add("cart-btn");
   lectureBtn.classList.add("lecture-btn");
-  comment.classList.add("comment");
+  // comment.classList.add("comment");
 
   // 태그 속성 추가
   img.src = data.image;
@@ -103,7 +103,7 @@ function displaylectureDetails(data) {
   lecture.appendChild(img);
   lecture.appendChild(lowBox);
   contents.appendChild(lecture);
-  contents.appendChild(comment);
+  // contents.appendChild(comment);
 
   userOrNot();
   if (isUser == "") {
