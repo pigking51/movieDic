@@ -1,5 +1,6 @@
 package dw.movieDic.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,8 +25,10 @@ public class Board {
     private String boardName;
 
     @OneToMany(mappedBy = "board")
+    @JsonIgnore
     private Set<Post> posts;
 
     @OneToMany(mappedBy = "board")
+    @JsonIgnore
     private Set<Comment> comments;
 }

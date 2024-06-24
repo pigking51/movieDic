@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Repository
-public interface PostRepository extends JpaRepository<Post, Long> {
+public interface PostRepository extends JpaRepository<Post, Object> {
 
     @Query("SELECT p.postId, p.postTitle, p.user.userId, p.createdAt, p.postContent FROM Post p")
     List<Object[]> getPostInfo();

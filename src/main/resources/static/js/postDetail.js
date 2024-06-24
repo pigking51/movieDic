@@ -1,13 +1,15 @@
 const url = "http://localhost:8080/post/getallposts";
 const urlpart = "http://localhost:8080/post/getallpostsparts";
 const urlcomment = "http://localhost:8080/comment/write";
-const urlCoAll = "http://localhost:8080/user/show";
+const urlCoAll = "http://localhost:8080/comment/commentAll";
+const urlCur = "http://localhost:8080/user/current";
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 console.log("Post ID: ", id);
 
-const urls = "http://localhost:8080/post/getallpostsparts" + id;
+const urls = "http://localhost:8080/post/getallpostsparts/" + id;
+const edit = document.querySelector(".edit-btn");
 
 let boardId = "";
 let postId = "";
@@ -15,13 +17,50 @@ let userId = "";
 let comment = "";
 
 axios
-  .get(urlpart)
+  .get(urls)
   .then((response) => {
     console.log("데이터: ", response.data);
-    displayBoardDetails(response.data[id - 1]);
-    postId = response.data[0];
-    userId = response.data[2];
-    boardId = response.data[5];
+    const nowPostD = response.data;
+    displayBoardDetails(response.data);
+    postId = response.data.postId;
+    boardId = response.data.board.boardId;
+
+    // 댓글달기
+    document.querySelector(".commentInput").addEventListener("change", (e) => {
+      comment = e.target.value;
+      console.log(comment);
+    });
+    document.querySelector(".upload-btn").addEventListener("click", () => {
+      axios
+        .get(urlCur)
+        .then((response) => {
+          console.log("데이터: ", response.data);
+          userId = response.data.userId;
+          if (!nowPostD.user.userId == userId) {
+            edit.style.display = `none`;
+          }
+          const data = {
+            boardId: boardId,
+            postId: postId,
+            userId: userId,
+            commentContent: comment,
+          };
+          axios
+            .post(urlcomment, data, { withCredentials: true })
+            .then((response) => {
+              console.log("데이터: ", response.data);
+              console.log("댓글달기 성공!");
+            })
+            .catch((error) => {
+              console.log("오류 발생: ", error);
+              console.log("comment 서버전송 실패");
+            });
+        })
+        .catch((error) => {
+          console.log("오류 발생: ", error);
+          console.log("현재 post의 comment 추가 실패");
+        });
+    });
   })
   .catch((error) => {
     console.log("오류 발생: ", error);
@@ -44,12 +83,12 @@ function displayBoardDetails(data) {
   // 요소에 내용 삽입
 
   // 제목부분
-  pId.textContent = data[0];
-  pTitle.textContent = data[1];
-  uId.textContent = data[2];
-  pTime.textContent = data[3].substring(0, 10);
+  pId.textContent = data.postId;
+  pTitle.textContent = data.postTitle;
+  uId.textContent = data.user.userId;
+  pTime.textContent = data.createdAt.substring(0, 10);
   // 내용부분
-  pContent.textContent = data[4];
+  pContent.textContent = data.postContent;
 
   // div에 삽입
   postTitle.appendChild(pId);
@@ -90,28 +129,6 @@ document.querySelector(".like").addEventListener("click", () => {
 
 // 설정된 like 개념 잘 모르겠음
 
-// 댓글달기
-document.querySelector(".commentInput").addEventListener("change", (e) => {
-  comment = e.target.value;
-  console.log(comment);
-});
-document.querySelector(".upload-btn").addEventListener("click", () => {
-  const data = {
-    boardId: boardId,
-    postId: postId,
-    userId: userId,
-    commentContent: comment,
-  };
-  axios
-    .post(urlcomment, data, { withCredentials: true })
-    .then((response) => {
-      console.log("데이터: ", response.data);
-    })
-    .catch((error) => {
-      console.log("오류 발생: ", error);
-    });
-});
-
 // 현재 댓글
 axios
   .get(urlCoAll)
@@ -134,9 +151,11 @@ function getAllComment(comments) {
     const cCreatedAt = document.createElement("p");
 
     // 요소에 데이터 추가
-    uId.textContent = comment.userId;
+    uId.textContent = comment.user.userId;
     cComment.textContent = comment.commentContent;
-    cCreatedAt.textContent = comment.CreatedAt;
+    cCreatedAt.textContent = comment.createdAt.substring(0, 10);
+    // 아래꺼는 시간
+    // cCreatedAt.textContent = comment.createdAt.substring(12, 18);
 
     // 클래스 추가
     div.classList.add("comments");
