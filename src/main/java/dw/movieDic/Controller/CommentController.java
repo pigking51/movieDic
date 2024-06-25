@@ -4,6 +4,7 @@ import dw.movieDic.Dto.CommentDto;
 import dw.movieDic.Dto.PostDto;
 import dw.movieDic.Model.Comment;
 import dw.movieDic.Service.CommentService;
+import org.hibernate.annotations.Fetch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,13 @@ public class CommentController {
     @GetMapping("/commentAll")
     public ResponseEntity<List<Comment>> showAllComments(){
         return new ResponseEntity<>(commentService.showAllComments(),
+                HttpStatus.OK);
+    }
+
+    @PatchMapping("/changecomment/{commentId}")
+    public ResponseEntity<CommentDto> updateComment(@PathVariable long commentId,
+                                                 @RequestBody CommentDto commentDto){
+        return new ResponseEntity<>(commentService.updateComment(commentId, commentDto),
                 HttpStatus.OK);
     }
 }

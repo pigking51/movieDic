@@ -15,6 +15,7 @@ let boardId = "";
 let postId = "";
 let userId = "";
 let comment = "";
+let commentId = "";
 
 axios
   .get(urls)
@@ -22,6 +23,7 @@ axios
     console.log("데이터: ", response.data);
     const nowPostD = response.data;
     displayBoardDetails(response.data);
+    rewriteMainContent(response.data);
     postId = response.data.postId;
     boardId = response.data.board.boardId;
 
@@ -36,6 +38,7 @@ axios
         .then((response) => {
           console.log("데이터: ", response.data);
           userId = response.data.userId;
+
           if (!nowPostD.user.userId == userId) {
             edit.style.display = `none`;
           }
@@ -105,12 +108,16 @@ axios
         commentList.appendChild(div);
       });
 
-      // 내 댓글 수정
-      // const myComments = document.querySelectorAll(".comments").addEventListener("click", () =>{
-      //   if(
-
-      //   )
-      // })
+      // current 하나 더 생성
+      axios
+        .get(urlCur)
+        .then((response) => {
+          console.log("데이터: ", response.data);
+          rewriteMyComment(response.data);
+        })
+        .catch((error) => {
+          console.log("오류 발생: ", error);
+        });
     }
   })
   .catch((error) => {
@@ -179,3 +186,96 @@ document.querySelector(".like").addEventListener("click", () => {
 });
 
 // 설정된 like 개념 잘 모르겠음
+
+// 내 댓글 수정
+function rewriteMyComment(myComment) {
+  const myComments = document.getElementsByClassName("comments");
+  console.log(myComments.length);
+  // 취소 버튼 만들기
+  const cancel = document.createElement("span");
+  cancel.classList.add("cancel");
+  // 제출 버튼 만들기
+  const submit = document.createElement("button");
+  submit.style.cssText = `width: 30px; height: 30px; backgroundColor: blue`;
+
+  Array.from(myComments).forEach((commen, index) => {
+    commen.appendChild(cancel);
+
+    commen.addEventListener("click", () => {
+      axios
+        .get(urlCoAll)
+        .then((response) => {
+          console.log("데이터: ", response.data);
+
+          cancel.style.display = `block`;
+          const uId = document.createElement("p");
+          const reComment = document.createElement("input");
+          reComment.type = `text`;
+          cancel.addEventListener("click", () => {
+            for (i = 0; i < response.data.length; i++) {
+              if (myComment.userId == response.data[i].user.userId) {
+                commentId = response.data[i].commentId;
+                commen.textContent = "";
+                uId.textContent = response.data[i].userId;
+                commen.appendChild(uId);
+                commen.appendChild(reComment);
+                commen.appendChild(submit);
+                break;
+              }
+            }
+            reComment.addEventListener("change", (el) => {
+              comment = el.target.value;
+            });
+
+            submit.addEventListener("click", () => {
+              const patchData = {
+                commentContent: comment,
+                postId: postId,
+              };
+
+              axios
+                .patch(
+                  `http://localhost:8080/comment/changecomment/${commentId}`,
+                  patchData,
+                  { withCredentials: true }
+                )
+                .then((response) => {
+                  console.log("데이터: ", response.data);
+                  console.log("갱신 성공!!");
+                  reComment.textContent = "";
+                  window.location.reload();
+                })
+                .catch((error) => {
+                  console.log("오류 발생: ", error);
+                });
+            });
+          });
+        })
+        .catch((error) => {
+          console.log("오류 발생: ", error);
+          console.log("갱신위한 전체댓글 출력 오류");
+        });
+    });
+  });
+}
+
+// 본문 글 수정
+function rewriteMainContent() {
+  const editMain = document.querySelector(".edit-btn");
+  const editTitle = document.querySelector(".postTitle");
+  const editContent = document.querySelector(".postContent");
+
+  // 수정할 input 태그 추가
+  const editTInput = document.createElement("input");
+  const editCInput = document.createElement("input");
+  editTInput.type = `text`;
+  editCInput.type = `text`;
+  editCInput.cssText = `width: 100%; height: 100%;`;
+
+  editMain.addEventListener("click", () => {
+    editTitle.firstElementChild.nextElementSibling.remove();
+    editContent.textContent = "";
+    editTitle.appendChild(editTInput);
+    editContent.appendChild(editCInput);
+  });
+}

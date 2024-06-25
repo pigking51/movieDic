@@ -2,6 +2,7 @@ package dw.movieDic.Service;
 
 import dw.movieDic.Dto.CommentDto;
 import dw.movieDic.Dto.PostDto;
+import dw.movieDic.Exception.ResourceNotFoundException;
 import dw.movieDic.Model.Board;
 import dw.movieDic.Model.Comment;
 import dw.movieDic.Model.Post;
@@ -14,6 +15,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,4 +57,54 @@ public class CommentService {
     public List<Comment> showAllComments(){
         return commentRepository.findAll();
     }
+
+//    public CommentDto updateComment2(long commentId,long postId, String userId, CommentDto commentDto){
+//
+//        Board board = boardRepository.findById(commentDto.getBoardId())
+//                .orElseThrow(() -> new IllegalArgumentException("Invalid board ID"));
+//        Post post = postRepository.findById(commentDto.getPostId())
+//                .orElseThrow(() -> new IllegalArgumentException("Invalid post ID"));
+//        User user = userRepository.findById(commentDto.getUserId())
+//                .orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
+//
+//        List<Comment> comment1 = commentRepository.findByUser(commentDto.getUserId());
+//        for(int i = 0; i < comment1.size(); i++){
+//            if(comment1.get(i).getCommentId() == commentId &&
+//                    comment1.get(i).getPost().getPostId() == postId){
+//                comment1.get(i).setCommentId(commentId);
+//                comment1.get(i).setCommentContent(commentDto.getCommentContent());
+//                comment1.get(i).setBoard(board);
+//                comment1.get(i).setPost(post);
+//                comment1.get(i).setUser(user);
+//
+//                Comment savedComment = commentRepository.save(comment1.get(i));
+//
+//                return commentDto.toCommentDtoFromComment(savedComment);
+//            }
+//
+//        }
+//        return commentDto;
+//    }
+
+    public CommentDto updateComment(long commentId, CommentDto commentDto) {
+
+        Post post = postRepository.findById(commentDto.getPostId())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid post ID"));
+
+        Optional<Comment> comment1 = commentRepository.findById(commentId);
+        if(comment1.isPresent()){
+        comment1.get().setCommentContent(commentDto.getCommentContent());
+        comment1.get().setCreatedAt(LocalDateTime.now());
+        comment1.get().setPost(post);
+
+        Comment updatedComment = commentRepository.save(comment1.get());
+
+            return commentDto.toCommentDtoFromComment(updatedComment);
+        }
+        else{
+            throw new ResourceNotFoundException("Comment", "ID", commentId);
+        }
+
+    }
+
 }
