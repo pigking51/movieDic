@@ -383,9 +383,13 @@ header {
 }
 .noEmpty tr {
   height: fit-content;
+  display: flex;
+  align-items: center;
 }
+
 .noEmpty td {
   height: fit-content;
+  margin: 2%;
 }
 
 .tr:nth-child(even) {

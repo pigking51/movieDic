@@ -61,6 +61,57 @@ axios
           console.log("현재 post의 comment 추가 실패");
         });
     });
+    // 현재 댓글
+    axios
+      .get(urlCoAll)
+      .then((response) => {
+        console.log("데이터: ", response.data);
+        getAllComment(response.data);
+      })
+      .catch((error) => {
+        console.log("오류 발생: ", error);
+      });
+
+    // 현재 댓글 생성 함수
+    const commentList = document.querySelector(".comment-list");
+    function getAllComment(comments) {
+      let nowPostCom = [];
+      for (i = 0; i < comments.length; i++) {
+        if (comments[i].post.postId == nowPostD.postId) {
+          nowPostCom.push(comments[i]);
+        }
+      }
+      nowPostCom.forEach((comment) => {
+        // 요소 생성
+        const div = document.createElement("div");
+        const uId = document.createElement("p");
+        const cComment = document.createElement("p");
+        const cCreatedAt = document.createElement("p");
+
+        // 요소에 데이터 추가
+        uId.textContent = comment.user.userId;
+        cComment.textContent = comment.commentContent;
+        cCreatedAt.textContent = comment.createdAt.substring(0, 10);
+        // 아래꺼는 시간
+        // cCreatedAt.textContent = comment.createdAt.substring(12, 18);
+
+        // 클래스 추가
+        div.classList.add("comments");
+
+        // 요소 넣기
+        div.appendChild(uId);
+        div.appendChild(cComment);
+        div.appendChild(cCreatedAt);
+        commentList.appendChild(div);
+      });
+
+      // 내 댓글 수정
+      // const myComments = document.querySelectorAll(".comments").addEventListener("click", () =>{
+      //   if(
+
+      //   )
+      // })
+    }
   })
   .catch((error) => {
     console.log("오류 발생: ", error);
@@ -128,42 +179,3 @@ document.querySelector(".like").addEventListener("click", () => {
 });
 
 // 설정된 like 개념 잘 모르겠음
-
-// 현재 댓글
-axios
-  .get(urlCoAll)
-  .then((response) => {
-    console.log("데이터: ", response.data);
-    getAllComment(response.data);
-  })
-  .catch((error) => {
-    console.log("오류 발생: ", error);
-  });
-
-// 현재 댓글 생성 함수
-const commentList = document.querySelector(".comment-list");
-function getAllComment(comments) {
-  comments.forEach((comment) => {
-    // 요소 생성
-    const div = document.createElement("div");
-    const uId = document.createElement("p");
-    const cComment = document.createElement("p");
-    const cCreatedAt = document.createElement("p");
-
-    // 요소에 데이터 추가
-    uId.textContent = comment.user.userId;
-    cComment.textContent = comment.commentContent;
-    cCreatedAt.textContent = comment.createdAt.substring(0, 10);
-    // 아래꺼는 시간
-    // cCreatedAt.textContent = comment.createdAt.substring(12, 18);
-
-    // 클래스 추가
-    div.classList.add("comments");
-
-    // 요소 넣기
-    div.appendChild(uId);
-    div.appendChild(cComment);
-    div.appendChild(cCreatedAt);
-    commentList.appendChild(div);
-  });
-}
