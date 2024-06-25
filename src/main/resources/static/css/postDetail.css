@@ -141,7 +141,7 @@ header {
 /* 본문 */
 .section-wrap {
   width: 70%;
-  height: 100%;
+  height: auto;
   display: flex;
   margin: 0 auto;
   /* border: 3px dashed red; */
@@ -218,6 +218,7 @@ header {
   height: fit-content;
   font-size: 24px;
   padding: 10%;
+  line-height: 40px;
 }
 
 /* .side-bar {
@@ -243,18 +244,31 @@ header {
   width: 80%;
   height: 60px;
   margin: 1% auto;
-  border: 1px solid #333;
   border-radius: 40px;
   text-align: center;
-  padding: 16px 40px;
+  border: 1px solid #333;
 }
 .comments p {
-  width: fit-content;
+  width: auto;
+  text-align: left;
+  margin: 0 30px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "GmarketSansMedium";
+  color: #00d1fe;
 }
 
 .comment-list {
-  height: auto;
+  border-top: 3px solid #00d1fe;
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+  margin: 50px 0;
+  border-bottom: 1px solid #00d1fe;
 }
+
 .comment-box {
   width: 80%;
   height: 250px;
@@ -328,6 +342,7 @@ header {
 /* 푸터 css시작 */
 
 footer {
+  float: left;
   width: 100%;
   background-color: #333;
   height: 100px;

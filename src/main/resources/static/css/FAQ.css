@@ -202,6 +202,8 @@ footer {
   line-height: 100px;
   margin: 0 auto;
   padding: 0;
+  position: absolute;
+  bottom: 0;
 }
 
 .information {
