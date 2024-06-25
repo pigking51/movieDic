@@ -20,8 +20,49 @@
     https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js
     "></script>
     <script src="../js/streaming.js" defer type="text/javascript"></script>
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
   </head>
   <body>
+    <!-- 헤더html시작 -->
+
+    <header>
+      <div class="logo">
+        <a href="#">
+          <img src="../images/logo/logo.png" alt="상단로고" />
+        </a>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="team.html">팀소개</a></li>
+          <li><a href="lecture.html">강의</a></li>
+          <li><a href="board.html">게시판</a></li>
+          <li><a href="#">이벤트</a></li>
+          <li><a href="FAQ.html">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="top-Icon">
+        <ul>
+          <li>
+            <a href="#" class="logoutBtn hidden_logout"
+              ><img src="../images/icon/log-out.png" alt="상단 아이콘"
+            /></a>
+          </li>
+          <li>
+            <a href="login.html" id="myPage"
+              ><img src="../images/icon/person.png" alt="상단 아이콘"
+            /></a>
+          </li>
+          <li>
+            <a href="cart.html"
+              ><img src="../images/icon/shopping_bag.png" alt="상단 아이콘"
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- 헤더 html 끝 -->
+
     <div class="top">
       <div class="left">
         <a href="#" class="logo">
@@ -38,7 +79,9 @@
 
     <div class="slidemenu">
       <div class="closeSideMenu">
-        <button>X</button>
+        <button>
+          <img src="../images/icon/close.png" width="30" height="30" />
+        </button>
       </div>
       <ul class="navi">
         <li>
@@ -67,38 +110,58 @@
         </li>
       </ul>
     </div>
-
-    <div class="contents">
-      <div class="play">
+    <div class="video">
+      <div class="contents">
+        <div class="showVideo">
+          <video
+            id="my-video"
+            class="video-js"
+            controls
+            preload="auto"
+            poster="MY_VIDEO_POSTER.jpg"
+            data-setup="{}"
+          >
+            <source src="../images/JH.mp4" type="video/mp4" />
+            <p class="vjs-no-js">
+              To view this video please enable JavaScript, and consider
+              upgrading to a web browser that
+              <a href="https://videojs.com/html5-video-support/" target="_blank"
+                >supports HTML5 video</a
+              >
+            </p>
+          </video>
+        </div>
+        <!-- <div class="play">
         <img src="../images/logo/logo.png" alt="로고" />
         <a href="#">
           <img src="../images/icon/play_circle.png" alt="플레이" />
         </a>
+      </div> -->
       </div>
-    </div>
-    <div class="console">
-      <div class="up-down">
-        <a href="#"
-          ><img src="../images/icon/first_page.png" alt="이전" />이전강의</a
-        >
-        <a href="#"
-          >다음강의<img src="../images/icon/last_page.png" alt="다음"
-        /></a>
-      </div>
-      <div class="preferences">
-        <a href="#"
-          ><img
-            src="../images/icon/assistant_on_hub.png"
-            alt="화질설정"
-          />화질설정</a
-        >
-        <a
-          href="#"
-          class="fullscreen"
-          title="전체화면"
-          onclick="openFullScreenMode()"
-          ><img src="../images/icon/capture.png" alt="전체화면" />전체화면</a
-        >
+      <div class="console">
+        <div class="up-down">
+          <a href="#"
+            ><img src="../images/icon/first_page.png" alt="이전" />이전강의</a
+          >
+          <a href="#"
+            >다음강의<img src="../images/icon/last_page.png" alt="다음"
+          /></a>
+        </div>
+        <div class="preferences">
+          <a href="#"
+            ><img
+              src="../images/icon/assistant_on_hub.png"
+              alt="화질설정"
+            />화질설정</a
+          >
+          <a
+            href="#"
+            class="fullscreen"
+            title="전체화면"
+            onclick="openFullScreenMode()"
+            ><img src="../images/icon/capture.png" alt="전체화면" />전체화면</a
+          >
+        </div>
       </div>
     </div>
 
@@ -111,7 +174,7 @@
     <div id="pop_up">
       <div class="aside">
         <h1>강사소개</h1>
-        <h2>탑건(최건) 선생님</h2>
+        <h2><strong>최건</strong> 선생님</h2>
         <ol>
           <li>유명인사 “탐 크루즈”와 생일 同</li>
           <li>계룡시 출신</li>
@@ -127,12 +190,23 @@
         </ol>
       </div>
       <div class="image-btn">
-        <button><h1>X</h1></button>
-        <img
-          src="../images/임시 이미지 파일모음/피콜로페페.jpg"
-          alt="임시이미지"
-        />
+        <button>
+          <img src="../images/icon/close.png" width="30" height="30" />
+        </button>
       </div>
     </div>
+
+    <!-- 푸터 html 시작 -->
+
+    <footer>
+      <div class="information">
+        <h4>MOVIE DIC</h4>
+        <span>© 2024 MOVIEDIC. All rights reserved.</span>
+      </div>
+    </footer>
+
+    <!-- 푸터 html 끝 -->
+
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
   </body>
 </html>

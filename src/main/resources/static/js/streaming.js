@@ -137,3 +137,11 @@ function closeFullScreenMode() {
   $jQ(".fullscreen").show();
   $jQ(".close-fullscreen").hide();
 }
+
+// 클릭시 video.js로 변환
+document
+  .querySelector(".play")
+  .lastElementChild.addEventListener("click", () => {
+    document.querySelector(".contents").style.display = `none`;
+    document.querySelector(".showVideo").style.display = `block`;
+  });
