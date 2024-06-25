@@ -11,34 +11,41 @@ function sessionCurrent() {
         let cartItems = JSON.parse(localStorage.getItem(userId));
         console.log(cartItems);
         if (!isEmptyArr(cartItems)) {
-          displayCart(cartItems);
-          const data = cartItems.map((lecture) => {
-            // purchase객체를 만들어서 리턴
-            return {
-              lecture: lecture,
-              user: { userId: userId, authority: { authorityName: authority } },
-            };
-          });
-          document
-            .querySelector(".pay-button")
-            .addEventListener("click", () => {
-              if (confirm("구매하시겠습니까?")) {
-                axios
-                  .post(urlList, data, { withCredentials: true })
-                  .then((response) => {
-                    console.log("데이터: ", response.data);
-                    localStorage.removeItem(userId);
-                    // window.location.reload();
-                    window.location.href = `mainpage.html`;
-                  })
-                  .catch((error) => {
-                    console.log("오류 발생: ", error);
-                  });
-              }
+          if (cartItems == null) {
+            console.log("장바구니가 비었습니다. :(");
+          } else {
+            displayCart(cartItems);
+            const data = cartItems.map((lecture) => {
+              // purchase객체를 만들어서 리턴
+              return {
+                lecture: lecture,
+                user: {
+                  userId: userId,
+                  authority: { authorityName: authority },
+                },
+              };
             });
+            document
+              .querySelector(".pay-button")
+              .addEventListener("click", () => {
+                if (confirm("구매하시겠습니까?")) {
+                  axios
+                    .post(urlList, data, { withCredentials: true })
+                    .then((response) => {
+                      console.log("데이터: ", response.data);
+                      localStorage.removeItem(userId);
+                      // window.location.reload();
+                      window.location.href = `mainpage.html`;
+                    })
+                    .catch((error) => {
+                      console.log("오류 발생: ", error);
+                    });
+                }
+              });
+          }
         }
-      } else {
-        alert("ㅇㅇㅇ");
+      } else if (cartItems == null) {
+        return false;
       }
     })
     .catch((error) => {
