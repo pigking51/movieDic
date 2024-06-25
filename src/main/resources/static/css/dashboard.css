@@ -359,7 +359,8 @@ body.hidden_dashboard {
   position: relative;
   color: #666;
   font-size: 20px;
-  overflow: auto;
+  overflow: scroll;
+  overflow-x: hidden;
   width: 100%;
   height: 85%;
   border: 3px dashed #fff;
@@ -372,31 +373,41 @@ body.hidden_dashboard {
 .manage-info > thead {
   width: 100%;
   height: 35px;
-  padding: 8px;
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  top: 0;
+  border-bottom: 1px solid #00d1fe;
 }
 
 .manage-info > thead > tr {
+  display: flex;
+  justify-content: space-around;
   width: 100%;
   height: 35px;
   line-height: 35px;
   color: #fff;
-  position: fixed;
-  z-index: 3;
-  top: 0;
 }
 
 .manage-info > thead > tr > th {
   text-align: center;
-  width: 100%;
-  height: auto;
+  width: auto;
   height: 35px;
   line-height: 35px;
 }
 
+.manage-body {
+  position: absolute;
+  top: 35px;
+}
+
+.manage-body > tr {
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+}
+
 .manage-body > tr > td {
   width: auto;
+  height: auto;
 }
 
 /* 푸터 css시작 */
