@@ -1,6 +1,27 @@
 package dw.movieDic.Dto;
 
+import dw.movieDic.Model.Like;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class LikeDto {
 
-//    pri
+    private long postId;
+    private long commentId;
+    private String userId;
+
+    public LikeDto toLikeDtoFromLike(Like like){
+        LikeDto likeDto = new LikeDto();
+        likeDto.setPostId(getPostId());
+        likeDto.setCommentId(getCommentId());
+        likeDto.setUserId(getUserId());
+
+        return likeDto;
+    }
 }

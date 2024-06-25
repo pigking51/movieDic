@@ -1,5 +1,6 @@
 package dw.movieDic.Model;
 
+import dw.movieDic.Dto.LikeDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,4 +27,6 @@ public class Like {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+
 }
