@@ -176,3 +176,18 @@ footer {
 }
 
 /* 푸터 css 끝 */
+
+/* 미디어 쿼리 */
+@media screen and (max-width: 1024px) {
+  .menu {
+    display: none;
+  }
+
+  .image {
+    width: 90%;
+  }
+
+  .logo {
+    float: left;
+  }
+}
