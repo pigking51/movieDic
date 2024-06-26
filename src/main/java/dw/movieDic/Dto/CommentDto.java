@@ -12,6 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CommentDto {
+    private long commentId;
     private long boardId;
     private long postId;
     private String userId;
@@ -19,6 +20,7 @@ public class CommentDto {
 
     public CommentDto toCommentDtoFromComment(Comment comment) {
         CommentDto commentDto = new CommentDto();
+        commentDto.setCommentId(getCommentId());
         commentDto.setBoardId(getBoardId());
         commentDto.setPostId(getPostId());
         commentDto.setUserId(getUserId());

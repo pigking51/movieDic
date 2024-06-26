@@ -107,4 +107,21 @@ public class CommentService {
 
     }
 
+    public CommentDto deleteComment(CommentDto commentDto){
+        commentRepository.deleteById(commentDto.getCommentId());
+        Optional<Comment> targetComment = commentRepository.findById(commentDto.getCommentId());
+        if(targetComment.isPresent()){
+
+            Comment deledComment = new Comment();
+            deledComment.setCommentId(commentDto.getCommentId());
+
+            return commentDto.toCommentDtoFromComment(deledComment);
+        }
+        else{
+            throw new ResourceNotFoundException("Comment", "ID", commentDto.getCommentId());
+        }
+
+
+    }
+
 }

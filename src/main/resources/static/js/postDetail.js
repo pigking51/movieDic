@@ -17,6 +17,8 @@ let userId = "";
 let comment = "";
 let commentId = "";
 
+let checked = false;
+
 axios
   .get(urls)
   .then((response) => {
@@ -53,6 +55,7 @@ axios
             .then((response) => {
               console.log("데이터: ", response.data);
               console.log("댓글달기 성공!");
+              window.location.reload();
             })
             .catch((error) => {
               console.log("오류 발생: ", error);
@@ -190,35 +193,51 @@ document.querySelector(".like").addEventListener("click", () => {
 // 내 댓글 수정
 function rewriteMyComment(myComment) {
   const myComments = document.getElementsByClassName("comments");
-  // 취소 버튼 만들기
-  const cancel = document.createElement("span");
-  cancel.classList.add("cancel");
-  // 요소 생성
-  const submit = document.createElement("button");
-  submit.style.cssText = `width: 30px; height: 30px; backgroundColor: blue`;
-  const uId = document.createElement("p");
-  const reComment = document.createElement("input");
-  reComment.type = `text`;
 
   Array.from(myComments).forEach((commen, index) => {
     commen.addEventListener("click", () => {
+      if (checked == true) {
+        return;
+      }
+      checked = true;
+      // 취소 버튼 만들기
+      const cancel = document.createElement("span");
+      cancel.classList.add("cancel");
+      // 요소 생성
+      const submit = document.createElement("button");
+      submit.style.cssText = `width: 30px; height: 30px; backgroundColor: blue`;
+      const uId = document.createElement("p");
+      const reComment = document.createElement("input");
+      reComment.type = `text`;
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = `삭제`;
+
       axios
         .get(urlCoAll)
         .then((response) => {
           console.log("데이터: ", response.data);
-
           if (
-            myComment.authority.authority == "ROLE_ADMIN" ||
+            myComment.authority[0].authority == "ROLE_ADMIN" ||
             response.data[index].user.userId == myComment.userId
           ) {
-            commen.style.cssText = `grid-template-columns: 2fr 5fr 2fr 1fr;`;
+            commen.style.cssText = `grid-template-columns: 1fr 5fr 2fr 1fr 1fr;`;
             commen.appendChild(cancel);
-
+            commen.appendChild(deleteBtn);
             cancel.style.display = `block`;
+            deleteBtn.addEventListener("click", () => {
+              if (myComment.userId == response.data[index].user.userId) {
+                commentId = response.data[index].commentId;
+                let dataPart = {
+                  commentId: commentId,
+                };
+                deleteMyComment(dataPart);
+              } else {
+                console.log("삭제진행오류");
+              }
+            });
 
             cancel.addEventListener("click", () => {
               cancel.style.display = `none`;
-              console.log("일단 클릭은 됨");
 
               if (myComment.userId == response.data[index].user.userId) {
                 commen.innerHTML = "";
@@ -228,8 +247,6 @@ function rewriteMyComment(myComment) {
                 commen.appendChild(uId);
                 commen.appendChild(reComment);
                 commen.appendChild(submit);
-
-                // break;
               }
             });
 
@@ -297,4 +314,31 @@ function rewriteMainContent() {
 }
 
 // 삭제버튼 관련 함수
-function deleteMyComment(commen) {}
+
+// const deleteFunc = (
+//   function deleteMyComment(commen) {
+
+//   }
+// )();
+
+// const add = (function () {
+//   let likeCount = 0;
+//   return function () {
+//     likeCount += 1;
+//     return likeCount;
+//   };
+// })();
+
+// 댓글 삭제
+function deleteMyComment(data) {
+  axios
+    .delete("http://localhost:8080/comment/deletecomment", data, {
+      withCredentials: true,
+    })
+    .then((response) => {
+      console.log("데이터: ", response.data);
+    })
+    .catch((error) => {
+      console.log("삭제오류: ", error);
+    });
+}

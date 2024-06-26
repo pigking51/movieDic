@@ -37,6 +37,9 @@ const nowUrlPart = `http://localhost:8080/movieDic/streaming.html`;
 
 const changeId = parseInt(id, 10);
 
+const showVideo = document.querySelector("#my-video_html5_api");
+const myVideo = document.getElementById("my-video");
+const vjsPoster = document.getElementsByClassName("vjs-poster");
 axios
   .get(url)
   .then((response) => {
@@ -44,6 +47,11 @@ axios
     document.querySelector(".lectureTitle").textContent = "";
     document.querySelector(".lectureTitle").textContent =
       response.data.lectureTitle;
+    myVideo.poster = "";
+    Array.from(vjsPoster).forEach((pos) => {
+      pos.style.display = `none`;
+    });
+    showVideo.poster = response.data.image;
   })
   .catch((error) => {
     console.log("오류 발생: ", error);

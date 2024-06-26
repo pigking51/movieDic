@@ -44,4 +44,12 @@ public class CommentController {
         return new ResponseEntity<>(commentService.updateComment2(commentId, commentDto),
                 HttpStatus.OK);
     }
+
+    @DeleteMapping("/deletecomment")
+    public ResponseEntity<CommentDto> deleteComment(@RequestBody CommentDto commentDto){
+        return new ResponseEntity<>(commentService.deleteComment(commentDto),
+                HttpStatus.OK);
+    }
+
+
 }
