@@ -131,6 +131,14 @@ header {
   height: auto;
 }
 
+.answerDiv {
+  display: none;
+}
+
+.answerDiv.active {
+  display: block;
+}
+
 .FAQ {
   width: calc(100% - 400px);
   border-top: 3px solid #00d1fe;
@@ -152,6 +160,10 @@ header {
   display: flex;
   justify-content: space-around;
   list-style: none;
+}
+
+.FAQ-wrap > ul:first {
+  display: none;
 }
 
 .FAQ-wrap > ul:hover {
