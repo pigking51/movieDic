@@ -215,12 +215,13 @@ function rewriteMyComment(myComment) {
             commen.appendChild(cancel);
 
             cancel.style.display = `block`;
-            // Array.from(cancel).forEach((can) => {
+
             cancel.addEventListener("click", () => {
+              cancel.style.display = `none`;
               console.log("일단 클릭은 됨");
-              // for (i = 0; i < response.data.length; i++) {
+
               if (myComment.userId == response.data[index].user.userId) {
-                commen.textContent = "";
+                commen.innerHTML = "";
                 uId.textContent = response.data[index].userId;
                 commentId = response.data[index].commentId;
 
@@ -230,10 +231,8 @@ function rewriteMyComment(myComment) {
 
                 // break;
               }
-              // }
-              // });
             });
-            // 여기서부터 수정
+
             // data에 현재 userId 담기
             userId = myComment.userId;
             reComment.addEventListener("change", (el) => {
@@ -257,7 +256,6 @@ function rewriteMyComment(myComment) {
                   console.log("갱신 성공!!");
                   reComment.textContent = "";
                   commen.style.cssText = `grid-template-columns: 2fr 6fr 2fr;`;
-                  cancel.style.display = `none`;
                   window.location.reload();
                 })
                 .catch((error) => {

@@ -13,6 +13,7 @@ function sessionCurrent() {
         if (!isEmptyArr(cartItems)) {
           if (cartItems == null) {
             console.log("장바구니가 비었습니다. :(");
+            return false;
           } else {
             displayCart(cartItems);
             const data = cartItems.map((lecture) => {

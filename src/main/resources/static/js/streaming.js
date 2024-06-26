@@ -53,7 +53,7 @@ axios
 // 데이터 로드 끝
 
 // 뒤로가기
-document.querySelector(".logo").addEventListener("click", () => {
+document.querySelector(".left").addEventListener("click", () => {
   window.history.go(-1);
 });
 
@@ -82,9 +82,12 @@ function prevMyLecture(lecId) {
       for (i = 0; i < lecList.length; i++) {
         if (lecList[0].lecture.lectureId == lecId) {
           alert("첫번째 강의입니다.");
+          break;
         } else if (lecList[i].lecture.lectureId == lecId) {
           alert("이동");
-          window.location.href = `${nowUrlPart}user=${uId}&id=${changeId + 1}`;
+          window.location.href = `${nowUrlPart}?user=${uId}&id=${
+            lecList[i - 1].lecture.lectureId
+          }`;
         }
       }
     })
@@ -100,13 +103,18 @@ function nextMyLecture(lecId) {
     .then((response) => {
       console.log("데이터: ", response.data);
       const lecList = response.data;
-
+      console.log(lecList[lecList.length - 1].lecture.lectureId == lecId);
+      console.log(lecList[lecList.length - 1].lecture.lectureId);
+      console.log(lecId);
       for (i = 0; i < lecList.length; i++) {
         if (lecList[lecList.length - 1].lecture.lectureId == lecId) {
           alert("마지막 강의입니다.");
+          break;
         } else if (lecList[i].lecture.lectureId == lecId) {
           alert("이동");
-          window.location.href = `${nowUrlPart}user=${uId}&id=${changeId - 1}`;
+          window.location.href = `${nowUrlPart}?user=${uId}&id=${
+            lecList[i + 1].lecture.lectureId
+          }`;
         }
       }
     })
@@ -137,11 +145,3 @@ function closeFullScreenMode() {
   $jQ(".fullscreen").show();
   $jQ(".close-fullscreen").hide();
 }
-
-// 클릭시 video.js로 변환
-document
-  .querySelector(".play")
-  .lastElementChild.addEventListener("click", () => {
-    document.querySelector(".contents").style.display = `none`;
-    document.querySelector(".showVideo").style.display = `block`;
-  });
