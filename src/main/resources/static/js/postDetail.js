@@ -190,39 +190,52 @@ document.querySelector(".like").addEventListener("click", () => {
 // 내 댓글 수정
 function rewriteMyComment(myComment) {
   const myComments = document.getElementsByClassName("comments");
-  console.log(myComments.length);
   // 취소 버튼 만들기
   const cancel = document.createElement("span");
   cancel.classList.add("cancel");
-  // 제출 버튼 만들기
+  // 요소 생성
   const submit = document.createElement("button");
   submit.style.cssText = `width: 30px; height: 30px; backgroundColor: blue`;
+  const uId = document.createElement("p");
+  const reComment = document.createElement("input");
+  reComment.type = `text`;
 
   Array.from(myComments).forEach((commen, index) => {
-    commen.appendChild(cancel);
-
     commen.addEventListener("click", () => {
       axios
         .get(urlCoAll)
         .then((response) => {
           console.log("데이터: ", response.data);
 
-          cancel.style.display = `block`;
-          const uId = document.createElement("p");
-          const reComment = document.createElement("input");
-          reComment.type = `text`;
-          cancel.addEventListener("click", () => {
-            for (i = 0; i < response.data.length; i++) {
-              if (myComment.userId == response.data[i].user.userId) {
-                commentId = response.data[i].commentId;
+          if (
+            myComment.authority.authority == "ROLE_ADMIN" ||
+            response.data[index].user.userId == myComment.userId
+          ) {
+            commen.style.cssText = `grid-template-columns: 2fr 5fr 2fr 1fr;`;
+            commen.appendChild(cancel);
+
+            cancel.style.display = `block`;
+            // Array.from(cancel).forEach((can) => {
+            cancel.addEventListener("click", () => {
+              console.log("일단 클릭은 됨");
+              // for (i = 0; i < response.data.length; i++) {
+              if (myComment.userId == response.data[index].user.userId) {
                 commen.textContent = "";
-                uId.textContent = response.data[i].userId;
+                uId.textContent = response.data[index].userId;
+                commentId = response.data[index].commentId;
+
                 commen.appendChild(uId);
                 commen.appendChild(reComment);
                 commen.appendChild(submit);
-                break;
+
+                // break;
               }
-            }
+              // }
+              // });
+            });
+            // 여기서부터 수정
+            // data에 현재 userId 담기
+            userId = myComment.userId;
             reComment.addEventListener("change", (el) => {
               comment = el.target.value;
             });
@@ -230,12 +243,12 @@ function rewriteMyComment(myComment) {
             submit.addEventListener("click", () => {
               const patchData = {
                 commentContent: comment,
-                postId: postId,
+                userId: userId,
               };
 
               axios
                 .patch(
-                  `http://localhost:8080/comment/changecomment/${commentId}`,
+                  `http://localhost:8080/comment/changecomment2/${commentId}`,
                   patchData,
                   { withCredentials: true }
                 )
@@ -243,13 +256,18 @@ function rewriteMyComment(myComment) {
                   console.log("데이터: ", response.data);
                   console.log("갱신 성공!!");
                   reComment.textContent = "";
+                  commen.style.cssText = `grid-template-columns: 2fr 6fr 2fr;`;
+                  cancel.style.display = `none`;
                   window.location.reload();
                 })
                 .catch((error) => {
                   console.log("오류 발생: ", error);
                 });
             });
-          });
+          } else {
+            console.log("수정할 권한 없음");
+            return false;
+          }
         })
         .catch((error) => {
           console.log("오류 발생: ", error);
@@ -279,3 +297,6 @@ function rewriteMainContent() {
     editContent.appendChild(editCInput);
   });
 }
+
+// 삭제버튼 관련 함수
+function deleteMyComment(commen) {}
