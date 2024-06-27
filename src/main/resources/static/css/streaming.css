@@ -132,15 +132,15 @@ header {
 
 .logo {
   float: left;
-  width: 100px;
+  width: 200px;
   height: 100px;
 }
 
 .logo img {
-  width: 70px;
-  height: 70px;
-  margin-left: 15px;
-  margin-top: 15px;
+  width: 60px;
+  height: 60px;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 .logo:hover {
