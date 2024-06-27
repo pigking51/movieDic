@@ -38,7 +38,7 @@ axios
 
     //
     if (adminD[0].authority != "ROLE_ADMIN") {
-      alert("관리자 전용 페이지입니다!!!");
+      // alert("관리자 전용 페이지입니다!!!");
       window.history.go(-1);
     } else {
       document.body.classList.remove("hidden_dashboard");

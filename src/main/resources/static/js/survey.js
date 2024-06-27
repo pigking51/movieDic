@@ -116,8 +116,8 @@ document.querySelector(".surveyBtn").addEventListener("click", () => {
     }
   }
   if (answerBlank != "") {
-    alert(`${answerBlank}번 항목이 선택되지 않았습니다
-          해당 항목을 선택해주세요!!`);
+    // alert(`${answerBlank}번 항목이 선택되지 않았습니다
+    // 해당 항목을 선택해주세요!!`);
     answerArr = [];
     answerBlank = "";
     return false;
@@ -130,7 +130,7 @@ document.querySelector(".surveyBtn").addEventListener("click", () => {
     answer4 == "" &&
     answer5 == ""
   ) {
-    alert("내용을 전부 선택해주세요!!!");
+    // alert("내용을 전부 선택해주세요!!!");
     return false;
   }
 
@@ -174,7 +174,7 @@ document.querySelector(".surveyBtn").addEventListener("click", () => {
           })
           .catch((error) => {
             console.log("에러발생 : ", error);
-            alert("post쪽 에러!!");
+            // alert("post쪽 에러!!");
           });
       }
     })

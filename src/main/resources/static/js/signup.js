@@ -71,11 +71,11 @@ document.querySelector(".nick_check").addEventListener("click", () => {
       console.log("데이터: ", response.data);
       for (i = 0; i < response.data.length; i++) {
         if (response.data[i].userId == userId) {
-          alert(`중복된 ID입니다!
-        다른 ID를 입력해주세요!!!`);
+          // alert(`중복된 ID입니다!
+          // 다른 ID를 입력해주세요!!!`);
           break;
         } else if (document.querySelector(".nickname").value == "") {
-          alert("ID를 입력해주세요!!!");
+          // alert("ID를 입력해주세요!!!");
           break;
         } else if (
           i == response.data.length - 1 &&
@@ -106,11 +106,11 @@ document.querySelector(".email_check").addEventListener("click", () => {
       for (i = 0; i < response.data.length; i++) {
         console.log(response.data[0].email);
         if (response.data[i].email == userEmail) {
-          alert(`이미 등록된 email이 존재합니다!
-        다른 email을 입력해주세요!!!`);
+          // alert(`이미 등록된 email이 존재합니다!
+          // 다른 email을 입력해주세요!!!`);
           break;
         } else if (document.querySelector(".email").value == "") {
-          alert("email을 입력해주세요!!!");
+          // alert("email을 입력해주세요!!!");
           break;
         } else if (
           i == response.data.length - 1 &&
@@ -132,7 +132,7 @@ document.querySelector(".email_check").addEventListener("click", () => {
 });
 // 뒤로가기
 document.querySelector(".backBtn").addEventListener("click", () => {
-  alert("뒤로이동!");
+  // alert("뒤로이동!");
   window.history.go(-1);
 });
 
@@ -151,23 +151,23 @@ document.querySelector(".register").addEventListener("click", () => {
 
   if (passChk != password) {
     document.querySelector(".passwordcheck").style.border = `4px solid #f2bfde`;
-    alert(`비밀번호가 일치하지 않습니다`);
+    // alert(`비밀번호가 일치하지 않습니다`);
     return false;
   }
   if (document.querySelector(".nickname").value == "") {
-    alert("ID를 입력하지 않았습니다!");
+    // alert("ID를 입력하지 않았습니다!");
     return false;
   } else if (document.querySelector(".birth").value == "") {
-    alert("생일을 입력하지 않았습니다!");
+    // alert("생일을 입력하지 않았습니다!");
     return false;
   } else if (document.querySelector(".password").value == "") {
-    alert("비밀번호를 입력하지 않았습니다!");
+    // alert("비밀번호를 입력하지 않았습니다!");
     return false;
   } else if (document.querySelector(".name").value == "") {
-    alert("이름을 입력하지 않았습니다!");
+    // alert("이름을 입력하지 않았습니다!");
     return false;
   } else if (document.querySelector(".email").value == "") {
-    alert(" email을 입력하지 않았습니다!");
+    // alert(" email을 입력하지 않았습니다!");
     return false;
   }
 
@@ -176,7 +176,7 @@ document.querySelector(".register").addEventListener("click", () => {
     .then((response) => {
       console.log("데이터 :", response);
       if (response.status == 201) {
-        alert("회원가입 완료");
+        // alert("회원가입 완료");
         document.querySelector(".nickname").value = "";
         document.querySelector(".birth").value = "";
         document.querySelector(".password").value = "";

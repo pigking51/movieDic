@@ -91,7 +91,7 @@ function prevMyLecture(lecId) {
 
       for (i = 0; i < lecList.length; i++) {
         if (lecList[0].lecture.lectureId == lecId) {
-          alert("첫번째 강의입니다.");
+          // alert("첫번째 강의입니다.");
           break;
         } else if (lecList[i].lecture.lectureId == lecId) {
           // alert("이동");
@@ -118,7 +118,7 @@ function nextMyLecture(lecId) {
       console.log(lecId);
       for (i = 0; i < lecList.length; i++) {
         if (lecList[lecList.length - 1].lecture.lectureId == lecId) {
-          alert("마지막 강의입니다.");
+          // alert("마지막 강의입니다.");
           break;
         } else if (lecList[i].lecture.lectureId == lecId) {
           // alert("이동");

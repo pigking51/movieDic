@@ -49,6 +49,6 @@ document.querySelector(".submit-Btn").addEventListener("click", () => {
     })
     .catch((error) => {
       console.log("오류 발생: ", error);
-      alert("로그인이 필요한 서비스입니다.");
+      // alert("로그인이 필요한 서비스입니다.");
     });
 });

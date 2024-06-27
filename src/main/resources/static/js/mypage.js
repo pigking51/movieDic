@@ -63,11 +63,11 @@ document.querySelector("#female").addEventListener("click", (e) => {
 //       console.log("데이터: ", response.data);
 //       for (i = 0; i < response.data.length; i++) {
 //         if (response.data[i].userId == nickname) {
-//           alert(`중복된 ID입니다!
+alert(`중복된 ID입니다!
 //         다른 ID를 입력해주세요!!!`);
 //           break;
 //         } else if (document.querySelector(".nickname").value == "") {
-//           alert("ID를 입력해주세요!!!");
+alert("ID를 입력해주세요!!!");
 //           break;
 //         } else if (
 //           i == response.data.length - 1 &&
@@ -99,11 +99,11 @@ document.querySelector(".email_check").addEventListener("click", () => {
       for (i = 0; i < response.data.length; i++) {
         console.log(response.data[0].email);
         if (response.data[i].email == email) {
-          alert(`이미 등록된 email이 존재합니다!
-        다른 email을 입력해주세요!!!`);
+          // alert(`이미 등록된 email이 존재합니다!
+          // 다른 email을 입력해주세요!!!`);
           break;
         } else if (document.querySelector(".email").value == "") {
-          alert("email을 입력해주세요!!!");
+          // alert("email을 입력해주세요!!!");
           break;
         } else if (
           i == response.data.length - 1 &&
@@ -130,20 +130,20 @@ document.querySelector(".register").addEventListener("click", () => {
   // 공백여부 확인
 
   if (document.querySelector(".password").value == "") {
-    alert("비밀번호를 입력하지 않았습니다!");
+    // alert("비밀번호를 입력하지 않았습니다!");
     return false;
   } else if (document.querySelector(".name").value == "") {
-    alert("이름을 입력하지 않았습니다!");
+    // alert("이름을 입력하지 않았습니다!");
     return false;
   } else if (document.querySelector(".email").value == "") {
-    alert(" email을 입력하지 않았습니다!");
+    // alert(" email을 입력하지 않았습니다!");
     return false;
   }
 
   // 비밀번호 일치 확인
   if (passwordcheck != password) {
     document.querySelector(".passwordcheck").style.border = `4px solid #f2bfde`;
-    alert(`비밀번호가 일치하지 않습니다`);
+    // alert(`비밀번호가 일치하지 않습니다`);
     return false;
   }
 
@@ -165,7 +165,7 @@ document.querySelector(".register").addEventListener("click", () => {
         .then((response) => {
           console.log("데이터: ", response.data);
           console.log("갱신완료");
-          alert("갱신이 완료되었습니다");
+          // alert("갱신이 완료되었습니다");
           window.location.reload();
         })
         .catch((error) => {
@@ -296,7 +296,7 @@ axios
 //  preLectureBox.forEach((goLecture, index) => {
 //    goLecture.addEventListener("click", () => {
 //      window.location.href = `streaming.html`;
-//      alert("반응하는지 확인!!!");
+alert("반응하는지 확인!!!");
 //    });
 //  });
 //});
@@ -397,3 +397,5 @@ axios
   .catch((error) => {
     console.log("오류 발생:", error);
   });
+
+// 추후 추가할 기능
