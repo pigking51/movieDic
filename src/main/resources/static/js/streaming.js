@@ -40,6 +40,7 @@ const changeId = parseInt(id, 10);
 const showVideo = document.querySelector("#my-video_html5_api");
 const myVideo = document.getElementById("my-video");
 const vjsPoster = document.getElementsByClassName("vjs-poster");
+
 axios
   .get(url)
   .then((response) => {
@@ -47,11 +48,12 @@ axios
     document.querySelector(".lectureTitle").textContent = "";
     document.querySelector(".lectureTitle").textContent =
       response.data.lectureTitle;
-    myVideo.poster = "";
+    myVideo.poster = response.data.image;
     Array.from(vjsPoster).forEach((pos) => {
       pos.style.display = `none`;
     });
     showVideo.poster = response.data.image;
+    showVideo.src = response.data.lectureUrl;
   })
   .catch((error) => {
     console.log("오류 발생: ", error);
@@ -92,7 +94,7 @@ function prevMyLecture(lecId) {
           alert("첫번째 강의입니다.");
           break;
         } else if (lecList[i].lecture.lectureId == lecId) {
-          alert("이동");
+          // alert("이동");
           window.location.href = `${nowUrlPart}?user=${uId}&id=${
             lecList[i - 1].lecture.lectureId
           }`;
@@ -119,7 +121,7 @@ function nextMyLecture(lecId) {
           alert("마지막 강의입니다.");
           break;
         } else if (lecList[i].lecture.lectureId == lecId) {
-          alert("이동");
+          // alert("이동");
           window.location.href = `${nowUrlPart}?user=${uId}&id=${
             lecList[i + 1].lecture.lectureId
           }`;
@@ -130,26 +132,4 @@ function nextMyLecture(lecId) {
       console.log("오류 발생: ", error);
       console.log("리스트 출력 실패");
     });
-}
-
-// 전체화면 구현
-// document
-//   .querySelector(".preferences")
-//   .lastElementChild.addEventListener("click", (e) => {
-//     // e.keyCode = 122;
-//     // // 원래화면으로 돌리는 키값
-//   });
-
-const doc = document.documentElement;
-// 전체화면 설정
-function openFullScreenMode() {
-  if (doc.requestFullscreen) doc.requestFullscreen();
-  $jQ(".fullscreen").hide();
-  $jQ(".close-fullscreen").show();
-}
-// 전체화면 해제
-function closeFullScreenMode() {
-  if (document.exitFullscreen) document.exitFullscreen();
-  $jQ(".fullscreen").show();
-  $jQ(".close-fullscreen").hide();
 }
