@@ -145,3 +145,5 @@ function setlecture(data) {
       alert("로그인해주세요!!");
     });
 }
+
+// 리뷰 댓글 입력 및 리뷰 달기

@@ -3,6 +3,8 @@ const urlpart = "http://localhost:8080/post/getallpostsparts";
 const urlcomment = "http://localhost:8080/comment/write";
 const urlCoAll = "http://localhost:8080/comment/commentAll";
 const urlCur = "http://localhost:8080/user/current";
+const urlLike = "http://localhost:8080/like/save";
+const urlLikeAll = "http://localhost:8080/like/all";
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
@@ -164,9 +166,24 @@ function displayBoardDetails(data) {
 // 좋아요 저장 및 표시
 
 const add = (function () {
+  // ㅁㅁㅁㅁㅁㅁㅁ 데이터 담기위한 위치선정 필요!!!
+
   let likeCount = 0;
   return function () {
     likeCount += 1;
+    //const data = {
+    //  postId: ,
+    //  commentId: ,
+    //  userId: ,
+    //
+    // }
+    //axios
+    //  .post(urlLike, data, { withCredentials: true })
+    //  .then()
+    //  .catch((error) => {
+    //    console.log("오류 발생: ", error);
+    //  });
+
     return likeCount;
   };
 })();
@@ -203,9 +220,11 @@ function rewriteMyComment(myComment) {
       // 취소 버튼 만들기
       const cancel = document.createElement("span");
       cancel.classList.add("cancel");
+      cancel.textContent = `수정`;
       // 요소 생성
       const submit = document.createElement("button");
-      submit.style.cssText = `width: 30px; height: 30px; backgroundColor: blue`;
+      submit.classList.add("Edit");
+      submit.textContent = `수정확인`;
       const uId = document.createElement("p");
       const reComment = document.createElement("input");
       reComment.type = `text`;
@@ -227,10 +246,8 @@ function rewriteMyComment(myComment) {
             deleteBtn.addEventListener("click", () => {
               if (myComment.userId == response.data[index].user.userId) {
                 commentId = response.data[index].commentId;
-                let dataPart = {
-                  commentId: commentId,
-                };
-                deleteMyComment(dataPart);
+
+                deleteMyComment(commentId);
               } else {
                 console.log("삭제진행오류");
               }
@@ -313,30 +330,16 @@ function rewriteMainContent() {
   });
 }
 
-// 삭제버튼 관련 함수
-
-// const deleteFunc = (
-//   function deleteMyComment(commen) {
-
-//   }
-// )();
-
-// const add = (function () {
-//   let likeCount = 0;
-//   return function () {
-//     likeCount += 1;
-//     return likeCount;
-//   };
-// })();
-
 // 댓글 삭제
 function deleteMyComment(data) {
   axios
-    .delete("http://localhost:8080/comment/deletecomment", data, {
+    .delete(`http://localhost:8080/comment/deletecomment/${data}`, {
       withCredentials: true,
     })
     .then((response) => {
       console.log("데이터: ", response.data);
+      console.log("댓글삭제 완료");
+      window.location.reload();
     })
     .catch((error) => {
       console.log("삭제오류: ", error);

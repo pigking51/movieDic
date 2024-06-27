@@ -60,7 +60,8 @@ axios
             numWarp.appendChild(innerNum);
           }
           if (index > 9 * (i + 2) + 1 && index < 9 * (i + 3) + 2) {
-            tbody3[i].appendChild(tr);
+            console.log("해당되는 것 확인하기");
+            tbody3[index].appendChild(tr);
           } else if (index < 20) {
             tbody2.appendChild(tr);
           }
@@ -68,13 +69,14 @@ axios
       } else {
         tbody1.appendChild(tr);
       }
+
       // 해당 게시물 클릭 시 상세로 넘어가는 코드
 
       tr.addEventListener("click", () => {
         window.location.href = `postDetail.html?id=` + data[0];
       });
     });
-    // changeTable();
+    changeTable();
   })
   .catch((error) => {
     console.log("오류 발생: ", error);
@@ -361,21 +363,41 @@ function searchByKeyword(posts) {
 // });
 
 // 아래 번호 누르는거 구현 실패(시도중)
-// function changeTable() {
-//   const allTbody = document.querySelectorAll("tbody");
-//   const bActive = document.querySelectorAll(".b-active");
-//   console.log(bActive.length);
-//   bActive.forEach((active, index) => {
-//     active.addEventListener("click", () => {
-//       console.log(`번호확인 ${index + 1}`);
-//       allTbody.forEach((bodies) => {
-//         console.log(`매치되는 tbody확인 : ${bodies}`);
-//         if (bodies.classList.contains("hidden")) {
-//           bodies.classList.remove("hidden");
-//         } else if (!bodies.classList.contains("hidden")) {
-//           bodies.classList.add("hidden");
-//         }
-//       });
-//     });
-//   });
-// }
+function changeTable() {
+  const allTbody = document.querySelectorAll("tbody");
+  const bActive = document.querySelectorAll(".b-active");
+  const allTbodyArray = Array.from(allTbody);
+  let show = false;
+  console.log(bActive.length);
+  Array.from(bActive).forEach((active, index) => {
+    active.addEventListener("click", () => {
+      console.log(`번호확인 ${index + 1}`);
+
+      for (i = 0; i < allTbody.length; i++) {
+        const partTbodyArray = allTbodyArray.pop(allTbodyArray[i]);
+        const partTbodyArray2 = Array.from(allTbody).pop(allTbody[i]);
+        console.log(partTbodyArray);
+        console.log(partTbodyArray2);
+        console.log(allTbody[0].className);
+        if (allTbody[i].className.indexOf("hidden")) {
+          allTbody[i].classList.remove("hidden");
+          partTbodyArray.forEach((PTA) => {
+            if (PTA.className.indexOf("hidden")) {
+              PTA.classList.add("hidden");
+            }
+          });
+        } else if (allTbody[i].className.indexOf("hidden")) {
+          allTbody[i].classList.add("hidden");
+          partTbodyArray.forEach((PTA) => {
+            if (PTA.className.indexOf("hidden")) {
+              PTA.classList.remove("hidden");
+            }
+          });
+        } else {
+          console.log("if조건 문제");
+          return;
+        }
+      }
+    });
+  });
+}

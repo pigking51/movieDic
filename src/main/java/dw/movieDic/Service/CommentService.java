@@ -107,21 +107,16 @@ public class CommentService {
 
     }
 
-    public CommentDto deleteComment(CommentDto commentDto){
-        commentRepository.deleteById(commentDto.getCommentId());
-        Optional<Comment> targetComment = commentRepository.findById(commentDto.getCommentId());
-        if(targetComment.isPresent()){
+    public CommentDto deleteComment(long commentId){
 
-            Comment deledComment = new Comment();
-            deledComment.setCommentId(commentDto.getCommentId());
+        Comment comment = commentRepository.findById(commentId)
+                        .orElseThrow(() -> new ResourceNotFoundException("Comment", "CommentId", commentId));
 
-            return commentDto.toCommentDtoFromComment(deledComment);
-        }
-        else{
-            throw new ResourceNotFoundException("Comment", "ID", commentDto.getCommentId());
-        }
+        commentRepository.delete(comment);
 
+        CommentDto commentDto = new CommentDto();
 
+        return commentDto.toCommentDtoFromComment(comment);
     }
 
 }
