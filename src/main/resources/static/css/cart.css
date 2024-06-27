@@ -429,6 +429,40 @@ tbody .tr:nth-last-child() {
   color: dodgerblue;
 }
 
+@media screen and (max-width: 1024px) {
+  .pay {
+    width: 330px;
+    height: 480px;
+    padding: 20px;
+    color: #fff;
+    background-color: #333;
+    text-align: center;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .pay-button {
+    width: 330px;
+    height: 80px;
+    background-color: #2463eb;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 34px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+}
+
 /* 푸터 css시작 */
 
 footer {
