@@ -208,6 +208,7 @@ header {
   display: flex;
   align-items: center;
   display: none;
+  padding: 0 20px;
 }
 
 .Answer > p {
