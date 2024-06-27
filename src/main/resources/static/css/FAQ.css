@@ -128,7 +128,7 @@ header {
   margin: 50px auto;
   font-family: "GmarketSansMedium";
   text-align: center;
-  height: auto;
+  height: calc(15% - 100px);
 }
 
 .answerDiv {
@@ -143,23 +143,25 @@ header {
   width: calc(100% - 400px);
   border-top: 3px solid #00d1fe;
   height: auto;
-  margin: 30px auto;
+  margin: 0 auto;
 }
 
 .FAQ-wrap {
   display: flex;
   flex-direction: column;
+  height: auto;
 }
 
 .FAQ-wrap > ul {
-  height: 100px;
-  line-height: 100px;
+  height: auto;
   border-bottom: 1px solid #00d1fe;
   padding: 0px 50px;
   cursor: pointer;
   display: flex;
   justify-content: space-around;
   list-style: none;
+  align-items: center;
+  height: 60px;
 }
 
 .FAQ-wrap > ul:first {
@@ -170,12 +172,25 @@ header {
   color: #bf1369;
 }
 
+.FAQ-wrap > ul > li:first {
+  width: 50px;
+  text-align: center;
+}
+
 .FAQ-wrap > ul > li {
-  width: auto;
+  width: 30%;
   height: auto;
   font-size: 20px;
-  font-family: "GyeonggiTitleM";
-  text-align: left;
+  font-family: "GmarketSansMedium";
+  text-align: center;
+}
+
+.FAQ-wrap > ul > li:first {
+  margin-right: 5px;
+}
+
+.FAQ-wrap > ul > li:nth-child(2) {
+  margin-right: 5px;
 }
 
 .FAQ-wrap > tbody > tr > td:last-child {
@@ -184,12 +199,11 @@ header {
 
 .Answer {
   width: 100%;
-  min-height: 150px;
+  height: 60px;
   background-color: #333;
   color: #fff;
   font-family: "GyeonggiTitleM";
   font-size: 20px;
-  padding: 50px;
   text-align: left;
   display: flex;
   align-items: center;
@@ -198,7 +212,8 @@ header {
 
 .Answer > p {
   width: auto;
-  height: auto;
+  height: 60px;
+  line-height: 60px;
 }
 
 .Answer > p:hover {
