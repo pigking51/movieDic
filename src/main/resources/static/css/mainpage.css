@@ -142,6 +142,41 @@ header {
   margin: 30px 0;
 }
 
+.Go-survey {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #333;
+  border: #00d1fe 2px solid;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 25%;
+  right: 10%;
+  opacity: 0.75;
+}
+
+.Go-survey:hover {
+  opacity: 1;
+}
+
+.Go-survey > img {
+  width: 50px;
+  height: 50px;
+}
+
+.Go-survey > span {
+  width: auto;
+  color: #00d1fe;
+  font-family: "GmarketSansMedium";
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+
 /* 푸터 css시작 */
 
 footer {
