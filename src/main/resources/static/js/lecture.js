@@ -37,7 +37,6 @@ function displaylectures(datas) {
       lecture.appendChild(title);
       lecture.appendChild(major);
       lecture.appendChild(price);
-      lecture.style.minWidth = `487px`;
 
       lecture.addEventListener("click", () => {
         window.location.href = "lectureDetail.html?id=" + data.lectureId;
