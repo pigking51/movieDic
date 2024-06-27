@@ -83,7 +83,6 @@ document.querySelector(".loginBtn").addEventListener("click", () => {
           document.querySelector(
             "#password"
           ).style.border = `2px solid #00d1fe;`;
-
           window.location.href = "mainpage.html";
         })
         .catch((error) => {

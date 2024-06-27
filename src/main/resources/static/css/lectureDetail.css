@@ -212,8 +212,8 @@ header {
 }
 
 .image {
-  width: 600px;
-  height: 400px;
+  width: 70%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
