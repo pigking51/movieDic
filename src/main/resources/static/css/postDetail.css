@@ -144,6 +144,7 @@ header {
   height: auto;
   display: flex;
   margin: 0 auto;
+  flex-direction: column;
   /* border: 3px dashed red; */
 }
 
@@ -203,6 +204,10 @@ header {
   justify-content: center;
   align-items: center;
   font-size: large;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
 }
 
 .postContent {
@@ -275,7 +280,7 @@ header {
   display: flex;
   align-items: center;
   margin: 0 auto;
-  border: 2px solid #999;
+  border: 2px solid #333;
   border-radius: 15px;
   flex-direction: column;
   align-items: center;
@@ -339,9 +344,59 @@ header {
 
 .cancel {
   display: none;
-  width: 30px;
+  width: 80px;
   height: 30px;
-  background-color: red;
+  border: 1px solid #00d1fe;
+  margin: auto;
+  font-family: "GmarketSansMedium";
+  color: #00d1fe;
+  opacity: 0.7;
+  line-height: 30px;
+  border-radius: 4px;
+}
+
+.cancel:hover {
+  opacity: 1;
+}
+
+.comments > button {
+  width: 80px;
+  height: 30px;
+  border: 1px solid #00d1fe;
+  margin: auto;
+  font-family: "GmarketSansMedium";
+  color: #00d1fe;
+  opacity: 0.7;
+  line-height: 30px;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.comments > button:hover {
+  opacity: 1;
+}
+
+button.Edit {
+  width: 80px;
+  height: 30px;
+  border: 1px solid #00d1fe;
+  margin: auto;
+  font-family: "GmarketSansMedium";
+  color: #00d1fe;
+  opacity: 0.7;
+  line-height: 30px;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.comments > input {
+  height: auto;
+  margin: auto 0;
+  padding: 10px;
+  border: #00d1fe 1px solid;
+  border-radius: 4px;
 }
 
 /* 본문 끝 */
