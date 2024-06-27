@@ -183,6 +183,26 @@ header {
   /* font-family: "GmarketSansMedium"; */
 }
 
+/* 미디어 쿼리 */
+@media screen and (max-width: 1024px) {
+  .logo2 {
+    width: 50%;
+    height: 60%;
+  }
+
+  .middle span {
+    font-size: 16px;
+    /* font-family: "GmarketSansMedium"; */
+  }
+
+  .bottom > p {
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+    /* font-family: "GmarketSansMedium"; */
+  }
+}
+
 /* 푸터 css시작 */
 
 footer {
