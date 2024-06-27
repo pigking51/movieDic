@@ -1,6 +1,7 @@
 package dw.movieDic.Controller;
 
 
+import dw.movieDic.Dto.CommentDto;
 import dw.movieDic.Dto.PostDto;
 import dw.movieDic.Model.Post;
 import dw.movieDic.Service.PostService;
@@ -45,5 +46,12 @@ public class PostController {
     public ResponseEntity<PostDto> savePost(@RequestBody PostDto postDto) {
         PostDto savedPostDto = postService.savePost(postDto);
         return new ResponseEntity<>(savedPostDto, HttpStatus.OK);
+    }
+
+    @PatchMapping("/rewrite/{postId}")
+    public ResponseEntity<PostDto> updatePost(@PathVariable long postId,
+                                                  @RequestBody PostDto postDto){
+        return new ResponseEntity<>(postService.updatePost(postId, postDto),
+                HttpStatus.OK);
     }
 }

@@ -1,6 +1,7 @@
 package dw.movieDic.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,6 +42,7 @@ public class Comment {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "comment")
+    @JsonIgnore
     private Set<Like> likes;
 
     @PrePersist

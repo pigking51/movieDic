@@ -45,10 +45,11 @@ axios
       tr.appendChild(postTitle);
       tr.appendChild(userId);
       tr.appendChild(createdAt);
-
+      // 테이블에 맞게 tr 분배
       if (index > 9) {
         for (i = 0; i < response.data.length / 10; i++) {
-          if (index == 9 * (i + 2)) {
+          // 추가 테이블 생성
+          if (index == 10 * (i + 2)) {
             const tbody = document.createElement("tbody");
             tbody.classList.add("body3");
             tbody.classList.add("hidden");
@@ -59,11 +60,22 @@ axios
             innerNum.textContent = count;
             numWarp.appendChild(innerNum);
           }
-          if (index > 9 * (i + 2) + 1 && index < 9 * (i + 3) + 2) {
-            console.log("해당되는 것 확인하기");
-            tbody3[index].appendChild(tr);
-          } else if (index < 20) {
+
+          const newTbody3 = document.querySelectorAll(".body3");
+          if (index < 20) {
             tbody2.appendChild(tr);
+          }
+          // 추가 테이블에 따른 2페이지 이후부터의 분류
+          if (tbody3.length == 1) {
+            if (index > 10 * (i + 2) - 1 && index < 10 * (i + 3)) {
+              console.log("해당되는 것 확인하기");
+              tbody3[0].appendChild(tr);
+            }
+          } else if (tbody3.length > 1) {
+            if (index > 10 * (i + 2) - 1 && index < 10 * (i + 3)) {
+              console.log("순서잘못됨");
+              newTbody3[i].appendChild(tr);
+            }
           }
         }
       } else {
@@ -154,12 +166,42 @@ document.querySelector(".search-btn").addEventListener("click", () => {
           tr.appendChild(userId);
           tr.appendChild(createdAt);
 
+          // 테이블에 맞게 tr 분배
           if (index > 9) {
-            tbody2.appendChild(tr);
+            for (i = 0; i < response.data.length / 10; i++) {
+              // 추가 테이블 생성
+              if (index == 10 * (i + 2)) {
+                const tbody = document.createElement("tbody");
+                tbody.classList.add("body3");
+                tbody.classList.add("hidden");
+                table1.appendChild(tbody);
+                count++;
+                const innerNum = document.createElement("span");
+                innerNum.classList.add("b-active");
+                innerNum.textContent = count;
+                numWarp.appendChild(innerNum);
+              }
+
+              const newTbody3 = document.querySelectorAll(".body3");
+              if (index < 20) {
+                tbody2.appendChild(tr);
+              }
+              // 추가 테이블에 따른 2페이지 이후부터의 분류
+              if (tbody3.length == 1) {
+                if (index > 10 * (i + 2) - 1 && index < 10 * (i + 3)) {
+                  console.log("해당되는 것 확인하기");
+                  tbody3[0].appendChild(tr);
+                }
+              } else if (tbody3.length > 1) {
+                if (index > 10 * (i + 2) - 1 && index < 10 * (i + 3)) {
+                  console.log("순서잘못됨");
+                  newTbody3[i].appendChild(tr);
+                }
+              }
+            }
           } else {
             tbody1.appendChild(tr);
           }
-
           // 해당 게시물 클릭 시 상세로 넘어가는 코드
 
           tr.addEventListener("click", () => {
@@ -214,8 +256,39 @@ document.querySelector(".search-btn").addEventListener("click", () => {
         tr.appendChild(userId);
         tr.appendChild(createdAt);
 
+        // 테이블에 맞게 tr 분배
         if (index > 9) {
-          tbody2.appendChild(tr);
+          for (i = 0; i < response.data.length / 10; i++) {
+            // 추가 테이블 생성
+            if (index == 10 * (i + 2)) {
+              const tbody = document.createElement("tbody");
+              tbody.classList.add("body3");
+              tbody.classList.add("hidden");
+              table1.appendChild(tbody);
+              count++;
+              const innerNum = document.createElement("span");
+              innerNum.classList.add("b-active");
+              innerNum.textContent = count;
+              numWarp.appendChild(innerNum);
+            }
+
+            const newTbody3 = document.querySelectorAll(".body3");
+            if (index < 20) {
+              tbody2.appendChild(tr);
+            }
+            // 추가 테이블에 따른 2페이지 이후부터의 분류
+            if (tbody3.length == 1) {
+              if (index > 10 * (i + 2) - 1 && index < 10 * (i + 3)) {
+                console.log("해당되는 것 확인하기");
+                tbody3[0].appendChild(tr);
+              }
+            } else if (tbody3.length > 1) {
+              if (index > 10 * (i + 2) - 1 && index < 10 * (i + 3)) {
+                console.log("순서잘못됨");
+                newTbody3[i].appendChild(tr);
+              }
+            }
+          }
         } else {
           tbody1.appendChild(tr);
         }
@@ -371,32 +444,30 @@ function changeTable() {
   console.log(bActive.length);
   Array.from(bActive).forEach((active, index) => {
     active.addEventListener("click", () => {
-      console.log(`번호확인 ${index + 1}`);
+      console.log(`번호확인 ${index}`);
+      if (allTbody[index].classList.contains("hidden")) {
+        allTbody[index].classList.remove("hidden");
+        let PTA = allTbodyArray.slice(allTbody[index], 1);
 
-      for (i = 0; i < allTbody.length; i++) {
-        const partTbodyArray = allTbodyArray.pop(allTbodyArray[i]);
-        const partTbodyArray2 = Array.from(allTbody).pop(allTbody[i]);
-        console.log(partTbodyArray);
-        console.log(partTbodyArray2);
-        console.log(allTbody[0].className);
-        if (allTbody[i].className.indexOf("hidden")) {
-          allTbody[i].classList.remove("hidden");
-          partTbodyArray.forEach((PTA) => {
-            if (PTA.className.indexOf("hidden")) {
-              PTA.classList.add("hidden");
-            }
-          });
-        } else if (allTbody[i].className.indexOf("hidden")) {
-          allTbody[i].classList.add("hidden");
-          partTbodyArray.forEach((PTA) => {
-            if (PTA.className.indexOf("hidden")) {
-              PTA.classList.remove("hidden");
-            }
-          });
-        } else {
-          console.log("if조건 문제");
-          return;
-        }
+        PTA.forEach((TB) => {
+          if (TB.classList.contains("hidden")) {
+            TB.classList.remove("hidden");
+          } else if (!TB.classList.contains("hidden")) {
+            TB.classList.add("hidden");
+          }
+        });
+      } else if (!allTbody[index].classList.contains("hidden")) {
+        console.log(`${index}번 작동이 안되고있음`);
+        allTbody[index].classList.add("hidden");
+        let PTA = allTbodyArray.slice(allTbody[index], 1);
+
+        PTA.forEach((TB) => {
+          if (TB.classList.contains("hidden")) {
+            TB.classList.remove("hidden");
+          } else if (!TB.classList.contains("hidden")) {
+            TB.classList.add("hidden");
+          }
+        });
       }
     });
   });

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -69,4 +70,22 @@ public class PostService {
             throw new ResourceNotFoundException("Post", "ID", id);
         }
     }
+
+    public PostDto updatePost(long postId, PostDto postDto){
+
+        Optional<Post> post1 = postRepository.findById(postId);
+        if(post1.isPresent()){
+            post1.get().setPostTitle(postDto.getPostTitle());
+            post1.get().setPostContent(postDto.getPostContent());
+            post1.get().setCreatedAt(LocalDateTime.now());
+
+            Post updatedPost = postRepository.save(post1.get());
+            return postDto.toPostDtoFromPost(updatedPost);
+        }else{
+            throw new ResourceNotFoundException("Post", "ID", postId);
+        }
+
+    }
+
+
 }

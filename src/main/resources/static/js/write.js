@@ -7,18 +7,6 @@ let title = "";
 let contents = "";
 let userId = "";
 
-document.querySelector(".selBoard").addEventListener("click", (e) => {
-  if (e.target.value == "자유게시판") {
-    board = 1;
-  } else if (e.target.value == "토론게시판") {
-    board = 2;
-  } else if (e.target.value == "무인도") {
-    board = 3;
-  }
-
-  console.log(board);
-});
-
 document.querySelector("#writetitle").addEventListener("change", (e) => {
   title = e.target.value;
   console.log(title);

@@ -13,11 +13,11 @@ console.log("Post ID: ", id);
 const urls = "http://localhost:8080/post/getallpostsparts/" + id;
 const edit = document.querySelector(".edit-btn");
 
-let boardId = "";
-let postId = "";
+let boardId = 1;
+let postId = 0;
 let userId = "";
 let comment = "";
-let commentId = "";
+let commentId = 0;
 
 let checked = false;
 
@@ -74,7 +74,39 @@ axios
       .get(urlCoAll)
       .then((response) => {
         console.log("데이터: ", response.data);
+        const allCData = response.data;
         getAllComment(response.data);
+
+        // current 하나 더 생성
+        axios
+          .get(urlCur)
+          .then((response) => {
+            console.log("데이터: ", response.data);
+            // const nowUserData = response.data;
+            rewriteMyComment(response.data);
+
+            // 좋아요 추가에 필요한 데이터
+            for (i = 0; i < allCData.length; i++) {
+              if (response.data.userId == allCData[i].user.userId) {
+                commentId = allCData[i].commentId;
+                console.log(commentId);
+              }
+            }
+            console.log(commentId);
+            console.log(postId);
+            console.log(response.data.userId);
+
+            const likeData = {
+              commentId: commentId,
+              postId: postId,
+              userId: response.data.userId,
+            };
+
+            plusLike(likeData);
+          })
+          .catch((error) => {
+            console.log("오류 발생: ", error);
+          });
       })
       .catch((error) => {
         console.log("오류 발생: ", error);
@@ -112,17 +144,6 @@ axios
         div.appendChild(cCreatedAt);
         commentList.appendChild(div);
       });
-
-      // current 하나 더 생성
-      axios
-        .get(urlCur)
-        .then((response) => {
-          console.log("데이터: ", response.data);
-          rewriteMyComment(response.data);
-        })
-        .catch((error) => {
-          console.log("오류 발생: ", error);
-        });
     }
   })
   .catch((error) => {
@@ -165,47 +186,71 @@ function displayBoardDetails(data) {
 
 // 좋아요 저장 및 표시
 
-const add = (function () {
-  // ㅁㅁㅁㅁㅁㅁㅁ 데이터 담기위한 위치선정 필요!!!
+// 현재 좋아요 수 표시
+let likeCount = 0;
+axios
+  .get("http://localhost:8080/like/all", { withCredentials: true })
+  .then((response) => {
+    console.log("데이터: ", response.data);
+    likeCount = response.data.length;
+    console.log(likeCount);
+    document.querySelector(".count").textContent = likeCount;
+  })
+  .catch((error) => {
+    console.log("오류 발생: ", error);
+  });
 
-  let likeCount = 0;
-  return function () {
-    likeCount += 1;
-    //const data = {
-    //  postId: ,
-    //  commentId: ,
-    //  userId: ,
-    //
-    // }
-    //axios
-    //  .post(urlLike, data, { withCredentials: true })
-    //  .then()
-    //  .catch((error) => {
-    //    console.log("오류 발생: ", error);
-    //  });
+function plusLike(data) {
+  document.querySelector(".like").addEventListener("click", () => {
+    axios
+      .get(urlCur)
+      .then((response) => {
+        console.log("데이터: ", response.data);
+        nowUserData2 = response.data;
 
-    return likeCount;
-  };
-})();
+        axios
+          .get("http://localhost:8080/like/all", { withCredentials: true })
+          .then((response) => {
+            console.log("데이터: ", response.data);
+            likeData = response.data;
+            likeCount = response.data.length;
+            console.log(nowUserData2.authority[0].authority);
+            console.log(likeCount);
+            // 추천 클릭 시 중복 불가 설정(관리자는 예외)
+            for (i = 0; i < likeCount; i++) {
+              if (
+                nowUserData2.userId == likeData[i].user.userId &&
+                nowUserData2.authority[0].authority == "ROLE_USER"
+              ) {
+                console.log("이미 추천하셨습니다");
+                return false;
+              } else {
+                console.log("추천가능");
+              }
+            }
 
-document.querySelector(".like").addEventListener("click", () => {
-  document.querySelector(".count").textContent = add();
-
-  // rgb로 출력되는 랜덤 색상값
-  const r = Math.floor(Math.random() * 256) - 1;
-  const g = Math.floor(Math.random() * 256) - 1;
-  const b = Math.floor(Math.random() * 256) - 1;
-
-  // 16진수로 출력되는 랜덤 색상값
-  function getRandomColor() {
-    return "#" + Math.floor(Math.random() * 16777215).toString(16);
-  }
-  document.querySelector(
-    ".like"
-  ).firstElementChild.style.filter = `drop-shadow(0 0 0 ${getRandomColor()})`;
-});
-
-// 설정된 like 개념 잘 모르겠음
+            // 데이터 저장
+            axios
+              .post(urlLike, data, { withCredentials: true })
+              .then((response) => {
+                console.log("데이터: ", response.data);
+                console.log("추천 완료");
+                alert("추천 완료");
+                window.location.reload();
+              })
+              .catch((error) => {
+                console.log("오류 발생: ", error);
+              });
+          })
+          .catch((error) => {
+            console.log("오류 발생", error);
+          });
+      })
+      .catch((error) => {
+        console.log("오류 발생: ", error);
+      });
+  });
+}
 
 // 내 댓글 수정
 function rewriteMyComment(myComment) {
@@ -244,9 +289,11 @@ function rewriteMyComment(myComment) {
             commen.appendChild(deleteBtn);
             cancel.style.display = `block`;
             deleteBtn.addEventListener("click", () => {
-              if (myComment.userId == response.data[index].user.userId) {
+              if (
+                myComment.userId == response.data[index].user.userId ||
+                myComment.authority[0].authority == "ROLE_ADMIN"
+              ) {
                 commentId = response.data[index].commentId;
-
                 deleteMyComment(commentId);
               } else {
                 console.log("삭제진행오류");
@@ -256,7 +303,10 @@ function rewriteMyComment(myComment) {
             cancel.addEventListener("click", () => {
               cancel.style.display = `none`;
 
-              if (myComment.userId == response.data[index].user.userId) {
+              if (
+                myComment.userId == response.data[index].user.userId ||
+                myComment.authority[0].authority == "ROLE_ADMIN"
+              ) {
                 commen.innerHTML = "";
                 uId.textContent = response.data[index].userId;
                 commentId = response.data[index].commentId;
@@ -298,7 +348,6 @@ function rewriteMyComment(myComment) {
             });
           } else {
             console.log("수정할 권한 없음");
-            return false;
           }
         })
         .catch((error) => {
@@ -311,6 +360,7 @@ function rewriteMyComment(myComment) {
 
 // 본문 글 수정
 function rewriteMainContent() {
+  const sectionWrap = document.querySelector(".section-wrap");
   const editMain = document.querySelector(".edit-btn");
   const editTitle = document.querySelector(".postTitle");
   const editContent = document.querySelector(".postContent");
@@ -318,17 +368,62 @@ function rewriteMainContent() {
   // 수정할 input 태그 추가
   const editTInput = document.createElement("input");
   const editCInput = document.createElement("input");
+  const patchPostBtn = document.createElement("button");
   editTInput.type = `text`;
   editCInput.type = `text`;
-  editCInput.cssText = `width: 100%; height: 100%;`;
+  editCInput.cssText = `width: 100%; minHeight: 600px;`;
+  patchPostBtn.textContent = `변경하기`;
+  patchPostBtn.style.display = `none`;
 
   editMain.addEventListener("click", () => {
+    editMain.style.display = `none`;
+    patchPostBtn.style.display = `block`;
+    editTitle.firstElementChild.nextElementSibling.remove();
+    editTitle.firstElementChild.nextElementSibling.remove();
     editTitle.firstElementChild.nextElementSibling.remove();
     editContent.textContent = "";
+    sectionWrap.appendChild(patchPostBtn);
     editTitle.appendChild(editTInput);
     editContent.appendChild(editCInput);
   });
+
+  let patchTitle = "";
+  let patchContent = "";
+  editTInput.addEventListener("change", (e) => {
+    patchTitle = e.target.value;
+  });
+  editCInput.addEventListener("change", (e) => {
+    patchContent = e.target.value;
+  });
+
+  patchPostBtn.addEventListener("click", () => {
+    const patchData = {
+      postTitle: patchTitle,
+      postContent: patchContent,
+    };
+    patchThePost(patchData);
+  });
 }
+
+// 본문 수정 함수
+function patchThePost(patchData) {
+  let findPostId = parseInt(id, 10);
+
+  axios
+    .patch(`http://localhost:8080/post/rewrite/${findPostId}`, patchData, {
+      withCredentials: true,
+    })
+    .then((response) => {
+      console.log("데이터: ", response.data);
+      console.log("갱신 성공!!!");
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.log("오류 발생: ", error);
+    });
+}
+
+// 본문 삭제
 
 // 댓글 삭제
 function deleteMyComment(data) {

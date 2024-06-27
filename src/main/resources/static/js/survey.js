@@ -134,10 +134,13 @@ document.querySelector(".surveyBtn").addEventListener("click", () => {
     return false;
   }
 
-  $("#pop").addClass("active");
-  $(".closebtn").click(function () {
-    $("#pop").removeClass("active");
+  const $jQ = jQuery.noConflict();
+
+  $jQ("#pop").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ("#pop").removeClass("active");
   });
+
   axios
     .get("http://localhost:8080/user/current", { withCredentials: true })
     .then((response) => {
