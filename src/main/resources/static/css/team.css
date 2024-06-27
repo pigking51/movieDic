@@ -201,6 +201,15 @@ header {
     height: 30px;
     /* font-family: "GmarketSansMedium"; */
   }
+
+  .contents {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    height: 600px;
+    margin-left: 24px;
+  }
 }
 
 /* 푸터 css시작 */

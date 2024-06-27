@@ -166,6 +166,26 @@ header {
   margin: 120px auto;
 }
 
+@media screen and (max-width: 1024px) {
+  .top-ad {
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
+    margin: 88px 20px;
+  }
+
+  .bottom-ad {
+    height: 95%;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #00d1fe 5px solid;
+    /* border-radius: 30px; */
+    margin: 20px auto;
+  }
+}
+
 /* 푸터 css시작 */
 
 footer {

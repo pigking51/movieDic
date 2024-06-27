@@ -401,6 +401,44 @@ button.Edit {
 
 /* 본문 끝 */
 
+@media screen and (max-width: 1024px) {
+  .section-wrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    /* border: 3px dashed red; */
+  }
+
+  .comment {
+    padding: 38px;
+    width: 100%;
+    height: auto;
+  }
+
+  .postContent p {
+    height: fit-content;
+    font-size: 20px;
+    font-weight: 100;
+    padding: 10%;
+    line-height: 40px;
+  }
+
+  .comments p {
+    width: auto;
+    font-size: 14px;
+    text-align: left;
+    margin: 0px 20px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "GmarketSansMedium";
+    color: #333;
+  }
+}
+
 /* 푸터 css시작 */
 
 footer {

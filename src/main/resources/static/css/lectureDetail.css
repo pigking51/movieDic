@@ -302,6 +302,12 @@ header {
   height: fit-content;
 }
 
+@media screen and (max-width: 1024px) {
+  .lecture {
+    width: 100%;
+  }
+}
+
 /* 푸터 css시작 */
 
 footer {

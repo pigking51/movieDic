@@ -514,6 +514,23 @@ header {
   color: #00d1fe;
 }
 
+@media screen and (max-width: 1024px) {
+  .user-info li:first-child {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 18px;
+  }
+
+  .best-lecture-list > li {
+    width: 95%;
+    height: 100%;
+    margin: 10px 10px 10px 10px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    position: relative;
+  }
+}
+
 /* 푸터 css시작 */
 
 footer {

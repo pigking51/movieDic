@@ -335,6 +335,35 @@ tbody tr:hover {
   height: fit-content;
 }
 
+@media screen and (max-width: 1024px) {
+  .table-bar {
+    width: 100%;
+    height: 54px;
+    margin: 0px;
+  }
+
+  .image {
+    width: 100%;
+    height: 248px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .table-bar td {
+    width: auto;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: "GmarketSansMedium";
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+}
+
 /* 푸터 css시작 */
 
 footer {

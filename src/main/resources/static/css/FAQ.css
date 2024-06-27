@@ -205,6 +205,15 @@ header {
   color: #fff;
 }
 
+@media screen and (max-width: 1024px) {
+  .FAQ {
+    width: 95%;
+    border-top: 3px solid #00d1fe;
+    height: auto;
+    margin: 30px auto;
+  }
+}
+
 /* 푸터 css시작 */
 
 footer {

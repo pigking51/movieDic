@@ -410,6 +410,185 @@ body.hidden_dashboard {
   height: auto;
 }
 
+@media screen and (max-width: 1024px) {
+  .today {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    color: #fff;
+    height: auto;
+    font-family: "GyeonggiTitleM";
+    font-size: 18px;
+  }
+
+  .clock {
+    margin-top: 20px;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    height: auto;
+    font-family: "GyeonggiTitleM";
+  }
+
+  .left-sideImg {
+    width: 150px;
+    height: auto;
+    margin: 50px;
+    display: flex;
+    align-items: center;
+  }
+
+  .updb-title p {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-family: "GyeonggiTitleM";
+    color: #fff;
+    /* border-bottom: 1px solid #fff; */
+  }
+
+  .updb-title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    float: left;
+    padding: 0 30px;
+    margin: 10px 0;
+  }
+
+  .up-graph-wrap {
+    width: 100%;
+    height: 24%;
+    display: flex;
+  }
+
+  .gender-graph {
+    width: 100%;
+    height: 100%;
+    margin-right: 10px;
+    border: 3px dashed #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .age-graph {
+    width: 100%;
+    height: 100%;
+    margin-right: 10px;
+    border: 3px dashed #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .admin-info {
+    width: 100%;
+    height: 100%;
+    margin-right: 20px;
+    border: 3px dashed #fff;
+    padding: 24px;
+    border-radius: 10px;
+  }
+
+  .admin-info > p {
+    width: auto;
+    height: auto;
+    color: #fff;
+    margin-left: 20px;
+    font-size: 16px;
+    font-family: "GyeonggiTitleM";
+    line-height: 1.8;
+  }
+
+  .downdb-title > p {
+    width: 100%;
+    display: flex;
+    font-size: 24px;
+    align-items: center;
+    /* border-bottom: 1px solid #fff; */
+  }
+
+  .line-graph {
+    width: 100%;
+    height: 85%;
+    border: 3px dashed #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+  }
+
+  .left-down-graph {
+    width: 46%;
+    height: 100%;
+    margin-right: 10px;
+  }
+
+  .myBarChart-y {
+    width: 100%;
+    height: 85%;
+    border: 3px dashed #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+  }
+
+  .manage-title > p {
+    width: 100%;
+    display: flex;
+    font-size: 24px;
+    align-items: center;
+    /* border-bottom: 1px solid #fff; */
+  }
+
+  .user-manage {
+    display: flex;
+    width: 98%;
+    height: 30%;
+    margin: 10px 0;
+    flex-direction: column;
+  }
+
+  .manage-wrap {
+    position: relative;
+    color: #666;
+    font-size: 20px;
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 85%;
+    border: 3px dashed #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+  }
+
+  .manage-info > thead > tr {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .manage-body > tr > td {
+    width: auto;
+    height: auto;
+    font-size: 10px;
+  }
+}
+
 /* 푸터 css시작 */
 
 footer {
