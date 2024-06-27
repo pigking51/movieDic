@@ -87,5 +87,15 @@ public class PostService {
 
     }
 
+    public PostDto deletePost(long postId){
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new ResourceNotFoundException("Post", "PostId", postId));
+        postRepository.delete(post);
+
+        PostDto postDto = new PostDto();
+
+        return postDto.toPostDtoFromPost(post);
+    }
+
 
 }

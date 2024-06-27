@@ -369,20 +369,27 @@ function rewriteMainContent() {
   const editTInput = document.createElement("input");
   const editCInput = document.createElement("input");
   const patchPostBtn = document.createElement("button");
+  const deletePostBtn = document.createElement("button");
   editTInput.type = `text`;
   editCInput.type = `text`;
   editCInput.cssText = `width: 100%; minHeight: 600px;`;
   patchPostBtn.textContent = `변경하기`;
   patchPostBtn.style.display = `none`;
+  patchPostBtn.style.cssText = `width: 30%; height: 50px; margin: 2% auto`;
+  deletePostBtn.textContent = `삭제하기`;
+  deletePostBtn.style.display = `none`;
+  deletePostBtn.style.cssText = `width: 30%; height: 50px; margin: 2% auto`;
 
   editMain.addEventListener("click", () => {
     editMain.style.display = `none`;
     patchPostBtn.style.display = `block`;
+    deletePostBtn.style.display = `block`;
     editTitle.firstElementChild.nextElementSibling.remove();
     editTitle.firstElementChild.nextElementSibling.remove();
     editTitle.firstElementChild.nextElementSibling.remove();
     editContent.textContent = "";
     sectionWrap.appendChild(patchPostBtn);
+    sectionWrap.appendChild(deletePostBtn);
     editTitle.appendChild(editTInput);
     editContent.appendChild(editCInput);
   });
@@ -403,12 +410,15 @@ function rewriteMainContent() {
     };
     patchThePost(patchData);
   });
+
+  deletePostBtn.addEventListener("click", () => {
+    deleteThePost();
+  });
 }
+let findPostId = parseInt(id, 10);
 
 // 본문 수정 함수
 function patchThePost(patchData) {
-  let findPostId = parseInt(id, 10);
-
   axios
     .patch(`http://localhost:8080/post/rewrite/${findPostId}`, patchData, {
       withCredentials: true,
@@ -423,7 +433,21 @@ function patchThePost(patchData) {
     });
 }
 
-// 본문 삭제
+// 본문 삭제 함수
+function deleteThePost() {
+  axios
+    .delete(`http://localhost:8080/post/delete/${findPostId}`, {
+      withCredentials: true,
+    })
+    .then((response) => {
+      console.log("데이터: ", response.data);
+      console.log("삭제성공");
+      window.location.href = `board.html`;
+    })
+    .catch((error) => {
+      console.log("오류 발생: ", error);
+    });
+}
 
 // 댓글 삭제
 function deleteMyComment(data) {
