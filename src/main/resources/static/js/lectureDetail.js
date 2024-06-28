@@ -8,6 +8,26 @@ const urls = "http://localhost:8080/lectures/getalllectures/" + id;
 const purchaseUrl = "http://localhost:8080/api/products/purchase/current";
 let isUser = "";
 
+// 모달 요소 선언
+// jQ 선언
+const $jQ = jQuery.noConflict();
+// 기존 모달위치 선언
+const firstwrap = document.querySelector(".alert");
+// 모달 내용 변경
+const cancletext = document.querySelector(".cancle-wrap").firstElementChild;
+const xbtn = document.querySelector(".cancle-wrap").lastElementChild;
+const modalcontentsSpan =
+  document.querySelector(".modal-contents").firstElementChild;
+const btnWrap = document.querySelector(".btn-wrap");
+
+// 모달 속 확인 취소 기능 넣기
+const yes = document.querySelector(".btn-wrap").firstElementChild;
+const no = document.querySelector(".btn-wrap").lastElementChild;
+
+yes.classList.add("yes");
+no.classList.add("no");
+xbtn.classList.add("closebtn");
+
 function userOrNot() {
   axios
     .get("http://localhost:8080/user/current", { widthCredentials: true })
@@ -113,11 +133,7 @@ function displaylectureDetails(data) {
 
   document.querySelector(".cart-btn").addEventListener("click", () => {
     setlecture(data);
-    if (confirm("구매완료 장바구니로 가시겠습니까?")) {
-      window.location.href = "http://localhost:8080/movieDic/cart.html";
-    } else {
-      window.location.href = "http://localhost:8080/movieDic/lecture.html";
-    }
+    lecturePurchase();
   });
 
   document.querySelector(".lecture-btn").addEventListener("click", () => {
@@ -142,8 +158,35 @@ function setlecture(data) {
     })
     .catch((error) => {
       console.log("오류 발생: ", error);
-      alert("로그인해주세요!!");
+      pleaseLogin();
     });
 }
 
 // 리뷰 댓글 입력 및 리뷰 달기
+
+// 구매완료??
+function lecturePurchase() {
+  cancletext.textContent = "구매완료";
+  modalcontentsSpan.textContent = "구매완료 장바구니로 가시겠습니까?";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    window.location.href = "cart.html";
+  });
+  $jQ(".no").click(function () {
+    window.location.href = "lecture.html";
+  });
+}
+
+// 로그인 안내
+function pleaseLogin() {
+  cancletext.textContent = "로그인 오류";
+  modalcontentsSpan.textContent = "로그인해주세요!!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+    window.location.href = `login.html`;
+  });
+}

@@ -205,7 +205,7 @@ document.querySelector(".search-btn").addEventListener("click", () => {
           // 해당 게시물 클릭 시 상세로 넘어가는 코드
 
           tr.addEventListener("click", () => {
-            alert(`해당 페이지로 이동`);
+            // alert(`해당 페이지로 이동`);
             window.location.href = `postDetail.html?id=` + index;
           });
         });
@@ -296,7 +296,7 @@ document.querySelector(".search-btn").addEventListener("click", () => {
         // 해당 게시물 클릭 시 상세로 넘어가는 코드
 
         tr.addEventListener("click", () => {
-          alert(`해당 페이지로 이동`);
+          // alert(`해당 페이지로 이동`);
           window.location.href = `postDetail.html?id=` + index;
         });
       });
@@ -398,7 +398,7 @@ function searchByKeyword(posts) {
     // 해당 게시물 클릭 시 상세로 넘어가는 코드
 
     tr.addEventListener("click", () => {
-      alert(`해당 페이지로 이동`);
+      // alert(`해당 페이지로 이동`);
       window.location.href = `postDetail.html?id=` + index;
     });
 
@@ -440,35 +440,27 @@ function changeTable() {
   const allTbody = document.querySelectorAll("tbody");
   const bActive = document.querySelectorAll(".b-active");
   const allTbodyArray = Array.from(allTbody);
-  let show = false;
-  console.log(bActive.length);
-  Array.from(bActive).forEach((active, index) => {
+  let currentPage = 1;
+
+  bActive.forEach((active, index) => {
     active.addEventListener("click", () => {
-      console.log(`번호확인 ${index}`);
-      if (allTbody[index].classList.contains("hidden")) {
-        allTbody[index].classList.remove("hidden");
-        let PTA = allTbodyArray.slice(allTbody[index], 1);
+      const tbodyToShow = allTbody[index];
 
-        PTA.forEach((TB) => {
-          if (TB.classList.contains("hidden")) {
-            TB.classList.remove("hidden");
-          } else if (!TB.classList.contains("hidden")) {
-            TB.classList.add("hidden");
+      if (isPageVisiable(currentPage, index)) {
+        allTbodyArray.forEach((tbody, idx) => {
+          if (isPageVisiable(currentPage, idx)) {
+            tbody.classList.add("hidden");
           }
         });
-      } else if (!allTbody[index].classList.contains("hidden")) {
-        console.log(`${index}번 작동이 안되고있음`);
-        allTbody[index].classList.add("hidden");
-        let PTA = allTbodyArray.slice(allTbody[index], 1);
-
-        PTA.forEach((TB) => {
-          if (TB.classList.contains("hidden")) {
-            TB.classList.remove("hidden");
-          } else if (!TB.classList.contains("hidden")) {
-            TB.classList.add("hidden");
-          }
-        });
+        currentPage = Math.ceil((index + 1) / 10);
       }
+      tbodyToShow.classList.toggle("hidden");
     });
   });
+
+  function isPageVisiable(page, index) {
+    const start = (page - 1) * 10;
+    const end = start + 10;
+    return index >= start && index < end;
+  }
 }

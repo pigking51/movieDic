@@ -1,5 +1,30 @@
 const urlList = "http://localhost:8080/api/products/purchaseList";
 
+// 모달 요소 선언
+// jQ 선언
+const $jQ = jQuery.noConflict();
+// 기존 모달위치 선언
+const firstwrap = document.querySelector(".alert");
+// 모달 내용 변경
+const cancletext = document.querySelector(".cancle-wrap").firstElementChild;
+const xbtn = document.querySelector(".cancle-wrap").lastElementChild;
+const modalcontentsSpan =
+  document.querySelector(".modal-contents").firstElementChild;
+const btnWrap = document.querySelector(".btn-wrap");
+
+// 모달 속 확인 취소 기능 넣기
+const yes = document.querySelector(".btn-wrap").firstElementChild;
+const no = document.querySelector(".btn-wrap").lastElementChild;
+
+yes.classList.add("yes");
+no.classList.add("no");
+xbtn.classList.add("closebtn");
+
+// 강의 구매하러 가기
+document.querySelector(".lectureBtn").addEventListener("click", () => {
+  window.location.href = "lecture.html";
+});
+
 function sessionCurrent() {
   axios
     .get("http://localhost:8080/user/current", { withCredentials: true })
@@ -29,19 +54,7 @@ function sessionCurrent() {
             document
               .querySelector(".pay-button")
               .addEventListener("click", () => {
-                if (confirm("구매하시겠습니까?")) {
-                  axios
-                    .post(urlList, data, { withCredentials: true })
-                    .then((response) => {
-                      console.log("데이터: ", response.data);
-                      localStorage.removeItem(userId);
-                      // window.location.reload();
-                      window.location.href = `mainpage.html`;
-                    })
-                    .catch((error) => {
-                      console.log("오류 발생: ", error);
-                    });
-                }
+                isRealPurchase(data);
               });
           }
         }
@@ -51,8 +64,7 @@ function sessionCurrent() {
     })
     .catch((error) => {
       console.log("오류 발생: ", error);
-      alert("로그인해주세요(카트)");
-      window.location.href = `login.html`;
+      pleaseLogin();
     });
 }
 
@@ -136,9 +148,8 @@ function deleteIndex(Index) {
         let cartItems = JSON.parse(localStorage.getItem(userId));
         if (cartItems[Index]) {
           cartItems.splice(Index, 1);
-          alert("삭제되었습니다.");
+          deleteComplete();
         }
-        window.location.reload();
 
         localStorage.setItem(userId, JSON.stringify(cartItems));
         if (Index == 0) {
@@ -186,5 +197,87 @@ document.querySelector(".searchBtn").addEventListener("click", () => {
       console.log("오류 발생: ", error);
     });
 });
+// 구매확인
+function isRealPurchase(data) {
+  cancletext.textContent = "구매확인";
+  modalcontentsSpan.textContent = "구매하시겠습니까?";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    axios
+      .get("http://localhost:8080/user/current", { withCredentials: true })
+      .then((response) => {
+        console.log("데이터: ", response.data.userId);
+        const userId = response.data.userId;
+        axios
+          .post(urlList, data, { withCredentials: true })
+          .then((response) => {
+            console.log("데이터: ", response.data);
+            localStorage.removeItem(userId);
+          })
+          .catch((error) => {
+            console.log("오류 발생: ", error);
+          });
+      })
+      .catch((error) => {
+        console.log("오류 발생", error);
+      });
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    window.location.href = "lecture.html";
+  });
+}
+
+// // 구매완료
+// function purchaseComplete() {
+//   cancletext.textContent = "구매완료";
+//   modalcontentsSpan.textContent =
+//     "강의를 구매하셨습니다. 마이페이지로 이동하시겠습니까?";
+//   $jQ(".alert").addClass("active");
+//   $jQ(".closebtn").click(function () {
+//     $jQ(".alert").removeClass("active");
+//   });
+
+//   $jQ(".another").click(function () {
+//     window.location.href = "lecture.html";
+//   });
+//   $jQ(".no").click(function () {
+//     window.location.href = "mainpage.html";
+//   });
+// }
+
+// 삭제완료
+function deleteComplete() {
+  cancletext.textContent = "삭제완료";
+  modalcontentsSpan.textContent = "해당 강의를 삭제했습니다.";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+    window.location.reload();
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+    window.location.reload();
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+    window.location.reload();
+  });
+}
+
+// 로그인 안내
+function pleaseLogin() {
+  cancletext.textContent = "로그인 오류";
+  modalcontentsSpan.textContent = "로그인해주세요!!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+    window.location.href = `login.html`;
+  });
+}
+
 // 페이지 로딩시에 즉시 세션여부 확인
 sessionCurrent();

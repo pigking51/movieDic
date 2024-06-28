@@ -2,9 +2,40 @@ const url = "http://localhost:8080/user/modify/";
 const urlCur = "http://localhost:8080/user/current";
 const urlShow = "http://localhost:8080/user/show";
 
-// const urlParams = new URLSearchParams(window.location.search);
-// const pId = urlParams.get("id");
-// console.log("Post ID: ", Id);
+// 모달 요소 선언
+// jQ 선언
+const $jQ = jQuery.noConflict();
+// 기존 모달위치 선언
+const firstwrap = document.querySelector(".alert");
+// 모달 내용 변경
+const cancletext = document.querySelector(".cancle-wrap").firstElementChild;
+const xbtn = document.querySelector(".cancle-wrap").lastElementChild;
+const modalcontentsSpan =
+  document.querySelector(".modal-contents").firstElementChild;
+const btnWrap = document.querySelector(".btn-wrap");
+
+// 모달 속 확인 취소 기능 넣기
+const yes = document.querySelector(".btn-wrap").firstElementChild;
+const no = document.querySelector(".btn-wrap").lastElementChild;
+
+yes.classList.add("yes");
+no.classList.add("no");
+xbtn.classList.add("closebtn");
+
+// 현재 접속한 유저에 따라 관리자 대시보드 식별여부 구분
+const userOrAdmin =
+  document.querySelector(".user-info").firstElementChild.lastElementChild;
+axios
+  .get(urlCur)
+  .then((response) => {
+    console.log("데이터: ", response.data);
+    if (response.data.authority[0].authority != "ROLE_ADMIN") {
+      userOrAdmin.style.display = `none`;
+    }
+  })
+  .catch((error) => {
+    console.log("오류 발생: ", error);
+  });
 
 // 창 전환
 
@@ -28,10 +59,6 @@ let gender = "";
 
 // 변수에 정보 담기
 
-// document.querySelector(".nickname").addEventListener("change", (e) => {
-//   nickname = e.target.value;
-// });
-
 document.querySelector(".password").addEventListener("change", (e) => {
   password = e.target.value;
 });
@@ -54,41 +81,6 @@ document.querySelector("#female").addEventListener("click", (e) => {
 
 // 중복확인
 
-// 아이디는 수정 안하는 것!!!
-
-// document.querySelector(".nick_check").addEventListener("click", () => {
-//   axios
-//     .get(urlShow)
-//     .then((response) => {
-//       console.log("데이터: ", response.data);
-//       for (i = 0; i < response.data.length; i++) {
-//         if (response.data[i].userId == nickname) {
-alert(`중복된 ID입니다!
-//         다른 ID를 입력해주세요!!!`);
-//           break;
-//         } else if (document.querySelector(".nickname").value == "") {
-alert("ID를 입력해주세요!!!");
-//           break;
-//         } else if (
-//           i == response.data.length - 1 &&
-//           response.data[i].userId != nickname
-//         ) {
-//           if (
-//             !confirm(`사용 가능한 ID입니다
-//           해당 ID를 사용하시겠습니까?`)
-//           ) {
-//             document.querySelector(".nickname").value = "";
-//           }
-//           break;
-//         }
-//       }
-//     })
-//     .catch((error) => {
-//       console.log("오류 발생: ", error);
-//       console.log("ID 중복체크 실패");
-//     });
-// });
-
 // email 중복체크
 
 document.querySelector(".email_check").addEventListener("click", () => {
@@ -99,22 +91,16 @@ document.querySelector(".email_check").addEventListener("click", () => {
       for (i = 0; i < response.data.length; i++) {
         console.log(response.data[0].email);
         if (response.data[i].email == email) {
-          // alert(`이미 등록된 email이 존재합니다!
-          // 다른 email을 입력해주세요!!!`);
+          isEmailDuplication();
           break;
         } else if (document.querySelector(".email").value == "") {
-          // alert("email을 입력해주세요!!!");
+          emailIsBlank();
           break;
         } else if (
           i == response.data.length - 1 &&
           response.data[i].userEmail != email
         ) {
-          if (
-            !confirm(`사용 가능한 email입니다
-          해당 email을 사용하시겠습니까?`)
-          ) {
-            document.querySelector(".email").value = "";
-          }
+          isUseThisEmail();
           break;
         }
       }
@@ -130,20 +116,20 @@ document.querySelector(".register").addEventListener("click", () => {
   // 공백여부 확인
 
   if (document.querySelector(".password").value == "") {
-    // alert("비밀번호를 입력하지 않았습니다!");
+    PWIsBlank();
     return false;
   } else if (document.querySelector(".name").value == "") {
-    // alert("이름을 입력하지 않았습니다!");
+    nameIsBlank();
     return false;
   } else if (document.querySelector(".email").value == "") {
-    // alert(" email을 입력하지 않았습니다!");
+    emailIsBlank();
     return false;
   }
 
   // 비밀번호 일치 확인
   if (passwordcheck != password) {
     document.querySelector(".passwordcheck").style.border = `4px solid #f2bfde`;
-    // alert(`비밀번호가 일치하지 않습니다`);
+    nonCorrectPW();
     return false;
   }
 
@@ -165,8 +151,7 @@ document.querySelector(".register").addEventListener("click", () => {
         .then((response) => {
           console.log("데이터: ", response.data);
           console.log("갱신완료");
-          // alert("갱신이 완료되었습니다");
-          window.location.reload();
+          updateYourProfile();
         })
         .catch((error) => {
           console.log("오류 발생: ", error);
@@ -291,16 +276,6 @@ axios
     console.log("현재 유저정보 오류: ");
   });
 
-//// 내 강의 클릭 시 해당 주소로 이동
-//document.addEventListener("DOMContentLoaded", () => {
-//  preLectureBox.forEach((goLecture, index) => {
-//    goLecture.addEventListener("click", () => {
-//      window.location.href = `streaming.html`;
-alert("반응하는지 확인!!!");
-//    });
-//  });
-//});
-
 // 구매이력 많은 순으로 강좌 나열(상위 4개만)
 const lectureUrl = "http://localhost:8080/lectures/getalllectures";
 axios
@@ -398,4 +373,105 @@ axios
     console.log("오류 발생:", error);
   });
 
-// 추후 추가할 기능
+// 상황별 오류 alert 모달 달기
+function isEmailDuplication() {
+  cancletext.textContent = "중복확인 오류";
+  modalcontentsSpan.textContent =
+    "이미 등록된 email이 존재합니다! 다른 email을 입력해주세요!!!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function emailIsBlank() {
+  cancletext.textContent = "입력오류";
+  modalcontentsSpan.textContent = "email을 입력해주세요!!!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function isUseThisEmail() {
+  cancletext.textContent = "중복확인";
+  modalcontentsSpan.textContent =
+    "사용 가능한 email입니다 해당 email을 사용하시겠습니까?";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    document.querySelector(".email").value = "";
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function PWIsBlank() {
+  cancletext.textContent = "입력오류";
+  modalcontentsSpan.textContent = "비밀번호를 입력하지 않았습니다!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function nameIsBlank() {
+  cancletext.textContent = "입력오류";
+  modalcontentsSpan.textContent = "이름을 입력하지 않았습니다!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function nonCorrectPW() {
+  cancletext.textContent = "입력오류";
+  modalcontentsSpan.textContent = "비밀번호가 일치하지 않습니다";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function updateYourProfile() {
+  cancletext.textContent = "갱신완료";
+  modalcontentsSpan.textContent = "갱신이 완료되었습니다";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    window.location.reload();
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}

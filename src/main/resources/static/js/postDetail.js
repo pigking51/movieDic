@@ -280,25 +280,36 @@ function rewriteMyComment(myComment) {
         .get(urlCoAll)
         .then((response) => {
           console.log("데이터: ", response.data);
-          if (
-            myComment.authority[0].authority == "ROLE_ADMIN" ||
-            response.data[index].user.userId == myComment.userId
-          ) {
-            commen.style.cssText = `grid-template-columns: 1fr 5fr 2fr 1fr 1fr;`;
-            commen.appendChild(cancel);
-            commen.appendChild(deleteBtn);
-            cancel.style.display = `block`;
-            deleteBtn.addEventListener("click", () => {
-              if (
-                myComment.userId == response.data[index].user.userId ||
-                myComment.authority[0].authority == "ROLE_ADMIN"
-              ) {
-                commentId = response.data[index].commentId;
-                deleteMyComment(commentId);
-              } else {
-                console.log("삭제진행오류");
-              }
-            });
+          for(i = 0; i < response.data; i++){
+            
+            if (
+              myComment.authority[0].authority == "ROLE_ADMIN" ||
+              response.data[i].user.userId == myComment.userId
+            ) {
+              commen.style.cssText = `grid-template-columns: 1fr 5fr 2fr 1fr 1fr;`;
+              commen.appendChild(cancel);
+              commen.appendChild(deleteBtn);
+              cancel.style.display = `block`;
+              deleteBtn.addEventListener("click", () => {
+                if (
+                  myComment.userId == response.data[i].user.userId
+                  
+                ) {
+                  const thisUserCommentIds = response.data.map(function(eData){
+                    if(eData.user.userId == myComment.userId){
+                     return eData;
+                    }
+                  })
+                  const thisCommentId = thisUserCommentIds.map(function(userComment){
+                    if(userComment.commentId == commen )
+                  })
+                  commentId = response.data[i].commentId;
+                  deleteMyComment(commentId);
+                } else {
+                  console.log("삭제진행오류");
+                }
+              });
+          }
 
             cancel.addEventListener("click", () => {
               cancel.style.display = `none`;

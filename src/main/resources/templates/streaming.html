@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>streamingpage</title>
     <link href="../css/streaming.css" rel="stylesheet" type="text/css" />
+    <link href="../css/modal.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -42,7 +43,7 @@
       <div class="top-Icon">
         <ul>
           <li>
-            <a href="#" class="logoutBtn hidden_logout"
+            <a class="logoutBtn hidden_logout"
               ><img src="../images/icon/log-out.png" alt="상단 아이콘"
             /></a>
           </li>
@@ -63,13 +64,13 @@
 
     <div class="top">
       <div class="left">
-        <a href="#" class="logo">
+        <a class="logo">
           <img src="../images/icon/back.png" alt="뒤로가기" />
         </a>
         <span class="lectureTitle"> 히치콕으로 알아보는 촬영 / 연출 </span>
       </div>
       <div class="hamburger">
-        <a href="#">
+        <a>
           <img src="../images/icon/menu.png" alt="메뉴" />
         </a>
       </div>
@@ -131,29 +132,25 @@
         </div>
         <!-- <div class="play">
         <img src="../images/logo/logo.png" alt="로고" />
-        <a href="#">
+        <a >
           <img src="../images/icon/play_circle.png" alt="플레이" />
         </a>
       </div> -->
       </div>
       <div class="console">
         <div class="up-down">
-          <a href="#"
-            ><img src="../images/icon/first_page.png" alt="이전" />이전강의</a
-          >
-          <a href="#"
-            >다음강의<img src="../images/icon/last_page.png" alt="다음"
-          /></a>
+          <a><img src="../images/icon/first_page.png" alt="이전" />이전강의</a>
+          <a>다음강의<img src="../images/icon/last_page.png" alt="다음" /></a>
         </div>
         <!-- <div class="preferences">
-          <a href="#"
+          <a 
             ><img
               src="../images/icon/assistant_on_hub.png"
               alt="화질설정"
             />화질설정</a
           >
           <a
-            href="#"
+            
             class="fullscreen"
             title="전체화면"
             onclick="openFullScreenMode()"
@@ -163,7 +160,7 @@
       </div>
     </div>
 
-    <a class="teacher" href="#">
+    <a class="teacher">
       <div>강사소개</div>
       <span>|</span>
       <div>설문조사</div>
@@ -193,7 +190,27 @@
         </button>
       </div>
     </div>
-
+    <!-- alert모달 창 시작 -->
+    <div class="alert_pop first">
+      <div class="modal-wrap">
+        <div class="cancle-wrap">
+          <span>로그인 오류</span>
+          <button>X</button>
+        </div>
+        <div class="modal-contents">
+          <span>ID와 비밀번호를 입력하세요!</span>
+          <div class="btn-wrap">
+            <a>
+              <p>확인</p>
+            </a>
+            <a>
+              <p>취소</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- alert모달 창 끝 -->
     <!-- 푸터 html 시작 -->
 
     <footer>

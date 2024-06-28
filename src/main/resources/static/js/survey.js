@@ -35,9 +35,6 @@ document.querySelector("#male").addEventListener("click", (e) => {
 document.querySelector("#female").addEventListener("click", (e) => {
   answer2 = e.target.value;
 });
-document.querySelector("#nothing").addEventListener("click", (e) => {
-  answer2 = e.target.value;
-});
 
 // 3번 항목 radio 태그선택
 document.querySelector("#c_verygood").addEventListener("click", (e) => {
@@ -134,6 +131,7 @@ document.querySelector(".surveyBtn").addEventListener("click", () => {
     return false;
   }
 
+  // 모달관련 jQuery
   const $jQ = jQuery.noConflict();
 
   $jQ("#pop").addClass("active");

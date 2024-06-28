@@ -51,8 +51,6 @@ public class UserService {
         if(userOptional.isPresent()){
 
             User temp = userOptional.get();
-//            temp.setUserId(user.getUserId());
-//            userId는 @ID로 설정했기때문에 이 방식으로 갱신 불가능함!!!
             temp.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             temp.setEmail(user.getEmail());
             temp.setRealName(user.getUsername());
@@ -68,13 +66,5 @@ public class UserService {
     public List<Object[]> getAllUsersParts(){
         return userRepository.getUserInfo();
     }
-
-//    public Object[] getUserCurrentRealName(){
-//        return userRepository.findAll().stream().map((user) -> user.getUsername()).collect(Collectors.toList()).toArray();
-////        if(userOptional.isEmpty()){
-////            return "there is no data";
-////        }
-////           return userOptional.get().getUsername();
-//    }
 
 }

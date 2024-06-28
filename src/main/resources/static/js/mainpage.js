@@ -1,7 +1,7 @@
-$(".image a:gt(0)").hide();
+$jQ(".image a:gt(0)").hide();
 
 setInterval(function () {
-  $(".image a:first-child")
+  $jQ(".image a:first-child")
     .fadeOut(1000)
     .next("a")
     .fadeIn(1000)

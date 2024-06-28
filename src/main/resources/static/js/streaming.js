@@ -91,10 +91,10 @@ function prevMyLecture(lecId) {
 
       for (i = 0; i < lecList.length; i++) {
         if (lecList[0].lecture.lectureId == lecId) {
-          // alert("첫번째 강의입니다.");
+          ifFirstLecture();
           break;
         } else if (lecList[i].lecture.lectureId == lecId) {
-          // alert("이동");
+          console.log("이전으로 이동");
           window.location.href = `${nowUrlPart}?user=${uId}&id=${
             lecList[i - 1].lecture.lectureId
           }`;
@@ -118,10 +118,11 @@ function nextMyLecture(lecId) {
       console.log(lecId);
       for (i = 0; i < lecList.length; i++) {
         if (lecList[lecList.length - 1].lecture.lectureId == lecId) {
-          // alert("마지막 강의입니다.");
+          ifLastLecture();
           break;
         } else if (lecList[i].lecture.lectureId == lecId) {
-          // alert("이동");
+          console.log("다음으로 이동");
+
           window.location.href = `${nowUrlPart}?user=${uId}&id=${
             lecList[i + 1].lecture.lectureId
           }`;
@@ -133,3 +134,90 @@ function nextMyLecture(lecId) {
       console.log("리스트 출력 실패");
     });
 }
+
+// 강의 처음과 마지막에 모달 달기
+
+// // 모달 생성
+// function moveLectureModal() {}
+
+// 강의가 처음일때
+function ifFirstLecture() {
+  // 기존 모달위치 선언
+  const firstwrap = document.querySelector(".first");
+  // 모달 내용 변경
+  const cancletext = document.querySelector(".cancle-wrap").firstElementChild;
+  const xbtn = document.querySelector(".cancle-wrap").lastElementChild;
+  const modalcontentsSpan =
+    document.querySelector(".modal-contents").firstElementChild;
+  const btnWrap = document.querySelector(".btn-wrap");
+  cancletext.textContent = "첫번째 강의";
+  xbtn.textContent = "x";
+  modalcontentsSpan.textContent = "첫번째 강의입니다!";
+
+  xbtn.classList.add("closebtn");
+  // 모달 만드는 함수(jQuery)
+
+  $jQ(".first").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".first").removeClass("active");
+  });
+
+  btnWrap.addEventListener("click", () => {
+    modalwrap.classList.remove("active");
+  });
+}
+
+// 강의가 마지막일떄
+function ifLastLecture() {
+  // 기존 모달위치 선언
+  const firstwrap = document.querySelector(".first");
+  // 모달 내용 변경
+  const cancletext = document.querySelector(".cancle-wrap").firstElementChild;
+  const xbtn = document.querySelector(".cancle-wrap").lastElementChild;
+  const modalcontentsSpan =
+    document.querySelector(".modal-contents").firstElementChild;
+  const btnWrap = document.querySelector(".btn-wrap");
+  cancletext.textContent = "마지막 강의";
+  xbtn.textContent = "x";
+  modalcontentsSpan.textContent = "마지막 강의입니다!";
+
+  xbtn.classList.add("closebtn");
+  // 모달 만드는 함수(jQuery)
+
+  $jQ(".first").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".first").removeClass("active");
+  });
+
+  btnWrap.addEventListener("click", () => {
+    modalwrap.classList.remove("active");
+  });
+}
+
+// 현재 로그인을 하지 않고 접속한 경우
+const urlCur = "http://localhost:8080/user/current";
+
+function sessionCurrent() {
+  axios
+    .get("http://localhost:8080/user/current", { withCredentials: true })
+    .then((response) => {
+      console.log("데이터: ", response.data);
+      if (response.status == 200) {
+        console.log("로그인 상태입니다."); // 로그인 확인 메시지 수정(0618)
+      }
+    })
+    .catch((error) => {
+      console.log("현재 로그인 상태가 아닙니다.: ", error); // 오류 메시지 수정(0618)
+      // 기존 모달위치 선언
+      const firstwrap = document.querySelector(".first");
+      const xbtn = document.querySelector(".cancle-wrap").lastElementChild;
+      xbtn.classList.add("closebtn");
+
+      $jQ(".first").addClass("active");
+      $jQ(".closebtn").click(function () {
+        window.location.href = "login.html";
+      });
+    });
+}
+
+sessionCurrent();
