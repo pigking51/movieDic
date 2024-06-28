@@ -231,24 +231,6 @@ function isRealPurchase(data) {
   });
 }
 
-// // 구매완료
-// function purchaseComplete() {
-//   cancletext.textContent = "구매완료";
-//   modalcontentsSpan.textContent =
-//     "강의를 구매하셨습니다. 마이페이지로 이동하시겠습니까?";
-//   $jQ(".alert").addClass("active");
-//   $jQ(".closebtn").click(function () {
-//     $jQ(".alert").removeClass("active");
-//   });
-
-//   $jQ(".another").click(function () {
-//     window.location.href = "lecture.html";
-//   });
-//   $jQ(".no").click(function () {
-//     window.location.href = "mainpage.html";
-//   });
-// }
-
 // 삭제완료
 function deleteComplete() {
   cancletext.textContent = "삭제완료";
