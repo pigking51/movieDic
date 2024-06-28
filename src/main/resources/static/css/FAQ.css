@@ -197,7 +197,7 @@ header {
   text-align: right;
 }
 
-.Answer {
+/* .Answer {
   width: 100%;
   height: 60px;
   background-color: #333;
@@ -219,6 +219,26 @@ header {
 
 .Answer > p:hover {
   color: #fff;
+} */
+
+/* FAQ 항목 스타일 */
+.FAQ-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.question {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.answer {
+  margin-top: 10px;
+}
+
+/* 숨김 처리된 답변 스타일 */
+.hidden {
+  display: none;
 }
 
 @media screen and (max-width: 1024px) {
