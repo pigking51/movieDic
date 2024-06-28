@@ -128,17 +128,22 @@ axios
         const cComment = document.createElement("p");
         const cCreatedAt = document.createElement("p");
 
+        // commentId 추가
+        const hiddenId = document.createElement("p");
+        hiddenId.textContent = comment.commentId;
+        hiddenId.style.display = `none`;
+
         // 요소에 데이터 추가
         uId.textContent = comment.user.userId;
         cComment.textContent = comment.commentContent;
         cCreatedAt.textContent = comment.createdAt.substring(0, 10);
         // 아래꺼는 시간
-        // cCreatedAt.textContent = comment.createdAt.substring(12, 18);
 
         // 클래스 추가
         div.classList.add("comments");
 
         // 요소 넣기
+        div.appendChild(hiddenId);
         div.appendChild(uId);
         div.appendChild(cComment);
         div.appendChild(cCreatedAt);
@@ -280,36 +285,19 @@ function rewriteMyComment(myComment) {
         .get(urlCoAll)
         .then((response) => {
           console.log("데이터: ", response.data);
-          for(i = 0; i < response.data; i++){
-            
-            if (
-              myComment.authority[0].authority == "ROLE_ADMIN" ||
-              response.data[i].user.userId == myComment.userId
-            ) {
-              commen.style.cssText = `grid-template-columns: 1fr 5fr 2fr 1fr 1fr;`;
-              commen.appendChild(cancel);
-              commen.appendChild(deleteBtn);
-              cancel.style.display = `block`;
-              deleteBtn.addEventListener("click", () => {
-                if (
-                  myComment.userId == response.data[i].user.userId
-                  
-                ) {
-                  const thisUserCommentIds = response.data.map(function(eData){
-                    if(eData.user.userId == myComment.userId){
-                     return eData;
-                    }
-                  })
-                  const thisCommentId = thisUserCommentIds.map(function(userComment){
-                    if(userComment.commentId == commen )
-                  })
-                  commentId = response.data[i].commentId;
-                  deleteMyComment(commentId);
-                } else {
-                  console.log("삭제진행오류");
-                }
-              });
-          }
+          if (
+            myComment.authority[0].authority == "ROLE_ADMIN" ||
+            response.data[index].user.userId == myComment.userId
+          ) {
+            commen.style.cssText = `grid-template-columns: 1fr 5fr 2fr 1fr 1fr;`;
+            commen.appendChild(cancel);
+            commen.appendChild(deleteBtn);
+            cancel.style.display = `block`;
+            commentId = parseInt(commen.firstElementChild.textContent, 10);
+
+            deleteBtn.addEventListener("click", () => {
+              deleteMyComment(commentId);
+            });
 
             cancel.addEventListener("click", () => {
               cancel.style.display = `none`;
@@ -320,7 +308,6 @@ function rewriteMyComment(myComment) {
               ) {
                 commen.innerHTML = "";
                 uId.textContent = response.data[index].userId;
-                commentId = response.data[index].commentId;
 
                 commen.appendChild(uId);
                 commen.appendChild(reComment);

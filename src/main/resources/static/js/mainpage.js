@@ -1,3 +1,5 @@
+let $jQ = jQuery.noConflict();
+
 $jQ(".image a:gt(0)").hide();
 
 setInterval(function () {
