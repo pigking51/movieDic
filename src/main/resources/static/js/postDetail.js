@@ -21,6 +21,26 @@ let commentId = 0;
 
 let checked = false;
 
+// 모달 요소 선언
+// jQ 선언
+const $jQ = jQuery.noConflict();
+// 기존 모달위치 선언
+const firstwrap = document.querySelector(".alert");
+// 모달 내용 변경
+const cancletext = document.querySelector(".cancle-wrap").firstElementChild;
+const xbtn = document.querySelector(".cancle-wrap").lastElementChild;
+const modalcontentsSpan =
+  document.querySelector(".modal-contents").firstElementChild;
+const btnWrap = document.querySelector(".btn-wrap");
+
+// 모달 속 확인 취소 기능 넣기
+const yes = document.querySelector(".btn-wrap").firstElementChild;
+const no = document.querySelector(".btn-wrap").lastElementChild;
+
+yes.classList.add("yes");
+no.classList.add("no");
+xbtn.classList.add("closebtn");
+
 axios
   .get(urls)
   .then((response) => {
@@ -197,9 +217,26 @@ axios
   .get("http://localhost:8080/like/all", { withCredentials: true })
   .then((response) => {
     console.log("데이터: ", response.data);
-    likeCount = response.data.length;
-    console.log(likeCount);
+    // likeCount = response.data.length;
+    const likeRD = response.data;
+    console.log(likeRD[0].post.postId);
     document.querySelector(".count").textContent = likeCount;
+    axios
+      .get(urls, { withCredentials: true })
+      .then((response) => {
+        console.log("데이터: ", response.data);
+        console.log(response.data.postId);
+        for (i = 0; i < likeRD.length; i++) {
+          if (response.data.postId == likeRD[i].post.postId) {
+            likeCount++;
+            console.log(likeCount);
+            document.querySelector(".count").textContent = likeCount;
+          }
+        }
+      })
+      .catch((error) => {
+        console.log("오류 발생: ", error);
+      });
   })
   .catch((error) => {
     console.log("오류 발생: ", error);
@@ -228,6 +265,7 @@ function plusLike(data) {
                 nowUserData2.authority[0].authority == "ROLE_USER"
               ) {
                 console.log("이미 추천하셨습니다");
+                notdupliThumbs();
                 return false;
               } else {
                 console.log("추천가능");
@@ -240,8 +278,7 @@ function plusLike(data) {
               .then((response) => {
                 console.log("데이터: ", response.data);
                 console.log("추천 완료");
-                alert("추천 완료");
-                window.location.reload();
+                thumbsUp();
               })
               .catch((error) => {
                 console.log("오류 발생: ", error);
@@ -368,15 +405,14 @@ function rewriteMainContent() {
   const editCInput = document.createElement("input");
   const patchPostBtn = document.createElement("button");
   const deletePostBtn = document.createElement("button");
+  const likebox = document.querySelector(".like-box");
   editTInput.type = `text`;
   editCInput.type = `text`;
   editCInput.cssText = `width: 100%; minHeight: 600px;`;
   patchPostBtn.textContent = `변경하기`;
   patchPostBtn.style.display = `none`;
-  patchPostBtn.style.cssText = `width: 30%; height: 50px; margin: 2% auto`;
   deletePostBtn.textContent = `삭제하기`;
   deletePostBtn.style.display = `none`;
-  deletePostBtn.style.cssText = `width: 30%; height: 50px; margin: 2% auto`;
 
   editMain.addEventListener("click", () => {
     editMain.style.display = `none`;
@@ -390,6 +426,8 @@ function rewriteMainContent() {
     sectionWrap.appendChild(deletePostBtn);
     editTitle.appendChild(editTInput);
     editContent.appendChild(editCInput);
+    likebox.appendChild(patchPostBtn);
+    likebox.appendChild(deletePostBtn);
   });
 
   let patchTitle = "";
@@ -461,4 +499,35 @@ function deleteMyComment(data) {
     .catch((error) => {
       console.log("삭제오류: ", error);
     });
+}
+
+// 추천완료 모달창 만들기
+function thumbsUp() {
+  cancletext.textContent = "추천하셨습니다.";
+  modalcontentsSpan.textContent = "추천 완료";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+
+function notdupliThumbs() {
+  cancletext.textContent = "중복추천 방지";
+  modalcontentsSpan.textContent = "이미 추천하셨습니다";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
 }

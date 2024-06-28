@@ -215,7 +215,15 @@ function sessionCurrent() {
 
       $jQ(".first").addClass("active");
       $jQ(".closebtn").click(function () {
-        window.location.href = "login.html";
+        window.location.href = "mainpage.html";
+      });
+      $jQ(".yes").click(function () {
+        $jQ(".alert").removeClass("active");
+        window.location.href = "mainpage.html";
+      });
+      $jQ(".no").click(function () {
+        $jQ(".alert").removeClass("active");
+        window.location.href = "mainpage.html";
       });
     });
 }

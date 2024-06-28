@@ -13,6 +13,26 @@ let birthday = "";
 
 let passChk = "";
 
+// 모달 요소 선언
+// jQ 선언
+const $jQ = jQuery.noConflict();
+// 기존 모달위치 선언
+const firstwrap = document.querySelector(".alert");
+// 모달 내용 변경
+const cancletext = document.querySelector(".cancle-wrap").firstElementChild;
+const xbtn = document.querySelector(".cancle-wrap").lastElementChild;
+const modalcontentsSpan =
+  document.querySelector(".modal-contents").firstElementChild;
+const btnWrap = document.querySelector(".btn-wrap");
+
+// 모달 속 확인 취소 기능 넣기
+const yes = document.querySelector(".btn-wrap").firstElementChild;
+const no = document.querySelector(".btn-wrap").lastElementChild;
+
+yes.classList.add("yes");
+no.classList.add("no");
+xbtn.classList.add("closebtn");
+
 // input 내용 담기
 document.querySelector(".nickname").addEventListener("change", (e) => {
   console.log(e.target.value);
@@ -71,11 +91,10 @@ document.querySelector(".nick_check").addEventListener("click", () => {
       console.log("데이터: ", response.data);
       for (i = 0; i < response.data.length; i++) {
         if (response.data[i].userId == userId) {
-          // alert(`중복된 ID입니다!
-          // 다른 ID를 입력해주세요!!!`);
+          dupliID();
           break;
         } else if (document.querySelector(".nickname").value == "") {
-          // alert("ID를 입력해주세요!!!");
+          noID();
           break;
         } else if (
           i == response.data.length - 1 &&
@@ -106,11 +125,10 @@ document.querySelector(".email_check").addEventListener("click", () => {
       for (i = 0; i < response.data.length; i++) {
         console.log(response.data[0].email);
         if (response.data[i].email == userEmail) {
-          // alert(`이미 등록된 email이 존재합니다!
-          // 다른 email을 입력해주세요!!!`);
+          isEmailDuplication();
           break;
         } else if (document.querySelector(".email").value == "") {
-          // alert("email을 입력해주세요!!!");
+          emailIsBlank();
           break;
         } else if (
           i == response.data.length - 1 &&
@@ -132,7 +150,6 @@ document.querySelector(".email_check").addEventListener("click", () => {
 });
 // 뒤로가기
 document.querySelector(".backBtn").addEventListener("click", () => {
-  // alert("뒤로이동!");
   window.history.go(-1);
 });
 
@@ -151,23 +168,23 @@ document.querySelector(".register").addEventListener("click", () => {
 
   if (passChk != password) {
     document.querySelector(".passwordcheck").style.border = `4px solid #f2bfde`;
-    // alert(`비밀번호가 일치하지 않습니다`);
+    nonCorrectPW();
     return false;
   }
   if (document.querySelector(".nickname").value == "") {
-    // alert("ID를 입력하지 않았습니다!");
+    IDIsBlank();
     return false;
   } else if (document.querySelector(".birth").value == "") {
-    // alert("생일을 입력하지 않았습니다!");
+    BirthIsBlank();
     return false;
   } else if (document.querySelector(".password").value == "") {
-    // alert("비밀번호를 입력하지 않았습니다!");
+    PWIsBlank();
     return false;
   } else if (document.querySelector(".name").value == "") {
-    // alert("이름을 입력하지 않았습니다!");
+    nameIsBlank();
     return false;
   } else if (document.querySelector(".email").value == "") {
-    // alert(" email을 입력하지 않았습니다!");
+    emailIsBlank();
     return false;
   }
 
@@ -176,7 +193,7 @@ document.querySelector(".register").addEventListener("click", () => {
     .then((response) => {
       console.log("데이터 :", response);
       if (response.status == 201) {
-        // alert("회원가입 완료");
+        successSignUp();
         document.querySelector(".nickname").value = "";
         document.querySelector(".birth").value = "";
         document.querySelector(".password").value = "";
@@ -189,3 +206,193 @@ document.querySelector(".register").addEventListener("click", () => {
       console.log("에러발생 : ", error);
     });
 });
+
+function dupliID() {
+  cancletext.textContent = "중복 오류";
+  modalcontentsSpan.textContent = "중복된 ID입니다! 다른 ID를 입력해주세요!!!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function noID() {
+  cancletext.textContent = "공백오류";
+  modalcontentsSpan.textContent = "ID를 입력해주세요!!!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function isUseThisEmail() {
+  cancletext.textContent = "중복확인";
+  modalcontentsSpan.textContent =
+    "사용 가능한 email입니다 해당 email을 사용하시겠습니까?";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    document.querySelector(".email").value = "";
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function noPW() {
+  cancletext.textContent = "공백오류";
+  modalcontentsSpan.textContent = "PW를 입력해주세요!!!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function isEmailDuplication() {
+  cancletext.textContent = "중복확인 오류";
+  modalcontentsSpan.textContent =
+    "이미 등록된 email이 존재합니다! 다른 email을 입력해주세요!!!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function emailIsBlank() {
+  cancletext.textContent = "입력오류";
+  modalcontentsSpan.textContent = "email을 입력해주세요!!!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function isUseThisEmail() {
+  cancletext.textContent = "중복확인";
+  modalcontentsSpan.textContent =
+    "사용 가능한 email입니다 해당 email을 사용하시겠습니까?";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    document.querySelector(".email").value = "";
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function nameIsBlank() {
+  cancletext.textContent = "입력오류";
+  modalcontentsSpan.textContent = "이름을 입력하지 않았습니다!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function PWIsBlank() {
+  cancletext.textContent = "입력오류";
+  modalcontentsSpan.textContent = "비밀번호를 입력하지 않았습니다!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function nonCorrectPW() {
+  cancletext.textContent = "입력오류";
+  modalcontentsSpan.textContent = "비밀번호가 일치하지 않습니다";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+
+function IDIsBlank() {
+  cancletext.textContent = "입력오류";
+  modalcontentsSpan.textContent = "ID를 입력하지 않았습니다!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function BirthIsBlank() {
+  cancletext.textContent = "입력오류";
+  modalcontentsSpan.textContent = "생일을 입력하지 않았습니다!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}
+function successSignUp() {
+  cancletext.textContent = "회원가입 성공";
+  modalcontentsSpan.textContent = "회원가입이 완료되었습니다!";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+    window.location.href = `login.html`;
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+}

@@ -220,3 +220,30 @@ footer {
 }
 
 /* 푸터 css 끝 */
+
+.alert {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+}
+.alert_pop {
+  display: none;
+}
+.alert_pop.active {
+  display: block;
+}
+
+.alert_pop > div {
+  position: fixed;
+  top: 10%;
+  left: 35%;
+  z-index: 1;
+  box-shadow: 3px 2px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.closebtn {
+  display: flex;
+  justify-content: center;
+}
