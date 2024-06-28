@@ -244,7 +244,7 @@ function getToday() {
     "화요일",
     "수요일",
     "목요일",
-    "긑요일",
+    "금요일",
     "토요일",
   ];
   const days_num = todaydate.getDay();
