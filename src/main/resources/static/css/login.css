@@ -305,9 +305,10 @@ footer {
 /* alert창 대신하는 모달 관련 CSS */
 .alert {
   display: flex;
-  width: 100%;
   align-items: center;
   flex-direction: column;
+  width: auto;
+  height: auto;
 }
 .alert_pop {
   display: none;
@@ -318,8 +319,13 @@ footer {
 
 .alert_pop > div {
   position: fixed;
-  top: 35%;
-  left: 40%;
+  top: 10%;
+  left: 35%;
   z-index: 1;
   box-shadow: 3px 2px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.closebtn {
+  display: flex;
+  justify-content: center;
 }
