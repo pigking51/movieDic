@@ -456,6 +456,12 @@ let findPostId = parseInt(id, 10);
 // 본문 수정 함수
 function patchThePost(patchData) {
   axios
+  .get(urlCur)
+  .then((response) =>{
+    console.log("데이터: ", response.data);
+    if(response.data != )
+  })
+  axios
     .patch(`http://localhost:8080/post/rewrite/${findPostId}`, patchData, {
       withCredentials: true,
     })
@@ -510,10 +516,10 @@ function thumbsUp() {
     $jQ(".alert").removeClass("active");
   });
   $jQ(".yes").click(function () {
-    $jQ(".alert").removeClass("active");
+    window.location.reload();
   });
   $jQ(".no").click(function () {
-    $jQ(".alert").removeClass("active");
+    window.location.reload();
   });
 }
 
