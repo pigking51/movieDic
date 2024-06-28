@@ -247,22 +247,27 @@ header {
   display: grid;
   grid-template-columns: 2fr 6fr 2fr;
   width: 80%;
-  height: 40px;
-  margin: 1% auto;
+  height: 60px;
+  margin: 0 auto;
   /* border-radius: 40px; */
   text-align: center;
   border-bottom: 1px solid #999;
+  padding: 10px 0;
 }
 .comments p {
   width: auto;
   text-align: left;
-  margin: 0 20px;
   height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "GmarketSansMedium";
   color: #333;
+  cursor: pointer;
+}
+
+.comments button {
+  cursor: pointer;
 }
 
 .comment-list {

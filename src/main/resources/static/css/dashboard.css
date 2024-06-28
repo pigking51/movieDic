@@ -406,8 +406,12 @@ body.hidden_dashboard {
 }
 
 .manage-body > tr > td {
-  width: auto;
+  width: 14%;
   height: auto;
+  text-align: left;
+  font-size: 14px;
+  color: #d9d9d9;
+  padding-left: 10px;
 }
 
 @media screen and (max-width: 1024px) {

@@ -149,13 +149,21 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 8% auto;
+  margin: 1% auto;
 }
 
 .numberNation span {
-  width: fit-content;
-  margin: 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  margin: 0 1%;
   cursor: pointer;
+}
+
+.numberNation span:hover {
+  font-weight: bold;
 }
 
 /* table 칸 안맞아서 생성되는거 보고 적당히 변경해야될듯 */
@@ -296,7 +304,7 @@ tbody tr:hover {
   height: auto;
   display: flex;
   justify-content: right;
-  margin: 50px 0;
+  margin: 1% 0 3% 0;
 }
 
 .upload-btn {
