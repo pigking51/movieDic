@@ -61,10 +61,6 @@ public class CommentService {
 
     public CommentDto updateComment2(long commentId, CommentDto commentDto){
 
-//        Board board = boardRepository.findById(commentDto.getBoardId())
-//                .orElseThrow(() -> new IllegalArgumentException("Invalid board ID"));
-//        Post post = postRepository.findById(commentDto.getPostId())
-//                .orElseThrow(() -> new IllegalArgumentException("Invalid post ID"));
         User user = userRepository.findById(commentDto.getUserId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
 
@@ -73,8 +69,6 @@ public class CommentService {
             if(Objects.equals(comment1.get(i).getUser().getUserId(), user.getUserId())&&
                     Objects.equals(comment1.get(i).getCommentId(), commentId)){
                 comment1.get(i).setCommentContent(commentDto.getCommentContent());
-//                comment1.get(i).setBoard(board);
-//                comment1.get(i).setPost(post);
                 comment1.get(i).setUser(user);
 
                 Comment savedComment = commentRepository.save(comment1.get(i));
