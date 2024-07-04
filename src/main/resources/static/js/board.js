@@ -435,7 +435,7 @@ function searchByKeyword(posts) {
 //   document.querySelector(".table2").classList.add("block");
 // });
 
-// 아래 번호 누르는거 구현 실패(시도중)
+// 아래 번호 누르는거(페이지네이션)
 function changeTable() {
   const allTbody = document.querySelectorAll("tbody");
   const bActive = document.querySelectorAll(".b-active");

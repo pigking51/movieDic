@@ -2,7 +2,7 @@ const urlList = "http://localhost:8080/api/products/purchaseList";
 
 // 모달 요소 선언
 // jQ 선언
-const $jQ = jQuery.noConflict();
+let $jQ = jQuery.noConflict();
 // 기존 모달위치 선언
 const firstwrap = document.querySelector(".alert");
 // 모달 내용 변경
@@ -216,6 +216,15 @@ function isRealPurchase(data) {
           .then((response) => {
             console.log("데이터: ", response.data);
             localStorage.removeItem(userId);
+            if (document.querySelectorAll(".cartTr").length > 1) {
+              Array.from(document.querySelectorAll(".cartTr")).forEach(
+                (eTr) => {
+                  eTr.remove();
+                }
+              );
+            } else {
+              document.querySelector(".cartTr").remove();
+            }
           })
           .catch((error) => {
             console.log("오류 발생: ", error);
@@ -225,9 +234,27 @@ function isRealPurchase(data) {
         console.log("오류 발생", error);
       });
     $jQ(".alert").removeClass("active");
+    purchaseSuccess();
   });
   $jQ(".no").click(function () {
-    window.location.href = "lecture.html";
+    $jQ(".alert").removeClass("active");
+  });
+}
+
+// 구매완료 후 마이페이지 넘어가기
+function purchaseSuccess() {
+  cancletext.textContent = "구매완료";
+  modalcontentsSpan.textContent =
+    "구매가 완료되었습니다. 마이페이지로 이동하시겠습니까?";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+  });
+  $jQ(".yes").click(function () {
+    window.location.href = `myPage.html`;
+  });
+  $jQ(".no").click(function () {
+    $jQ(".alert").removeClass("active");
   });
 }
 
@@ -256,6 +283,14 @@ function pleaseLogin() {
   modalcontentsSpan.textContent = "로그인해주세요!!";
   $jQ(".alert").addClass("active");
   $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+    window.location.href = `login.html`;
+  });
+  $jQ(".yes").click(function () {
+    $jQ(".alert").removeClass("active");
+    window.location.href = `login.html`;
+  });
+  $jQ(".no").click(function () {
     $jQ(".alert").removeClass("active");
     window.location.href = `login.html`;
   });

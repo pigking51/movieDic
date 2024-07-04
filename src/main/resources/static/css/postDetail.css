@@ -174,8 +174,6 @@ header {
 .postTitle input {
   height: 30px;
   width: calc(100% - 50px);
-  margin-left: 25px;
-  margin-bottom: 10px;
   border-radius: 4px;
 }
 
@@ -244,7 +242,7 @@ header {
 .postContent p {
   height: fit-content;
   font-size: 24px;
-  padding: 10%;
+  padding: 0.5%;
   line-height: 40px;
 }
 
@@ -509,6 +507,8 @@ footer {
 }
 .alert_pop {
   display: none;
+  width: auto;
+  height: auto;
 }
 .alert_pop.active {
   display: block;

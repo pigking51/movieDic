@@ -25,6 +25,23 @@ $jQ(document).ready(function () {
 
 // 동작코드 끝
 
+// 기존 모달위치 선언
+const firstwrap = document.querySelector(".alert");
+// 모달 내용 변경
+const cancletext = document.querySelector(".cancle-wrap").firstElementChild;
+const xbtn = document.querySelector(".cancle-wrap").lastElementChild;
+const modalcontentsSpan =
+  document.querySelector(".modal-contents").firstElementChild;
+const btnWrap = document.querySelector(".btn-wrap");
+
+// 모달 속 확인 취소 기능 넣기
+const yes = document.querySelector(".btn-wrap").firstElementChild;
+const no = document.querySelector(".btn-wrap").lastElementChild;
+
+yes.classList.add("yes");
+no.classList.add("no");
+xbtn.classList.add("closebtn");
+
 // lectureDetail 혹은 mypage에서 클릭 시 해당 정보에 맞는 데이터 로드
 const urlParams = new URLSearchParams(window.location.search);
 const uId = urlParams.get("user");
@@ -161,9 +178,11 @@ function ifFirstLecture() {
   $jQ(".closebtn").click(function () {
     $jQ(".first").removeClass("active");
   });
-
-  btnWrap.addEventListener("click", () => {
-    modalwrap.classList.remove("active");
+  $jQ(".yes").click(function () {
+    $jQ(".first").removeClass("active");
+  });
+  $jQ(".no").click(function () {
+    $jQ(".first").removeClass("active");
   });
 }
 
@@ -188,10 +207,16 @@ function ifLastLecture() {
   $jQ(".closebtn").click(function () {
     $jQ(".first").removeClass("active");
   });
-
-  btnWrap.addEventListener("click", () => {
-    modalwrap.classList.remove("active");
+  $jQ(".yes").click(function () {
+    $jQ(".first").removeClass("active");
   });
+  $jQ(".no").click(function () {
+    $jQ(".first").removeClass("active");
+  });
+
+  // btnWrap.addEventListener("click", () => {
+  //   modalwrap.classList.remove("active");
+  // });
 }
 
 // 현재 로그인을 하지 않고 접속한 경우

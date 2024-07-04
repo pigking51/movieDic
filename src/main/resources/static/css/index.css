@@ -237,9 +237,6 @@ footer {
   width: auto;
 }
 
-.information span {
-}
-
 /* 푸터 css 끝 */
 
 .alert {
@@ -251,6 +248,8 @@ footer {
 }
 .alert_pop {
   display: none;
+  width: auto;
+  height: auto;
 }
 .alert_pop.active {
   display: block;

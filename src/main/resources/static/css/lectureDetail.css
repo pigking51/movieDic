@@ -352,6 +352,8 @@ footer {
 }
 .alert_pop {
   display: none;
+  width: auto;
+  height: auto;
 }
 .alert_pop.active {
   display: block;

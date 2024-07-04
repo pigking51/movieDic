@@ -304,6 +304,8 @@ footer {
   flex-direction: column;
   width: auto;
   height: auto;
+  width: auto;
+  height: auto;
 }
 .alert_pop {
   display: none;
