@@ -34,11 +34,15 @@ const modalcontentsSpan =
 const btnWrap = document.querySelector(".btn-wrap");
 
 // 모달 속 확인 취소 기능 넣기
-const yes = document.querySelector(".btn-wrap").firstElementChild;
-const no = document.querySelector(".btn-wrap").lastElementChild;
+//const yes = document.querySelector(".btn-wrap").firstElementChild;
+//const no = document.querySelector(".btn-wrap").lastElementChild;
 
-yes.classList.add("yes");
-no.classList.add("no");
+//yes.classList.add("yes");
+//no.classList.add("no");
+
+btnWrap.firstElementChild.classList.add("yes");
+btnWrap.lastElementChild.classList.add("no");
+
 xbtn.classList.add("closebtn");
 
 axios
@@ -256,14 +260,21 @@ function plusLike(data) {
             console.log("데이터: ", response.data);
             likeData = response.data;
             likeCount = response.data.length;
-            console.log(nowUserData2.authority[0].authority);
-            console.log(likeCount);
+
+            nowPostLike = likeData.filter(
+              (likeData) => likeData.post.postId == parseInt(id, 10)
+            );
+            nowPostLikeCount = nowPostLike.length;
+
+            console.log(nowPostLike);
+            console.log(nowPostLikeCount);
+            // console.log(nowUserData2.authority[0].authority);
+            // console.log(likeCount);
             // 추천 클릭 시 중복 불가 설정(관리자는 예외)
-            for (i = 0; i < likeCount; i++) {
+            for (i = 0; i < nowPostLikeCount; i++) {
               if (
-                nowUserData2.userId == likeData[i].user.userId &&
-                nowUserData2.authority[0].authority == "ROLE_USER" &&
-                likeData[i].post.postId == parseInt(id, 10)
+                nowUserData2.userId == nowPostLike[i].user.userId &&
+                nowUserData2.authority[0].authority == "ROLE_USER"
               ) {
                 console.log("이미 추천하셨습니다");
                 notdupliThumbs();
@@ -318,14 +329,30 @@ function rewriteMyComment(myComment) {
       reComment.type = `text`;
       const deleteBtn = document.createElement("button");
       deleteBtn.textContent = `삭제`;
+      const reCancel = document.createElement("button");
+      reCancel.textContent = `수정취소`;
+      reCancel.addEventListener("click", () => {
+        window.location.reload();
+      });
 
       axios
         .get(urlCoAll)
         .then((response) => {
           console.log("데이터: ", response.data);
+          console.log(myComment.authority[0].authority);
+          console.log(response.data[index].user.userId);
+          console.log(myComment.userId);
+
+          // 전체댓글에서 해당 게시글 댓글만 불러오기
+          const postCoAll = response.data;
+          const nowPostCoAll = postCoAll.filter(
+            (postCoAll) => postCoAll.post.postId == parseInt(id, 10)
+          );
+          console.log(nowPostCoAll);
+
           if (
             myComment.authority[0].authority == "ROLE_ADMIN" ||
-            response.data[index].user.userId == myComment.userId
+            nowPostCoAll[index].user.userId == myComment.userId
           ) {
             commen.style.cssText = `grid-template-columns: 1fr 5fr 2fr 1fr 1fr;`;
             commen.appendChild(cancel);
@@ -341,15 +368,16 @@ function rewriteMyComment(myComment) {
               cancel.style.display = `none`;
 
               if (
-                myComment.userId == response.data[index].user.userId ||
+                myComment.userId == nowPostCoAll[index].user.userId ||
                 myComment.authority[0].authority == "ROLE_ADMIN"
               ) {
                 commen.innerHTML = "";
-                uId.textContent = response.data[index].userId;
+                uId.textContent = nowPostCoAll[index].user.userId;
 
                 commen.appendChild(uId);
                 commen.appendChild(reComment);
                 commen.appendChild(submit);
+                commen.appendChild(reCancel);
               }
             });
 
@@ -395,7 +423,7 @@ function rewriteMyComment(myComment) {
 }
 
 // 본문 글 수정
-function rewriteMainContent() {
+function rewriteMainContent(data) {
   const sectionWrap = document.querySelector(".section-wrap");
   const editMain = document.querySelector(".edit-btn");
   const editTitle = document.querySelector(".postTitle");
@@ -406,6 +434,7 @@ function rewriteMainContent() {
   const editCInput = document.createElement("input");
   const patchPostBtn = document.createElement("button");
   const deletePostBtn = document.createElement("button");
+  const cancelPostBtn = document.createElement("button");
   const likebox = document.querySelector(".like-box");
   editTInput.type = `text`;
   editCInput.type = `text`;
@@ -414,21 +443,48 @@ function rewriteMainContent() {
   patchPostBtn.style.display = `none`;
   deletePostBtn.textContent = `삭제하기`;
   deletePostBtn.style.display = `none`;
+  cancelPostBtn.textContent = `수정취소`;
+  cancelPostBtn.style.display = `none`;
 
   editMain.addEventListener("click", () => {
+    // 글 작성자 Or 관리자가 아닐 경우 권한없음 모달 출력
+    axios
+      .get(urlCur)
+      .then((response) => {
+        console.log(response.data);
+        console.log(data.user.userId);
+        console.log(response.data.userId);
+        console.log(response.data.authority[0].authority);
+        if (
+          !(
+            data.user.userId == response.data.userId ||
+            response.data.authority[0].authority == "ROLE_ADMIN"
+          )
+        ) {
+          notAthorizon();
+          return;
+        }
+      })
+      .catch((error) => {
+        console.log("권한없음 출력 오류");
+      });
+
     editMain.style.display = `none`;
     patchPostBtn.style.display = `block`;
     deletePostBtn.style.display = `block`;
+    cancelPostBtn.style.display = `block`;
     editTitle.firstElementChild.nextElementSibling.remove();
     editTitle.firstElementChild.nextElementSibling.remove();
     editTitle.firstElementChild.nextElementSibling.remove();
     editContent.textContent = "";
     sectionWrap.appendChild(patchPostBtn);
     sectionWrap.appendChild(deletePostBtn);
+    sectionWrap.appendChild(cancelPostBtn);
     editTitle.appendChild(editTInput);
     editContent.appendChild(editCInput);
     likebox.appendChild(patchPostBtn);
     likebox.appendChild(deletePostBtn);
+    likebox.appendChild(cancelPostBtn);
   });
 
   let patchTitle = "";
@@ -445,11 +501,22 @@ function rewriteMainContent() {
       postTitle: patchTitle,
       postContent: patchContent,
     };
+    if (patchTitle == "") {
+      notNullTitle();
+      return;
+    } else if (patchContent == "") {
+      notNullContent();
+      return;
+    }
     patchThePost(patchData);
   });
 
   deletePostBtn.addEventListener("click", () => {
     deleteThePost();
+  });
+
+  cancelPostBtn.addEventListener("click", () => {
+    window.location.reload();
   });
 }
 let findPostId = parseInt(id, 10);
@@ -511,6 +578,11 @@ function thumbsUp() {
     $jQ(".alert").removeClass("active");
     window.location.reload();
   });
+  $jQ(".btn-wrap").click(function () {
+    console.log("yes 반응 확인2");
+    window.location.reload();
+  });
+
   yes.addEventListener("click", () => {
     window.location.reload();
   });
@@ -527,14 +599,103 @@ function notdupliThumbs() {
     $jQ(".alert").removeClass("active");
     window.location.reload();
   });
-  // $jQ(".btnWrap").click(function () {
-  //   $jQ(".alert").removeClass("active");
+
+  // yes.addEventListener("click", () => {
+  //   console.log("yes 반응 확인");
   //   window.location.reload();
   // });
-  yes.addEventListener("click", () => {
+
+  $jQ(".btn-wrap").click(function () {
+    console.log("yes 반응 확인2");
     window.location.reload();
   });
-  no.addEventListener("click", () => {
+
+  $jQ(".yes").click(function () {
+    console.log("yes 반응 확인2");
+    window.location.reload();
+  });
+
+  // no.addEventListener("click", () => {
+  //   console.log("no 반응 확인");
+  //   window.location.reload();
+  // });
+  $jQ(".no").click(function () {
+    console.log("no 반응 확인2");
+    window.location.reload();
+  });
+}
+
+function notAthorizon() {
+  cancletext.textContent = "수정권한 없음";
+  modalcontentsSpan.textContent = "수정할 권한이 없습니다.";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+    window.location.reload();
+  });
+
+  $jQ(".btn-wrap").click(function () {
+    console.log("yes 반응 확인");
+    window.location.reload();
+  });
+
+  $jQ(".yes").click(function () {
+    console.log("yes 반응 확인2");
+    window.location.reload();
+  });
+
+  $jQ(".no").click(function () {
+    console.log("no 반응 확인2");
+    window.location.reload();
+  });
+}
+
+function notNullTitle() {
+  cancletext.textContent = "본문작성 오류";
+  modalcontentsSpan.textContent = "제목을 입력하지 않았습니다.";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+    window.location.reload();
+  });
+
+  $jQ(".btn-wrap").click(function () {
+    console.log("yes 반응 확인2");
+    window.location.reload();
+  });
+
+  $jQ(".yes").click(function () {
+    console.log("yes 반응 확인2");
+    window.location.reload();
+  });
+
+  $jQ(".no").click(function () {
+    console.log("no 반응 확인2");
+    window.location.reload();
+  });
+}
+
+function notNullContent() {
+  cancletext.textContent = "본문작성 오류";
+  modalcontentsSpan.textContent = "본문을 입력하지 않았습니다.";
+  $jQ(".alert").addClass("active");
+  $jQ(".closebtn").click(function () {
+    $jQ(".alert").removeClass("active");
+    window.location.reload();
+  });
+
+  $jQ(".btn-wrap").click(function () {
+    console.log("yes 반응 확인2");
+    window.location.reload();
+  });
+
+  $jQ(".yes").click(function () {
+    console.log("yes 반응 확인2");
+    window.location.reload();
+  });
+
+  $jQ(".no").click(function () {
+    console.log("no 반응 확인2");
     window.location.reload();
   });
 }

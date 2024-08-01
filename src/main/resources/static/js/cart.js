@@ -1,4 +1,5 @@
 const urlList = "http://localhost:8080/api/products/purchaseList";
+const urlPurAll = "http://localhost:8080/api/products/purchase";
 
 // 모달 요소 선언
 // jQ 선언
@@ -19,6 +20,9 @@ const no = document.querySelector(".btn-wrap").lastElementChild;
 yes.classList.add("yes");
 no.classList.add("no");
 xbtn.classList.add("closebtn");
+
+// 중복구매 방지
+let isAlreadypurchase = false;
 
 // 강의 구매하러 가기
 document.querySelector(".lectureBtn").addEventListener("click", () => {
@@ -205,12 +209,34 @@ function isRealPurchase(data) {
   $jQ(".closebtn").click(function () {
     $jQ(".alert").removeClass("active");
   });
-  $jQ(".yes").click(function () {
+  yes.classList.add("purCh");
+  $jQ(".purCh").click(function () {
+    console.log(isAlreadypurchase);
+    if (isAlreadypurchase == true) {
+      console.log("중복방지!!!");
+      return;
+    }
     axios
       .get("http://localhost:8080/user/current", { withCredentials: true })
       .then((response) => {
         console.log("데이터: ", response.data.userId);
         const userId = response.data.userId;
+        // axios
+        //   .get(urlPurAll)
+        //   .then((response) => {
+        //     console.log(response.data);
+        //     for (i = 0; i < response.data.length; i++) {
+        //       if (
+        //         response.data[i].user.userId == data[i].userId &&
+        //         response.data[i].lecture == data[i].lecture
+        //       )
+        //         console.log("중복 구매 방지!!!");
+        //       break;
+        //     }
+        //   })
+        //   .catch((error) => {
+        //     console.log("중복구매 방지대책 오류", error);
+
         axios
           .post(urlList, data, { withCredentials: true })
           .then((response) => {
@@ -233,7 +259,9 @@ function isRealPurchase(data) {
       .catch((error) => {
         console.log("오류 발생", error);
       });
+
     $jQ(".alert").removeClass("active");
+    yes.classList.remove("purCh");
     purchaseSuccess();
   });
   $jQ(".no").click(function () {
@@ -243,13 +271,19 @@ function isRealPurchase(data) {
 
 // 구매완료 후 마이페이지 넘어가기
 function purchaseSuccess() {
+  isAlreadypurchase = true;
   cancletext.textContent = "구매완료";
   modalcontentsSpan.textContent =
-    "구매가 완료되었습니다. 마이페이지로 이동하시겠습니까?";
+    "구매가 완료되었습니다. 마이페이지로  이동하시겠습니까?";
   $jQ(".alert").addClass("active");
   $jQ(".closebtn").click(function () {
     $jQ(".alert").removeClass("active");
   });
+
+  // $jQ(".btn-wrap").click(function () {
+  //   window.location.href = `myPage.html`;
+  // });
+
   $jQ(".yes").click(function () {
     window.location.href = `myPage.html`;
   });
