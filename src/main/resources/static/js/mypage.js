@@ -141,7 +141,7 @@ document.querySelector(".register").addEventListener("click", () => {
         // userId: nickname,
         password: password,
         email: email,
-        realname: Rname,
+        realName: Rname,
         gender: gender,
       };
 
@@ -166,7 +166,54 @@ document.querySelector(".register").addEventListener("click", () => {
 // 강의 현황
 const purchaseUrl = "http://localhost:8080/api/products/purchase/current";
 const purchaseUrlAll = "http://localhost:8080/api/products/purchase";
-let userId = "";
+// let userId = "";
+
+// 검색 시 해당 강의구매목록부분 강조하는 기능
+let searchMyLecture = "";
+document.querySelector("#found").addEventListener("change", (e) => {
+  searchMyLecture = e.target.value;
+  console.log(searchMyLecture);
+});
+document
+  .querySelector(".found-search")
+  .lastElementChild.addEventListener("click", () => {
+    axios
+      .get(purchaseUrl, { withCredentials: true })
+      .then((response) => {
+        console.log("데이터: ", response.data);
+        const myLectureList = response.data;
+        const myLectureDisplay = document.querySelectorAll(".lecture-box");
+
+        if (searchMyLecture == "") {
+          myLectureDisplay.forEach((lecture) => {
+            lecture.style.border = `3px solid #00d1fe`;
+            lecture.style.borderBottom = `8px solid #00d1fe`;
+          });
+          return;
+        }
+
+        for (i = 0; i < myLectureList.length; i++) {
+          if (myLectureDisplay[i].style.border != `3px solid #00d1fe`) {
+            myLectureDisplay[i].style.border = `3px solid #00d1fe`;
+            myLectureDisplay[i].style.borderBottom = `8px solid #00d1fe`;
+          }
+        }
+        for (i = 0; i < myLectureList.length; i++) {
+          if (
+            myLectureList[i].lecture.lectureTitle.indexOf(searchMyLecture) !=
+              -1 ||
+            myLectureList[i].lecture.major.indexOf(searchMyLecture) != -1 ||
+            myLectureList[i].lecture.text.indexOf(searchMyLecture) != -1
+          ) {
+            myLectureDisplay[i].style.border = `3px solid yellowGreen`;
+            myLectureDisplay[i].style.borderBottom = `8px solid yellowGreen`;
+          }
+        }
+      })
+      .catch((error) => {
+        console.log("오류 발생: ", error);
+      });
+  });
 
 // 내 강의
 
@@ -412,7 +459,6 @@ function isUseThisEmail() {
     $jQ(".alert").removeClass("active");
   });
   $jQ(".yes").click(function () {
-    document.querySelector(".email").value = "";
     $jQ(".alert").removeClass("active");
   });
   $jQ(".no").click(function () {

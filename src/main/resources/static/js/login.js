@@ -133,6 +133,8 @@ function IDAndPWIsNull() {
 }
 function IDOrPWIsNull() {
   modalcontentsSpan.textContent = "ID 혹은 비밀번호가 잘못되었습니다!";
+  document.querySelector("#userId").style.border = `4px solid red`;
+  document.querySelector(".password_wrap").style.border = `4px solid red`;
   $jQ(".alert").addClass("active");
   $jQ(".closebtn").click(function () {
     $jQ(".alert").removeClass("active");
@@ -146,6 +148,12 @@ function IDOrPWIsNull() {
 }
 function IDIsNull() {
   modalcontentsSpan.textContent = "ID를 입력하지 않았습니다!";
+  if (
+    document.querySelector(".password_wrap").style.border != `2px solid #00d1fe`
+  ) {
+    document.querySelector(".password_wrap").style.border = `2px solid #00d1fe`;
+  }
+  document.querySelector("#userId").style.border = `4px solid red`;
   $jQ(".alert").addClass("active");
   $jQ(".closebtn").click(function () {
     $jQ(".alert").removeClass("active");
@@ -159,6 +167,10 @@ function IDIsNull() {
 }
 function PWIsNull() {
   modalcontentsSpan.textContent = "비밀번호를 입력하지 않았습니다!";
+  if (document.querySelector("#userId").style.border != `2px solid #00d1fe`) {
+    document.querySelector("#userId").style.border = `2px solid #00d1fe`;
+  }
+  document.querySelector(".password_wrap").style.border = `4px solid red`;
   $jQ(".alert").addClass("active");
   $jQ(".closebtn").click(function () {
     $jQ(".alert").removeClass("active");

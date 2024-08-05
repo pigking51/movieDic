@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>dw</groupId>
-	<artifactId>movieDic</artifactId>
+	<artifactId>memorial</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>movieDic</name>
 	<description>project1</description>
