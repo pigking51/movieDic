@@ -1,0 +1,399 @@
+@font-face {
+  font-family: "GyeonggiTitleM";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+input {
+  transition: 0.3s;
+  color: #666;
+  font-family: "GmarketSansMedium", "GyeonggiTitleM";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+}
+
+label {
+  font-family: "GmarketSansMedium", "GyeonggiTitleM";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+}
+
+input:focus {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  outline: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 헤더css시작 */
+
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  border-bottom: 1px solid #00d1fe;
+  justify-content: space-around;
+}
+
+.logo {
+  width: 200px;
+  height: 100px;
+}
+
+.logo img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+}
+
+.menu > ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  width: 700px;
+}
+
+.menu > ul > li {
+  line-height: 100px;
+}
+
+.menu > ul > li > a:hover {
+  color: #00d1fe;
+}
+
+.menu > ul > li > a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  color: #333;
+}
+
+.top-Icon {
+  width: 200px;
+  height: 100px;
+  display: flex;
+}
+
+.top-Icon ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-Icon li {
+  list-style: none;
+  width: 60px;
+  height: 60px;
+}
+
+.top-Icon img {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+
+/* 헤더 css끝 */
+
+.wrap {
+  margin: 0 auto;
+  width: 100%;
+  display: block;
+  height: auto;
+  margin-bottom: 100px;
+}
+
+.write {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  width: 800px;
+  height: 50px;
+  border-radius: 4px;
+  border: 2px solid #00d1fe;
+  font-size: 15px;
+  padding: 0 20px;
+  margin-top: 30px;
+}
+
+.birth {
+  width: 800px;
+  height: 50px;
+  border-radius: 4px;
+  border: 2px solid #00d1fe;
+  font-size: 15px;
+  padding: 0 20px;
+  margin-top: 30px;
+}
+
+.gender {
+  width: 800px;
+  height: 100px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.man {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.man > input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.man > label {
+  font-size: 18px;
+  line-height: 100px;
+  display: inline-block;
+  width: 100px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.woman {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.woman > input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.woman > label {
+  font-size: 18px;
+  line-height: 100px;
+  display: inline-block;
+  width: 100px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.emailwrap {
+  display: flex;
+  height: 50px;
+  margin-top: 30px;
+  justify-content: space-between;
+  align-items: center;
+  width: 848px;
+}
+
+.email {
+  width: 566px;
+  height: 50px;
+  border-radius: 4px;
+  border: 2px solid #00d1fe;
+  font-size: 15px;
+  padding: 0 20px;
+}
+
+.emailwrap button {
+  transition: 0.3s;
+  width: 225px;
+  height: 50px;
+  border-radius: 4px;
+  background-color: #00d1fe;
+  border: none;
+  font-size: 15px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.emailwrap button:hover {
+  border: #00d1fe 2px solid;
+  background-color: #fff;
+  color: #00d1fe;
+  cursor: pointer;
+}
+
+.title {
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  line-height: 300px;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: "GyeonggiTitleM";
+}
+
+.nicknamewrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 848px;
+}
+
+.nickname {
+  width: 566px;
+  height: 50px;
+  border-radius: 4px;
+  border: 2px solid #00d1fe;
+  font-size: 15px;
+  padding: 0 20px;
+}
+
+.nicknamewrap button {
+  transition: 0.3s;
+  width: 225px;
+  height: 50px;
+  border-radius: 4px;
+  background-color: #00d1fe;
+  border: none;
+  font-size: 15px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.nicknamewrap button:hover {
+  border: #00d1fe 2px solid;
+  background-color: #fff;
+  color: #00d1fe;
+  cursor: pointer;
+}
+
+.password {
+  width: 800px;
+  height: 50px;
+  border-radius: 4px;
+  border: 2px solid #00d1fe;
+  font-size: 15px;
+  padding: 0 20px;
+  margin-top: 30px;
+}
+
+.passwordwrap button {
+  transition: 0.3s;
+  width: 225px;
+  height: 50px;
+  border-radius: 4px;
+  background-color: #00d1fe;
+  border: none;
+  margin-left: 50px;
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.passwordwrap button:hover {
+  border: #00d1fe 2px solid;
+  background-color: #fff;
+  color: #00d1fe;
+  cursor: pointer;
+}
+
+.passwordcheck {
+  width: 800px;
+  height: 50px;
+  border-radius: 4px;
+  border: 2px solid #00d1fe;
+  font-size: 15px;
+  padding: 0 20px;
+  margin-top: 30px;
+}
+
+.btnwrap {
+  display: flex;
+  width: 800px;
+  height: 50px;
+  justify-content: center;
+}
+
+.boxBtn {
+  transition: 0.3s;
+  width: 225px;
+  height: 50px;
+  border-radius: 4px;
+  background-color: #00d1fe;
+  border: none;
+  margin-left: 50px;
+  font-size: 15px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.boxBtn:hover {
+  background-color: #fff;
+  border: 2px solid #00d1fe;
+  color: #00d1fe;
+}
+
+/* 푸터 css시작 */
+
+footer {
+  float: left;
+  width: 100%;
+  background-color: #666;
+  height: 300px;
+  margin: 0;
+  padding: 0;
+}
+
+.information {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+.information h4 {
+  color: #fff;
+  font-size: 25px;
+  padding: 20px;
+  width: 400px;
+  height: 25px;
+}
+
+.information span {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  color: #fff;
+  width: 400px;
+  height: 200px;
+}
+
+/* 푸터 css 끝 */

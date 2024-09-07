@@ -1,0 +1,208 @@
+@font-face {
+  font-family: "GyeonggiTitleM";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 헤더css시작 */
+
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  border-bottom: 1px solid #00d1fe;
+  justify-content: space-around;
+}
+
+.logo {
+  width: 200px;
+  height: 100px;
+}
+
+.logo img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+}
+
+.menu > ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  width: 700px;
+}
+
+.menu > ul > li {
+  line-height: 100px;
+}
+
+.menu > ul > li > a:hover {
+  color: #00d1fe;
+}
+
+.menu > ul > li > a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  color: #333;
+}
+
+.top-Icon {
+  width: 200px;
+  height: 100px;
+  display: flex;
+}
+
+.top-Icon ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-Icon li {
+  list-style: none;
+  width: 60px;
+  height: 60px;
+}
+
+.top-Icon img {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+
+/* 헤더 css끝 */
+
+/* survey 시작 */
+.title {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  text-align: center;
+}
+
+.survey-box {
+  margin: auto;
+  width: 540px;
+  /* height: 800px; */
+  align-items: center;
+  gap: 10px;
+  padding: 30px;
+  border: solid #00d1fe;
+  /* font-size: 1.3rem; */
+  border-radius: 15px;
+  justify-items: center;
+}
+
+/* .survey-box > h1 {
+  height: 100px;
+  line-height: 100px;
+} */
+
+.surveyBtn {
+  width: 300px;
+  height: 50px;
+  background-color: #00deff;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 24px;
+  border: none;
+  margin-left: 50%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.summers {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.human {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.class {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.amount {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.post {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+/* 푸터 css시작 */
+
+footer {
+  width: 100%;
+  background-color: #666;
+  height: 300px;
+  margin: 0;
+  padding: 0;
+}
+
+.information {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+.information h4 {
+  color: #fff;
+  font-size: 25px;
+  padding: 20px;
+  width: 400px;
+  height: 25px;
+}
+
+.information span {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  color: #fff;
+  width: 400px;
+  height: 200px;
+}
+
+/* 푸터 css 끝 */

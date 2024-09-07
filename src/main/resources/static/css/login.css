@@ -1,0 +1,326 @@
+@font-face {
+  font-family: "GyeonggiTitleM";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 헤더css시작 */
+
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  background-color: #333;
+  justify-content: center;
+}
+
+.logo {
+  width: 200px;
+  height: 100px;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+  margin-top: 20px;
+  margin-left: 20px;
+  opacity: 0.8;
+}
+
+.logo img:hover {
+  opacity: 1;
+}
+
+.menu {
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.menu > ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  width: 700px;
+}
+
+.menu > ul > li {
+  line-height: 100px;
+}
+
+.menu > ul > li > a:hover {
+  color: #fff;
+}
+
+.menu > ul > li > a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  color: #00d1fe;
+  font-family: "GyeonggiTitleM";
+}
+
+.top-Icon {
+  width: 200px;
+  height: 100px;
+  display: flex;
+}
+
+.top-Icon ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-Icon li {
+  list-style: none;
+  width: 60px;
+  height: 60px;
+  opacity: 0.7;
+}
+
+.top-Icon li:hover {
+  opacity: 1;
+}
+
+.top-Icon img {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+
+/* 헤더 css끝 */
+
+.login {
+  height: auto;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input:focus {
+  outline: none;
+}
+
+#userId {
+  width: 566px;
+  height: 50px;
+  border: 2px solid #00d1fe;
+  border-radius: 8px;
+  font-size: 15px;
+  padding: 0 20px;
+}
+
+.password_wrap {
+  width: 566px;
+  height: 50px;
+  border: 2px solid #00d1fe;
+  border-radius: 8px;
+  font-size: 15px;
+  padding: 0 16px 0 20px;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+}
+
+#password {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+.revealBtn {
+  width: 100%;
+  height: 100%;
+  background: url(../images/icon/visibility_lock.png) no-repeat;
+  background-position: center;
+}
+
+.hideBtn {
+  width: 100%;
+  height: 100%;
+  background: url(../images/icon/password_open.png) no-repeat;
+  background-position: center;
+}
+
+.login-box {
+  width: fit-content;
+  height: fit-content;
+  margin: 180px auto;
+  align-items: center;
+  gap: 10px;
+  padding: 30px;
+  background-color: white;
+  font-size: 1.3rem;
+  border-radius: 15px;
+  justify-items: center;
+}
+
+.empty {
+  height: 50px;
+  width: 610px;
+}
+
+.login-box > h1 {
+  height: 100px;
+  line-height: 100px;
+  color: #333;
+  font-family: "GyeonggiTitleM";
+}
+
+.loginBtn {
+  width: 200px;
+  height: 50px;
+  background-color: #00deff;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 15px;
+  border: none;
+  margin-right: 10px;
+}
+
+.btnwrap {
+  width: 588px;
+  height: 100px;
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup {
+  width: 100%;
+  height: 40px;
+  background-color: #00deff;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.signup:hover {
+  background-color: lightblue;
+  color: dodgerblue;
+}
+
+.signup-box {
+  width: 100%;
+  height: 40px;
+  background-color: #00deff;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.signupBtn {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  color: #00deff;
+  border-style: solid;
+  border-width: 3px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 15px;
+  border: 2px solid #00d1fe;
+  margin-left: 10px;
+}
+
+/* 푸터 css시작 */
+
+footer {
+  width: 100%;
+  background-color: #333;
+  height: 100px;
+  line-height: 100px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.information {
+  width: 100%;
+  height: 100px;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.information h4 {
+  color: #fff;
+  font-size: 25px;
+  width: auto;
+  height: 100px;
+  line-height: 100px;
+}
+
+.information span {
+  color: #fff;
+  height: 100px;
+  width: auto;
+}
+
+/* 푸터 css 끝 */
+
+/* alert창 대신하는 모달 관련 CSS */
+.alert {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+  flex-direction: column;
+}
+.alert_pop {
+  display: none;
+}
+.alert_pop.active {
+  display: block;
+}
+
+.alert_pop > div {
+  position: fixed;
+  top: 35%;
+  left: 40%;
+  z-index: 1;
+  box-shadow: 3px 2px 5px 1px rgba(0, 0, 0, 0.5);
+}

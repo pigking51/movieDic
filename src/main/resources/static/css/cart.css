@@ -1,0 +1,522 @@
+@font-face {
+  font-family: "GyeonggiTitleM";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  height: auto;
+  border: 0.25px solid #fff;
+  margin: 10px 0;
+}
+
+/* 헤더css시작 */
+
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  background-color: #333;
+  justify-content: center;
+}
+
+.logo {
+  width: 200px;
+  height: 100px;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+  margin-top: 20px;
+  margin-left: 20px;
+  opacity: 0.8;
+}
+
+.logo img:hover {
+  opacity: 1;
+}
+
+.menu {
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.menu > ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  width: 700px;
+}
+
+.menu > ul > li {
+  line-height: 100px;
+}
+
+.menu > ul > li > a:hover {
+  color: #fff;
+}
+
+.menu > ul > li > a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  color: #00d1fe;
+  font-family: "GyeonggiTitleM";
+}
+
+.top-Icon {
+  width: 200px;
+  height: 100px;
+  display: flex;
+}
+
+.top-Icon ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-Icon li {
+  list-style: none;
+  width: 60px;
+  height: 60px;
+  opacity: 0.7;
+}
+
+.top-Icon li:hover {
+  opacity: 1;
+}
+
+.top-Icon img {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}
+
+/* 헤더 css끝 */
+
+.search {
+  background-color: #00d1fe;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-box {
+  display: flex;
+  grid-template-columns: 9fr 1fr;
+  width: 500px;
+  height: 30px;
+  padding: 0;
+  background-color: #fff;
+  border-radius: 30px;
+}
+
+.search input {
+  width: 450px;
+  height: 30px;
+  border-radius: 30px;
+  border: none;
+  padding: 0px 20px;
+  outline: none;
+}
+
+.searchBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+}
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.test {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cart > h1 {
+  width: 600px;
+  height: auto;
+  margin: 20px 0;
+  color: #333;
+  font-family: "GyeonggiTitleM";
+  font-size: 35px;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.right-side {
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0;
+  height: 953px;
+  padding-top: 40px;
+}
+
+.pay {
+  width: 380px;
+  height: 480px;
+  padding: 20px;
+  color: #fff;
+  background-color: #333;
+  text-align: center;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.pay > h2 {
+  width: 100%;
+  height: auto;
+  font-family: "GmarketSansMedium";
+}
+
+.payment {
+  width: 100%;
+  height: auto;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 25px 0;
+}
+
+.payment input {
+  width: auto;
+  height: auto;
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.payment label {
+  font-size: 16px;
+  font-family: "GyeonggiTitleM";
+}
+
+.cart {
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.cart h2 {
+  width: 500px;
+  height: 100px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "GyeonggiTitleM";
+  font-size: 30px;
+}
+
+.pay-button {
+  width: 380px;
+  height: 50px;
+  background-color: #2463eb;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pay-button:hover {
+  opacity: 0.7;
+}
+
+.cartList {
+  border: 3px solid #00d1fe;
+  background-color: #fff;
+  border-radius: 15px;
+  height: 600px;
+  width: 600px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cartList > h2 {
+  color: #00d1fe;
+}
+
+.price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  height: auto;
+  margin: auto 0px;
+  font-family: "GyeonggiTitleM";
+}
+
+.price > h3 {
+  display: flex;
+  align-items: center;
+  width: auto;
+  font-family: "GyeonggiTitleM";
+}
+
+.lectureBtn {
+  width: 200px;
+  height: 50px;
+  background-color: #00deff;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  border: none;
+  margin: 20px 0;
+  opacity: 0.8;
+}
+
+.lectureBtn:hover {
+  opacity: 1;
+}
+
+.noEmpty::-webkit-scrollbar {
+  width: 20px;
+}
+
+.noEmpty::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 209, 254, 1);
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 20px;
+}
+
+.noEmpty::-webkit-scrollbar-track {
+  background-color: rgba(0, 209, 254, 0.7);
+  box-shadow: inset 0px 0px 5px white;
+}
+/* js에 따른 css */
+
+.noEmpty {
+  display: none;
+  border: 1px solid #00d1fe;
+  background-color: #fff;
+  border-radius: 15px;
+  height: 600px;
+  width: 600px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.noEmpty table {
+  table-layout: fixed;
+  border-radius: 15px;
+  border-collapse: collapse;
+}
+.noEmpty thead {
+  background-color: #00d1fe;
+  color: white;
+  height: 30px;
+  font-family: "GyeonggiTitleM";
+  font-size: 20px;
+}
+
+.noEmpty th {
+  height: 30px;
+  line-height: 30px;
+}
+
+.noEmpty tbody {
+  text-align: center;
+}
+.noEmpty tr {
+  height: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.noEmpty td {
+  height: fit-content;
+  margin: 2%;
+}
+
+.tr:nth-child(even) {
+  background-color: #eaeaed;
+  /* 실제로 표 꾸밀때 이 색상 많이사용한다고 함 */
+}
+tbody .tr:nth-last-child() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.noEmpty img {
+  width: 100%;
+  height: 80px;
+}
+
+.deleteBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 50px;
+  background-color: #00deff;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  border: none;
+  margin-right: 10px;
+}
+.deleteBtn:hover {
+  background-color: lightblue;
+  color: dodgerblue;
+}
+
+@media screen and (max-width: 1024px) {
+  .pay {
+    width: 330px;
+    height: 480px;
+    padding: 20px;
+    color: #fff;
+    background-color: #333;
+    text-align: center;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .pay-button {
+    width: 330px;
+    height: 80px;
+    background-color: #2463eb;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 34px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+}
+
+/* 푸터 css시작 */
+
+footer {
+  width: 100%;
+  background-color: #333;
+  height: 100px;
+  line-height: 100px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.information {
+  width: 100%;
+  height: 100px;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.information h4 {
+  color: #fff;
+  font-size: 25px;
+  width: auto;
+  height: 100px;
+  line-height: 100px;
+}
+
+.information span {
+  color: #fff;
+  height: 100px;
+  width: auto;
+}
+
+/* 푸터 css 끝 */
+
+/* alert창 대신하는 모달 관련 CSS */
+.alert {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+  flex-direction: column;
+}
+.alert_pop {
+  display: none;
+}
+.alert_pop.active {
+  display: block;
+}
+
+.alert_pop > div {
+  position: fixed;
+  top: 35%;
+  left: 40%;
+  z-index: 1;
+  box-shadow: 3px 2px 5px 1px rgba(0, 0, 0, 0.5);
+}
