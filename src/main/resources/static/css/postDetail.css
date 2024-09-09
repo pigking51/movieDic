@@ -275,7 +275,7 @@ header {
 }
 
 .comment-box {
-  width: 80%;
+  width: 1000px;
   height: 250px;
   display: flex;
   align-items: center;

@@ -275,28 +275,6 @@ header {
   margin: 0 10px;
 }
 
-/* .comment {
-  width: 70%;
-  height: 500px;
-  border: 1px solid #00d1fe;
-  border-radius: 15px;
-  padding: 20px;
-  margin: 50px 0;
-}
-
-.comment h1 {
-  height: 100px;
-} */
-
-/*.commentBox {
-  width: 660px;
-  height: 400px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 15px;
-  margin: 0 auto;
-}*/
-
 .detail {
   width: fit-content;
   height: fit-content;
